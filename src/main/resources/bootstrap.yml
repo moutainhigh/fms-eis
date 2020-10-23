@@ -1,0 +1,16 @@
+server:
+ port: 11010
+ servlet:
+  context-path: /esi
+spring:
+ application:
+  name: CIM-SERVER
+eureka:
+  instance: 
+    prefer-ip-address: true
+  client:
+    #registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://guidong:df6100@172.21.29.55:7777/guidong/eureka/
+
+    
