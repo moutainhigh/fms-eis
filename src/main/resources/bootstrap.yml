@@ -4,7 +4,7 @@ server:
   context-path: /esi
 spring:
  application:
-  name: CIM-SERVER
+  name: FMS-CIM-SERVER
 eureka:
   instance: 
     prefer-ip-address: true
