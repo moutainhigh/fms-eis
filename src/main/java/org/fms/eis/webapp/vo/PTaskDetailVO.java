@@ -1,22 +1,21 @@
 /**
  * Author : chizf
  * Date : 2020年10月22日 上午10:00:51
- * Title : org.fms.eis.webapp.vo.PChnlGroupVO.java
+ * Title : org.fms.eis.webapp.vo.PTaskDetailVO.java
  *
 **/
 package org.fms.eis.webapp.vo;
 
-import org.fms.eis.webapp.domain.PChnlGroupDomain;
+import org.fms.eis.webapp.domain.PTaskDetailDomain;
 
 import java.util.Date;
 
-public class PChnlGroupVO extends ManagerParamVO {
+public class PTaskDetailVO extends ManagerParamVO {
 
-		private Long id;	//组编码
-		private String code;	//编号
-		private String name;	//组名称
-		private Long chnlTypeId;	//通道类型标识
-		private String status;	//有效标识
+		private Long id;	//编码
+		private Long tplDetailId;	//任务编码
+		private String infopointType;	//信息点类型
+		private Long dataId;	//数据单元编码
 		private Integer weight;	//排序
 		private Long creatorId;	//创建者
 		private Date createDate;	//创建时间
@@ -29,29 +28,23 @@ public class PChnlGroupVO extends ManagerParamVO {
 		public void setId(Long id) {
 			this.id = id;
 		}
-		public String getCode() {
-			return code;
+		public Long getTplDetailId() {
+			return tplDetailId;
 		}
-		public void setCode(String code) {
-			this.code = code;
+		public void setTplDetailId(Long tplDetailId) {
+			this.tplDetailId = tplDetailId;
 		}
-		public String getName() {
-			return name;
+		public String getInfopointType() {
+			return infopointType;
 		}
-		public void setName(String name) {
-			this.name = name;
+		public void setInfopointType(String infopointType) {
+			this.infopointType = infopointType;
 		}
-		public Long getChnlTypeId() {
-			return chnlTypeId;
+		public Long getDataId() {
+			return dataId;
 		}
-		public void setChnlTypeId(Long chnlTypeId) {
-			this.chnlTypeId = chnlTypeId;
-		}
-		public String getStatus() {
-			return status;
-		}
-		public void setStatus(String status) {
-			this.status = status;
+		public void setDataId(Long dataId) {
+			this.dataId = dataId;
 		}
 		public Integer getWeight() {
 			return weight;
@@ -85,13 +78,12 @@ public class PChnlGroupVO extends ManagerParamVO {
 		}
 	
 
-	public PChnlGroupDomain vo2Domain() {
-		PChnlGroupDomain _Domain = new PChnlGroupDomain();
+	public PTaskDetailDomain vo2Domain() {
+		PTaskDetailDomain _Domain = new PTaskDetailDomain();
 				_Domain.setId(this.id);
-				_Domain.setCode(this.code);
-				_Domain.setName(this.name);
-				_Domain.setChnlTypeId(this.chnlTypeId);
-				_Domain.setStatus(this.status);
+				_Domain.setTplDetailId(this.tplDetailId);
+				_Domain.setInfopointType(this.infopointType);
+				_Domain.setDataId(this.dataId);
 				_Domain.setWeight(this.weight);
 				_Domain.setCreatorId(this.creatorId);
 				_Domain.setCreateDate(this.createDate);

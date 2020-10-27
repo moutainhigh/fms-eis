@@ -1,22 +1,23 @@
 /**
  * Author : chizf
  * Date : 2020年10月22日 上午10:00:51
- * Title : org.fms.eis.webapp.vo.PChnlGroupVO.java
+ * Title : org.fms.eis.webapp.vo.PTaskTplVO.java
  *
 **/
 package org.fms.eis.webapp.vo;
 
-import org.fms.eis.webapp.domain.PChnlGroupDomain;
+import org.fms.eis.webapp.domain.PTaskTplDomain;
 
 import java.util.Date;
 
-public class PChnlGroupVO extends ManagerParamVO {
+public class PTaskTplVO extends ManagerParamVO {
 
-		private Long id;	//组编码
+		private Long id;	//编码
 		private String code;	//编号
-		private String name;	//组名称
-		private Long chnlTypeId;	//通道类型标识
-		private String status;	//有效标识
+		private String name;	//模板名称
+		private Long protocolId;	//规约编码
+		private String defaultFlag;	//是否默认方案
+		private String status;	//可用标志
 		private Integer weight;	//排序
 		private Long creatorId;	//创建者
 		private Date createDate;	//创建时间
@@ -41,11 +42,17 @@ public class PChnlGroupVO extends ManagerParamVO {
 		public void setName(String name) {
 			this.name = name;
 		}
-		public Long getChnlTypeId() {
-			return chnlTypeId;
+		public Long getProtocolId() {
+			return protocolId;
 		}
-		public void setChnlTypeId(Long chnlTypeId) {
-			this.chnlTypeId = chnlTypeId;
+		public void setProtocolId(Long protocolId) {
+			this.protocolId = protocolId;
+		}
+		public String getDefaultFlag() {
+			return defaultFlag;
+		}
+		public void setDefaultFlag(String defaultFlag) {
+			this.defaultFlag = defaultFlag;
 		}
 		public String getStatus() {
 			return status;
@@ -85,12 +92,13 @@ public class PChnlGroupVO extends ManagerParamVO {
 		}
 	
 
-	public PChnlGroupDomain vo2Domain() {
-		PChnlGroupDomain _Domain = new PChnlGroupDomain();
+	public PTaskTplDomain vo2Domain() {
+		PTaskTplDomain _Domain = new PTaskTplDomain();
 				_Domain.setId(this.id);
 				_Domain.setCode(this.code);
 				_Domain.setName(this.name);
-				_Domain.setChnlTypeId(this.chnlTypeId);
+				_Domain.setProtocolId(this.protocolId);
+				_Domain.setDefaultFlag(this.defaultFlag);
 				_Domain.setStatus(this.status);
 				_Domain.setWeight(this.weight);
 				_Domain.setCreatorId(this.creatorId);

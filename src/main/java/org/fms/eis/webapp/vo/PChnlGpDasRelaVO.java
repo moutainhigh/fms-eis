@@ -1,23 +1,20 @@
 /**
  * Author : chizf
  * Date : 2020年10月22日 上午10:00:51
- * Title : org.fms.eis.webapp.vo.PChnlGroupVO.java
+ * Title : org.fms.eis.webapp.vo.PChnlGpDasRelaVO.java
  *
 **/
 package org.fms.eis.webapp.vo;
 
-import org.fms.eis.webapp.domain.PChnlGroupDomain;
+import org.fms.eis.webapp.domain.PChnlGpDasRelaDomain;
 
 import java.util.Date;
 
-public class PChnlGroupVO extends ManagerParamVO {
+public class PChnlGpDasRelaVO extends ManagerParamVO {
 
-		private Long id;	//组编码
-		private String code;	//编号
-		private String name;	//组名称
-		private Long chnlTypeId;	//通道类型标识
-		private String status;	//有效标识
-		private Integer weight;	//排序
+		private Long id;	//关系标识(系统内部标识)
+		private Long chnlGroupId;	//通道组标识
+		private Long dasId;	//采集主机标识
 		private Long creatorId;	//创建者
 		private Date createDate;	//创建时间
 		private Long lastModifierId;	//最后修改者
@@ -29,35 +26,17 @@ public class PChnlGroupVO extends ManagerParamVO {
 		public void setId(Long id) {
 			this.id = id;
 		}
-		public String getCode() {
-			return code;
+		public Long getChnlGroupId() {
+			return chnlGroupId;
 		}
-		public void setCode(String code) {
-			this.code = code;
+		public void setChnlGroupId(Long chnlGroupId) {
+			this.chnlGroupId = chnlGroupId;
 		}
-		public String getName() {
-			return name;
+		public Long getDasId() {
+			return dasId;
 		}
-		public void setName(String name) {
-			this.name = name;
-		}
-		public Long getChnlTypeId() {
-			return chnlTypeId;
-		}
-		public void setChnlTypeId(Long chnlTypeId) {
-			this.chnlTypeId = chnlTypeId;
-		}
-		public String getStatus() {
-			return status;
-		}
-		public void setStatus(String status) {
-			this.status = status;
-		}
-		public Integer getWeight() {
-			return weight;
-		}
-		public void setWeight(Integer weight) {
-			this.weight = weight;
+		public void setDasId(Long dasId) {
+			this.dasId = dasId;
 		}
 		public Long getCreatorId() {
 			return creatorId;
@@ -85,14 +64,11 @@ public class PChnlGroupVO extends ManagerParamVO {
 		}
 	
 
-	public PChnlGroupDomain vo2Domain() {
-		PChnlGroupDomain _Domain = new PChnlGroupDomain();
+	public PChnlGpDasRelaDomain vo2Domain() {
+		PChnlGpDasRelaDomain _Domain = new PChnlGpDasRelaDomain();
 				_Domain.setId(this.id);
-				_Domain.setCode(this.code);
-				_Domain.setName(this.name);
-				_Domain.setChnlTypeId(this.chnlTypeId);
-				_Domain.setStatus(this.status);
-				_Domain.setWeight(this.weight);
+				_Domain.setChnlGroupId(this.chnlGroupId);
+				_Domain.setDasId(this.dasId);
 				_Domain.setCreatorId(this.creatorId);
 				_Domain.setCreateDate(this.createDate);
 				_Domain.setLastModifierId(this.lastModifierId);

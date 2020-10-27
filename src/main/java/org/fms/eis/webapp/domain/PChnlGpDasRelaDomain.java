@@ -9,18 +9,15 @@ package org.fms.eis.webapp.domain;
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
-import org.fms.eis.webapp.vo.PChnlGroupVO;
+import org.fms.eis.webapp.vo.PChnlGpDasRelaVO;
 
 import java.util.Date;
 
-public class PChnlGroupDomain extends Page implements MybatisEntity {
+public class PChnlGpDasRelaDomain extends Page implements MybatisEntity {
 	@TablePrimaryKey
-		private Long id;	//组编码
-		private String code;	//编号
-		private String name;	//组名称
-		private Long chnlTypeId;	//通道类型标识
-		private String status;	//有效标识
-		private Integer weight;	//排序
+		private Long id;	//关系标识(系统内部标识)
+		private Long chnlGroupId;	//通道组标识
+		private Long dasId;	//采集主机标识
 		private Long creatorId;	//创建者
 		private Date createDate;	//创建时间
 		private Long lastModifierId;	//最后修改者
@@ -32,35 +29,17 @@ public class PChnlGroupDomain extends Page implements MybatisEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-		public String getCode() {
-		return code;
+		public Long getChnlGroupId() {
+		return chnlGroupId;
 	}
-	public void setCode(String code) {
-		this.code = code;
+	public void setChnlGroupId(Long chnlGroupId) {
+		this.chnlGroupId = chnlGroupId;
 	}
-		public String getName() {
-		return name;
+		public Long getDasId() {
+		return dasId;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-		public Long getChnlTypeId() {
-		return chnlTypeId;
-	}
-	public void setChnlTypeId(Long chnlTypeId) {
-		this.chnlTypeId = chnlTypeId;
-	}
-		public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-		public Integer getWeight() {
-		return weight;
-	}
-	public void setWeight(Integer weight) {
-		this.weight = weight;
+	public void setDasId(Long dasId) {
+		this.dasId = dasId;
 	}
 		public Long getCreatorId() {
 		return creatorId;
@@ -87,14 +66,11 @@ public class PChnlGroupDomain extends Page implements MybatisEntity {
 		this.lastModifyTime = lastModifyTime;
 	}
 	
-	public PChnlGroupVO domain2VO() {
-		PChnlGroupVO testVO = new PChnlGroupVO();
+	public PChnlGpDasRelaVO domain2VO() {
+		PChnlGpDasRelaVO testVO = new PChnlGpDasRelaVO();
 				testVO.setId(this.id);
-				testVO.setCode(this.code);
-				testVO.setName(this.name);
-				testVO.setChnlTypeId(this.chnlTypeId);
-				testVO.setStatus(this.status);
-				testVO.setWeight(this.weight);
+				testVO.setChnlGroupId(this.chnlGroupId);
+				testVO.setDasId(this.dasId);
 				testVO.setCreatorId(this.creatorId);
 				testVO.setCreateDate(this.createDate);
 				testVO.setLastModifierId(this.lastModifierId);

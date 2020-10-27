@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.fms.eis.webapp.dao.PChnlGroupDAO">
-	<select id="findByKey" parameterType="PChnlGroupDomain"
-		resultType="PChnlGroupDomain" useCache="true">
-			select #{id},#{code},#{name},#{chnlTypeId},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime}
-		from P_CHNL_GROUP
+<mapper namespace="org.fms.eis.webapp.dao.PDaserverGroupDAO">
+	<select id="findByKey" parameterType="PDaserverGroupDomain"
+		resultType="PDaserverGroupDomain" useCache="true">
+			select #{id},#{code},#{name},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime}
+		from P_DASERVER_GROUP
 		<where>
 			and ID = #{id}
 		</where>
 	</select>
-	<select id="findByWhere" parameterType="PChnlGroupDomain"
-		resultType="PChnlGroupDomain" useCache="true">
-			select ID,CODE,NAME,CHNL_TYPE_ID,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
-		from P_CHNL_GROUP
+	<select id="findByWhere" parameterType="PDaserverGroupDomain"
+		resultType="PDaserverGroupDomain" useCache="true">
+			select ID,CODE,NAME,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+		from P_DASERVER_GROUP
 		<where>
 				<if test="id !=null">
 				and ID = #{id}
@@ -22,9 +22,6 @@
 		</if>
 				<if test="name !=null">
 				and NAME = #{name}
-		</if>
-				<if test="chnlTypeId !=null">
-				and CHNL_TYPE_ID = #{chnlTypeId}
 		</if>
 				<if test="status !=null">
 				and STATUS = #{status}
@@ -46,14 +43,14 @@
 		</if>
 				</where>
 	</select>
-	<insert id="insert" parameterType="PChnlGroupDomain" flushCache="true" useGeneratedKeys="true">
-		INSERT INTO P_CHNL_GROUP
-			(ID,CODE,NAME,CHNL_TYPE_ID,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
-			VALUES(#{id},#{code},#{name},#{chnlTypeId},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime});
+	<insert id="insert" parameterType="PDaserverGroupDomain" flushCache="true" useGeneratedKeys="true">
+		INSERT INTO P_DASERVER_GROUP
+			(ID,CODE,NAME,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{code},#{name},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime});
 
 	</insert>
-	<update id="update" parameterType="PChnlGroupDomain" flushCache="true">
-		update P_CHNL_GROUP
+	<update id="update" parameterType="PDaserverGroupDomain" flushCache="true">
+		update P_DASERVER_GROUP
 				<set>
 			<if test="id !=null">
 				ID = #{id},
@@ -67,11 +64,6 @@
 				<set>
 			<if test="name !=null">
 				NAME = #{name},
-			</if>
-		</set>
-				<set>
-			<if test="chnlTypeId !=null">
-				CHNL_TYPE_ID = #{chnlTypeId},
 			</if>
 		</set>
 				<set>
@@ -109,8 +101,8 @@
 
 		</where>
 	</update>
-	<delete id="delete" parameterType="PChnlGroupDomain" flushCache="true">
-		delete from P_CHNL_GROUP
+	<delete id="delete" parameterType="PDaserverGroupDomain" flushCache="true">
+		delete from P_DASERVER_GROUP
 		<where>
 			and ID = #{id}
 

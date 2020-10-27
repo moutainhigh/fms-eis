@@ -1,7 +1,7 @@
 /**
  * Author : chizf
  * Date : 2020年10月22日 上午9:59:51
- * Title : org.fms.eis.webapp.service.impl.TestServiceImpl.java
+ * Title : org.fms.eis.webapp.service.impl.PChnlGroupServiceImpl.java
  *
  **/
 package org.fms.eis.webapp.service.impl;
@@ -9,9 +9,9 @@ package org.fms.eis.webapp.service.impl;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import org.fms.eis.webapp.dao.PChnlGroupDAO;
-import org.fms.eis.webapp.domain.pChnlGroupDomain;
+import org.fms.eis.webapp.domain.PChnlGroupDomain;
 import org.fms.eis.webapp.service.IPChnlGroupService;
-import org.fms.eis.webapp.vo.pChnlGroupVO;
+import org.fms.eis.webapp.vo.PChnlGroupVO;
 
 import java.util.*;
 
@@ -25,24 +25,24 @@ public class PChnlGroupServiceImpl implements IPChnlGroupService {
 	private PChnlGroupDAO testWriteDAO;
 
 	@Override
-	public int insert(pChnlGroupVO testVO) {
+	public int insert(PChnlGroupVO testVO) {
 		return testWriteDAO.insert(testVO.vo2Domain());
 	}
 
 	@Override
-	public int update(pChnlGroupVO testVO) {
+	public int update(PChnlGroupVO testVO) {
 		return testWriteDAO.update(testVO.vo2Domain());
 	}
 
 	@Override
-	public int delete(pChnlGroupVO testVO) {
+	public int delete(PChnlGroupVO testVO) {
 		return testWriteDAO.delete(testVO.vo2Domain());
 	}
 
 	@Override
-	public pChnlGroupVO findByKey(pChnlGroupVO testVO){
-		pChnlGroupDomain model= testReadDAO.findByKey(testVO.vo2Domain());
-		pChnlGroupVO modelVo=new pChnlGroupVO();
+	public PChnlGroupVO findByKey(PChnlGroupVO testVO){
+		PChnlGroupDomain model= testReadDAO.findByKey(testVO.vo2Domain());
+		PChnlGroupVO modelVo=new PChnlGroupVO();
 		if(model!=null)
 		{
 			modelVo=model.domain2VO();
@@ -55,10 +55,10 @@ public class PChnlGroupServiceImpl implements IPChnlGroupService {
 	}
 
 	@Override
-	public List<pChnlGroupVO> findByWhere(pChnlGroupVO testVO) {
-		List<pChnlGroupDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<pChnlGroupVO> lstVo=new ArrayList<pChnlGroupVO>();;
-		for (pChnlGroupDomain item:lstDomain) {
+	public List<PChnlGroupVO> findByWhere(PChnlGroupVO testVO) {
+		List<PChnlGroupDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
+		List<PChnlGroupVO> lstVo=new ArrayList<PChnlGroupVO>();;
+		for (PChnlGroupDomain item:lstDomain) {
 			lstVo.add(item.domain2VO());
 		}
 		return  lstVo;

@@ -9,17 +9,18 @@ package org.fms.eis.webapp.domain;
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
-import org.fms.eis.webapp.vo.PChnlGroupVO;
+import org.fms.eis.webapp.vo.PTaskTplVO;
 
 import java.util.Date;
 
-public class PChnlGroupDomain extends Page implements MybatisEntity {
+public class PTaskTplDomain extends Page implements MybatisEntity {
 	@TablePrimaryKey
-		private Long id;	//组编码
+		private Long id;	//编码
 		private String code;	//编号
-		private String name;	//组名称
-		private Long chnlTypeId;	//通道类型标识
-		private String status;	//有效标识
+		private String name;	//模板名称
+		private Long protocolId;	//规约编码
+		private String defaultFlag;	//是否默认方案
+		private String status;	//可用标志
 		private Integer weight;	//排序
 		private Long creatorId;	//创建者
 		private Date createDate;	//创建时间
@@ -44,11 +45,17 @@ public class PChnlGroupDomain extends Page implements MybatisEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-		public Long getChnlTypeId() {
-		return chnlTypeId;
+		public Long getProtocolId() {
+		return protocolId;
 	}
-	public void setChnlTypeId(Long chnlTypeId) {
-		this.chnlTypeId = chnlTypeId;
+	public void setProtocolId(Long protocolId) {
+		this.protocolId = protocolId;
+	}
+		public String getDefaultFlag() {
+		return defaultFlag;
+	}
+	public void setDefaultFlag(String defaultFlag) {
+		this.defaultFlag = defaultFlag;
 	}
 		public String getStatus() {
 		return status;
@@ -87,12 +94,13 @@ public class PChnlGroupDomain extends Page implements MybatisEntity {
 		this.lastModifyTime = lastModifyTime;
 	}
 	
-	public PChnlGroupVO domain2VO() {
-		PChnlGroupVO testVO = new PChnlGroupVO();
+	public PTaskTplVO domain2VO() {
+		PTaskTplVO testVO = new PTaskTplVO();
 				testVO.setId(this.id);
 				testVO.setCode(this.code);
 				testVO.setName(this.name);
-				testVO.setChnlTypeId(this.chnlTypeId);
+				testVO.setProtocolId(this.protocolId);
+				testVO.setDefaultFlag(this.defaultFlag);
 				testVO.setStatus(this.status);
 				testVO.setWeight(this.weight);
 				testVO.setCreatorId(this.creatorId);

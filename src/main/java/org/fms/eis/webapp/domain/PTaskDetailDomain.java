@@ -9,17 +9,16 @@ package org.fms.eis.webapp.domain;
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
-import org.fms.eis.webapp.vo.PChnlGroupVO;
+import org.fms.eis.webapp.vo.PTaskDetailVO;
 
 import java.util.Date;
 
-public class PChnlGroupDomain extends Page implements MybatisEntity {
+public class PTaskDetailDomain extends Page implements MybatisEntity {
 	@TablePrimaryKey
-		private Long id;	//组编码
-		private String code;	//编号
-		private String name;	//组名称
-		private Long chnlTypeId;	//通道类型标识
-		private String status;	//有效标识
+		private Long id;	//编码
+		private Long tplDetailId;	//任务编码
+		private String infopointType;	//信息点类型
+		private Long dataId;	//数据单元编码
 		private Integer weight;	//排序
 		private Long creatorId;	//创建者
 		private Date createDate;	//创建时间
@@ -32,29 +31,23 @@ public class PChnlGroupDomain extends Page implements MybatisEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-		public String getCode() {
-		return code;
+		public Long getTplDetailId() {
+		return tplDetailId;
 	}
-	public void setCode(String code) {
-		this.code = code;
+	public void setTplDetailId(Long tplDetailId) {
+		this.tplDetailId = tplDetailId;
 	}
-		public String getName() {
-		return name;
+		public String getInfopointType() {
+		return infopointType;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setInfopointType(String infopointType) {
+		this.infopointType = infopointType;
 	}
-		public Long getChnlTypeId() {
-		return chnlTypeId;
+		public Long getDataId() {
+		return dataId;
 	}
-	public void setChnlTypeId(Long chnlTypeId) {
-		this.chnlTypeId = chnlTypeId;
-	}
-		public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setDataId(Long dataId) {
+		this.dataId = dataId;
 	}
 		public Integer getWeight() {
 		return weight;
@@ -87,13 +80,12 @@ public class PChnlGroupDomain extends Page implements MybatisEntity {
 		this.lastModifyTime = lastModifyTime;
 	}
 	
-	public PChnlGroupVO domain2VO() {
-		PChnlGroupVO testVO = new PChnlGroupVO();
+	public PTaskDetailVO domain2VO() {
+		PTaskDetailVO testVO = new PTaskDetailVO();
 				testVO.setId(this.id);
-				testVO.setCode(this.code);
-				testVO.setName(this.name);
-				testVO.setChnlTypeId(this.chnlTypeId);
-				testVO.setStatus(this.status);
+				testVO.setTplDetailId(this.tplDetailId);
+				testVO.setInfopointType(this.infopointType);
+				testVO.setDataId(this.dataId);
 				testVO.setWeight(this.weight);
 				testVO.setCreatorId(this.creatorId);
 				testVO.setCreateDate(this.createDate);

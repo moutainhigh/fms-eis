@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.TestInfoDAO">
+	<select id="findByKey" parameterType="TestInfoDomain"
+		resultType="TestInfoDomain" useCache="true">
+			select #{id},#{userName}
+		from TEST_INFO
+		<where>
+			and ID = #{id}
+		</where>
+	</select>
+	<select id="findByWhere" parameterType="TestInfoDomain"
+		resultType="TestInfoDomain" useCache="true">
+			select ID,USER_NAME
+		from TEST_INFO
+		<where>
+				<if test="id !=null">
+				and ID = #{id}
+		</if>
+				<if test="userName !=null">
+				and USER_NAME = #{userName}
+		</if>
+				</where>
+	</select>
+	<insert id="insert" parameterType="TestInfoDomain" flushCache="true" useGeneratedKeys="true">
+		INSERT INTO TEST_INFO
+			(ID,USER_NAME)
+			VALUES(#{id},#{userName});
+
+	</insert>
+	<update id="update" parameterType="TestInfoDomain" flushCache="true">
+		update TEST_INFO
+				<set>
+			<if test="id !=null">
+				ID = #{id},
+			</if>
+		</set>
+				<set>
+			<if test="userName !=null">
+				USER_NAME = #{userName},
+			</if>
+		</set>
+				<where>
+			and ID = #{ID}
+
+		</where>
+	</update>
+	<delete id="delete" parameterType="TestInfoDomain" flushCache="true">
+		delete from TEST_INFO
+		<where>
+			and ID = #{id}
+
+		</where>
+	</delete>
+</mapper>

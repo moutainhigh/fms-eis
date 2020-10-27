@@ -1,14 +1,14 @@
 /**
  * Author : chizf
  * Date : 2020年10月22日 上午9:59:19
- * Title : org.fms.eis.webapp.action.PTaskTplDetailAction.java
+ * Title : org.fms.eis.webapp.action.PWsdChnlTypeAction.java
  *
 **/
 package org.fms.eis.webapp.action;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
-import org.fms.eis.webapp.service.IPTaskTplDetailService;
-import org.fms.eis.webapp.vo.PTaskTplDetailVO;
+import org.fms.eis.webapp.service.IPWsdChnlTypeService;
+import org.fms.eis.webapp.vo.PWsdChnlTypeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -18,17 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 @ControllerAdvice
-@RequestMapping("PTaskTplDetail")
-public class PTaskTplDetailAction {
+@RequestMapping("PWsdChnlType")
+public class PWsdChnlTypeAction {
 
 	@Autowired
-	@Qualifier("PTaskTplDetailServiceImpl")
-	private IPTaskTplDetailService pTaskTplDetailService;
+	@Qualifier("PWsdChnlTypeServiceImpl")
+	private IPWsdChnlTypeService pWsdChnlTypeService;
 
 	@ResponseBody
 	@PostMapping(params = "method=insert")
-	public HttpResult<?> insert(@RequestBody PTaskTplDetailVO _PTaskTplDetailVO) {
-		int i = pTaskTplDetailService.insert(_PTaskTplDetailVO);
+	public HttpResult<?> insert(@RequestBody PWsdChnlTypeVO _PWsdChnlTypeVO) {
+		int i = pWsdChnlTypeService.insert(_PWsdChnlTypeVO);
 
 		if (i > 0)
 			return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
@@ -39,8 +39,8 @@ public class PTaskTplDetailAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=update")
-	public HttpResult<?> update(@RequestBody PTaskTplDetailVO _pTaskTplDetailVO) {
-		int i = pTaskTplDetailService.update(_pTaskTplDetailVO);
+	public HttpResult<?> update(@RequestBody PWsdChnlTypeVO _pWsdChnlTypeVO) {
+		int i = pWsdChnlTypeService.update(_pWsdChnlTypeVO);
 
 		if (i > 0)
 			return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
@@ -51,8 +51,8 @@ public class PTaskTplDetailAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=delete")
-	public HttpResult<?> delete(@RequestBody PTaskTplDetailVO _PTaskTplDetailVO) {
-		int i = pTaskTplDetailService.delete(_PTaskTplDetailVO);
+	public HttpResult<?> delete(@RequestBody PWsdChnlTypeVO _PWsdChnlTypeVO) {
+		int i = pWsdChnlTypeService.delete(_PWsdChnlTypeVO);
 
 		if (i > 0)
 			return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
@@ -63,25 +63,25 @@ public class PTaskTplDetailAction {
 
 	@ResponseBody
 	@PostMapping(params = "method=findByKey")
-	public HttpResult<?> findByKey(@RequestBody PTaskTplDetailVO _PTaskTplDetailVO) {
-		PTaskTplDetailVO modelVo= pTaskTplDetailService.findByKey(_PTaskTplDetailVO);
+	public HttpResult<?> findByKey(@RequestBody PWsdChnlTypeVO _PWsdChnlTypeVO) {
+		PWsdChnlTypeVO modelVo= pWsdChnlTypeService.findByKey(_PWsdChnlTypeVO);
 
 		if (modelVo!=null)
-			return new HttpResult<PTaskTplDetailVO>(HttpResult.SUCCESS, "获取成功", modelVo);
+			return new HttpResult<PWsdChnlTypeVO>(HttpResult.SUCCESS, "获取成功", modelVo);
 		else
-			return new HttpResult<PTaskTplDetailVO>(HttpResult.ERROR, "获取失败", null);
+			return new HttpResult<PWsdChnlTypeVO>(HttpResult.ERROR, "获取失败", null);
 
 	}
 
 	@ResponseBody
 	@PostMapping(params = "method=findByWhere")
-	public HttpResult<?> findByWhere(@RequestBody PTaskTplDetailVO _PTaskTplDetailVO) {
-		List<PTaskTplDetailVO> listVo= pTaskTplDetailService.findByWhere(_PTaskTplDetailVO);
+	public HttpResult<?> findByWhere(@RequestBody PWsdChnlTypeVO _PWsdChnlTypeVO) {
+		List<PWsdChnlTypeVO> listVo= pWsdChnlTypeService.findByWhere(_PWsdChnlTypeVO);
 
 		if (listVo!=null)
-			return new HttpResult<List<PTaskTplDetailVO>>(HttpResult.SUCCESS, "查询成功", listVo);
+			return new HttpResult<List<PWsdChnlTypeVO>>(HttpResult.SUCCESS, "查询成功", listVo);
 		else
-			return new HttpResult<List<PTaskTplDetailVO>>(HttpResult.ERROR, "查询失败", null);
+			return new HttpResult<List<PWsdChnlTypeVO>>(HttpResult.ERROR, "查询失败", null);
 
 	}
 }

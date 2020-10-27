@@ -9,34 +9,27 @@ package org.fms.eis.webapp.domain;
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
-import org.fms.eis.webapp.vo.PChnlGroupVO;
+import org.fms.eis.webapp.vo.PWsdCalcTaskVO;
 
 import java.util.Date;
 
-public class PChnlGroupDomain extends Page implements MybatisEntity {
+public class PWsdCalcTaskDomain extends Page implements MybatisEntity {
 	@TablePrimaryKey
-		private Long id;	//组编码
-		private String code;	//编号
-		private String name;	//组名称
-		private Long chnlTypeId;	//通道类型标识
-		private String status;	//有效标识
-		private Integer weight;	//排序
+		private Integer id;	//任务类型标识
+		private String name;	//名称
+		private String schemeflag;	//关联计算方案(默认2--否 1－是（决定是否设置对应关联方案） 有些任务没有方案)
+		private String uinttype;	//1000—电表类型 1001---水表类型
+		private String status;	//可用标志
 		private Long creatorId;	//创建者
 		private Date createDate;	//创建时间
 		private Long lastModifierId;	//最后修改者
 		private String lastModifyTime;	//最后修改时间
 		
-		public Long getId() {
+		public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
-	}
-		public String getCode() {
-		return code;
-	}
-	public void setCode(String code) {
-		this.code = code;
 	}
 		public String getName() {
 		return name;
@@ -44,23 +37,23 @@ public class PChnlGroupDomain extends Page implements MybatisEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-		public Long getChnlTypeId() {
-		return chnlTypeId;
+		public String getSchemeflag() {
+		return schemeflag;
 	}
-	public void setChnlTypeId(Long chnlTypeId) {
-		this.chnlTypeId = chnlTypeId;
+	public void setSchemeflag(String schemeflag) {
+		this.schemeflag = schemeflag;
+	}
+		public String getUinttype() {
+		return uinttype;
+	}
+	public void setUinttype(String uinttype) {
+		this.uinttype = uinttype;
 	}
 		public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
-	}
-		public Integer getWeight() {
-		return weight;
-	}
-	public void setWeight(Integer weight) {
-		this.weight = weight;
 	}
 		public Long getCreatorId() {
 		return creatorId;
@@ -87,14 +80,13 @@ public class PChnlGroupDomain extends Page implements MybatisEntity {
 		this.lastModifyTime = lastModifyTime;
 	}
 	
-	public PChnlGroupVO domain2VO() {
-		PChnlGroupVO testVO = new PChnlGroupVO();
+	public PWsdCalcTaskVO domain2VO() {
+		PWsdCalcTaskVO testVO = new PWsdCalcTaskVO();
 				testVO.setId(this.id);
-				testVO.setCode(this.code);
 				testVO.setName(this.name);
-				testVO.setChnlTypeId(this.chnlTypeId);
+				testVO.setSchemeflag(this.schemeflag);
+				testVO.setUinttype(this.uinttype);
 				testVO.setStatus(this.status);
-				testVO.setWeight(this.weight);
 				testVO.setCreatorId(this.creatorId);
 				testVO.setCreateDate(this.createDate);
 				testVO.setLastModifierId(this.lastModifierId);

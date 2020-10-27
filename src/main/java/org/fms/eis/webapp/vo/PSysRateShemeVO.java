@@ -1,23 +1,19 @@
 /**
  * Author : chizf
  * Date : 2020年10月22日 上午10:00:51
- * Title : org.fms.eis.webapp.vo.PChnlGroupVO.java
+ * Title : org.fms.eis.webapp.vo.PSysRateShemeVO.java
  *
 **/
 package org.fms.eis.webapp.vo;
 
-import org.fms.eis.webapp.domain.PChnlGroupDomain;
+import org.fms.eis.webapp.domain.PSysRateShemeDomain;
 
 import java.util.Date;
 
-public class PChnlGroupVO extends ManagerParamVO {
+public class PSysRateShemeVO extends ManagerParamVO {
 
-		private Long id;	//组编码
-		private String code;	//编号
-		private String name;	//组名称
-		private Long chnlTypeId;	//通道类型标识
-		private String status;	//有效标识
-		private Integer weight;	//排序
+		private Long id;	//编码
+		private String name;	//方案名称
 		private Long creatorId;	//创建者
 		private Date createDate;	//创建时间
 		private Long lastModifierId;	//最后修改者
@@ -29,35 +25,11 @@ public class PChnlGroupVO extends ManagerParamVO {
 		public void setId(Long id) {
 			this.id = id;
 		}
-		public String getCode() {
-			return code;
-		}
-		public void setCode(String code) {
-			this.code = code;
-		}
 		public String getName() {
 			return name;
 		}
 		public void setName(String name) {
 			this.name = name;
-		}
-		public Long getChnlTypeId() {
-			return chnlTypeId;
-		}
-		public void setChnlTypeId(Long chnlTypeId) {
-			this.chnlTypeId = chnlTypeId;
-		}
-		public String getStatus() {
-			return status;
-		}
-		public void setStatus(String status) {
-			this.status = status;
-		}
-		public Integer getWeight() {
-			return weight;
-		}
-		public void setWeight(Integer weight) {
-			this.weight = weight;
 		}
 		public Long getCreatorId() {
 			return creatorId;
@@ -85,14 +57,10 @@ public class PChnlGroupVO extends ManagerParamVO {
 		}
 	
 
-	public PChnlGroupDomain vo2Domain() {
-		PChnlGroupDomain _Domain = new PChnlGroupDomain();
+	public PSysRateShemeDomain vo2Domain() {
+		PSysRateShemeDomain _Domain = new PSysRateShemeDomain();
 				_Domain.setId(this.id);
-				_Domain.setCode(this.code);
 				_Domain.setName(this.name);
-				_Domain.setChnlTypeId(this.chnlTypeId);
-				_Domain.setStatus(this.status);
-				_Domain.setWeight(this.weight);
 				_Domain.setCreatorId(this.creatorId);
 				_Domain.setCreateDate(this.createDate);
 				_Domain.setLastModifierId(this.lastModifierId);
