@@ -6,12 +6,13 @@
 **/
 package org.fms.eis.webapp.domain;
 
+import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.TestVO;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 
-public class TestDomain implements MybatisEntity {
+public class TestDomain extends Page implements MybatisEntity {
 	@TablePrimaryKey
 	private Long id;
 	private String userName;

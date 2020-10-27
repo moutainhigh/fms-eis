@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.PChnlGroupDAO">
+	<select id="findByKey" parameterType="pChnlGroupDomain"
+		resultType="pChnlGroupDomain" useCache="true">
+		select ID, CODE, NAME, CHNL_TYPE_ID, STATUS, WEIGHT, CREATOR_ID, CREATE_DATE, LAST_MODIFIER_ID, LAST_MODIFY_TIME
+		from P_CHNL_GROUP
+		<where>
+			and ID = #{id}
+		</where>
+	</select>
+	<select id="findByWhere" parameterType="pChnlGroupDomain"
+		resultType="pChnlGroupDomain" useCache="true">
+		select ID, CODE, NAME, CHNL_TYPE_ID, STATUS, WEIGHT, CREATOR_ID, CREATE_DATE, LAST_MODIFIER_ID, LAST_MODIFY_TIME
+		from P_CHNL_GROUP
+		<where>
+			<if test="id !=null">
+				and ID = #{id}
+			</if>
+			<if test="code !=null">
+				and CODE = #{code}
+			</if>
+			<if test="name !=null">
+				and NAME = #{name}
+			</if>
+			<if test="chnlTypeId !=null">
+				and CHNL_TYPE_ID = #{chnlTypeId}
+			</if>
+			<if test="status !=null">
+				and STATUS = #{status}
+			</if>
+			<if test="weight !=null">
+				and WEIGHT = #{weight}
+			</if>
+			<if test="creatorId !=null">
+				and CREATOR_ID = #{creatorId}
+			</if>
+			<if test="createDate !=null">
+				and CREATE_DATE = #{createDate}
+			</if>
+			<if test="lastModifierId !=null">
+				and LAST_MODIFIER_ID = #{lastModifierId}
+			</if>
+			<if test="lastModifyTime !=null">
+				and LAST_MODIFY_TIME = #{lastModifyTime}
+			</if>
+		</where>
+	</select>
+	<insert id="insert" parameterType="pChnlGroupDomain" flushCache="true" useGeneratedKeys="true">
+		INSERT INTO P_CHNL_GROUP
+			( CODE, NAME, CHNL_TYPE_ID, STATUS, WEIGHT, CREATOR_ID, CREATE_DATE, LAST_MODIFIER_ID, LAST_MODIFY_TIME)
+			VALUES(#{code},#{name},#{chnlTypeId},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime});
+
+	</insert>
+	<update id="update" parameterType="pChnlGroupDomain" flushCache="true">
+		update P_CHNL_GROUP
+		<set>
+			<if test="CODE !=null">
+				CODE = #{CODE},
+			</if>
+		</set>
+		<set>
+			<if test="NAME !=null">
+				NAME = #{NAME},
+			</if>
+		</set>
+		<set>
+			<if test="CHNL_TYPE_ID !=null">
+				CHNL_TYPE_ID = #{CHNL_TYPE_ID},
+			</if>
+		</set>
+		<set>
+			<if test="STATUS !=null">
+				STATUS = #{STATUS},
+			</if>
+		</set>
+		<set>
+			<if test="WEIGHT !=null">
+				WEIGHT = #{WEIGHT},
+			</if>
+		</set>
+		<set>
+			<if test="CREATOR_ID !=null">
+				CREATOR_ID = #{CREATOR_ID},
+			</if>
+		</set>
+		<set>
+			<if test="CREATE_DATE !=null">
+				CREATE_DATE = #{CREATE_DATE},
+			</if>
+		</set>
+		<set>
+			<if test="LAST_MODIFIER_ID !=null">
+				LAST_MODIFIER_ID = #{LAST_MODIFIER_ID},
+			</if>
+		</set>
+		<set>
+			<if test="LAST_MODIFY_TIME !=null">
+				LAST_MODIFY_TIME = #{LAST_MODIFY_TIME},
+			</if>
+		</set>
+
+		<where>
+			and ID = #{ID}
+
+		</where>
+	</update>
+	<delete id="delete" parameterType="pChnlGroupDomain" flushCache="true">
+		delete from P_CHNL_GROUP
+		<where>
+			and ID = #{id}
+
+		</where>
+	</delete>
+</mapper>

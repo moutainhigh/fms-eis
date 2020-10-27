@@ -8,6 +8,7 @@ package org.fms.eis.webapp.dao;
 
 import java.util.List;
 
+import com.riozenc.titanTool.annotation.PaginationSupport;
 import org.fms.eis.webapp.domain.TestDomain;
 
 import com.riozenc.titanTool.annotation.TransactionDAO;
@@ -29,6 +30,7 @@ public class TestDAO extends AbstractTransactionDAOSupport implements BaseDAO<Te
 		return 0;
 	}
 
+	@PaginationSupport
 	@Override
 	public TestDomain findByKey(TestDomain arg0) {
 		// TODO Auto-generated method stub

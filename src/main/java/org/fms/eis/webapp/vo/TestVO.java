@@ -31,6 +31,8 @@ public class TestVO extends ManagerParamVO {
 
 	public TestDomain vo2Domain() {
 		TestDomain testDomain = new TestDomain();
+		//testDomain.setUserName(this.userName);
+		//testDomain.setId(Long.valueOf(this.id));
 		return testDomain;
 	}
 }

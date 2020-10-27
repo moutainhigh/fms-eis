@@ -29,7 +29,7 @@ public class TestAction {
 	@ResponseBody
 	@PostMapping(params = "method=insert")
 	public HttpResult<?> insert(@RequestBody TestVO testVO) {
-		int i = testService.insert(testVO);
+		int i =  testService.insert(testVO);
 
 		if (i > 0)
 			return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
