@@ -22,7 +22,7 @@ import java.util.List;
 public class PChannelAction {
 
 	@Autowired
-	@Qualifier("PChannelServiceImpl")
+	@Qualifier("pChannelServiceImpl")
 	private IPChannelService pChannelService;
 
 	@ResponseBody

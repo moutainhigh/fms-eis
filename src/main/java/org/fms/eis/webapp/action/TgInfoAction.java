@@ -22,7 +22,7 @@ import java.util.List;
 public class TgInfoAction {
 
 	@Autowired
-	@Qualifier("TgInfoServiceImpl")
+	@Qualifier("tgInfoServiceImpl")
 	private ITgInfoService tgInfoService;
 
 	@ResponseBody

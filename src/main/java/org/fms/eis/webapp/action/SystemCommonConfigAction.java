@@ -22,7 +22,7 @@ import java.util.List;
 public class SystemCommonConfigAction {
 
 	@Autowired
-	@Qualifier("SystemCommonConfigServiceImpl")
+	@Qualifier("systemCommonConfigServiceImpl")
 	private ISystemCommonConfigService systemCommonConfigService;
 
 	@ResponseBody

@@ -22,7 +22,7 @@ import java.util.List;
 public class DropSqlAction {
 
 	@Autowired
-	@Qualifier("DropSqlServiceImpl")
+	@Qualifier("dropSqlServiceImpl")
 	private IDropSqlService dropSqlService;
 
 	@ResponseBody

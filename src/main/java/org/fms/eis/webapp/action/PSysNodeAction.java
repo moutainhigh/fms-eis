@@ -22,7 +22,7 @@ import java.util.List;
 public class PSysNodeAction {
 
 	@Autowired
-	@Qualifier("PSysNodeServiceImpl")
+	@Qualifier("pSysNodeServiceImpl")
 	private IPSysNodeService pSysNodeService;
 
 	@ResponseBody
