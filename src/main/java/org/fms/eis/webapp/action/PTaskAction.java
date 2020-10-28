@@ -22,7 +22,7 @@ import java.util.List;
 public class PTaskAction {
 
 	@Autowired
-	@Qualifier("pTaskServiceImpl")
+	@Qualifier("PTaskServiceImpl")
 	private IPTaskService pTaskService;
 
 	@ResponseBody

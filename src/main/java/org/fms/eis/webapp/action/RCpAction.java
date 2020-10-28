@@ -22,7 +22,7 @@ import java.util.List;
 public class RCpAction {
 
 	@Autowired
-	@Qualifier("pCpServiceImpl")
+	@Qualifier("RCpServiceImpl")
 	private IRCpService rCpService;
 
 	@ResponseBody

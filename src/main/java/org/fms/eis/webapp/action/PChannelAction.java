@@ -17,18 +17,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
+
 @ControllerAdvice
 @RequestMapping("PChannel")
 public class PChannelAction {
 
 	@Autowired
-	@Qualifier("pChannelServiceImpl")
-	private IPChannelService pChannelService;
+	@Qualifier("PChannelServiceImpl")
+	private IPChannelService pChannelServiceImpl;
 
 	@ResponseBody
 	@PostMapping(params = "method=insert")
 	public HttpResult<?> insert(@RequestBody PChannelVO _PChannelVO) {
-		int i = pChannelService.insert(_PChannelVO);
+		int i = pChannelServiceImpl.insert(_PChannelVO);
 
 		if (i > 0)
 			return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
@@ -40,7 +41,7 @@ public class PChannelAction {
 	@ResponseBody
 	@PostMapping(params = "method=update")
 	public HttpResult<?> update(@RequestBody PChannelVO _pChannelVO) {
-		int i = pChannelService.update(_pChannelVO);
+		int i = pChannelServiceImpl.update(_pChannelVO);
 
 		if (i > 0)
 			return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
@@ -52,7 +53,7 @@ public class PChannelAction {
 	@ResponseBody
 	@PostMapping(params = "method=delete")
 	public HttpResult<?> delete(@RequestBody PChannelVO _PChannelVO) {
-		int i = pChannelService.delete(_PChannelVO);
+		int i = pChannelServiceImpl.delete(_PChannelVO);
 
 		if (i > 0)
 			return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
@@ -64,9 +65,9 @@ public class PChannelAction {
 	@ResponseBody
 	@PostMapping(params = "method=findByKey")
 	public HttpResult<?> findByKey(@RequestBody PChannelVO _PChannelVO) {
-		PChannelVO modelVo= pChannelService.findByKey(_PChannelVO);
+		PChannelVO modelVo = pChannelServiceImpl.findByKey(_PChannelVO);
 
-		if (modelVo!=null)
+		if (modelVo != null)
 			return new HttpResult<PChannelVO>(HttpResult.SUCCESS, "获取成功", modelVo);
 		else
 			return new HttpResult<PChannelVO>(HttpResult.ERROR, "获取失败", null);
@@ -76,9 +77,9 @@ public class PChannelAction {
 	@ResponseBody
 	@PostMapping(params = "method=findByWhere")
 	public HttpResult<?> findByWhere(@RequestBody PChannelVO _PChannelVO) {
-		List<PChannelVO> listVo= pChannelService.findByWhere(_PChannelVO);
+		List<PChannelVO> listVo = pChannelServiceImpl.findByWhere(_PChannelVO);
 
-		if (listVo!=null)
+		if (listVo != null)
 			return new HttpResult<List<PChannelVO>>(HttpResult.SUCCESS, "查询成功", listVo);
 		else
 			return new HttpResult<List<PChannelVO>>(HttpResult.ERROR, "查询失败", null);

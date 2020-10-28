@@ -22,7 +22,7 @@ import java.util.List;
 public class PSysRateShemeAction {
 
 	@Autowired
-	@Qualifier("pSysRateShemeServiceImpl")
+	@Qualifier("PSysRateShemeServiceImpl")
 	private IPSysRateShemeService pSysRateShemeService;
 
 	@ResponseBody

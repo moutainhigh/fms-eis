@@ -22,7 +22,7 @@ import java.util.List;
 public class PSysCalcSchemeAction {
 
 	@Autowired
-	@Qualifier("pSysCalcSchemeServiceImpl")
+	@Qualifier("PSysCalcSchemeServiceImpl")
 	private IPSysCalcSchemeService pSysCalcSchemeService;
 
 	@ResponseBody

@@ -22,7 +22,7 @@ import java.util.List;
 public class PWsdCalcTaskAction {
 
 	@Autowired
-	@Qualifier("pWsdCalcTaskServiceImpl")
+	@Qualifier("PWsdCalcTaskServiceImpl")
 	private IPWsdCalcTaskService pWsdCalcTaskService;
 
 	@ResponseBody

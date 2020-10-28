@@ -40,28 +40,26 @@ public class PChannelServiceImpl implements IPChannelService {
 	}
 
 	@Override
-	public PChannelVO findByKey(PChannelVO testVO){
-		PChannelDomain model= testReadDAO.findByKey(testVO.vo2Domain());
-		PChannelVO modelVo=new PChannelVO();
-		if(model!=null)
-		{
-			modelVo=model.domain2VO();
-		}
-		else
-		{
-			modelVo=null;
+	public PChannelVO findByKey(PChannelVO testVO) {
+		PChannelDomain model = testReadDAO.findByKey(testVO.vo2Domain());
+		PChannelVO modelVo = new PChannelVO();
+		if (model != null) {
+			modelVo = model.domain2VO();
+		} else {
+			modelVo = null;
 		}
 		return modelVo;
 	}
 
 	@Override
 	public List<PChannelVO> findByWhere(PChannelVO testVO) {
-		List<PChannelDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<PChannelVO> lstVo=new ArrayList<PChannelVO>();;
-		for (PChannelDomain item:lstDomain) {
+		List<PChannelDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
+		List<PChannelVO> lstVo = new ArrayList<PChannelVO>();
+		;
+		for (PChannelDomain item : lstDomain) {
 			lstVo.add(item.domain2VO());
 		}
-		return  lstVo;
+		return lstVo;
 	}
 
 }

@@ -22,7 +22,7 @@ import java.util.List;
 public class PChnlGroupAction {
 
 	@Autowired
-	@Qualifier("pChnlGroupServiceImpl")
+	@Qualifier("PChnlGroupServiceImpl")
 	private IPChnlGroupService pChnlGroupService;
 
 	@ResponseBody

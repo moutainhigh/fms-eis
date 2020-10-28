@@ -22,7 +22,7 @@ import java.util.List;
 public class PWsdChnlTypeAction {
 
 	@Autowired
-	@Qualifier("pWsdChnlTypeServiceImpl")
+	@Qualifier("PWsdChnlTypeServiceImpl")
 	private IPWsdChnlTypeService pWsdChnlTypeService;
 
 	@ResponseBody

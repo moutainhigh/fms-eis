@@ -22,7 +22,7 @@ import java.util.List;
 public class PDaserverGroupAction {
 
 	@Autowired
-	@Qualifier("pDaserverGroupServiceImpl")
+	@Qualifier("PDaserverGroupServiceImpl")
 	private IPDaserverGroupService pDaserverGroupService;
 
 	@ResponseBody

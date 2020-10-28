@@ -22,7 +22,7 @@ import java.util.List;
 public class PChnlGpDasRelaAction {
 
 	@Autowired
-	@Qualifier("pChnlGpDasRelaServiceImpl")
+	@Qualifier("PChnlGpDasRelaServiceImpl")
 	private IPChnlGpDasRelaService pChnlGpDasRelaService;
 
 	@ResponseBody
