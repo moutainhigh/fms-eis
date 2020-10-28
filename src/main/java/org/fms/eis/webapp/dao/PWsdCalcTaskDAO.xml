@@ -3,8 +3,8 @@
 <mapper namespace="org.fms.eis.webapp.dao.PWsdCalcTaskDAO">
 	<select id="findByKey" parameterType="PWsdCalcTaskDomain"
 		resultType="PWsdCalcTaskDomain" useCache="true">
-			select #{id},#{name},#{schemeflag},#{uinttype},#{status},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime}
-		from P_WSD_CALC_TASK
+			select ID,NAME,SCHEMEFLAG,UINTTYPE,STATUS,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+				from P_WSD_CALC_TASK
 		<where>
 			and ID = #{id}
 		</where>
@@ -46,7 +46,7 @@
 	<insert id="insert" parameterType="PWsdCalcTaskDomain" flushCache="true" useGeneratedKeys="true">
 		INSERT INTO P_WSD_CALC_TASK
 			(ID,NAME,SCHEMEFLAG,UINTTYPE,STATUS,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
-			VALUES(#{id},#{name},#{schemeflag},#{uinttype},#{status},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime});
+			VALUES(#{id},#{name},#{schemeflag},#{uinttype},#{status},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
 	</insert>
 	<update id="update" parameterType="PWsdCalcTaskDomain" flushCache="true">

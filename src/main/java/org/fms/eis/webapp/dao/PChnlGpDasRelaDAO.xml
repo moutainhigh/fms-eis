@@ -3,8 +3,8 @@
 <mapper namespace="org.fms.eis.webapp.dao.PChnlGpDasRelaDAO">
 	<select id="findByKey" parameterType="PChnlGpDasRelaDomain"
 		resultType="PChnlGpDasRelaDomain" useCache="true">
-			select #{id},#{chnlGroupId},#{dasId},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime}
-		from P_CHNL_GP_DAS_RELA
+			select ID,CHNL_GROUP_ID,DAS_ID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+				from P_CHNL_GP_DAS_RELA
 		<where>
 			and ID = #{id}
 		</where>
@@ -40,7 +40,7 @@
 	<insert id="insert" parameterType="PChnlGpDasRelaDomain" flushCache="true" useGeneratedKeys="true">
 		INSERT INTO P_CHNL_GP_DAS_RELA
 			(ID,CHNL_GROUP_ID,DAS_ID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
-			VALUES(#{id},#{chnlGroupId},#{dasId},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime});
+			VALUES(#{id},#{chnlGroupId},#{dasId},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
 	</insert>
 	<update id="update" parameterType="PChnlGpDasRelaDomain" flushCache="true">

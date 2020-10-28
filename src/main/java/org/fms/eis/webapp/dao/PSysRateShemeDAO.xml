@@ -3,8 +3,8 @@
 <mapper namespace="org.fms.eis.webapp.dao.PSysRateShemeDAO">
 	<select id="findByKey" parameterType="PSysRateShemeDomain"
 		resultType="PSysRateShemeDomain" useCache="true">
-			select #{id},#{name},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime}
-		from P_SYS_RATE_SHEME
+			select ID,NAME,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+				from P_SYS_RATE_SHEME
 		<where>
 			and ID = #{id}
 		</where>
@@ -37,7 +37,7 @@
 	<insert id="insert" parameterType="PSysRateShemeDomain" flushCache="true" useGeneratedKeys="true">
 		INSERT INTO P_SYS_RATE_SHEME
 			(ID,NAME,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
-			VALUES(#{id},#{name},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime});
+			VALUES(#{id},#{name},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
 	</insert>
 	<update id="update" parameterType="PSysRateShemeDomain" flushCache="true">

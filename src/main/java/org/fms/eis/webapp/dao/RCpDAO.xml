@@ -3,8 +3,8 @@
 <mapper namespace="org.fms.eis.webapp.dao.RCpDAO">
 	<select id="findByKey" parameterType="RCpDomain"
 		resultType="RCpDomain" useCache="true">
-			select #{id},#{code},#{name},#{cpTypeCode},#{statusCode},#{cpAddr},#{gpsLongitude},#{gpsLatitude},#{businessPlaceCode},#{tplId},#{terminalId},#{relaObjType},#{relaObjId},#{cFlag},#{terminalAddr},#{protocolId},#{ctrlHostid},#{masterChnlGroup},#{masterIpPort},#{masterTel},#{spareChnlGroup},#{spareIpPort},#{spareTel},#{gprsCode},#{heartbeatCycle},#{algNo},#{algKey},#{areaCode},#{masterid},#{guid},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime}
-		from R_CP
+			select ID,CODE,NAME,CP_TYPE_CODE,STATUS_CODE,CP_ADDR,GPS_LONGITUDE,GPS_LATITUDE,BUSINESS_PLACE_CODE,TPL_ID,TERMINAL_ID,RELA_OBJ_TYPE,RELA_OBJ_ID,C_FLAG,TERMINAL_ADDR,PROTOCOL_ID,CTRL_HOSTID,MASTER_CHNL_GROUP,MASTER_IP_PORT,MASTER_TEL,SPARE_CHNL_GROUP,SPARE_IP_PORT,SPARE_TEL,GPRS_CODE,HEARTBEAT_CYCLE,ALG_NO,ALG_KEY,AREA_CODE,MASTERID,GUID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+				from R_CP
 		<where>
 			and ID = #{id}
 		</where>
@@ -121,7 +121,7 @@
 	<insert id="insert" parameterType="RCpDomain" flushCache="true" useGeneratedKeys="true">
 		INSERT INTO R_CP
 			(ID,CODE,NAME,CP_TYPE_CODE,STATUS_CODE,CP_ADDR,GPS_LONGITUDE,GPS_LATITUDE,BUSINESS_PLACE_CODE,TPL_ID,TERMINAL_ID,RELA_OBJ_TYPE,RELA_OBJ_ID,C_FLAG,TERMINAL_ADDR,PROTOCOL_ID,CTRL_HOSTID,MASTER_CHNL_GROUP,MASTER_IP_PORT,MASTER_TEL,SPARE_CHNL_GROUP,SPARE_IP_PORT,SPARE_TEL,GPRS_CODE,HEARTBEAT_CYCLE,ALG_NO,ALG_KEY,AREA_CODE,MASTERID,GUID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
-			VALUES(#{id},#{code},#{name},#{cpTypeCode},#{statusCode},#{cpAddr},#{gpsLongitude},#{gpsLatitude},#{businessPlaceCode},#{tplId},#{terminalId},#{relaObjType},#{relaObjId},#{cFlag},#{terminalAddr},#{protocolId},#{ctrlHostid},#{masterChnlGroup},#{masterIpPort},#{masterTel},#{spareChnlGroup},#{spareIpPort},#{spareTel},#{gprsCode},#{heartbeatCycle},#{algNo},#{algKey},#{areaCode},#{masterid},#{guid},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime});
+			VALUES(#{id},#{code},#{name},#{cpTypeCode},#{statusCode},#{cpAddr},#{gpsLongitude},#{gpsLatitude},#{businessPlaceCode},#{tplId},#{terminalId},#{relaObjType},#{relaObjId},#{cFlag},#{terminalAddr},#{protocolId},#{ctrlHostid},#{masterChnlGroup},#{masterIpPort},#{masterTel},#{spareChnlGroup},#{spareIpPort},#{spareTel},#{gprsCode},#{heartbeatCycle},#{algNo},#{algKey},#{areaCode},#{masterid},#{guid},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
 	</insert>
 	<update id="update" parameterType="RCpDomain" flushCache="true">

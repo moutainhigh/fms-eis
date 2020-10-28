@@ -3,8 +3,8 @@
 <mapper namespace="org.fms.eis.webapp.dao.DropSqlDAO">
 	<select id="findByKey" parameterType="DropSqlDomain"
 		resultType="DropSqlDomain" useCache="true">
-			select #{id},#{dropCode},#{dropName},#{dropSql},#{dropType},#{remark},#{status}
-		from drop_sql
+			select id,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS
+				from drop_sql
 		<where>
 			and ID = #{id}
 		</where>
@@ -40,7 +40,7 @@
 	<insert id="insert" parameterType="DropSqlDomain" flushCache="true" useGeneratedKeys="true">
 		INSERT INTO drop_sql
 			(id,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS)
-			VALUES(#{id},#{dropCode},#{dropName},#{dropSql},#{dropType},#{remark},#{status});
+			VALUES(#{id},#{dropCode},#{dropName},#{dropSql},#{dropType},#{remark},#{status})
 
 	</insert>
 	<update id="update" parameterType="DropSqlDomain" flushCache="true">

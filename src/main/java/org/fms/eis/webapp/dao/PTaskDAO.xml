@@ -3,8 +3,8 @@
 <mapper namespace="org.fms.eis.webapp.dao.PTaskDAO">
 	<select id="findByKey" parameterType="PTaskDomain"
 		resultType="PTaskDomain" useCache="true">
-			select #{id},#{code},#{name},#{protocolId},#{taskId},#{taskNo},#{pnType},#{objProp},#{taskBegintime},#{taskCycle},#{cycleUnit},#{dataDensity},#{freezeType},#{maxDatacycle},#{maxFailnum},#{repeatCycle},#{priority},#{taskSrc},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime}
-		from P_TASK
+			select ID,CODE,NAME,PROTOCOL_ID,TASK_ID,TASK_NO,PN_TYPE,OBJ_PROP,TASK_BEGINTIME,TASK_CYCLE,CYCLE_UNIT,DATA_DENSITY,FREEZE_TYPE,MAX_DATACYCLE,MAX_FAILNUM,REPEAT_CYCLE,PRIORITY,TASK_SRC,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+				from P_TASK
 		<where>
 			and ID = #{id}
 		</where>
@@ -91,7 +91,7 @@
 	<insert id="insert" parameterType="PTaskDomain" flushCache="true" useGeneratedKeys="true">
 		INSERT INTO P_TASK
 			(ID,CODE,NAME,PROTOCOL_ID,TASK_ID,TASK_NO,PN_TYPE,OBJ_PROP,TASK_BEGINTIME,TASK_CYCLE,CYCLE_UNIT,DATA_DENSITY,FREEZE_TYPE,MAX_DATACYCLE,MAX_FAILNUM,REPEAT_CYCLE,PRIORITY,TASK_SRC,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
-			VALUES(#{id},#{code},#{name},#{protocolId},#{taskId},#{taskNo},#{pnType},#{objProp},#{taskBegintime},#{taskCycle},#{cycleUnit},#{dataDensity},#{freezeType},#{maxDatacycle},#{maxFailnum},#{repeatCycle},#{priority},#{taskSrc},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime});
+			VALUES(#{id},#{code},#{name},#{protocolId},#{taskId},#{taskNo},#{pnType},#{objProp},#{taskBegintime},#{taskCycle},#{cycleUnit},#{dataDensity},#{freezeType},#{maxDatacycle},#{maxFailnum},#{repeatCycle},#{priority},#{taskSrc},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
 	</insert>
 	<update id="update" parameterType="PTaskDomain" flushCache="true">

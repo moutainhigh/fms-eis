@@ -3,8 +3,8 @@
 <mapper namespace="org.fms.eis.webapp.dao.TgInfoDAO">
 	<select id="findByKey" parameterType="TgInfoDomain"
 		resultType="TgInfoDomain" useCache="true">
-			select #{id},#{tgNo},#{tgName},#{tgType},#{address},#{createDate},#{remark},#{status},#{commonTransClass},#{businessPlaceCode},#{tgCap},#{consId}
-		from TG_INFO
+			select ID,TG_NO,TG_NAME,TG_TYPE,ADDRESS,CREATE_DATE,REMARK,STATUS,COMMON_TRANS_CLASS,BUSINESS_PLACE_CODE,TG_CAP,CONS_ID
+				from TG_INFO
 		<where>
 			and ID = #{id}
 		</where>
@@ -55,7 +55,7 @@
 	<insert id="insert" parameterType="TgInfoDomain" flushCache="true" useGeneratedKeys="true">
 		INSERT INTO TG_INFO
 			(ID,TG_NO,TG_NAME,TG_TYPE,ADDRESS,CREATE_DATE,REMARK,STATUS,COMMON_TRANS_CLASS,BUSINESS_PLACE_CODE,TG_CAP,CONS_ID)
-			VALUES(#{id},#{tgNo},#{tgName},#{tgType},#{address},#{createDate},#{remark},#{status},#{commonTransClass},#{businessPlaceCode},#{tgCap},#{consId});
+			VALUES(#{id},#{tgNo},#{tgName},#{tgType},#{address},#{createDate},#{remark},#{status},#{commonTransClass},#{businessPlaceCode},#{tgCap},#{consId})
 
 	</insert>
 	<update id="update" parameterType="TgInfoDomain" flushCache="true">

@@ -3,8 +3,8 @@
 <mapper namespace="org.fms.eis.webapp.dao.PSysCalcSchemeDAO">
 	<select id="findByKey" parameterType="PSysCalcSchemeDomain"
 		resultType="PSysCalcSchemeDomain" useCache="true">
-			select #{id},#{name},#{type},#{status},#{begmon},#{begday},#{beghour},#{endmon},#{endday},#{endhour},#{defset},#{cycle},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime}
-		from P_SYS_CALC_SCHEME
+			select ID,NAME,TYPE,STATUS,BEGMON,BEGDAY,BEGHOUR,ENDMON,ENDDAY,ENDHOUR,DEFSET,CYCLE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+				from P_SYS_CALC_SCHEME
 		<where>
 			and ID = #{id}
 		</where>
@@ -67,7 +67,7 @@
 	<insert id="insert" parameterType="PSysCalcSchemeDomain" flushCache="true" useGeneratedKeys="true">
 		INSERT INTO P_SYS_CALC_SCHEME
 			(ID,NAME,TYPE,STATUS,BEGMON,BEGDAY,BEGHOUR,ENDMON,ENDDAY,ENDHOUR,DEFSET,CYCLE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
-			VALUES(#{id},#{name},#{type},#{status},#{begmon},#{begday},#{beghour},#{endmon},#{endday},#{endhour},#{defset},#{cycle},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime});
+			VALUES(#{id},#{name},#{type},#{status},#{begmon},#{begday},#{beghour},#{endmon},#{endday},#{endhour},#{defset},#{cycle},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
 	</insert>
 	<update id="update" parameterType="PSysCalcSchemeDomain" flushCache="true">
