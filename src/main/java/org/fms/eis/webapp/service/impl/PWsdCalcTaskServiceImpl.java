@@ -57,7 +57,7 @@ public class PWsdCalcTaskServiceImpl implements IPWsdCalcTaskService {
 	@Override
 	public List<PWsdCalcTaskVO> findByWhere(PWsdCalcTaskVO testVO) {
 		List<PWsdCalcTaskDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<PWsdCalcTaskVO> lstVo=new ArrayList<PWsdCalcTaskVO>();;
+		List<PWsdCalcTaskVO> lstVo=new ArrayList<PWsdCalcTaskVO>();
 		for (PWsdCalcTaskDomain item:lstDomain) {
 			lstVo.add(item.domain2VO());
 		}

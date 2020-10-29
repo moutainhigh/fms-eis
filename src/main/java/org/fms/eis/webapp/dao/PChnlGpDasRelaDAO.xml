@@ -46,42 +46,13 @@
     <update id="update" parameterType="PChnlGpDasRelaDomain" flushCache="true">
         update P_CHNL_GP_DAS_RELA
         <set>
+
             <if test="id !=null">
                 ID = #{id},
             </if>
         </set>
-        <set>
-            <if test="chnlGroupId !=null">
-                CHNL_GROUP_ID = #{chnlGroupId},
-            </if>
-        </set>
-        <set>
-            <if test="dasId !=null">
-                DAS_ID = #{dasId},
-            </if>
-        </set>
-        <set>
-            <if test="creatorId !=null">
-                CREATOR_ID = #{creatorId},
-            </if>
-        </set>
-        <set>
-            <if test="createDate !=null">
-                CREATE_DATE = #{createDate},
-            </if>
-        </set>
-        <set>
-            <if test="lastModifierId !=null">
-                LAST_MODIFIER_ID = #{lastModifierId},
-            </if>
-        </set>
-        <set>
-            <if test="lastModifyTime !=null">
-                LAST_MODIFY_TIME = #{lastModifyTime},
-            </if>
-        </set>
         <where>
-            and ID = #{ID}
+            and ID = #{id}
 
         </where>
     </update>

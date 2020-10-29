@@ -57,7 +57,7 @@ public class RCpServiceImpl implements IRCpService {
 	@Override
 	public List<RCpVO> findByWhere(RCpVO testVO) {
 		List<RCpDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<RCpVO> lstVo=new ArrayList<RCpVO>();;
+		List<RCpVO> lstVo=new ArrayList<RCpVO>();
 		for (RCpDomain item:lstDomain) {
 			lstVo.add(item.domain2VO());
 		}

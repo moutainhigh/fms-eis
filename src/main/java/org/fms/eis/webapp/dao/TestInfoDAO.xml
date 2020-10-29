@@ -3,7 +3,7 @@
 <mapper namespace="org.fms.eis.webapp.dao.TestInfoDAO">
     <select id="findByKey" parameterType="TestInfoDomain"
             resultType="TestInfoDomain" useCache="true">
-        select #{id},#{userName}
+        select ID,USER_NAME
         from TEST_INFO
         <where>
             and ID = #{id}
@@ -25,23 +25,19 @@
     <insert id="insert" parameterType="TestInfoDomain" flushCache="true" useGeneratedKeys="true">
 		INSERT INTO TEST_INFO
 			(ID,USER_NAME)
-			VALUES(#{id},#{userName});
+			VALUES(#{id},#{userName})
 
 	</insert>
     <update id="update" parameterType="TestInfoDomain" flushCache="true">
         update TEST_INFO
         <set>
+
             <if test="id !=null">
                 ID = #{id},
             </if>
         </set>
-        <set>
-            <if test="userName !=null">
-                USER_NAME = #{userName},
-            </if>
-        </set>
         <where>
-            and ID = #{ID}
+            and ID = #{id}
 
         </where>
     </update>

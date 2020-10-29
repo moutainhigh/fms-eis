@@ -58,62 +58,13 @@
     <update id="update" parameterType="SystemCommonConfigDomain" flushCache="true">
         update system_common_config
         <set>
+
             <if test="id !=null">
                 ID = #{id},
             </if>
         </set>
-        <set>
-            <if test="type !=null">
-                TYPE = #{type},
-            </if>
-        </set>
-        <set>
-            <if test="paramName !=null">
-                PARAM_NAME = #{paramName},
-            </if>
-        </set>
-        <set>
-            <if test="paramKey !=null">
-                PARAM_KEY = #{paramKey},
-            </if>
-        </set>
-        <set>
-            <if test="paramValue !=null">
-                PARAM_VALUE = #{paramValue},
-            </if>
-        </set>
-        <set>
-            <if test="status !=null">
-                STATUS = #{status},
-            </if>
-        </set>
-        <set>
-            <if test="paramOrder !=null">
-                PARAM_ORDER = #{paramOrder},
-            </if>
-        </set>
-        <set>
-            <if test="remark1 !=null">
-                REMARK1 = #{remark1},
-            </if>
-        </set>
-        <set>
-            <if test="remark2 !=null">
-                REMARK2 = #{remark2},
-            </if>
-        </set>
-        <set>
-            <if test="remark3 !=null">
-                REMARK3 = #{remark3},
-            </if>
-        </set>
-        <set>
-            <if test="remark4 !=null">
-                REMARK4 = #{remark4},
-            </if>
-        </set>
         <where>
-            and ID = #{ID}
+            and ID = #{id}
 
         </where>
     </update>

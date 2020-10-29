@@ -53,8 +53,7 @@ public class DropSqlServiceImpl implements IDropSqlService {
     @Override
     public List<DropSqlVO> findByWhere(DropSqlVO testVO) {
         List<DropSqlDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
-        List<DropSqlVO> lstVo = new ArrayList<DropSqlVO>();
-        ;
+        List<DropSqlVO> lstVo = new ArrayList<>();
         for (DropSqlDomain item : lstDomain) {
             lstVo.add(item.domain2VO());
         }

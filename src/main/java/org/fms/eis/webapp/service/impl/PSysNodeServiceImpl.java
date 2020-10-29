@@ -54,7 +54,6 @@ public class PSysNodeServiceImpl implements IPSysNodeService {
     public List<PSysNodeVO> findByWhere(PSysNodeVO testVO) {
         List<PSysNodeDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
         List<PSysNodeVO> lstVo = new ArrayList<PSysNodeVO>();
-        ;
         for (PSysNodeDomain item : lstDomain) {
             lstVo.add(item.domain2VO());
         }

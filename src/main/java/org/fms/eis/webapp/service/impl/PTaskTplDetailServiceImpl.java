@@ -57,7 +57,7 @@ public class PTaskTplDetailServiceImpl implements IPTaskTplDetailService {
 	@Override
 	public List<PTaskTplDetailVO> findByWhere(PTaskTplDetailVO testVO) {
 		List<PTaskTplDetailDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<PTaskTplDetailVO> lstVo=new ArrayList<PTaskTplDetailVO>();;
+		List<PTaskTplDetailVO> lstVo=new ArrayList<PTaskTplDetailVO>();
 		for (PTaskTplDetailDomain item:lstDomain) {
 			lstVo.add(item.domain2VO());
 		}

@@ -57,7 +57,7 @@ public class PWsdChnlTypeServiceImpl implements IPWsdChnlTypeService {
 	@Override
 	public List<PWsdChnlTypeVO> findByWhere(PWsdChnlTypeVO testVO) {
 		List<PWsdChnlTypeDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<PWsdChnlTypeVO> lstVo=new ArrayList<PWsdChnlTypeVO>();;
+		List<PWsdChnlTypeVO> lstVo=new ArrayList<PWsdChnlTypeVO>();
 		for (PWsdChnlTypeDomain item:lstDomain) {
 			lstVo.add(item.domain2VO());
 		}

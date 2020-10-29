@@ -54,7 +54,6 @@ public class PChnlGroupServiceImpl implements IPChnlGroupService {
     public List<PChnlGroupVO> findByWhere(PChnlGroupVO testVO) {
         List<PChnlGroupDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
         List<PChnlGroupVO> lstVo = new ArrayList<PChnlGroupVO>();
-        ;
         for (PChnlGroupDomain item : lstDomain) {
             lstVo.add(item.domain2VO());
         }

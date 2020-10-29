@@ -57,7 +57,7 @@ public class SystemCommonConfigServiceImpl implements ISystemCommonConfigService
 	@Override
 	public List<SystemCommonConfigVO> findByWhere(SystemCommonConfigVO testVO) {
 		List<SystemCommonConfigDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<SystemCommonConfigVO> lstVo=new ArrayList<SystemCommonConfigVO>();;
+		List<SystemCommonConfigVO> lstVo=new ArrayList<SystemCommonConfigVO>();
 		for (SystemCommonConfigDomain item:lstDomain) {
 			lstVo.add(item.domain2VO());
 		}

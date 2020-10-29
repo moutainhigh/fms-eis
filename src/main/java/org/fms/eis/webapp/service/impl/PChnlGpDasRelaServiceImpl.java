@@ -54,7 +54,6 @@ public class PChnlGpDasRelaServiceImpl implements IPChnlGpDasRelaService {
     public List<PChnlGpDasRelaVO> findByWhere(PChnlGpDasRelaVO testVO) {
         List<PChnlGpDasRelaDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
         List<PChnlGpDasRelaVO> lstVo = new ArrayList<PChnlGpDasRelaVO>();
-        ;
         for (PChnlGpDasRelaDomain item : lstDomain) {
             lstVo.add(item.domain2VO());
         }

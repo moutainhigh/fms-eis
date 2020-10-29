@@ -57,7 +57,7 @@ public class PTaskServiceImpl implements IPTaskService {
 	@Override
 	public List<PTaskVO> findByWhere(PTaskVO testVO) {
 		List<PTaskDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<PTaskVO> lstVo=new ArrayList<PTaskVO>();;
+		List<PTaskVO> lstVo=new ArrayList<PTaskVO>();
 		for (PTaskDomain item:lstDomain) {
 			lstVo.add(item.domain2VO());
 		}

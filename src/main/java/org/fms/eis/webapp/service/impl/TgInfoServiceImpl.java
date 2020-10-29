@@ -57,7 +57,7 @@ public class TgInfoServiceImpl implements ITgInfoService {
 	@Override
 	public List<TgInfoVO> findByWhere(TgInfoVO testVO) {
 		List<TgInfoDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<TgInfoVO> lstVo=new ArrayList<TgInfoVO>();;
+		List<TgInfoVO> lstVo=new ArrayList<TgInfoVO>();
 		for (TgInfoDomain item:lstDomain) {
 			lstVo.add(item.domain2VO());
 		}

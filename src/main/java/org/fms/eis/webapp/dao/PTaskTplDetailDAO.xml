@@ -49,47 +49,13 @@
     <update id="update" parameterType="PTaskTplDetailDomain" flushCache="true">
         update P_TASK_TPL_DETAIL
         <set>
+
             <if test="id !=null">
                 ID = #{id},
             </if>
         </set>
-        <set>
-            <if test="tplId !=null">
-                TPL_ID = #{tplId},
-            </if>
-        </set>
-        <set>
-            <if test="taskId !=null">
-                TASK_ID = #{taskId},
-            </if>
-        </set>
-        <set>
-            <if test="weight !=null">
-                WEIGHT = #{weight},
-            </if>
-        </set>
-        <set>
-            <if test="creatorId !=null">
-                CREATOR_ID = #{creatorId},
-            </if>
-        </set>
-        <set>
-            <if test="createDate !=null">
-                CREATE_DATE = #{createDate},
-            </if>
-        </set>
-        <set>
-            <if test="lastModifierId !=null">
-                LAST_MODIFIER_ID = #{lastModifierId},
-            </if>
-        </set>
-        <set>
-            <if test="lastModifyTime !=null">
-                LAST_MODIFY_TIME = #{lastModifyTime},
-            </if>
-        </set>
         <where>
-            and ID = #{ID}
+            and ID = #{id}
 
         </where>
     </update>

@@ -54,7 +54,6 @@ public class PDaserverGroupServiceImpl implements IPDaserverGroupService {
     public List<PDaserverGroupVO> findByWhere(PDaserverGroupVO testVO) {
         List<PDaserverGroupDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
         List<PDaserverGroupVO> lstVo = new ArrayList<PDaserverGroupVO>();
-        ;
         for (PDaserverGroupDomain item : lstDomain) {
             lstVo.add(item.domain2VO());
         }

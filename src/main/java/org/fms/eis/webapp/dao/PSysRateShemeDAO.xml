@@ -43,37 +43,13 @@
     <update id="update" parameterType="PSysRateShemeDomain" flushCache="true">
         update P_SYS_RATE_SHEME
         <set>
+
             <if test="id !=null">
                 ID = #{id},
             </if>
         </set>
-        <set>
-            <if test="name !=null">
-                NAME = #{name},
-            </if>
-        </set>
-        <set>
-            <if test="creatorId !=null">
-                CREATOR_ID = #{creatorId},
-            </if>
-        </set>
-        <set>
-            <if test="createDate !=null">
-                CREATE_DATE = #{createDate},
-            </if>
-        </set>
-        <set>
-            <if test="lastModifierId !=null">
-                LAST_MODIFIER_ID = #{lastModifierId},
-            </if>
-        </set>
-        <set>
-            <if test="lastModifyTime !=null">
-                LAST_MODIFY_TIME = #{lastModifyTime},
-            </if>
-        </set>
         <where>
-            and ID = #{ID}
+            and ID = #{id}
 
         </where>
     </update>

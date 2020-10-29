@@ -54,7 +54,6 @@ public class PSysCalcSchemeServiceImpl implements IPSysCalcSchemeService {
     public List<PSysCalcSchemeVO> findByWhere(PSysCalcSchemeVO testVO) {
         List<PSysCalcSchemeDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
         List<PSysCalcSchemeVO> lstVo = new ArrayList<PSysCalcSchemeVO>();
-        ;
         for (PSysCalcSchemeDomain item : lstDomain) {
             lstVo.add(item.domain2VO());
         }

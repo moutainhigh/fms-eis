@@ -57,7 +57,7 @@ public class PSysRateShemeServiceImpl implements IPSysRateShemeService {
 	@Override
 	public List<PSysRateShemeVO> findByWhere(PSysRateShemeVO testVO) {
 		List<PSysRateShemeDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<PSysRateShemeVO> lstVo=new ArrayList<PSysRateShemeVO>();;
+		List<PSysRateShemeVO> lstVo=new ArrayList<PSysRateShemeVO>();
 		for (PSysRateShemeDomain item:lstDomain) {
 			lstVo.add(item.domain2VO());
 		}

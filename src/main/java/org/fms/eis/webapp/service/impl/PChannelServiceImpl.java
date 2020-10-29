@@ -54,7 +54,6 @@ public class PChannelServiceImpl implements IPChannelService {
     public List<PChannelVO> findByWhere(PChannelVO testVO) {
         List<PChannelDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
         List<PChannelVO> lstVo = new ArrayList<PChannelVO>();
-        ;
         for (PChannelDomain item : lstDomain) {
             lstVo.add(item.domain2VO());
         }

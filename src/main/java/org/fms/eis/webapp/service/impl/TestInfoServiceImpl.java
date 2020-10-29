@@ -57,7 +57,7 @@ public class TestInfoServiceImpl implements ITestInfoService {
 	@Override
 	public List<TestInfoVO> findByWhere(TestInfoVO testVO) {
 		List<TestInfoDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<TestInfoVO> lstVo=new ArrayList<TestInfoVO>();;
+		List<TestInfoVO> lstVo=new ArrayList<TestInfoVO>();
 		for (TestInfoDomain item:lstDomain) {
 			lstVo.add(item.domain2VO());
 		}
