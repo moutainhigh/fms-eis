@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.fms.eis.webapp.dao.TestDAO">
-	<select id="findByKey" parameterType="TestDomain"
-		resultType="TestDomain" useCache="true">
-		select ID,USER_NAME from TEST_INFO
-		<where>
-			and ID = #{id}
+    <select id="findByKey" parameterType="TestDomain"
+            resultType="TestDomain" useCache="true">
+        select ID,USER_NAME from TEST_INFO
+        <where>
+            and ID = #{id}
 
-		</where>
-	</select>
-	<select id="findByWhere" parameterType="TestDomain"
-		resultType="TestDomain" useCache="true">
-		select ID,USER_NAME from TEST_INFO
-		<where>
-			<if test="id !=null">
-				and ID = #{id}
-			</if>
-			<if test="userName !=null">
-				and USER_NAME = #{userName}
-			</if>
-		</where>
-	</select>
-	<insert id="insert" parameterType="TestDomain" flushCache="true">
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="TestDomain"
+            resultType="TestDomain" useCache="true">
+        select ID,USER_NAME from TEST_INFO
+        <where>
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="userName !=null">
+                and USER_NAME = #{userName}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="TestDomain" flushCache="true">
 		insert into TEST_INFO(ID,USER_NAME) values (#{id},#{userName})
 	</insert>
-	<update id="update" parameterType="TestDomain" flushCache="true">
-		update TEST_INFO
-		<set>
-			<if test="userName !=null">
-				USER_NAME = #{userName},
-			</if>
-		</set>
-		<where>
-			and ID = #{id}
+    <update id="update" parameterType="TestDomain" flushCache="true">
+        update TEST_INFO
+        <set>
+            <if test="userName !=null">
+                USER_NAME = #{userName},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
 
-		</where>
-	</update>
-	<delete id="delete" parameterType="TestDomain" flushCache="true">
-		delete from TEST_INFO
-		<where>
-			and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="TestDomain" flushCache="true">
+        delete from TEST_INFO
+        <where>
+            and ID = #{id}
 
-		</where>
-	</delete>
+        </where>
+    </delete>
 </mapper>

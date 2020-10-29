@@ -13,4 +13,3 @@ eureka:
     serviceUrl:
       defaultZone: http://enn:df6100@172.21.29.55:7777/enn/eureka/
 
-    
