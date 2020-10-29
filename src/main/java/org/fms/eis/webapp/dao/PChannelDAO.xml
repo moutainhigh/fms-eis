@@ -88,8 +88,80 @@
         update P_CHANNEL
         <set>
 
-            <if test="id !=null">
-                ID = #{id},
+            <if test="code !=null">
+                CODE = #{code},
+            </if>
+
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+
+            <if test="chnlGroupId !=null">
+                CHNL_GROUP_ID = #{chnlGroupId},
+            </if>
+
+            <if test="deviceAddr1 !=null">
+                DEVICE_ADDR1 = #{deviceAddr1},
+            </if>
+
+            <if test="deviceAddr2 !=null">
+                DEVICE_ADDR2 = #{deviceAddr2},
+            </if>
+
+            <if test="ctrlhostId !=null">
+                CTRLHOST_ID = #{ctrlhostId},
+            </if>
+
+            <if test="baud !=null">
+                BAUD = #{baud},
+            </if>
+
+            <if test="databit !=null">
+                DATABIT = #{databit},
+            </if>
+
+            <if test="stopbit !=null">
+                STOPBIT = #{stopbit},
+            </if>
+
+            <if test="checkbit !=null">
+                CHECKBIT = #{checkbit},
+            </if>
+
+            <if test="initstr !=null">
+                INITSTR = #{initstr},
+            </if>
+
+            <if test="protocolId !=null">
+                PROTOCOL_ID = #{protocolId},
+            </if>
+
+            <if test="normalopen !=null">
+                NORMALOPEN = #{normalopen},
+            </if>
+
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+
+            <if test="weight !=null">
+                WEIGHT = #{weight},
+            </if>
+
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
             </if>
         </set>
         <where>

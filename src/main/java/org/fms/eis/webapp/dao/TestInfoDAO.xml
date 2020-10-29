@@ -32,8 +32,8 @@
         update TEST_INFO
         <set>
 
-            <if test="id !=null">
-                ID = #{id},
+            <if test="userName !=null">
+                USER_NAME = #{userName},
             </if>
         </set>
         <where>

@@ -53,8 +53,36 @@
         update P_DASERVER_GROUP
         <set>
 
-            <if test="id !=null">
-                ID = #{id},
+            <if test="code !=null">
+                CODE = #{code},
+            </if>
+
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+
+            <if test="weight !=null">
+                WEIGHT = #{weight},
+            </if>
+
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
             </if>
         </set>
         <where>

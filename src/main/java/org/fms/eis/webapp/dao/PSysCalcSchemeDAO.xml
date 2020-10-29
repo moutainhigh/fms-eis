@@ -76,8 +76,64 @@
         update P_SYS_CALC_SCHEME
         <set>
 
-            <if test="id !=null">
-                ID = #{id},
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+
+            <if test="type !=null">
+                TYPE = #{type},
+            </if>
+
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+
+            <if test="begmon !=null">
+                BEGMON = #{begmon},
+            </if>
+
+            <if test="begday !=null">
+                BEGDAY = #{begday},
+            </if>
+
+            <if test="beghour !=null">
+                BEGHOUR = #{beghour},
+            </if>
+
+            <if test="endmon !=null">
+                ENDMON = #{endmon},
+            </if>
+
+            <if test="endday !=null">
+                ENDDAY = #{endday},
+            </if>
+
+            <if test="endhour !=null">
+                ENDHOUR = #{endhour},
+            </if>
+
+            <if test="defset !=null">
+                DEFSET = #{defset},
+            </if>
+
+            <if test="cycle !=null">
+                CYCLE = #{cycle},
+            </if>
+
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
             </if>
         </set>
         <where>

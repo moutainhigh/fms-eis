@@ -64,8 +64,48 @@
         update TG_INFO
         <set>
 
-            <if test="id !=null">
-                ID = #{id},
+            <if test="tgNo !=null">
+                TG_NO = #{tgNo},
+            </if>
+
+            <if test="tgName !=null">
+                TG_NAME = #{tgName},
+            </if>
+
+            <if test="tgType !=null">
+                TG_TYPE = #{tgType},
+            </if>
+
+            <if test="address !=null">
+                ADDRESS = #{address},
+            </if>
+
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+
+            <if test="commonTransClass !=null">
+                COMMON_TRANS_CLASS = #{commonTransClass},
+            </if>
+
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
+            </if>
+
+            <if test="tgCap !=null">
+                TG_CAP = #{tgCap},
+            </if>
+
+            <if test="consId !=null">
+                CONS_ID = #{consId},
             </if>
         </set>
         <where>

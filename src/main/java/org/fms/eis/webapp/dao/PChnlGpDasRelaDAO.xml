@@ -47,8 +47,28 @@
         update P_CHNL_GP_DAS_RELA
         <set>
 
-            <if test="id !=null">
-                ID = #{id},
+            <if test="chnlGroupId !=null">
+                CHNL_GROUP_ID = #{chnlGroupId},
+            </if>
+
+            <if test="dasId !=null">
+                DAS_ID = #{dasId},
+            </if>
+
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
             </if>
         </set>
         <where>

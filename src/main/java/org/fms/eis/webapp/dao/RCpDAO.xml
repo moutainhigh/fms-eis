@@ -130,8 +130,136 @@
         update R_CP
         <set>
 
-            <if test="id !=null">
-                ID = #{id},
+            <if test="code !=null">
+                CODE = #{code},
+            </if>
+
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+
+            <if test="cpTypeCode !=null">
+                CP_TYPE_CODE = #{cpTypeCode},
+            </if>
+
+            <if test="statusCode !=null">
+                STATUS_CODE = #{statusCode},
+            </if>
+
+            <if test="cpAddr !=null">
+                CP_ADDR = #{cpAddr},
+            </if>
+
+            <if test="gpsLongitude !=null">
+                GPS_LONGITUDE = #{gpsLongitude},
+            </if>
+
+            <if test="gpsLatitude !=null">
+                GPS_LATITUDE = #{gpsLatitude},
+            </if>
+
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
+            </if>
+
+            <if test="tplId !=null">
+                TPL_ID = #{tplId},
+            </if>
+
+            <if test="terminalId !=null">
+                TERMINAL_ID = #{terminalId},
+            </if>
+
+            <if test="relaObjType !=null">
+                RELA_OBJ_TYPE = #{relaObjType},
+            </if>
+
+            <if test="relaObjId !=null">
+                RELA_OBJ_ID = #{relaObjId},
+            </if>
+
+            <if test="cFlag !=null">
+                C_FLAG = #{cFlag},
+            </if>
+
+            <if test="terminalAddr !=null">
+                TERMINAL_ADDR = #{terminalAddr},
+            </if>
+
+            <if test="protocolId !=null">
+                PROTOCOL_ID = #{protocolId},
+            </if>
+
+            <if test="ctrlHostid !=null">
+                CTRL_HOSTID = #{ctrlHostid},
+            </if>
+
+            <if test="masterChnlGroup !=null">
+                MASTER_CHNL_GROUP = #{masterChnlGroup},
+            </if>
+
+            <if test="masterIpPort !=null">
+                MASTER_IP_PORT = #{masterIpPort},
+            </if>
+
+            <if test="masterTel !=null">
+                MASTER_TEL = #{masterTel},
+            </if>
+
+            <if test="spareChnlGroup !=null">
+                SPARE_CHNL_GROUP = #{spareChnlGroup},
+            </if>
+
+            <if test="spareIpPort !=null">
+                SPARE_IP_PORT = #{spareIpPort},
+            </if>
+
+            <if test="spareTel !=null">
+                SPARE_TEL = #{spareTel},
+            </if>
+
+            <if test="gprsCode !=null">
+                GPRS_CODE = #{gprsCode},
+            </if>
+
+            <if test="heartbeatCycle !=null">
+                HEARTBEAT_CYCLE = #{heartbeatCycle},
+            </if>
+
+            <if test="algNo !=null">
+                ALG_NO = #{algNo},
+            </if>
+
+            <if test="algKey !=null">
+                ALG_KEY = #{algKey},
+            </if>
+
+            <if test="areaCode !=null">
+                AREA_CODE = #{areaCode},
+            </if>
+
+            <if test="masterid !=null">
+                MASTERID = #{masterid},
+            </if>
+
+            <if test="guid !=null">
+                GUID = #{guid},
+            </if>
+
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
             </if>
         </set>
         <where>

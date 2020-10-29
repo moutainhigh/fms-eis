@@ -46,6 +46,30 @@
     <update id="update" parameterType="DropSqlDomain" flushCache="true">
         update drop_sql
         <set>
+
+            <if test="dropCode !=null">
+                DROP_CODE = #{dropCode},
+            </if>
+
+            <if test="dropName !=null">
+                DROP_NAME = #{dropName},
+            </if>
+
+            <if test="dropSql !=null">
+                DROP_SQL = #{dropSql},
+            </if>
+
+            <if test="dropType !=null">
+                DROP_TYPE = #{dropType},
+            </if>
+
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
         </set>
         <where>
             and ID = #{id}
