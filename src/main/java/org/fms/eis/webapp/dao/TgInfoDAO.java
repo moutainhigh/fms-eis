@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 台区表
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.TgInfoDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class TgInfoDAO extends AbstractTransactionDAOSupport implements BaseDAO<TgInfoDomain> {
 
     @Override
-    public int insert(TgInfoDomain testDomain) {
+    public int insert(TgInfoDomain tgInfoDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", tgInfoDomain);
     }
 
     @Override
-    public int delete(TgInfoDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(TgInfoDomain tgInfoDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", tgInfoDomain);
+    }
+
+    @Override
+    public TgInfoDomain findByKey(TgInfoDomain tgInfoDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", tgInfoDomain);
     }
 
     @PaginationSupport
     @Override
-    public TgInfoDomain findByKey(TgInfoDomain arg0) {
+    public List<TgInfoDomain> findByWhere(TgInfoDomain tgInfoDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", tgInfoDomain);
     }
 
     @Override
-    public List<TgInfoDomain> findByWhere(TgInfoDomain arg0) {
+    public int update(TgInfoDomain tgInfoDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(TgInfoDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", tgInfoDomain);
     }
 
 }

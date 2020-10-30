@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 通道组
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.IPChnlGroupService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface IPChnlGroupService {
 
-	public int insert(PChnlGroupVO modelVO);
+	public int insert(PChnlGroupVO pChnlGroupVO);
 
-	public int update(PChnlGroupVO modelVO);
+	public int update(PChnlGroupVO pChnlGroupVO);
 
-	public int delete(PChnlGroupVO modelVO);
+	public int delete(PChnlGroupVO pChnlGroupVO);
 
-	public PChnlGroupVO findByKey(PChnlGroupVO modelVO);
+	public PChnlGroupVO findByKey(PChnlGroupVO pChnlGroupVO);
 
-	public List<PChnlGroupVO> findByWhere(PChnlGroupVO modelVO);
+	public List<PChnlGroupVO> findByWhere(PChnlGroupVO pChnlGroupVO);
 }

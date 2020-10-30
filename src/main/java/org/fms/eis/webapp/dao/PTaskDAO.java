@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 采集任务
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PTaskDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class PTaskDAO extends AbstractTransactionDAOSupport implements BaseDAO<PTaskDomain> {
 
     @Override
-    public int insert(PTaskDomain testDomain) {
+    public int insert(PTaskDomain pTaskDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pTaskDomain);
     }
 
     @Override
-    public int delete(PTaskDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PTaskDomain pTaskDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pTaskDomain);
+    }
+
+    @Override
+    public PTaskDomain findByKey(PTaskDomain pTaskDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pTaskDomain);
     }
 
     @PaginationSupport
     @Override
-    public PTaskDomain findByKey(PTaskDomain arg0) {
+    public List<PTaskDomain> findByWhere(PTaskDomain pTaskDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pTaskDomain);
     }
 
     @Override
-    public List<PTaskDomain> findByWhere(PTaskDomain arg0) {
+    public int update(PTaskDomain pTaskDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PTaskDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pTaskDomain);
     }
 
 }

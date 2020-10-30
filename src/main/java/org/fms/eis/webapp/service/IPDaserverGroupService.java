@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 采集主机组
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.IPDaserverGroupService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface IPDaserverGroupService {
 
-	public int insert(PDaserverGroupVO modelVO);
+	public int insert(PDaserverGroupVO pDaserverGroupVO);
 
-	public int update(PDaserverGroupVO modelVO);
+	public int update(PDaserverGroupVO pDaserverGroupVO);
 
-	public int delete(PDaserverGroupVO modelVO);
+	public int delete(PDaserverGroupVO pDaserverGroupVO);
 
-	public PDaserverGroupVO findByKey(PDaserverGroupVO modelVO);
+	public PDaserverGroupVO findByKey(PDaserverGroupVO pDaserverGroupVO);
 
-	public List<PDaserverGroupVO> findByWhere(PDaserverGroupVO modelVO);
+	public List<PDaserverGroupVO> findByWhere(PDaserverGroupVO pDaserverGroupVO);
 }

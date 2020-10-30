@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ *  下拉表 -迟子曰改
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.ISystemCommonConfigService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface ISystemCommonConfigService {
 
-	public int insert(SystemCommonConfigVO modelVO);
+	public int insert(SystemCommonConfigVO systemCommonConfigVO);
 
-	public int update(SystemCommonConfigVO modelVO);
+	public int update(SystemCommonConfigVO systemCommonConfigVO);
 
-	public int delete(SystemCommonConfigVO modelVO);
+	public int delete(SystemCommonConfigVO systemCommonConfigVO);
 
-	public SystemCommonConfigVO findByKey(SystemCommonConfigVO modelVO);
+	public SystemCommonConfigVO findByKey(SystemCommonConfigVO systemCommonConfigVO);
 
-	public List<SystemCommonConfigVO> findByWhere(SystemCommonConfigVO modelVO);
+	public List<SystemCommonConfigVO> findByWhere(SystemCommonConfigVO systemCommonConfigVO);
 }

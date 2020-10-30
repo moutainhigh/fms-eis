@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 通道参数表
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.PChannelDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.PChannelVO;
@@ -196,28 +198,8 @@ public class PChannelDomain extends Page implements MybatisEntity {
     }
 
     public PChannelVO domain2VO() {
-        PChannelVO testVO = new PChannelVO();
-        testVO.setId(this.id);
-        testVO.setCode(this.code);
-        testVO.setName(this.name);
-        testVO.setChnlGroupId(this.chnlGroupId);
-        testVO.setDeviceAddr1(this.deviceAddr1);
-        testVO.setDeviceAddr2(this.deviceAddr2);
-        testVO.setCtrlhostId(this.ctrlhostId);
-        testVO.setBaud(this.baud);
-        testVO.setDatabit(this.databit);
-        testVO.setStopbit(this.stopbit);
-        testVO.setCheckbit(this.checkbit);
-        testVO.setInitstr(this.initstr);
-        testVO.setProtocolId(this.protocolId);
-        testVO.setNormalopen(this.normalopen);
-        testVO.setStatus(this.status);
-        testVO.setWeight(this.weight);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        PChannelVO pChannelVO = ReflectUtil.cast(this, PChannelVO.class);
+        return pChannelVO;
     }
 
 }

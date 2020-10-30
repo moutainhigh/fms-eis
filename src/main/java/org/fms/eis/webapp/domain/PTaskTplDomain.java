@@ -1,11 +1,14 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 采集任务设置模板
+ * ※设置时根据设置的模板明细、任务明细自动生成终端的任务及明细
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.PTaskTplDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.PTaskTplVO;
@@ -115,19 +118,8 @@ public class PTaskTplDomain extends Page implements MybatisEntity {
     }
 
     public PTaskTplVO domain2VO() {
-        PTaskTplVO testVO = new PTaskTplVO();
-        testVO.setId(this.id);
-        testVO.setCode(this.code);
-        testVO.setName(this.name);
-        testVO.setProtocolId(this.protocolId);
-        testVO.setDefaultFlag(this.defaultFlag);
-        testVO.setStatus(this.status);
-        testVO.setWeight(this.weight);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        PTaskTplVO pTaskTplVO = ReflectUtil.cast(this, PTaskTplVO.class);
+        return pTaskTplVO;
     }
 
 }

@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 台区表
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.TgInfoDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.TgInfoVO;
@@ -24,8 +26,8 @@ public class TgInfoDomain extends Page implements MybatisEntity {
     private String status;    //状态
     private String commonTransClass;    //公变分类
     private Long businessPlaceCode;    //营业区域
-    private String tgCap;    //容量
-    private Long consId;    //大用户编码
+    private String tgCap;    //容量（为可并列运行的变压器容量之和）
+    private Long consId;    //大用户编码（用于专变台区）
 
     public Long getId() {
         return id;
@@ -124,20 +126,8 @@ public class TgInfoDomain extends Page implements MybatisEntity {
     }
 
     public TgInfoVO domain2VO() {
-        TgInfoVO testVO = new TgInfoVO();
-        testVO.setId(this.id);
-        testVO.setTgNo(this.tgNo);
-        testVO.setTgName(this.tgName);
-        testVO.setTgType(this.tgType);
-        testVO.setAddress(this.address);
-        testVO.setCreateDate(this.createDate);
-        testVO.setRemark(this.remark);
-        testVO.setStatus(this.status);
-        testVO.setCommonTransClass(this.commonTransClass);
-        testVO.setBusinessPlaceCode(this.businessPlaceCode);
-        testVO.setTgCap(this.tgCap);
-        testVO.setConsId(this.consId);
-        return testVO;
+        TgInfoVO tgInfoVO = ReflectUtil.cast(this, TgInfoVO.class);
+        return tgInfoVO;
     }
 
 }

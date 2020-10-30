@@ -2,8 +2,7 @@
  * Author : chizf
  * Date : 2020年10月22日 上午9:59:19
  * Title : org.fms.eis.webapp.action.TestAction.java
- *
-**/
+ **/
 package org.fms.eis.webapp.action;
 
 import org.fms.eis.webapp.service.ITestService;
@@ -22,19 +21,19 @@ import com.riozenc.titanTool.spring.web.http.HttpResult;
 @RequestMapping("test")
 public class TestAction {
 
-	@Autowired
-	@Qualifier("testServiceImpl")
-	private ITestService testService;
+    @Autowired
+    @Qualifier("testServiceImpl")
+    private ITestService testService;
 
-	@ResponseBody
-	@PostMapping(params = "method=insert")
-	public HttpResult<?> insert(@RequestBody TestVO testVO) {
-		int i =  testService.insert(testVO);
+    @ResponseBody
+    @PostMapping(params = "method=insert")
+    public HttpResult<?> insert(@RequestBody TestVO testVO) {
+        int i = testService.insert(testVO);
 
-		if (i > 0)
-			return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
-		else
-			return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+        if (i > 0)
+            return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+        else
+            return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
 
-	}
+    }
 }

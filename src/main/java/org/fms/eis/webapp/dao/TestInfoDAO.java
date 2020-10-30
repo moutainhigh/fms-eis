@@ -1,5 +1,5 @@
 /**
- * Author : chizf
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.TestInfoDAO.java
  **/
@@ -17,33 +17,33 @@ import java.util.List;
 public class TestInfoDAO extends AbstractTransactionDAOSupport implements BaseDAO<TestInfoDomain> {
 
     @Override
-    public int insert(TestInfoDomain testDomain) {
+    public int insert(TestInfoDomain testInfoDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", testInfoDomain);
     }
 
     @Override
-    public int delete(TestInfoDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(TestInfoDomain testInfoDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", testInfoDomain);
+    }
+
+    @Override
+    public TestInfoDomain findByKey(TestInfoDomain testInfoDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", testInfoDomain);
     }
 
     @PaginationSupport
     @Override
-    public TestInfoDomain findByKey(TestInfoDomain arg0) {
+    public List<TestInfoDomain> findByWhere(TestInfoDomain testInfoDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", testInfoDomain);
     }
 
     @Override
-    public List<TestInfoDomain> findByWhere(TestInfoDomain arg0) {
+    public int update(TestInfoDomain testInfoDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(TestInfoDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", testInfoDomain);
     }
 
 }

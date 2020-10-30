@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.ITestInfoService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface ITestInfoService {
 
-	public int insert(TestInfoVO modelVO);
+	public int insert(TestInfoVO testInfoVO);
 
-	public int update(TestInfoVO modelVO);
+	public int update(TestInfoVO testInfoVO);
 
-	public int delete(TestInfoVO modelVO);
+	public int delete(TestInfoVO testInfoVO);
 
-	public TestInfoVO findByKey(TestInfoVO modelVO);
+	public TestInfoVO findByKey(TestInfoVO testInfoVO);
 
-	public List<TestInfoVO> findByWhere(TestInfoVO modelVO);
+	public List<TestInfoVO> findByWhere(TestInfoVO testInfoVO);
 }

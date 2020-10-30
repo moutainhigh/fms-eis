@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 计算任务类型定义表
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.IPWsdCalcTaskService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface IPWsdCalcTaskService {
 
-	public int insert(PWsdCalcTaskVO modelVO);
+	public int insert(PWsdCalcTaskVO pWsdCalcTaskVO);
 
-	public int update(PWsdCalcTaskVO modelVO);
+	public int update(PWsdCalcTaskVO pWsdCalcTaskVO);
 
-	public int delete(PWsdCalcTaskVO modelVO);
+	public int delete(PWsdCalcTaskVO pWsdCalcTaskVO);
 
-	public PWsdCalcTaskVO findByKey(PWsdCalcTaskVO modelVO);
+	public PWsdCalcTaskVO findByKey(PWsdCalcTaskVO pWsdCalcTaskVO);
 
-	public List<PWsdCalcTaskVO> findByWhere(PWsdCalcTaskVO modelVO);
+	public List<PWsdCalcTaskVO> findByWhere(PWsdCalcTaskVO pWsdCalcTaskVO);
 }

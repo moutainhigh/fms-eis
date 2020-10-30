@@ -1,12 +1,14 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:51
+ * 通道组
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.service.impl.PChnlGroupServiceImpl.java
  **/
 package org.fms.eis.webapp.service.impl;
 
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PChnlGroupDAO;
 import org.fms.eis.webapp.domain.PChnlGroupDomain;
 import org.fms.eis.webapp.service.IPChnlGroupService;
@@ -18,29 +20,29 @@ import java.util.*;
 public class PChnlGroupServiceImpl implements IPChnlGroupService {
 
     @TransactionDAO("read")
-    private PChnlGroupDAO testReadDAO;
+    private PChnlGroupDAO pChnlGroupReadDAO;
 
     @TransactionDAO("write")
-    private PChnlGroupDAO testWriteDAO;
+    private PChnlGroupDAO pChnlGroupWriteDAO;
 
     @Override
-    public int insert(PChnlGroupVO testVO) {
-        return testWriteDAO.insert(testVO.vo2Domain());
+    public int insert(PChnlGroupVO pChnlGroupVO) {
+        return pChnlGroupWriteDAO.insert(pChnlGroupVO.vo2Domain());
     }
 
     @Override
-    public int update(PChnlGroupVO testVO) {
-        return testWriteDAO.update(testVO.vo2Domain());
+    public int update(PChnlGroupVO pChnlGroupVO) {
+        return pChnlGroupWriteDAO.update(pChnlGroupVO.vo2Domain());
     }
 
     @Override
-    public int delete(PChnlGroupVO testVO) {
-        return testWriteDAO.delete(testVO.vo2Domain());
+    public int delete(PChnlGroupVO pChnlGroupVO) {
+        return pChnlGroupWriteDAO.delete(pChnlGroupVO.vo2Domain());
     }
 
     @Override
-    public PChnlGroupVO findByKey(PChnlGroupVO testVO) {
-        PChnlGroupDomain model = testReadDAO.findByKey(testVO.vo2Domain());
+    public PChnlGroupVO findByKey(PChnlGroupVO pChnlGroupVO) {
+        PChnlGroupDomain model = pChnlGroupReadDAO.findByKey(pChnlGroupVO.vo2Domain());
         PChnlGroupVO modelVo = new PChnlGroupVO();
         if (model != null) {
             modelVo = model.domain2VO();
@@ -51,13 +53,15 @@ public class PChnlGroupServiceImpl implements IPChnlGroupService {
     }
 
     @Override
-    public List<PChnlGroupVO> findByWhere(PChnlGroupVO testVO) {
-        List<PChnlGroupDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
-        List<PChnlGroupVO> lstVo = new ArrayList<PChnlGroupVO>();
-        for (PChnlGroupDomain item : lstDomain) {
-            lstVo.add(item.domain2VO());
-        }
-        return lstVo;
+    public List<PChnlGroupVO> findByWhere(PChnlGroupVO pChnlGroupVO) {
+        PChnlGroupDomain pChnlGroupDomain = pChnlGroupVO.vo2Domain();
+        List<PChnlGroupDomain> lstDomain = pChnlGroupReadDAO.findByWhere(pChnlGroupDomain);
+        pChnlGroupVO.setTotalRow(pChnlGroupDomain.getTotalRow());
+        pChnlGroupVO.setPageCurrent(pChnlGroupDomain.getPageCurrent());
+        pChnlGroupVO.setDbName(pChnlGroupDomain.getDbName());
+        pChnlGroupVO.setPageSize(pChnlGroupDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PChnlGroupVO.class);
     }
 
 }

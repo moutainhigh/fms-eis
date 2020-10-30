@@ -23,7 +23,7 @@
         </where>
     </select>
     <insert id="insert" parameterType="TestInfoDomain" flushCache="true" useGeneratedKeys="true">
-		INSERT INTO TEST_INFO
+		insert into TEST_INFO
 			(ID,USER_NAME)
 			VALUES(#{id},#{userName})
 
@@ -31,21 +31,18 @@
     <update id="update" parameterType="TestInfoDomain" flushCache="true">
         update TEST_INFO
         <set>
-
             <if test="userName !=null">
                 USER_NAME = #{userName},
             </if>
         </set>
         <where>
             and ID = #{id}
-
         </where>
     </update>
     <delete id="delete" parameterType="TestInfoDomain" flushCache="true">
         delete from TEST_INFO
         <where>
             and ID = #{id}
-
         </where>
     </delete>
 </mapper>

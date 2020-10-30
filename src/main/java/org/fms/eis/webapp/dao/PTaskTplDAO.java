@@ -1,5 +1,7 @@
 /**
- * Author : chizf
+ * 采集任务设置模板
+ * ※设置时根据设置的模板明细、任务明细自动生成终端的任务及明细
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PTaskTplDAO.java
  **/
@@ -17,33 +19,33 @@ import java.util.List;
 public class PTaskTplDAO extends AbstractTransactionDAOSupport implements BaseDAO<PTaskTplDomain> {
 
     @Override
-    public int insert(PTaskTplDomain testDomain) {
+    public int insert(PTaskTplDomain pTaskTplDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pTaskTplDomain);
     }
 
     @Override
-    public int delete(PTaskTplDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PTaskTplDomain pTaskTplDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pTaskTplDomain);
+    }
+
+    @Override
+    public PTaskTplDomain findByKey(PTaskTplDomain pTaskTplDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pTaskTplDomain);
     }
 
     @PaginationSupport
     @Override
-    public PTaskTplDomain findByKey(PTaskTplDomain arg0) {
+    public List<PTaskTplDomain> findByWhere(PTaskTplDomain pTaskTplDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pTaskTplDomain);
     }
 
     @Override
-    public List<PTaskTplDomain> findByWhere(PTaskTplDomain arg0) {
+    public int update(PTaskTplDomain pTaskTplDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PTaskTplDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pTaskTplDomain);
     }
 
 }

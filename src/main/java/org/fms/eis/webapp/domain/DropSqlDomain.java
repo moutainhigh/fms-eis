@@ -1,11 +1,12 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.DropSqlDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.DropSqlVO;
@@ -79,15 +80,8 @@ public class DropSqlDomain extends Page implements MybatisEntity {
     }
 
     public DropSqlVO domain2VO() {
-        DropSqlVO testVO = new DropSqlVO();
-        testVO.setId(this.id);
-        testVO.setDropCode(this.dropCode);
-        testVO.setDropName(this.dropName);
-        testVO.setDropSql(this.dropSql);
-        testVO.setDropType(this.dropType);
-        testVO.setRemark(this.remark);
-        testVO.setStatus(this.status);
-        return testVO;
+        DropSqlVO dropSqlVO = ReflectUtil.cast(this, DropSqlVO.class);
+        return dropSqlVO;
     }
 
 }

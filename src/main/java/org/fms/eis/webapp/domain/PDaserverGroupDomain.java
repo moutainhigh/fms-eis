@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 采集主机组
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.PDaserverGroupDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.PDaserverGroupVO;
@@ -97,17 +99,8 @@ public class PDaserverGroupDomain extends Page implements MybatisEntity {
     }
 
     public PDaserverGroupVO domain2VO() {
-        PDaserverGroupVO testVO = new PDaserverGroupVO();
-        testVO.setId(this.id);
-        testVO.setCode(this.code);
-        testVO.setName(this.name);
-        testVO.setStatus(this.status);
-        testVO.setWeight(this.weight);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        PDaserverGroupVO pDaserverGroupVO = ReflectUtil.cast(this, PDaserverGroupVO.class);
+        return pDaserverGroupVO;
     }
 
 }

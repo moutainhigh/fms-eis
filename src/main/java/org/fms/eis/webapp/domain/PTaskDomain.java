@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 采集任务
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.PTaskDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.PTaskVO;
@@ -232,32 +234,8 @@ public class PTaskDomain extends Page implements MybatisEntity {
     }
 
     public PTaskVO domain2VO() {
-        PTaskVO testVO = new PTaskVO();
-        testVO.setId(this.id);
-        testVO.setCode(this.code);
-        testVO.setName(this.name);
-        testVO.setProtocolId(this.protocolId);
-        testVO.setTaskId(this.taskId);
-        testVO.setTaskNo(this.taskNo);
-        testVO.setPnType(this.pnType);
-        testVO.setObjProp(this.objProp);
-        testVO.setTaskBegintime(this.taskBegintime);
-        testVO.setTaskCycle(this.taskCycle);
-        testVO.setCycleUnit(this.cycleUnit);
-        testVO.setDataDensity(this.dataDensity);
-        testVO.setFreezeType(this.freezeType);
-        testVO.setMaxDatacycle(this.maxDatacycle);
-        testVO.setMaxFailnum(this.maxFailnum);
-        testVO.setRepeatCycle(this.repeatCycle);
-        testVO.setPriority(this.priority);
-        testVO.setTaskSrc(this.taskSrc);
-        testVO.setStatus(this.status);
-        testVO.setWeight(this.weight);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        PTaskVO pTaskVO = ReflectUtil.cast(this, PTaskVO.class);
+        return pTaskVO;
     }
 
 }

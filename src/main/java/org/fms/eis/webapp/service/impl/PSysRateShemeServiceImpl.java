@@ -1,13 +1,14 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:51
+ * 多费率方案定义表
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.service.impl.PSysRateShemeServiceImpl.java
- *
  **/
 package org.fms.eis.webapp.service.impl;
 
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PSysRateShemeDAO;
 import org.fms.eis.webapp.domain.PSysRateShemeDomain;
 import org.fms.eis.webapp.service.IPSysRateShemeService;
@@ -18,50 +19,49 @@ import java.util.*;
 @TransactionService
 public class PSysRateShemeServiceImpl implements IPSysRateShemeService {
 
-	@TransactionDAO("read")
-	private PSysRateShemeDAO testReadDAO;
+    @TransactionDAO("read")
+    private PSysRateShemeDAO pSysRateShemeReadDAO;
 
-	@TransactionDAO("write")
-	private PSysRateShemeDAO testWriteDAO;
+    @TransactionDAO("write")
+    private PSysRateShemeDAO pSysRateShemeWriteDAO;
 
-	@Override
-	public int insert(PSysRateShemeVO testVO) {
-		return testWriteDAO.insert(testVO.vo2Domain());
-	}
+    @Override
+    public int insert(PSysRateShemeVO pSysRateShemeVO) {
+        return pSysRateShemeWriteDAO.insert(pSysRateShemeVO.vo2Domain());
+    }
 
-	@Override
-	public int update(PSysRateShemeVO testVO) {
-		return testWriteDAO.update(testVO.vo2Domain());
-	}
+    @Override
+    public int update(PSysRateShemeVO pSysRateShemeVO) {
+        return pSysRateShemeWriteDAO.update(pSysRateShemeVO.vo2Domain());
+    }
 
-	@Override
-	public int delete(PSysRateShemeVO testVO) {
-		return testWriteDAO.delete(testVO.vo2Domain());
-	}
+    @Override
+    public int delete(PSysRateShemeVO pSysRateShemeVO) {
+        return pSysRateShemeWriteDAO.delete(pSysRateShemeVO.vo2Domain());
+    }
 
-	@Override
-	public PSysRateShemeVO findByKey(PSysRateShemeVO testVO){
-		PSysRateShemeDomain model= testReadDAO.findByKey(testVO.vo2Domain());
-		PSysRateShemeVO modelVo=new PSysRateShemeVO();
-		if(model!=null)
-		{
-			modelVo=model.domain2VO();
-		}
-		else
-		{
-			modelVo=null;
-		}
-		return modelVo;
-	}
+    @Override
+    public PSysRateShemeVO findByKey(PSysRateShemeVO pSysRateShemeVO) {
+        PSysRateShemeDomain model = pSysRateShemeReadDAO.findByKey(pSysRateShemeVO.vo2Domain());
+        PSysRateShemeVO modelVo = new PSysRateShemeVO();
+        if (model != null) {
+            modelVo = model.domain2VO();
+        } else {
+            modelVo = null;
+        }
+        return modelVo;
+    }
 
-	@Override
-	public List<PSysRateShemeVO> findByWhere(PSysRateShemeVO testVO) {
-		List<PSysRateShemeDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<PSysRateShemeVO> lstVo=new ArrayList<PSysRateShemeVO>();
-		for (PSysRateShemeDomain item:lstDomain) {
-			lstVo.add(item.domain2VO());
-		}
-		return  lstVo;
-	}
+    @Override
+    public List<PSysRateShemeVO> findByWhere(PSysRateShemeVO pSysRateShemeVO) {
+        PSysRateShemeDomain pSysRateShemeDomain = pSysRateShemeVO.vo2Domain();
+        List<PSysRateShemeDomain> lstDomain = pSysRateShemeReadDAO.findByWhere(pSysRateShemeDomain);
+        pSysRateShemeVO.setTotalRow(pSysRateShemeDomain.getTotalRow());
+        pSysRateShemeVO.setPageCurrent(pSysRateShemeDomain.getPageCurrent());
+        pSysRateShemeVO.setDbName(pSysRateShemeDomain.getDbName());
+        pSysRateShemeVO.setPageSize(pSysRateShemeDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PSysRateShemeVO.class);
+    }
 
 }

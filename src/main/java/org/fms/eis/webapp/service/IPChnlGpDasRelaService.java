@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 通道组主机关系
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.IPChnlGpDasRelaService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface IPChnlGpDasRelaService {
 
-	public int insert(PChnlGpDasRelaVO modelVO);
+	public int insert(PChnlGpDasRelaVO pChnlGpDasRelaVO);
 
-	public int update(PChnlGpDasRelaVO modelVO);
+	public int update(PChnlGpDasRelaVO pChnlGpDasRelaVO);
 
-	public int delete(PChnlGpDasRelaVO modelVO);
+	public int delete(PChnlGpDasRelaVO pChnlGpDasRelaVO);
 
-	public PChnlGpDasRelaVO findByKey(PChnlGpDasRelaVO modelVO);
+	public PChnlGpDasRelaVO findByKey(PChnlGpDasRelaVO pChnlGpDasRelaVO);
 
-	public List<PChnlGpDasRelaVO> findByWhere(PChnlGpDasRelaVO modelVO);
+	public List<PChnlGpDasRelaVO> findByWhere(PChnlGpDasRelaVO pChnlGpDasRelaVO);
 }

@@ -35,7 +35,7 @@
         </where>
     </select>
     <insert id="insert" parameterType="PSysRateShemeDomain" flushCache="true" useGeneratedKeys="true">
-		INSERT INTO P_SYS_RATE_SHEME
+		insert into P_SYS_RATE_SHEME
 			(ID,NAME,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
 			VALUES(#{id},#{name},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
@@ -43,37 +43,30 @@
     <update id="update" parameterType="PSysRateShemeDomain" flushCache="true">
         update P_SYS_RATE_SHEME
         <set>
-
             <if test="name !=null">
                 NAME = #{name},
             </if>
-
             <if test="creatorId !=null">
                 CREATOR_ID = #{creatorId},
             </if>
-
             <if test="createDate !=null">
                 CREATE_DATE = #{createDate},
             </if>
-
             <if test="lastModifierId !=null">
                 LAST_MODIFIER_ID = #{lastModifierId},
             </if>
-
             <if test="lastModifyTime !=null">
                 LAST_MODIFY_TIME = #{lastModifyTime},
             </if>
         </set>
         <where>
             and ID = #{id}
-
         </where>
     </update>
     <delete id="delete" parameterType="PSysRateShemeDomain" flushCache="true">
         delete from P_SYS_RATE_SHEME
         <where>
             and ID = #{id}
-
         </where>
     </delete>
 </mapper>

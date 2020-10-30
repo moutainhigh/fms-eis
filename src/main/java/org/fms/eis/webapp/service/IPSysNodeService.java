@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 系统节点
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.IPSysNodeService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface IPSysNodeService {
 
-	public int insert(PSysNodeVO modelVO);
+	public int insert(PSysNodeVO pSysNodeVO);
 
-	public int update(PSysNodeVO modelVO);
+	public int update(PSysNodeVO pSysNodeVO);
 
-	public int delete(PSysNodeVO modelVO);
+	public int delete(PSysNodeVO pSysNodeVO);
 
-	public PSysNodeVO findByKey(PSysNodeVO modelVO);
+	public PSysNodeVO findByKey(PSysNodeVO pSysNodeVO);
 
-	public List<PSysNodeVO> findByWhere(PSysNodeVO modelVO);
+	public List<PSysNodeVO> findByWhere(PSysNodeVO pSysNodeVO);
 }

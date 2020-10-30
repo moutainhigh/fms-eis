@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 采集点
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.RCpDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.RCpVO;
@@ -322,42 +324,8 @@ public class RCpDomain extends Page implements MybatisEntity {
     }
 
     public RCpVO domain2VO() {
-        RCpVO testVO = new RCpVO();
-        testVO.setId(this.id);
-        testVO.setCode(this.code);
-        testVO.setName(this.name);
-        testVO.setCpTypeCode(this.cpTypeCode);
-        testVO.setStatusCode(this.statusCode);
-        testVO.setCpAddr(this.cpAddr);
-        testVO.setGpsLongitude(this.gpsLongitude);
-        testVO.setGpsLatitude(this.gpsLatitude);
-        testVO.setBusinessPlaceCode(this.businessPlaceCode);
-        testVO.setTplId(this.tplId);
-        testVO.setTerminalId(this.terminalId);
-        testVO.setRelaObjType(this.relaObjType);
-        testVO.setRelaObjId(this.relaObjId);
-        testVO.setCFlag(this.cFlag);
-        testVO.setTerminalAddr(this.terminalAddr);
-        testVO.setProtocolId(this.protocolId);
-        testVO.setCtrlHostid(this.ctrlHostid);
-        testVO.setMasterChnlGroup(this.masterChnlGroup);
-        testVO.setMasterIpPort(this.masterIpPort);
-        testVO.setMasterTel(this.masterTel);
-        testVO.setSpareChnlGroup(this.spareChnlGroup);
-        testVO.setSpareIpPort(this.spareIpPort);
-        testVO.setSpareTel(this.spareTel);
-        testVO.setGprsCode(this.gprsCode);
-        testVO.setHeartbeatCycle(this.heartbeatCycle);
-        testVO.setAlgNo(this.algNo);
-        testVO.setAlgKey(this.algKey);
-        testVO.setAreaCode(this.areaCode);
-        testVO.setMasterid(this.masterid);
-        testVO.setGuid(this.guid);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        RCpVO rCpVO = ReflectUtil.cast(this, RCpVO.class);
+        return rCpVO;
     }
 
 }

@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 采集任务明细
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PTaskDetailDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class PTaskDetailDAO extends AbstractTransactionDAOSupport implements BaseDAO<PTaskDetailDomain> {
 
     @Override
-    public int insert(PTaskDetailDomain testDomain) {
+    public int insert(PTaskDetailDomain pTaskDetailDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pTaskDetailDomain);
     }
 
     @Override
-    public int delete(PTaskDetailDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PTaskDetailDomain pTaskDetailDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pTaskDetailDomain);
+    }
+
+    @Override
+    public PTaskDetailDomain findByKey(PTaskDetailDomain pTaskDetailDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pTaskDetailDomain);
     }
 
     @PaginationSupport
     @Override
-    public PTaskDetailDomain findByKey(PTaskDetailDomain arg0) {
+    public List<PTaskDetailDomain> findByWhere(PTaskDetailDomain pTaskDetailDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pTaskDetailDomain);
     }
 
     @Override
-    public List<PTaskDetailDomain> findByWhere(PTaskDetailDomain arg0) {
+    public int update(PTaskDetailDomain pTaskDetailDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PTaskDetailDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pTaskDetailDomain);
     }
 
 }

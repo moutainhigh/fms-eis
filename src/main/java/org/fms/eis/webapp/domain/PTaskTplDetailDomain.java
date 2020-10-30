@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 采集任务模板明细
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.PTaskTplDetailDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.PTaskTplDetailVO;
@@ -88,16 +90,8 @@ public class PTaskTplDetailDomain extends Page implements MybatisEntity {
     }
 
     public PTaskTplDetailVO domain2VO() {
-        PTaskTplDetailVO testVO = new PTaskTplDetailVO();
-        testVO.setId(this.id);
-        testVO.setTplId(this.tplId);
-        testVO.setTaskId(this.taskId);
-        testVO.setWeight(this.weight);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        PTaskTplDetailVO pTaskTplDetailVO = ReflectUtil.cast(this, PTaskTplDetailVO.class);
+        return pTaskTplDetailVO;
     }
 
 }

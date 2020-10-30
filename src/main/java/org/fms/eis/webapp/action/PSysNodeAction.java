@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:19
+ * 系统节点
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.action.PSysNodeAction.java
  **/
 package org.fms.eis.webapp.action;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPSysNodeService;
 import org.fms.eis.webapp.vo.PSysNodeVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,61 +30,60 @@ public class PSysNodeAction {
 
     @ResponseBody
     @PostMapping(params = "method=insert")
-    public HttpResult<?> insert(@RequestBody PSysNodeVO _PSysNodeVO) {
-        int i = pSysNodeService.insert(_PSysNodeVO);
+    public HttpResult<?> insert(@RequestBody PSysNodeVO pSysNodeVO) {
+        int i = pSysNodeService.insert(pSysNodeVO);
 
-        if (i > 0)
+        if (i > 0) {
             return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
-        else
+        } else {
             return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+        }
 
     }
 
     @ResponseBody
     @PostMapping(params = "method=update")
-    public HttpResult<?> update(@RequestBody PSysNodeVO _pSysNodeVO) {
-        int i = pSysNodeService.update(_pSysNodeVO);
+    public HttpResult<?> update(@RequestBody PSysNodeVO pSysNodeVO) {
+        int i = pSysNodeService.update(pSysNodeVO);
 
-        if (i > 0)
+        if (i > 0) {
             return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
-        else
+        } else {
             return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+        }
 
     }
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody PSysNodeVO _PSysNodeVO) {
-        int i = pSysNodeService.delete(_PSysNodeVO);
+    public HttpResult<?> delete(@RequestBody PSysNodeVO pSysNodeVO) {
+        int i = pSysNodeService.delete(pSysNodeVO);
 
-        if (i > 0)
+        if (i > 0) {
             return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        else
+        } else {
             return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
+        }
 
     }
 
     @ResponseBody
     @PostMapping(params = "method=findByKey")
-    public HttpResult<?> findByKey(@RequestBody PSysNodeVO _PSysNodeVO) {
-        PSysNodeVO modelVo = pSysNodeService.findByKey(_PSysNodeVO);
+    public HttpResult<?> findByKey(@RequestBody PSysNodeVO pSysNodeVO) {
+        PSysNodeVO modelVo = pSysNodeService.findByKey(pSysNodeVO);
 
-        if (modelVo != null)
+        if (modelVo != null) {
             return new HttpResult<PSysNodeVO>(HttpResult.SUCCESS, "获取成功", modelVo);
-        else
-            return new HttpResult<PSysNodeVO>(HttpResult.ERROR, "获取失败", null);
+        } else {
+            return new HttpResult<PSysNodeVO>(HttpResult.ERROR, "未检索到相关数据!", null);
+        }
 
     }
 
     @ResponseBody
     @PostMapping(params = "method=findByWhere")
-    public HttpResult<?> findByWhere(@RequestBody PSysNodeVO _PSysNodeVO) {
-        List<PSysNodeVO> listVo = pSysNodeService.findByWhere(_PSysNodeVO);
+    public HttpResultPagination<?> findByWhere(@RequestBody PSysNodeVO pSysNodeVO) {
 
-        if (listVo != null)
-            return new HttpResult<List<PSysNodeVO>>(HttpResult.SUCCESS, "查询成功", listVo);
-        else
-            return new HttpResult<List<PSysNodeVO>>(HttpResult.ERROR, "查询失败", null);
-
+        return new HttpResultPagination(pSysNodeVO, pSysNodeService.findByWhere(pSysNodeVO));
     }
 }

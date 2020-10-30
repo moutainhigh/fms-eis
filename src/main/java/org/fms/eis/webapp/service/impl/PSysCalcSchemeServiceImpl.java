@@ -1,12 +1,14 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:51
+ * 计算方案
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.service.impl.PSysCalcSchemeServiceImpl.java
  **/
 package org.fms.eis.webapp.service.impl;
 
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PSysCalcSchemeDAO;
 import org.fms.eis.webapp.domain.PSysCalcSchemeDomain;
 import org.fms.eis.webapp.service.IPSysCalcSchemeService;
@@ -18,29 +20,29 @@ import java.util.*;
 public class PSysCalcSchemeServiceImpl implements IPSysCalcSchemeService {
 
     @TransactionDAO("read")
-    private PSysCalcSchemeDAO testReadDAO;
+    private PSysCalcSchemeDAO pSysCalcSchemeReadDAO;
 
     @TransactionDAO("write")
-    private PSysCalcSchemeDAO testWriteDAO;
+    private PSysCalcSchemeDAO pSysCalcSchemeWriteDAO;
 
     @Override
-    public int insert(PSysCalcSchemeVO testVO) {
-        return testWriteDAO.insert(testVO.vo2Domain());
+    public int insert(PSysCalcSchemeVO pSysCalcSchemeVO) {
+        return pSysCalcSchemeWriteDAO.insert(pSysCalcSchemeVO.vo2Domain());
     }
 
     @Override
-    public int update(PSysCalcSchemeVO testVO) {
-        return testWriteDAO.update(testVO.vo2Domain());
+    public int update(PSysCalcSchemeVO pSysCalcSchemeVO) {
+        return pSysCalcSchemeWriteDAO.update(pSysCalcSchemeVO.vo2Domain());
     }
 
     @Override
-    public int delete(PSysCalcSchemeVO testVO) {
-        return testWriteDAO.delete(testVO.vo2Domain());
+    public int delete(PSysCalcSchemeVO pSysCalcSchemeVO) {
+        return pSysCalcSchemeWriteDAO.delete(pSysCalcSchemeVO.vo2Domain());
     }
 
     @Override
-    public PSysCalcSchemeVO findByKey(PSysCalcSchemeVO testVO) {
-        PSysCalcSchemeDomain model = testReadDAO.findByKey(testVO.vo2Domain());
+    public PSysCalcSchemeVO findByKey(PSysCalcSchemeVO pSysCalcSchemeVO) {
+        PSysCalcSchemeDomain model = pSysCalcSchemeReadDAO.findByKey(pSysCalcSchemeVO.vo2Domain());
         PSysCalcSchemeVO modelVo = new PSysCalcSchemeVO();
         if (model != null) {
             modelVo = model.domain2VO();
@@ -51,13 +53,15 @@ public class PSysCalcSchemeServiceImpl implements IPSysCalcSchemeService {
     }
 
     @Override
-    public List<PSysCalcSchemeVO> findByWhere(PSysCalcSchemeVO testVO) {
-        List<PSysCalcSchemeDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
-        List<PSysCalcSchemeVO> lstVo = new ArrayList<PSysCalcSchemeVO>();
-        for (PSysCalcSchemeDomain item : lstDomain) {
-            lstVo.add(item.domain2VO());
-        }
-        return lstVo;
+    public List<PSysCalcSchemeVO> findByWhere(PSysCalcSchemeVO pSysCalcSchemeVO) {
+        PSysCalcSchemeDomain pSysCalcSchemeDomain = pSysCalcSchemeVO.vo2Domain();
+        List<PSysCalcSchemeDomain> lstDomain = pSysCalcSchemeReadDAO.findByWhere(pSysCalcSchemeDomain);
+        pSysCalcSchemeVO.setTotalRow(pSysCalcSchemeDomain.getTotalRow());
+        pSysCalcSchemeVO.setPageCurrent(pSysCalcSchemeDomain.getPageCurrent());
+        pSysCalcSchemeVO.setDbName(pSysCalcSchemeDomain.getDbName());
+        pSysCalcSchemeVO.setPageSize(pSysCalcSchemeDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PSysCalcSchemeVO.class);
     }
 
 }

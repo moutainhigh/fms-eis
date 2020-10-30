@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 采集点
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.IRCpService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface IRCpService {
 
-	public int insert(RCpVO modelVO);
+	public int insert(RCpVO rCpVO);
 
-	public int update(RCpVO modelVO);
+	public int update(RCpVO rCpVO);
 
-	public int delete(RCpVO modelVO);
+	public int delete(RCpVO rCpVO);
 
-	public RCpVO findByKey(RCpVO modelVO);
+	public RCpVO findByKey(RCpVO rCpVO);
 
-	public List<RCpVO> findByWhere(RCpVO modelVO);
+	public List<RCpVO> findByWhere(RCpVO rCpVO);
 }

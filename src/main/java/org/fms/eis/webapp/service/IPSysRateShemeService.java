@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 多费率方案定义表
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.IPSysRateShemeService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface IPSysRateShemeService {
 
-	public int insert(PSysRateShemeVO modelVO);
+	public int insert(PSysRateShemeVO pSysRateShemeVO);
 
-	public int update(PSysRateShemeVO modelVO);
+	public int update(PSysRateShemeVO pSysRateShemeVO);
 
-	public int delete(PSysRateShemeVO modelVO);
+	public int delete(PSysRateShemeVO pSysRateShemeVO);
 
-	public PSysRateShemeVO findByKey(PSysRateShemeVO modelVO);
+	public PSysRateShemeVO findByKey(PSysRateShemeVO pSysRateShemeVO);
 
-	public List<PSysRateShemeVO> findByWhere(PSysRateShemeVO modelVO);
+	public List<PSysRateShemeVO> findByWhere(PSysRateShemeVO pSysRateShemeVO);
 }

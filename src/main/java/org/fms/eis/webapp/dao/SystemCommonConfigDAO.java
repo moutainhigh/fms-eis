@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 下拉表 -迟子曰改
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.SystemCommonConfigDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class SystemCommonConfigDAO extends AbstractTransactionDAOSupport implements BaseDAO<SystemCommonConfigDomain> {
 
     @Override
-    public int insert(SystemCommonConfigDomain testDomain) {
+    public int insert(SystemCommonConfigDomain systemCommonConfigDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", systemCommonConfigDomain);
     }
 
     @Override
-    public int delete(SystemCommonConfigDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(SystemCommonConfigDomain systemCommonConfigDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", systemCommonConfigDomain);
+    }
+
+    @Override
+    public SystemCommonConfigDomain findByKey(SystemCommonConfigDomain systemCommonConfigDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", systemCommonConfigDomain);
     }
 
     @PaginationSupport
     @Override
-    public SystemCommonConfigDomain findByKey(SystemCommonConfigDomain arg0) {
+    public List<SystemCommonConfigDomain> findByWhere(SystemCommonConfigDomain systemCommonConfigDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", systemCommonConfigDomain);
     }
 
     @Override
-    public List<SystemCommonConfigDomain> findByWhere(SystemCommonConfigDomain arg0) {
+    public int update(SystemCommonConfigDomain systemCommonConfigDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(SystemCommonConfigDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", systemCommonConfigDomain);
     }
 
 }

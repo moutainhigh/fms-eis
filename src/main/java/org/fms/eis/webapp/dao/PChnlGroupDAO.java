@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 通道组
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PChnlGroupDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class PChnlGroupDAO extends AbstractTransactionDAOSupport implements BaseDAO<PChnlGroupDomain> {
 
     @Override
-    public int insert(PChnlGroupDomain testDomain) {
+    public int insert(PChnlGroupDomain pChnlGroupDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pChnlGroupDomain);
     }
 
     @Override
-    public int delete(PChnlGroupDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PChnlGroupDomain pChnlGroupDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pChnlGroupDomain);
+    }
+
+    @Override
+    public PChnlGroupDomain findByKey(PChnlGroupDomain pChnlGroupDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pChnlGroupDomain);
     }
 
     @PaginationSupport
     @Override
-    public PChnlGroupDomain findByKey(PChnlGroupDomain arg0) {
+    public List<PChnlGroupDomain> findByWhere(PChnlGroupDomain pChnlGroupDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pChnlGroupDomain);
     }
 
     @Override
-    public List<PChnlGroupDomain> findByWhere(PChnlGroupDomain arg0) {
+    public int update(PChnlGroupDomain pChnlGroupDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PChnlGroupDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pChnlGroupDomain);
     }
 
 }

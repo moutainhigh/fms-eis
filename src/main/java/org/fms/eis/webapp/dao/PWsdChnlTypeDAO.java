@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 采集主机组
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PWsdChnlTypeDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class PWsdChnlTypeDAO extends AbstractTransactionDAOSupport implements BaseDAO<PWsdChnlTypeDomain> {
 
     @Override
-    public int insert(PWsdChnlTypeDomain testDomain) {
+    public int insert(PWsdChnlTypeDomain pWsdChnlTypeDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pWsdChnlTypeDomain);
     }
 
     @Override
-    public int delete(PWsdChnlTypeDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PWsdChnlTypeDomain pWsdChnlTypeDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pWsdChnlTypeDomain);
+    }
+
+    @Override
+    public PWsdChnlTypeDomain findByKey(PWsdChnlTypeDomain pWsdChnlTypeDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pWsdChnlTypeDomain);
     }
 
     @PaginationSupport
     @Override
-    public PWsdChnlTypeDomain findByKey(PWsdChnlTypeDomain arg0) {
+    public List<PWsdChnlTypeDomain> findByWhere(PWsdChnlTypeDomain pWsdChnlTypeDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pWsdChnlTypeDomain);
     }
 
     @Override
-    public List<PWsdChnlTypeDomain> findByWhere(PWsdChnlTypeDomain arg0) {
+    public int update(PWsdChnlTypeDomain pWsdChnlTypeDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PWsdChnlTypeDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pWsdChnlTypeDomain);
     }
 
 }

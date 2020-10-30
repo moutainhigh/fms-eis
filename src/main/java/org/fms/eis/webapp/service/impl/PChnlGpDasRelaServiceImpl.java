@@ -1,12 +1,14 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:51
+ * 通道组主机关系
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.service.impl.PChnlGpDasRelaServiceImpl.java
  **/
 package org.fms.eis.webapp.service.impl;
 
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PChnlGpDasRelaDAO;
 import org.fms.eis.webapp.domain.PChnlGpDasRelaDomain;
 import org.fms.eis.webapp.service.IPChnlGpDasRelaService;
@@ -18,29 +20,29 @@ import java.util.*;
 public class PChnlGpDasRelaServiceImpl implements IPChnlGpDasRelaService {
 
     @TransactionDAO("read")
-    private PChnlGpDasRelaDAO testReadDAO;
+    private PChnlGpDasRelaDAO pChnlGpDasRelaReadDAO;
 
     @TransactionDAO("write")
-    private PChnlGpDasRelaDAO testWriteDAO;
+    private PChnlGpDasRelaDAO pChnlGpDasRelaWriteDAO;
 
     @Override
-    public int insert(PChnlGpDasRelaVO testVO) {
-        return testWriteDAO.insert(testVO.vo2Domain());
+    public int insert(PChnlGpDasRelaVO pChnlGpDasRelaVO) {
+        return pChnlGpDasRelaWriteDAO.insert(pChnlGpDasRelaVO.vo2Domain());
     }
 
     @Override
-    public int update(PChnlGpDasRelaVO testVO) {
-        return testWriteDAO.update(testVO.vo2Domain());
+    public int update(PChnlGpDasRelaVO pChnlGpDasRelaVO) {
+        return pChnlGpDasRelaWriteDAO.update(pChnlGpDasRelaVO.vo2Domain());
     }
 
     @Override
-    public int delete(PChnlGpDasRelaVO testVO) {
-        return testWriteDAO.delete(testVO.vo2Domain());
+    public int delete(PChnlGpDasRelaVO pChnlGpDasRelaVO) {
+        return pChnlGpDasRelaWriteDAO.delete(pChnlGpDasRelaVO.vo2Domain());
     }
 
     @Override
-    public PChnlGpDasRelaVO findByKey(PChnlGpDasRelaVO testVO) {
-        PChnlGpDasRelaDomain model = testReadDAO.findByKey(testVO.vo2Domain());
+    public PChnlGpDasRelaVO findByKey(PChnlGpDasRelaVO pChnlGpDasRelaVO) {
+        PChnlGpDasRelaDomain model = pChnlGpDasRelaReadDAO.findByKey(pChnlGpDasRelaVO.vo2Domain());
         PChnlGpDasRelaVO modelVo = new PChnlGpDasRelaVO();
         if (model != null) {
             modelVo = model.domain2VO();
@@ -51,13 +53,15 @@ public class PChnlGpDasRelaServiceImpl implements IPChnlGpDasRelaService {
     }
 
     @Override
-    public List<PChnlGpDasRelaVO> findByWhere(PChnlGpDasRelaVO testVO) {
-        List<PChnlGpDasRelaDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
-        List<PChnlGpDasRelaVO> lstVo = new ArrayList<PChnlGpDasRelaVO>();
-        for (PChnlGpDasRelaDomain item : lstDomain) {
-            lstVo.add(item.domain2VO());
-        }
-        return lstVo;
+    public List<PChnlGpDasRelaVO> findByWhere(PChnlGpDasRelaVO pChnlGpDasRelaVO) {
+        PChnlGpDasRelaDomain pChnlGpDasRelaDomain = pChnlGpDasRelaVO.vo2Domain();
+        List<PChnlGpDasRelaDomain> lstDomain = pChnlGpDasRelaReadDAO.findByWhere(pChnlGpDasRelaDomain);
+        pChnlGpDasRelaVO.setTotalRow(pChnlGpDasRelaDomain.getTotalRow());
+        pChnlGpDasRelaVO.setPageCurrent(pChnlGpDasRelaDomain.getPageCurrent());
+        pChnlGpDasRelaVO.setDbName(pChnlGpDasRelaDomain.getDbName());
+        pChnlGpDasRelaVO.setPageSize(pChnlGpDasRelaDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PChnlGpDasRelaVO.class);
     }
 
 }

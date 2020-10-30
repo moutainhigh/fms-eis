@@ -1,13 +1,14 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:51
+ * 采集任务模板明细
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.service.impl.PTaskTplDetailServiceImpl.java
- *
  **/
 package org.fms.eis.webapp.service.impl;
 
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PTaskTplDetailDAO;
 import org.fms.eis.webapp.domain.PTaskTplDetailDomain;
 import org.fms.eis.webapp.service.IPTaskTplDetailService;
@@ -18,50 +19,49 @@ import java.util.*;
 @TransactionService
 public class PTaskTplDetailServiceImpl implements IPTaskTplDetailService {
 
-	@TransactionDAO("read")
-	private PTaskTplDetailDAO testReadDAO;
+    @TransactionDAO("read")
+    private PTaskTplDetailDAO pTaskTplDetailReadDAO;
 
-	@TransactionDAO("write")
-	private PTaskTplDetailDAO testWriteDAO;
+    @TransactionDAO("write")
+    private PTaskTplDetailDAO pTaskTplDetailWriteDAO;
 
-	@Override
-	public int insert(PTaskTplDetailVO testVO) {
-		return testWriteDAO.insert(testVO.vo2Domain());
-	}
+    @Override
+    public int insert(PTaskTplDetailVO pTaskTplDetailVO) {
+        return pTaskTplDetailWriteDAO.insert(pTaskTplDetailVO.vo2Domain());
+    }
 
-	@Override
-	public int update(PTaskTplDetailVO testVO) {
-		return testWriteDAO.update(testVO.vo2Domain());
-	}
+    @Override
+    public int update(PTaskTplDetailVO pTaskTplDetailVO) {
+        return pTaskTplDetailWriteDAO.update(pTaskTplDetailVO.vo2Domain());
+    }
 
-	@Override
-	public int delete(PTaskTplDetailVO testVO) {
-		return testWriteDAO.delete(testVO.vo2Domain());
-	}
+    @Override
+    public int delete(PTaskTplDetailVO pTaskTplDetailVO) {
+        return pTaskTplDetailWriteDAO.delete(pTaskTplDetailVO.vo2Domain());
+    }
 
-	@Override
-	public PTaskTplDetailVO findByKey(PTaskTplDetailVO testVO){
-		PTaskTplDetailDomain model= testReadDAO.findByKey(testVO.vo2Domain());
-		PTaskTplDetailVO modelVo=new PTaskTplDetailVO();
-		if(model!=null)
-		{
-			modelVo=model.domain2VO();
-		}
-		else
-		{
-			modelVo=null;
-		}
-		return modelVo;
-	}
+    @Override
+    public PTaskTplDetailVO findByKey(PTaskTplDetailVO pTaskTplDetailVO) {
+        PTaskTplDetailDomain model = pTaskTplDetailReadDAO.findByKey(pTaskTplDetailVO.vo2Domain());
+        PTaskTplDetailVO modelVo = new PTaskTplDetailVO();
+        if (model != null) {
+            modelVo = model.domain2VO();
+        } else {
+            modelVo = null;
+        }
+        return modelVo;
+    }
 
-	@Override
-	public List<PTaskTplDetailVO> findByWhere(PTaskTplDetailVO testVO) {
-		List<PTaskTplDetailDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<PTaskTplDetailVO> lstVo=new ArrayList<PTaskTplDetailVO>();
-		for (PTaskTplDetailDomain item:lstDomain) {
-			lstVo.add(item.domain2VO());
-		}
-		return  lstVo;
-	}
+    @Override
+    public List<PTaskTplDetailVO> findByWhere(PTaskTplDetailVO pTaskTplDetailVO) {
+        PTaskTplDetailDomain pTaskTplDetailDomain = pTaskTplDetailVO.vo2Domain();
+        List<PTaskTplDetailDomain> lstDomain = pTaskTplDetailReadDAO.findByWhere(pTaskTplDetailDomain);
+        pTaskTplDetailVO.setTotalRow(pTaskTplDetailDomain.getTotalRow());
+        pTaskTplDetailVO.setPageCurrent(pTaskTplDetailDomain.getPageCurrent());
+        pTaskTplDetailVO.setDbName(pTaskTplDetailDomain.getDbName());
+        pTaskTplDetailVO.setPageSize(pTaskTplDetailDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PTaskTplDetailVO.class);
+    }
 
 }

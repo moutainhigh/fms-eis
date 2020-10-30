@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 系统节点
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.PSysNodeDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.PSysNodeVO;
@@ -286,38 +288,8 @@ public class PSysNodeDomain extends Page implements MybatisEntity {
     }
 
     public PSysNodeVO domain2VO() {
-        PSysNodeVO testVO = new PSysNodeVO();
-        testVO.setId(this.id);
-        testVO.setCode(this.code);
-        testVO.setName(this.name);
-        testVO.setAlias(this.alias);
-        testVO.setStatus(this.status);
-        testVO.setType(this.type);
-        testVO.setWherein(this.wherein);
-        testVO.setNeta(this.neta);
-        testVO.setNetb(this.netb);
-        testVO.setNetd(this.netd);
-        testVO.setNete(this.nete);
-        testVO.setDactrlFlag(this.dactrlFlag);
-        testVO.setDaFlag(this.daFlag);
-        testVO.setCalcctrlFlag(this.calcctrlFlag);
-        testVO.setCalcFlag(this.calcFlag);
-        testVO.setComport1(this.comport1);
-        testVO.setComport2(this.comport2);
-        testVO.setHbPort1(this.hbPort1);
-        testVO.setHbPort2(this.hbPort2);
-        testVO.setMqFlag(this.mqFlag);
-        testVO.setWebFlag(this.webFlag);
-        testVO.setEventFlag(this.eventFlag);
-        testVO.setDbFlag(this.dbFlag);
-        testVO.setRemark(this.remark);
-        testVO.setDaGroup(this.daGroup);
-        testVO.setWeight(this.weight);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        PSysNodeVO pSysNodeVO = ReflectUtil.cast(this, PSysNodeVO.class);
+        return pSysNodeVO;
     }
 
 }

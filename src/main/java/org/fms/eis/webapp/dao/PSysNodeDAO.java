@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 系统节点
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PSysNodeDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class PSysNodeDAO extends AbstractTransactionDAOSupport implements BaseDAO<PSysNodeDomain> {
 
     @Override
-    public int insert(PSysNodeDomain testDomain) {
+    public int insert(PSysNodeDomain pSysNodeDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pSysNodeDomain);
     }
 
     @Override
-    public int delete(PSysNodeDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PSysNodeDomain pSysNodeDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pSysNodeDomain);
+    }
+
+    @Override
+    public PSysNodeDomain findByKey(PSysNodeDomain pSysNodeDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pSysNodeDomain);
     }
 
     @PaginationSupport
     @Override
-    public PSysNodeDomain findByKey(PSysNodeDomain arg0) {
+    public List<PSysNodeDomain> findByWhere(PSysNodeDomain pSysNodeDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pSysNodeDomain);
     }
 
     @Override
-    public List<PSysNodeDomain> findByWhere(PSysNodeDomain arg0) {
+    public int update(PSysNodeDomain pSysNodeDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PSysNodeDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pSysNodeDomain);
     }
 
 }

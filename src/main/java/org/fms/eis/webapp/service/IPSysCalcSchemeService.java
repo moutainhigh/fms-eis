@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 计算方案
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.IPSysCalcSchemeService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface IPSysCalcSchemeService {
 
-	public int insert(PSysCalcSchemeVO modelVO);
+	public int insert(PSysCalcSchemeVO pSysCalcSchemeVO);
 
-	public int update(PSysCalcSchemeVO modelVO);
+	public int update(PSysCalcSchemeVO pSysCalcSchemeVO);
 
-	public int delete(PSysCalcSchemeVO modelVO);
+	public int delete(PSysCalcSchemeVO pSysCalcSchemeVO);
 
-	public PSysCalcSchemeVO findByKey(PSysCalcSchemeVO modelVO);
+	public PSysCalcSchemeVO findByKey(PSysCalcSchemeVO pSysCalcSchemeVO);
 
-	public List<PSysCalcSchemeVO> findByWhere(PSysCalcSchemeVO modelVO);
+	public List<PSysCalcSchemeVO> findByWhere(PSysCalcSchemeVO pSysCalcSchemeVO);
 }

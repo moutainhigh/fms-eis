@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 通道组主机关系
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.PChnlGpDasRelaDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.PChnlGpDasRelaVO;
@@ -79,15 +81,8 @@ public class PChnlGpDasRelaDomain extends Page implements MybatisEntity {
     }
 
     public PChnlGpDasRelaVO domain2VO() {
-        PChnlGpDasRelaVO testVO = new PChnlGpDasRelaVO();
-        testVO.setId(this.id);
-        testVO.setChnlGroupId(this.chnlGroupId);
-        testVO.setDasId(this.dasId);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        PChnlGpDasRelaVO pChnlGpDasRelaVO = ReflectUtil.cast(this, PChnlGpDasRelaVO.class);
+        return pChnlGpDasRelaVO;
     }
 
 }

@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 下拉表 -迟子曰改
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.SystemCommonConfigDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.SystemCommonConfigVO;
@@ -115,19 +117,8 @@ public class SystemCommonConfigDomain extends Page implements MybatisEntity {
     }
 
     public SystemCommonConfigVO domain2VO() {
-        SystemCommonConfigVO testVO = new SystemCommonConfigVO();
-        testVO.setId(this.id);
-        testVO.setType(this.type);
-        testVO.setParamName(this.paramName);
-        testVO.setParamKey(this.paramKey);
-        testVO.setParamValue(this.paramValue);
-        testVO.setStatus(this.status);
-        testVO.setParamOrder(this.paramOrder);
-        testVO.setRemark1(this.remark1);
-        testVO.setRemark2(this.remark2);
-        testVO.setRemark3(this.remark3);
-        testVO.setRemark4(this.remark4);
-        return testVO;
+        SystemCommonConfigVO systemCommonConfigVO = ReflectUtil.cast(this, SystemCommonConfigVO.class);
+        return systemCommonConfigVO;
     }
 
 }

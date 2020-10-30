@@ -50,7 +50,7 @@
         </where>
     </select>
     <insert id="insert" parameterType="SystemCommonConfigDomain" flushCache="true" useGeneratedKeys="true">
-		INSERT INTO system_common_config
+		insert into system_common_config
 			(ID,TYPE,PARAM_NAME,PARAM_KEY,PARAM_VALUE,STATUS,PARAM_ORDER,REMARK1,REMARK2,REMARK3,REMARK4)
 			VALUES(#{id},#{type},#{paramName},#{paramKey},#{paramValue},#{status},#{paramOrder},#{remark1},#{remark2},#{remark3},#{remark4})
 
@@ -58,57 +58,45 @@
     <update id="update" parameterType="SystemCommonConfigDomain" flushCache="true">
         update system_common_config
         <set>
-
             <if test="type !=null">
                 TYPE = #{type},
             </if>
-
             <if test="paramName !=null">
                 PARAM_NAME = #{paramName},
             </if>
-
             <if test="paramKey !=null">
                 PARAM_KEY = #{paramKey},
             </if>
-
             <if test="paramValue !=null">
                 PARAM_VALUE = #{paramValue},
             </if>
-
             <if test="status !=null">
                 STATUS = #{status},
             </if>
-
             <if test="paramOrder !=null">
                 PARAM_ORDER = #{paramOrder},
             </if>
-
             <if test="remark1 !=null">
                 REMARK1 = #{remark1},
             </if>
-
             <if test="remark2 !=null">
                 REMARK2 = #{remark2},
             </if>
-
             <if test="remark3 !=null">
                 REMARK3 = #{remark3},
             </if>
-
             <if test="remark4 !=null">
                 REMARK4 = #{remark4},
             </if>
         </set>
         <where>
             and ID = #{id}
-
         </where>
     </update>
     <delete id="delete" parameterType="SystemCommonConfigDomain" flushCache="true">
         delete from system_common_config
         <where>
             and ID = #{id}
-
         </where>
     </delete>
 </mapper>

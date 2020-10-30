@@ -1,13 +1,14 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:51
+ * 计算任务类型定义表
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.service.impl.PWsdCalcTaskServiceImpl.java
- *
  **/
 package org.fms.eis.webapp.service.impl;
 
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PWsdCalcTaskDAO;
 import org.fms.eis.webapp.domain.PWsdCalcTaskDomain;
 import org.fms.eis.webapp.service.IPWsdCalcTaskService;
@@ -18,50 +19,49 @@ import java.util.*;
 @TransactionService
 public class PWsdCalcTaskServiceImpl implements IPWsdCalcTaskService {
 
-	@TransactionDAO("read")
-	private PWsdCalcTaskDAO testReadDAO;
+    @TransactionDAO("read")
+    private PWsdCalcTaskDAO pWsdCalcTaskReadDAO;
 
-	@TransactionDAO("write")
-	private PWsdCalcTaskDAO testWriteDAO;
+    @TransactionDAO("write")
+    private PWsdCalcTaskDAO pWsdCalcTaskWriteDAO;
 
-	@Override
-	public int insert(PWsdCalcTaskVO testVO) {
-		return testWriteDAO.insert(testVO.vo2Domain());
-	}
+    @Override
+    public int insert(PWsdCalcTaskVO pWsdCalcTaskVO) {
+        return pWsdCalcTaskWriteDAO.insert(pWsdCalcTaskVO.vo2Domain());
+    }
 
-	@Override
-	public int update(PWsdCalcTaskVO testVO) {
-		return testWriteDAO.update(testVO.vo2Domain());
-	}
+    @Override
+    public int update(PWsdCalcTaskVO pWsdCalcTaskVO) {
+        return pWsdCalcTaskWriteDAO.update(pWsdCalcTaskVO.vo2Domain());
+    }
 
-	@Override
-	public int delete(PWsdCalcTaskVO testVO) {
-		return testWriteDAO.delete(testVO.vo2Domain());
-	}
+    @Override
+    public int delete(PWsdCalcTaskVO pWsdCalcTaskVO) {
+        return pWsdCalcTaskWriteDAO.delete(pWsdCalcTaskVO.vo2Domain());
+    }
 
-	@Override
-	public PWsdCalcTaskVO findByKey(PWsdCalcTaskVO testVO){
-		PWsdCalcTaskDomain model= testReadDAO.findByKey(testVO.vo2Domain());
-		PWsdCalcTaskVO modelVo=new PWsdCalcTaskVO();
-		if(model!=null)
-		{
-			modelVo=model.domain2VO();
-		}
-		else
-		{
-			modelVo=null;
-		}
-		return modelVo;
-	}
+    @Override
+    public PWsdCalcTaskVO findByKey(PWsdCalcTaskVO pWsdCalcTaskVO) {
+        PWsdCalcTaskDomain model = pWsdCalcTaskReadDAO.findByKey(pWsdCalcTaskVO.vo2Domain());
+        PWsdCalcTaskVO modelVo = new PWsdCalcTaskVO();
+        if (model != null) {
+            modelVo = model.domain2VO();
+        } else {
+            modelVo = null;
+        }
+        return modelVo;
+    }
 
-	@Override
-	public List<PWsdCalcTaskVO> findByWhere(PWsdCalcTaskVO testVO) {
-		List<PWsdCalcTaskDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<PWsdCalcTaskVO> lstVo=new ArrayList<PWsdCalcTaskVO>();
-		for (PWsdCalcTaskDomain item:lstDomain) {
-			lstVo.add(item.domain2VO());
-		}
-		return  lstVo;
-	}
+    @Override
+    public List<PWsdCalcTaskVO> findByWhere(PWsdCalcTaskVO pWsdCalcTaskVO) {
+        PWsdCalcTaskDomain pWsdCalcTaskDomain = pWsdCalcTaskVO.vo2Domain();
+        List<PWsdCalcTaskDomain> lstDomain = pWsdCalcTaskReadDAO.findByWhere(pWsdCalcTaskDomain);
+        pWsdCalcTaskVO.setTotalRow(pWsdCalcTaskDomain.getTotalRow());
+        pWsdCalcTaskVO.setPageCurrent(pWsdCalcTaskDomain.getPageCurrent());
+        pWsdCalcTaskVO.setDbName(pWsdCalcTaskDomain.getDbName());
+        pWsdCalcTaskVO.setPageSize(pWsdCalcTaskDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PWsdCalcTaskVO.class);
+    }
 
 }

@@ -44,7 +44,7 @@
         </where>
     </select>
     <insert id="insert" parameterType="PDaserverGroupDomain" flushCache="true" useGeneratedKeys="true">
-		INSERT INTO P_DASERVER_GROUP
+		insert into P_DASERVER_GROUP
 			(ID,CODE,NAME,STATUS,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
 			VALUES(#{id},#{code},#{name},#{status},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
@@ -52,49 +52,39 @@
     <update id="update" parameterType="PDaserverGroupDomain" flushCache="true">
         update P_DASERVER_GROUP
         <set>
-
             <if test="code !=null">
                 CODE = #{code},
             </if>
-
             <if test="name !=null">
                 NAME = #{name},
             </if>
-
             <if test="status !=null">
                 STATUS = #{status},
             </if>
-
             <if test="weight !=null">
                 WEIGHT = #{weight},
             </if>
-
             <if test="creatorId !=null">
                 CREATOR_ID = #{creatorId},
             </if>
-
             <if test="createDate !=null">
                 CREATE_DATE = #{createDate},
             </if>
-
             <if test="lastModifierId !=null">
                 LAST_MODIFIER_ID = #{lastModifierId},
             </if>
-
             <if test="lastModifyTime !=null">
                 LAST_MODIFY_TIME = #{lastModifyTime},
             </if>
         </set>
         <where>
             and ID = #{id}
-
         </where>
     </update>
     <delete id="delete" parameterType="PDaserverGroupDomain" flushCache="true">
         delete from P_DASERVER_GROUP
         <where>
             and ID = #{id}
-
         </where>
     </delete>
 </mapper>

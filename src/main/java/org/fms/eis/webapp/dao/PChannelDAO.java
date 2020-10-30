@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 通道参数表
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PChannelDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class PChannelDAO extends AbstractTransactionDAOSupport implements BaseDAO<PChannelDomain> {
 
     @Override
-    public int insert(PChannelDomain testDomain) {
+    public int insert(PChannelDomain pChannelDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pChannelDomain);
     }
 
     @Override
-    public int delete(PChannelDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PChannelDomain pChannelDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pChannelDomain);
+    }
+
+    @Override
+    public PChannelDomain findByKey(PChannelDomain pChannelDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pChannelDomain);
     }
 
     @PaginationSupport
     @Override
-    public PChannelDomain findByKey(PChannelDomain arg0) {
+    public List<PChannelDomain> findByWhere(PChannelDomain pChannelDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pChannelDomain);
     }
 
     @Override
-    public List<PChannelDomain> findByWhere(PChannelDomain arg0) {
+    public int update(PChannelDomain pChannelDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PChannelDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pChannelDomain);
     }
 
 }

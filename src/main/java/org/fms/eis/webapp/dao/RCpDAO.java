@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 采集点
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.RCpDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class RCpDAO extends AbstractTransactionDAOSupport implements BaseDAO<RCpDomain> {
 
     @Override
-    public int insert(RCpDomain testDomain) {
+    public int insert(RCpDomain rCpDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", rCpDomain);
     }
 
     @Override
-    public int delete(RCpDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(RCpDomain rCpDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", rCpDomain);
+    }
+
+    @Override
+    public RCpDomain findByKey(RCpDomain rCpDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", rCpDomain);
     }
 
     @PaginationSupport
     @Override
-    public RCpDomain findByKey(RCpDomain arg0) {
+    public List<RCpDomain> findByWhere(RCpDomain rCpDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", rCpDomain);
     }
 
     @Override
-    public List<RCpDomain> findByWhere(RCpDomain arg0) {
+    public int update(RCpDomain rCpDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(RCpDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", rCpDomain);
     }
 
 }

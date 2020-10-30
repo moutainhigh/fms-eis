@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:19
+ * 采集任务
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.action.PTaskAction.java
  **/
 package org.fms.eis.webapp.action;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPTaskService;
 import org.fms.eis.webapp.vo.PTaskVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,61 +30,60 @@ public class PTaskAction {
 
     @ResponseBody
     @PostMapping(params = "method=insert")
-    public HttpResult<?> insert(@RequestBody PTaskVO _PTaskVO) {
-        int i = pTaskService.insert(_PTaskVO);
+    public HttpResult<?> insert(@RequestBody PTaskVO pTaskVO) {
+        int i = pTaskService.insert(pTaskVO);
 
-        if (i > 0)
+        if (i > 0) {
             return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
-        else
+        } else {
             return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+        }
 
     }
 
     @ResponseBody
     @PostMapping(params = "method=update")
-    public HttpResult<?> update(@RequestBody PTaskVO _pTaskVO) {
-        int i = pTaskService.update(_pTaskVO);
+    public HttpResult<?> update(@RequestBody PTaskVO pTaskVO) {
+        int i = pTaskService.update(pTaskVO);
 
-        if (i > 0)
+        if (i > 0) {
             return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
-        else
+        } else {
             return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+        }
 
     }
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody PTaskVO _PTaskVO) {
-        int i = pTaskService.delete(_PTaskVO);
+    public HttpResult<?> delete(@RequestBody PTaskVO pTaskVO) {
+        int i = pTaskService.delete(pTaskVO);
 
-        if (i > 0)
+        if (i > 0) {
             return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        else
+        } else {
             return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
+        }
 
     }
 
     @ResponseBody
     @PostMapping(params = "method=findByKey")
-    public HttpResult<?> findByKey(@RequestBody PTaskVO _PTaskVO) {
-        PTaskVO modelVo = pTaskService.findByKey(_PTaskVO);
+    public HttpResult<?> findByKey(@RequestBody PTaskVO pTaskVO) {
+        PTaskVO modelVo = pTaskService.findByKey(pTaskVO);
 
-        if (modelVo != null)
+        if (modelVo != null) {
             return new HttpResult<PTaskVO>(HttpResult.SUCCESS, "获取成功", modelVo);
-        else
-            return new HttpResult<PTaskVO>(HttpResult.ERROR, "获取失败", null);
+        } else {
+            return new HttpResult<PTaskVO>(HttpResult.ERROR, "未检索到相关数据!", null);
+        }
 
     }
 
     @ResponseBody
     @PostMapping(params = "method=findByWhere")
-    public HttpResult<?> findByWhere(@RequestBody PTaskVO _PTaskVO) {
-        List<PTaskVO> listVo = pTaskService.findByWhere(_PTaskVO);
+    public HttpResultPagination<?> findByWhere(@RequestBody PTaskVO pTaskVO) {
 
-        if (listVo != null)
-            return new HttpResult<List<PTaskVO>>(HttpResult.SUCCESS, "查询成功", listVo);
-        else
-            return new HttpResult<List<PTaskVO>>(HttpResult.ERROR, "查询失败", null);
-
+        return new HttpResultPagination(pTaskVO, pTaskService.findByWhere(pTaskVO));
     }
 }

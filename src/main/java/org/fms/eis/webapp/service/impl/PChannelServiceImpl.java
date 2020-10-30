@@ -1,12 +1,14 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:51
+ * 通道参数表
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.service.impl.PChannelServiceImpl.java
  **/
 package org.fms.eis.webapp.service.impl;
 
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PChannelDAO;
 import org.fms.eis.webapp.domain.PChannelDomain;
 import org.fms.eis.webapp.service.IPChannelService;
@@ -18,29 +20,29 @@ import java.util.*;
 public class PChannelServiceImpl implements IPChannelService {
 
     @TransactionDAO("read")
-    private PChannelDAO testReadDAO;
+    private PChannelDAO pChannelReadDAO;
 
     @TransactionDAO("write")
-    private PChannelDAO testWriteDAO;
+    private PChannelDAO pChannelWriteDAO;
 
     @Override
-    public int insert(PChannelVO testVO) {
-        return testWriteDAO.insert(testVO.vo2Domain());
+    public int insert(PChannelVO pChannelVO) {
+        return pChannelWriteDAO.insert(pChannelVO.vo2Domain());
     }
 
     @Override
-    public int update(PChannelVO testVO) {
-        return testWriteDAO.update(testVO.vo2Domain());
+    public int update(PChannelVO pChannelVO) {
+        return pChannelWriteDAO.update(pChannelVO.vo2Domain());
     }
 
     @Override
-    public int delete(PChannelVO testVO) {
-        return testWriteDAO.delete(testVO.vo2Domain());
+    public int delete(PChannelVO pChannelVO) {
+        return pChannelWriteDAO.delete(pChannelVO.vo2Domain());
     }
 
     @Override
-    public PChannelVO findByKey(PChannelVO testVO) {
-        PChannelDomain model = testReadDAO.findByKey(testVO.vo2Domain());
+    public PChannelVO findByKey(PChannelVO pChannelVO) {
+        PChannelDomain model = pChannelReadDAO.findByKey(pChannelVO.vo2Domain());
         PChannelVO modelVo = new PChannelVO();
         if (model != null) {
             modelVo = model.domain2VO();
@@ -51,13 +53,15 @@ public class PChannelServiceImpl implements IPChannelService {
     }
 
     @Override
-    public List<PChannelVO> findByWhere(PChannelVO testVO) {
-        List<PChannelDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
-        List<PChannelVO> lstVo = new ArrayList<PChannelVO>();
-        for (PChannelDomain item : lstDomain) {
-            lstVo.add(item.domain2VO());
-        }
-        return lstVo;
+    public List<PChannelVO> findByWhere(PChannelVO pChannelVO) {
+        PChannelDomain pChannelDomain = pChannelVO.vo2Domain();
+        List<PChannelDomain> lstDomain = pChannelReadDAO.findByWhere(pChannelDomain);
+        pChannelVO.setTotalRow(pChannelDomain.getTotalRow());
+        pChannelVO.setPageCurrent(pChannelDomain.getPageCurrent());
+        pChannelVO.setDbName(pChannelDomain.getDbName());
+        pChannelVO.setPageSize(pChannelDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PChannelVO.class);
     }
 
 }

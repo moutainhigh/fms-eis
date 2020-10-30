@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 计算任务类型定义表
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PWsdCalcTaskDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class PWsdCalcTaskDAO extends AbstractTransactionDAOSupport implements BaseDAO<PWsdCalcTaskDomain> {
 
     @Override
-    public int insert(PWsdCalcTaskDomain testDomain) {
+    public int insert(PWsdCalcTaskDomain pWsdCalcTaskDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pWsdCalcTaskDomain);
     }
 
     @Override
-    public int delete(PWsdCalcTaskDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PWsdCalcTaskDomain pWsdCalcTaskDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pWsdCalcTaskDomain);
+    }
+
+    @Override
+    public PWsdCalcTaskDomain findByKey(PWsdCalcTaskDomain pWsdCalcTaskDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pWsdCalcTaskDomain);
     }
 
     @PaginationSupport
     @Override
-    public PWsdCalcTaskDomain findByKey(PWsdCalcTaskDomain arg0) {
+    public List<PWsdCalcTaskDomain> findByWhere(PWsdCalcTaskDomain pWsdCalcTaskDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pWsdCalcTaskDomain);
     }
 
     @Override
-    public List<PWsdCalcTaskDomain> findByWhere(PWsdCalcTaskDomain arg0) {
+    public int update(PWsdCalcTaskDomain pWsdCalcTaskDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PWsdCalcTaskDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pWsdCalcTaskDomain);
     }
 
 }

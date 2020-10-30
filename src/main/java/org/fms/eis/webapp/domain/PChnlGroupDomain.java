@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 通道组
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.PChnlGroupDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.PChnlGroupVO;
@@ -106,18 +108,8 @@ public class PChnlGroupDomain extends Page implements MybatisEntity {
     }
 
     public PChnlGroupVO domain2VO() {
-        PChnlGroupVO testVO = new PChnlGroupVO();
-        testVO.setId(this.id);
-        testVO.setCode(this.code);
-        testVO.setName(this.name);
-        testVO.setChnlTypeId(this.chnlTypeId);
-        testVO.setStatus(this.status);
-        testVO.setWeight(this.weight);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        PChnlGroupVO pChnlGroupVO = ReflectUtil.cast(this, PChnlGroupVO.class);
+        return pChnlGroupVO;
     }
 
 }

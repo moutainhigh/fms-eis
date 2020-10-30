@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 计算方案
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.PSysCalcSchemeDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.PSysCalcSchemeVO;
@@ -160,24 +162,8 @@ public class PSysCalcSchemeDomain extends Page implements MybatisEntity {
     }
 
     public PSysCalcSchemeVO domain2VO() {
-        PSysCalcSchemeVO testVO = new PSysCalcSchemeVO();
-        testVO.setId(this.id);
-        testVO.setName(this.name);
-        testVO.setType(this.type);
-        testVO.setStatus(this.status);
-        testVO.setBegmon(this.begmon);
-        testVO.setBegday(this.begday);
-        testVO.setBeghour(this.beghour);
-        testVO.setEndmon(this.endmon);
-        testVO.setEndday(this.endday);
-        testVO.setEndhour(this.endhour);
-        testVO.setDefset(this.defset);
-        testVO.setCycle(this.cycle);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        PSysCalcSchemeVO pSysCalcSchemeVO = ReflectUtil.cast(this, PSysCalcSchemeVO.class);
+        return pSysCalcSchemeVO;
     }
 
 }

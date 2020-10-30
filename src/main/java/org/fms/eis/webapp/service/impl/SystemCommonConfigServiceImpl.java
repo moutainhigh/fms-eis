@@ -1,13 +1,14 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:51
+ * 下拉表 -迟子曰改
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.service.impl.SystemCommonConfigServiceImpl.java
- *
  **/
 package org.fms.eis.webapp.service.impl;
 
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.SystemCommonConfigDAO;
 import org.fms.eis.webapp.domain.SystemCommonConfigDomain;
 import org.fms.eis.webapp.service.ISystemCommonConfigService;
@@ -18,50 +19,49 @@ import java.util.*;
 @TransactionService
 public class SystemCommonConfigServiceImpl implements ISystemCommonConfigService {
 
-	@TransactionDAO("read")
-	private SystemCommonConfigDAO testReadDAO;
+    @TransactionDAO("read")
+    private SystemCommonConfigDAO systemCommonConfigReadDAO;
 
-	@TransactionDAO("write")
-	private SystemCommonConfigDAO testWriteDAO;
+    @TransactionDAO("write")
+    private SystemCommonConfigDAO systemCommonConfigWriteDAO;
 
-	@Override
-	public int insert(SystemCommonConfigVO testVO) {
-		return testWriteDAO.insert(testVO.vo2Domain());
-	}
+    @Override
+    public int insert(SystemCommonConfigVO systemCommonConfigVO) {
+        return systemCommonConfigWriteDAO.insert(systemCommonConfigVO.vo2Domain());
+    }
 
-	@Override
-	public int update(SystemCommonConfigVO testVO) {
-		return testWriteDAO.update(testVO.vo2Domain());
-	}
+    @Override
+    public int update(SystemCommonConfigVO systemCommonConfigVO) {
+        return systemCommonConfigWriteDAO.update(systemCommonConfigVO.vo2Domain());
+    }
 
-	@Override
-	public int delete(SystemCommonConfigVO testVO) {
-		return testWriteDAO.delete(testVO.vo2Domain());
-	}
+    @Override
+    public int delete(SystemCommonConfigVO systemCommonConfigVO) {
+        return systemCommonConfigWriteDAO.delete(systemCommonConfigVO.vo2Domain());
+    }
 
-	@Override
-	public SystemCommonConfigVO findByKey(SystemCommonConfigVO testVO){
-		SystemCommonConfigDomain model= testReadDAO.findByKey(testVO.vo2Domain());
-		SystemCommonConfigVO modelVo=new SystemCommonConfigVO();
-		if(model!=null)
-		{
-			modelVo=model.domain2VO();
-		}
-		else
-		{
-			modelVo=null;
-		}
-		return modelVo;
-	}
+    @Override
+    public SystemCommonConfigVO findByKey(SystemCommonConfigVO systemCommonConfigVO) {
+        SystemCommonConfigDomain model = systemCommonConfigReadDAO.findByKey(systemCommonConfigVO.vo2Domain());
+        SystemCommonConfigVO modelVo = new SystemCommonConfigVO();
+        if (model != null) {
+            modelVo = model.domain2VO();
+        } else {
+            modelVo = null;
+        }
+        return modelVo;
+    }
 
-	@Override
-	public List<SystemCommonConfigVO> findByWhere(SystemCommonConfigVO testVO) {
-		List<SystemCommonConfigDomain> lstDomain= testReadDAO.findByWhere(testVO.vo2Domain());
-		List<SystemCommonConfigVO> lstVo=new ArrayList<SystemCommonConfigVO>();
-		for (SystemCommonConfigDomain item:lstDomain) {
-			lstVo.add(item.domain2VO());
-		}
-		return  lstVo;
-	}
+    @Override
+    public List<SystemCommonConfigVO> findByWhere(SystemCommonConfigVO systemCommonConfigVO) {
+        SystemCommonConfigDomain systemCommonConfigDomain = systemCommonConfigVO.vo2Domain();
+        List<SystemCommonConfigDomain> lstDomain = systemCommonConfigReadDAO.findByWhere(systemCommonConfigDomain);
+        systemCommonConfigVO.setTotalRow(systemCommonConfigDomain.getTotalRow());
+        systemCommonConfigVO.setPageCurrent(systemCommonConfigDomain.getPageCurrent());
+        systemCommonConfigVO.setDbName(systemCommonConfigDomain.getDbName());
+        systemCommonConfigVO.setPageSize(systemCommonConfigDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, SystemCommonConfigVO.class);
+    }
 
 }

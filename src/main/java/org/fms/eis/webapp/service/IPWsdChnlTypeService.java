@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 采集主机组
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.IPWsdChnlTypeService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface IPWsdChnlTypeService {
 
-	public int insert(PWsdChnlTypeVO modelVO);
+	public int insert(PWsdChnlTypeVO pWsdChnlTypeVO);
 
-	public int update(PWsdChnlTypeVO modelVO);
+	public int update(PWsdChnlTypeVO pWsdChnlTypeVO);
 
-	public int delete(PWsdChnlTypeVO modelVO);
+	public int delete(PWsdChnlTypeVO pWsdChnlTypeVO);
 
-	public PWsdChnlTypeVO findByKey(PWsdChnlTypeVO modelVO);
+	public PWsdChnlTypeVO findByKey(PWsdChnlTypeVO pWsdChnlTypeVO);
 
-	public List<PWsdChnlTypeVO> findByWhere(PWsdChnlTypeVO modelVO);
+	public List<PWsdChnlTypeVO> findByWhere(PWsdChnlTypeVO pWsdChnlTypeVO);
 }

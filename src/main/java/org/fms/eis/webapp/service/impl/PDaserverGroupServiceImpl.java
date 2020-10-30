@@ -1,12 +1,14 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:51
+ * 采集主机组
+ * Author :
+ * Date :
  * Title : org.fms.eis.webapp.service.impl.PDaserverGroupServiceImpl.java
  **/
 package org.fms.eis.webapp.service.impl;
 
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PDaserverGroupDAO;
 import org.fms.eis.webapp.domain.PDaserverGroupDomain;
 import org.fms.eis.webapp.service.IPDaserverGroupService;
@@ -18,29 +20,29 @@ import java.util.*;
 public class PDaserverGroupServiceImpl implements IPDaserverGroupService {
 
     @TransactionDAO("read")
-    private PDaserverGroupDAO testReadDAO;
+    private PDaserverGroupDAO pDaserverGroupReadDAO;
 
     @TransactionDAO("write")
-    private PDaserverGroupDAO testWriteDAO;
+    private PDaserverGroupDAO pDaserverGroupWriteDAO;
 
     @Override
-    public int insert(PDaserverGroupVO testVO) {
-        return testWriteDAO.insert(testVO.vo2Domain());
+    public int insert(PDaserverGroupVO pDaserverGroupVO) {
+        return pDaserverGroupWriteDAO.insert(pDaserverGroupVO.vo2Domain());
     }
 
     @Override
-    public int update(PDaserverGroupVO testVO) {
-        return testWriteDAO.update(testVO.vo2Domain());
+    public int update(PDaserverGroupVO pDaserverGroupVO) {
+        return pDaserverGroupWriteDAO.update(pDaserverGroupVO.vo2Domain());
     }
 
     @Override
-    public int delete(PDaserverGroupVO testVO) {
-        return testWriteDAO.delete(testVO.vo2Domain());
+    public int delete(PDaserverGroupVO pDaserverGroupVO) {
+        return pDaserverGroupWriteDAO.delete(pDaserverGroupVO.vo2Domain());
     }
 
     @Override
-    public PDaserverGroupVO findByKey(PDaserverGroupVO testVO) {
-        PDaserverGroupDomain model = testReadDAO.findByKey(testVO.vo2Domain());
+    public PDaserverGroupVO findByKey(PDaserverGroupVO pDaserverGroupVO) {
+        PDaserverGroupDomain model = pDaserverGroupReadDAO.findByKey(pDaserverGroupVO.vo2Domain());
         PDaserverGroupVO modelVo = new PDaserverGroupVO();
         if (model != null) {
             modelVo = model.domain2VO();
@@ -51,13 +53,15 @@ public class PDaserverGroupServiceImpl implements IPDaserverGroupService {
     }
 
     @Override
-    public List<PDaserverGroupVO> findByWhere(PDaserverGroupVO testVO) {
-        List<PDaserverGroupDomain> lstDomain = testReadDAO.findByWhere(testVO.vo2Domain());
-        List<PDaserverGroupVO> lstVo = new ArrayList<PDaserverGroupVO>();
-        for (PDaserverGroupDomain item : lstDomain) {
-            lstVo.add(item.domain2VO());
-        }
-        return lstVo;
+    public List<PDaserverGroupVO> findByWhere(PDaserverGroupVO pDaserverGroupVO) {
+        PDaserverGroupDomain pDaserverGroupDomain = pDaserverGroupVO.vo2Domain();
+        List<PDaserverGroupDomain> lstDomain = pDaserverGroupReadDAO.findByWhere(pDaserverGroupDomain);
+        pDaserverGroupVO.setTotalRow(pDaserverGroupDomain.getTotalRow());
+        pDaserverGroupVO.setPageCurrent(pDaserverGroupDomain.getPageCurrent());
+        pDaserverGroupVO.setDbName(pDaserverGroupDomain.getDbName());
+        pDaserverGroupVO.setPageSize(pDaserverGroupDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PDaserverGroupVO.class);
     }
 
 }

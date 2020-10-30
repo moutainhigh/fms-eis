@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 采集任务模板明细
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PTaskTplDetailDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class PTaskTplDetailDAO extends AbstractTransactionDAOSupport implements BaseDAO<PTaskTplDetailDomain> {
 
     @Override
-    public int insert(PTaskTplDetailDomain testDomain) {
+    public int insert(PTaskTplDetailDomain pTaskTplDetailDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pTaskTplDetailDomain);
     }
 
     @Override
-    public int delete(PTaskTplDetailDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PTaskTplDetailDomain pTaskTplDetailDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pTaskTplDetailDomain);
+    }
+
+    @Override
+    public PTaskTplDetailDomain findByKey(PTaskTplDetailDomain pTaskTplDetailDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pTaskTplDetailDomain);
     }
 
     @PaginationSupport
     @Override
-    public PTaskTplDetailDomain findByKey(PTaskTplDetailDomain arg0) {
+    public List<PTaskTplDetailDomain> findByWhere(PTaskTplDetailDomain pTaskTplDetailDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pTaskTplDetailDomain);
     }
 
     @Override
-    public List<PTaskTplDetailDomain> findByWhere(PTaskTplDetailDomain arg0) {
+    public int update(PTaskTplDetailDomain pTaskTplDetailDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PTaskTplDetailDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pTaskTplDetailDomain);
     }
 
 }

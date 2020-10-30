@@ -1,11 +1,13 @@
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:32
- * Title : org.fms.eis.webapp.domain.TestDomain.java
+ * 计算任务类型定义表
+ * Author :
+ * Date :
+ * Title : org.fms.eis.webapp.domain.PWsdCalcTaskDomain.java
  **/
 package org.fms.eis.webapp.domain;
 
 import com.riozenc.titanTool.annotation.TablePrimaryKey;
+import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import com.riozenc.titanTool.mybatis.MybatisEntity;
 import com.riozenc.titanTool.mybatis.pagination.Page;
 import org.fms.eis.webapp.vo.PWsdCalcTaskVO;
@@ -97,17 +99,8 @@ public class PWsdCalcTaskDomain extends Page implements MybatisEntity {
     }
 
     public PWsdCalcTaskVO domain2VO() {
-        PWsdCalcTaskVO testVO = new PWsdCalcTaskVO();
-        testVO.setId(this.id);
-        testVO.setName(this.name);
-        testVO.setSchemeflag(this.schemeflag);
-        testVO.setUinttype(this.uinttype);
-        testVO.setStatus(this.status);
-        testVO.setCreatorId(this.creatorId);
-        testVO.setCreateDate(this.createDate);
-        testVO.setLastModifierId(this.lastModifierId);
-        testVO.setLastModifyTime(this.lastModifyTime);
-        return testVO;
+        PWsdCalcTaskVO pWsdCalcTaskVO = ReflectUtil.cast(this, PWsdCalcTaskVO.class);
+        return pWsdCalcTaskVO;
     }
 
 }

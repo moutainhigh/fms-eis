@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 通道组主机关系
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PChnlGpDasRelaDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class PChnlGpDasRelaDAO extends AbstractTransactionDAOSupport implements BaseDAO<PChnlGpDasRelaDomain> {
 
     @Override
-    public int insert(PChnlGpDasRelaDomain testDomain) {
+    public int insert(PChnlGpDasRelaDomain pChnlGpDasRelaDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pChnlGpDasRelaDomain);
     }
 
     @Override
-    public int delete(PChnlGpDasRelaDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PChnlGpDasRelaDomain pChnlGpDasRelaDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pChnlGpDasRelaDomain);
+    }
+
+    @Override
+    public PChnlGpDasRelaDomain findByKey(PChnlGpDasRelaDomain pChnlGpDasRelaDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pChnlGpDasRelaDomain);
     }
 
     @PaginationSupport
     @Override
-    public PChnlGpDasRelaDomain findByKey(PChnlGpDasRelaDomain arg0) {
+    public List<PChnlGpDasRelaDomain> findByWhere(PChnlGpDasRelaDomain pChnlGpDasRelaDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pChnlGpDasRelaDomain);
     }
 
     @Override
-    public List<PChnlGpDasRelaDomain> findByWhere(PChnlGpDasRelaDomain arg0) {
+    public int update(PChnlGpDasRelaDomain pChnlGpDasRelaDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PChnlGpDasRelaDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pChnlGpDasRelaDomain);
     }
 
 }

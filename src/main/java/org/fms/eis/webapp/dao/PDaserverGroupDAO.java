@@ -1,5 +1,6 @@
 /**
- * Author : chizf
+ * 采集主机组
+ * Author :
  * Date : 2020年10月22日 上午9:59:25
  * Title : org.fms.eis.webapp.dao.PDaserverGroupDAO.java
  **/
@@ -17,33 +18,33 @@ import java.util.List;
 public class PDaserverGroupDAO extends AbstractTransactionDAOSupport implements BaseDAO<PDaserverGroupDomain> {
 
     @Override
-    public int insert(PDaserverGroupDomain testDomain) {
+    public int insert(PDaserverGroupDomain pDaserverGroupDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().insert(getNamespace() + ".insert", testDomain);
+        return getPersistanceManager().insert(getNamespace() + ".insert", pDaserverGroupDomain);
     }
 
     @Override
-    public int delete(PDaserverGroupDomain arg0) {
-        return getPersistanceManager().delete(getNamespace() + ".delete", arg0);
+    public int delete(PDaserverGroupDomain pDaserverGroupDomain) {
+        return getPersistanceManager().delete(getNamespace() + ".delete", pDaserverGroupDomain);
+    }
+
+    @Override
+    public PDaserverGroupDomain findByKey(PDaserverGroupDomain pDaserverGroupDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().load(getNamespace() + ".findByKey", pDaserverGroupDomain);
     }
 
     @PaginationSupport
     @Override
-    public PDaserverGroupDomain findByKey(PDaserverGroupDomain arg0) {
+    public List<PDaserverGroupDomain> findByWhere(PDaserverGroupDomain pDaserverGroupDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().load(getNamespace() + ".findByKey", arg0);
+        return getPersistanceManager().find(getNamespace() + ".findByWhere", pDaserverGroupDomain);
     }
 
     @Override
-    public List<PDaserverGroupDomain> findByWhere(PDaserverGroupDomain arg0) {
+    public int update(PDaserverGroupDomain pDaserverGroupDomain) {
         // TODO Auto-generated method stub
-        return getPersistanceManager().find(getNamespace() + ".findByWhere", arg0);
-    }
-
-    @Override
-    public int update(PDaserverGroupDomain arg0) {
-        // TODO Auto-generated method stub
-        return getPersistanceManager().update(getNamespace() + ".update", arg0);
+        return getPersistanceManager().update(getNamespace() + ".update", pDaserverGroupDomain);
     }
 
 }

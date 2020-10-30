@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 采集任务模板明细
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.IPTaskTplDetailService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface IPTaskTplDetailService {
 
-	public int insert(PTaskTplDetailVO modelVO);
+	public int insert(PTaskTplDetailVO pTaskTplDetailVO);
 
-	public int update(PTaskTplDetailVO modelVO);
+	public int update(PTaskTplDetailVO pTaskTplDetailVO);
 
-	public int delete(PTaskTplDetailVO modelVO);
+	public int delete(PTaskTplDetailVO pTaskTplDetailVO);
 
-	public PTaskTplDetailVO findByKey(PTaskTplDetailVO modelVO);
+	public PTaskTplDetailVO findByKey(PTaskTplDetailVO pTaskTplDetailVO);
 
-	public List<PTaskTplDetailVO> findByWhere(PTaskTplDetailVO modelVO);
+	public List<PTaskTplDetailVO> findByWhere(PTaskTplDetailVO pTaskTplDetailVO);
 }

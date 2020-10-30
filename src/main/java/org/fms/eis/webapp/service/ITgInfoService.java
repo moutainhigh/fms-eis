@@ -1,7 +1,8 @@
 
 /**
- * Author : chizf
- * Date : 2020年10月22日 上午9:59:37
+ * 台区表
+ * Author : 
+ * Date : 
  * Title : org.fms.eis.webapp.service.ITgInfoService.java
  *
 **/
@@ -13,13 +14,13 @@ import java.util.List;
 
 public interface ITgInfoService {
 
-	public int insert(TgInfoVO modelVO);
+	public int insert(TgInfoVO tgInfoVO);
 
-	public int update(TgInfoVO modelVO);
+	public int update(TgInfoVO tgInfoVO);
 
-	public int delete(TgInfoVO modelVO);
+	public int delete(TgInfoVO tgInfoVO);
 
-	public TgInfoVO findByKey(TgInfoVO modelVO);
+	public TgInfoVO findByKey(TgInfoVO tgInfoVO);
 
-	public List<TgInfoVO> findByWhere(TgInfoVO modelVO);
+	public List<TgInfoVO> findByWhere(TgInfoVO tgInfoVO);
 }
