@@ -11,7 +11,9 @@ import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PChnlGroupDAO;
 import org.fms.eis.webapp.domain.PChnlGroupDomain;
+import org.fms.eis.webapp.domain.PChnlGroupStaticDomain;
 import org.fms.eis.webapp.service.IPChnlGroupService;
+import org.fms.eis.webapp.vo.PChnlGroupStaticVO;
 import org.fms.eis.webapp.vo.PChnlGroupVO;
 
 import java.util.*;
@@ -64,4 +66,15 @@ public class PChnlGroupServiceImpl implements IPChnlGroupService {
         return ReflectUtil.cast(lstDomain, PChnlGroupVO.class);
     }
 
+    @Override
+    public List<PChnlGroupStaticVO> findByWhereStatic(PChnlGroupStaticVO pChnlGroupVO) {
+        PChnlGroupStaticDomain pChnlGroupStaticDomain = pChnlGroupVO.vo2Domain();
+        List<PChnlGroupStaticDomain> lstDomain = pChnlGroupReadDAO.findByWhereStatic(pChnlGroupStaticDomain);
+        pChnlGroupVO.setTotalRow(pChnlGroupStaticDomain.getTotalRow());
+        pChnlGroupVO.setPageCurrent(pChnlGroupStaticDomain.getPageCurrent());
+        pChnlGroupVO.setDbName(pChnlGroupStaticDomain.getDbName());
+        pChnlGroupVO.setPageSize(pChnlGroupStaticDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PChnlGroupStaticVO.class);
+    }
 }

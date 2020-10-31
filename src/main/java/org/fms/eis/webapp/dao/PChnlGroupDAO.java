@@ -11,6 +11,7 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 import org.fms.eis.webapp.domain.PChnlGroupDomain;
+import org.fms.eis.webapp.domain.PChnlGroupStaticDomain;
 
 import java.util.List;
 
@@ -39,6 +40,12 @@ public class PChnlGroupDAO extends AbstractTransactionDAOSupport implements Base
     public List<PChnlGroupDomain> findByWhere(PChnlGroupDomain pChnlGroupDomain) {
         // TODO Auto-generated method stub
         return getPersistanceManager().find(getNamespace() + ".findByWhere", pChnlGroupDomain);
+    }
+
+    @PaginationSupport
+    public List<PChnlGroupStaticDomain> findByWhereStatic(PChnlGroupStaticDomain pChnlGroupStaticDomain) {
+        // TODO Auto-generated method stub
+        return getPersistanceManager().find(getNamespace() + ".findByWhereStatic", pChnlGroupStaticDomain);
     }
 
     @Override
