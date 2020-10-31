@@ -29,6 +29,10 @@ public class PChnlGroupDAO extends AbstractTransactionDAOSupport implements Base
         return getPersistanceManager().delete(getNamespace() + ".delete", pChnlGroupDomain);
     }
 
+    public int deleteList(List<PChnlGroupDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
     @Override
     public PChnlGroupDomain findByKey(PChnlGroupDomain pChnlGroupDomain) {
         // TODO Auto-generated method stub
