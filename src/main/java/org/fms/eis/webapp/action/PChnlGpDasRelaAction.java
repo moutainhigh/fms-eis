@@ -56,15 +56,9 @@ public class PChnlGpDasRelaAction {
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody PChnlGpDasRelaVO pChnlGpDasRelaVO) {
-        int i = pChnlGpDasRelaService.delete(pChnlGpDasRelaVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
-        }
-
+    public HttpResult<?> delete(@RequestBody List<PChnlGpDasRelaVO> deleteList) throws Exception {
+        HttpResult httpResult = pChnlGpDasRelaService.deleteList(deleteList);
+        return httpResult;
     }
 
     @ResponseBody

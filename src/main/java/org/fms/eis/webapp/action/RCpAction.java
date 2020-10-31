@@ -56,15 +56,9 @@ public class RCpAction {
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody RCpVO rCpVO) {
-        int i = rCpService.delete(rCpVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
-        }
-
+    public HttpResult<?> delete(@RequestBody List<RCpVO> deleteList) throws Exception {
+        HttpResult httpResult = rCpService.deleteList(deleteList);
+        return httpResult;
     }
 
     @ResponseBody

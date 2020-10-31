@@ -47,4 +47,8 @@ public class SystemCommonConfigDAO extends AbstractTransactionDAOSupport impleme
         return getPersistanceManager().update(getNamespace() + ".update", systemCommonConfigDomain);
     }
 
+    public int deleteList(List<SystemCommonConfigDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

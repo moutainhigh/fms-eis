@@ -56,15 +56,9 @@ public class PSysCalcSchemeAction {
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody PSysCalcSchemeVO pSysCalcSchemeVO) {
-        int i = pSysCalcSchemeService.delete(pSysCalcSchemeVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
-        }
-
+    public HttpResult<?> delete(@RequestBody List<PSysCalcSchemeVO> deleteList) throws Exception {
+        HttpResult httpResult = pSysCalcSchemeService.deleteList(deleteList);
+        return httpResult;
     }
 
     @ResponseBody

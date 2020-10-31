@@ -6,6 +6,7 @@
  **/
 package org.fms.eis.webapp.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.SystemCommonConfigDomain;
 

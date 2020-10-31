@@ -56,15 +56,9 @@ public class PWsdTaskdataAction {
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody PWsdTaskdataVO pWsdTaskdataVO) {
-        int i = pWsdTaskdataService.delete(pWsdTaskdataVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
-        }
-
+    public HttpResult<?> delete(@RequestBody List<PWsdTaskdataVO> deleteList) throws Exception {
+        HttpResult httpResult = pWsdTaskdataService.deleteList(deleteList);
+        return httpResult;
     }
 
     @ResponseBody

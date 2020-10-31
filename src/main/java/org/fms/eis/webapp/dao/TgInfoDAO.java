@@ -47,4 +47,8 @@ public class TgInfoDAO extends AbstractTransactionDAOSupport implements BaseDAO<
         return getPersistanceManager().update(getNamespace() + ".update", tgInfoDomain);
     }
 
+    public int deleteList(List<TgInfoDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

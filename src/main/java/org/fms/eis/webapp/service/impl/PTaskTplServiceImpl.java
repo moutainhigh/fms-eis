@@ -7,6 +7,7 @@
  **/
 package org.fms.eis.webapp.service.impl;
 
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
@@ -39,6 +40,16 @@ public class PTaskTplServiceImpl implements IPTaskTplService {
     @Override
     public int delete(PTaskTplVO pTaskTplVO) {
         return pTaskTplWriteDAO.delete(pTaskTplVO.vo2Domain());
+    }
+
+    @Override
+    public HttpResult deleteList(List<PTaskTplVO> deleteList) throws Exception {
+        int num = pTaskTplWriteDAO.deleteList(ReflectUtil.cast(deleteList, PTaskTplDomain.class));
+        if (num == deleteList.size()) {
+            return new HttpResult(HttpResult.SUCCESS, "删除成功，删除条数：" + num);
+        } else {
+            throw new Exception();
+        }
     }
 
     @Override

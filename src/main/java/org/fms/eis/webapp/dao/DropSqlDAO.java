@@ -46,4 +46,8 @@ public class DropSqlDAO extends AbstractTransactionDAOSupport implements BaseDAO
         return getPersistanceManager().update(getNamespace() + ".update", dropSqlDomain);
     }
 
+    public int deleteList(List<DropSqlDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

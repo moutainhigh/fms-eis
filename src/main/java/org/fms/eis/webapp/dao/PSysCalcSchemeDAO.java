@@ -47,4 +47,8 @@ public class PSysCalcSchemeDAO extends AbstractTransactionDAOSupport implements 
         return getPersistanceManager().update(getNamespace() + ".update", pSysCalcSchemeDomain);
     }
 
+    public int deleteList(List<PSysCalcSchemeDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

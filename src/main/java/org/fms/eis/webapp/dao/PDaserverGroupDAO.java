@@ -47,4 +47,8 @@ public class PDaserverGroupDAO extends AbstractTransactionDAOSupport implements 
         return getPersistanceManager().update(getNamespace() + ".update", pDaserverGroupDomain);
     }
 
+    public int deleteList(List<PDaserverGroupDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

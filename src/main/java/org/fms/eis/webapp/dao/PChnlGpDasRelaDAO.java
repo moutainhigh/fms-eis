@@ -47,4 +47,8 @@ public class PChnlGpDasRelaDAO extends AbstractTransactionDAOSupport implements 
         return getPersistanceManager().update(getNamespace() + ".update", pChnlGpDasRelaDomain);
     }
 
+    public int deleteList(List<PChnlGpDasRelaDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

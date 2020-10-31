@@ -6,6 +6,7 @@
  **/
 package org.fms.eis.webapp.service;
 
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.eis.webapp.vo.DropSqlVO;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public interface IDropSqlService {
     public int update(DropSqlVO dropSqlVO);
 
     public int delete(DropSqlVO dropSqlVO);
+
+    public HttpResult deleteList(List<DropSqlVO> deleteList) throws Exception;
 
     public DropSqlVO findByKey(DropSqlVO dropSqlVO);
 

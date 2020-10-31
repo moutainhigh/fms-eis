@@ -56,15 +56,9 @@ public class PSysNodeAction {
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody PSysNodeVO pSysNodeVO) {
-        int i = pSysNodeService.delete(pSysNodeVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
-        }
-
+    public HttpResult<?> delete(@RequestBody List<PSysNodeVO> deleteList) throws Exception {
+        HttpResult httpResult = pSysNodeService.deleteList(deleteList);
+        return httpResult;
     }
 
     @ResponseBody

@@ -6,6 +6,7 @@
  **/
 package org.fms.eis.webapp.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.PWsdCalcTaskDomain;
 
@@ -19,6 +20,8 @@ public class PWsdCalcTaskVO extends ManagerParamVO {
     private String uinttype;    //1000—电表类型 1001---水表类型
     private String status;    //可用标志
     private Long creatorId;    //创建者
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间

@@ -56,15 +56,9 @@ public class PTaskAction {
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody PTaskVO pTaskVO) {
-        int i = pTaskService.delete(pTaskVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
-        }
-
+    public HttpResult<?> delete(@RequestBody List<PTaskVO> deleteList) throws Exception {
+        HttpResult httpResult = pTaskService.deleteList(deleteList);
+        return httpResult;
     }
 
     @ResponseBody

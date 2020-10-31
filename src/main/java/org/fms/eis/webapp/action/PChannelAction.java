@@ -56,15 +56,9 @@ public class PChannelAction {
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody PChannelVO pChannelVO) {
-        int i = pChannelService.delete(pChannelVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
-        }
-
+    public HttpResult<?> delete(@RequestBody List<PChannelVO> deleteList) throws Exception {
+        HttpResult httpResult = pChannelService.deleteList(deleteList);
+        return httpResult;
     }
 
     @ResponseBody

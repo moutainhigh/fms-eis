@@ -6,15 +6,13 @@
  **/
 package org.fms.eis.webapp.service.impl;
 
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
-import com.riozenc.titanTool.spring.web.http.HttpResult;
 import org.fms.eis.webapp.dao.PChnlGroupDAO;
 import org.fms.eis.webapp.domain.PChnlGroupDomain;
-import org.fms.eis.webapp.domain.PChnlGroupStaticDomain;
 import org.fms.eis.webapp.service.IPChnlGroupService;
-import org.fms.eis.webapp.vo.PChnlGroupStaticVO;
 import org.fms.eis.webapp.vo.PChnlGroupVO;
 
 import java.util.*;
@@ -42,12 +40,13 @@ public class PChnlGroupServiceImpl implements IPChnlGroupService {
     public int delete(PChnlGroupVO pChnlGroupVO) {
         return pChnlGroupWriteDAO.delete(pChnlGroupVO.vo2Domain());
     }
+
     @Override
     public HttpResult deleteList(List<PChnlGroupVO> deleteList) throws Exception {
         int num = pChnlGroupWriteDAO.deleteList(ReflectUtil.cast(deleteList, PChnlGroupDomain.class));
-        if(num==deleteList.size()) {
-            return new HttpResult(HttpResult.SUCCESS,"删除成功，删除条数："+num);
-        }else {
+        if (num == deleteList.size()) {
+            return new HttpResult(HttpResult.SUCCESS, "删除成功，删除条数：" + num);
+        } else {
             throw new Exception();
         }
     }
@@ -76,15 +75,4 @@ public class PChnlGroupServiceImpl implements IPChnlGroupService {
         return ReflectUtil.cast(lstDomain, PChnlGroupVO.class);
     }
 
-    @Override
-    public List<PChnlGroupStaticVO> findByWhereStatic(PChnlGroupStaticVO pChnlGroupVO) {
-        PChnlGroupStaticDomain pChnlGroupStaticDomain = pChnlGroupVO.vo2Domain();
-        List<PChnlGroupStaticDomain> lstDomain = pChnlGroupReadDAO.findByWhereStatic(pChnlGroupStaticDomain);
-        pChnlGroupVO.setTotalRow(pChnlGroupStaticDomain.getTotalRow());
-        pChnlGroupVO.setPageCurrent(pChnlGroupStaticDomain.getPageCurrent());
-        pChnlGroupVO.setDbName(pChnlGroupStaticDomain.getDbName());
-        pChnlGroupVO.setPageSize(pChnlGroupStaticDomain.getPageSize());
-
-        return ReflectUtil.cast(lstDomain, PChnlGroupStaticVO.class);
-    }
 }

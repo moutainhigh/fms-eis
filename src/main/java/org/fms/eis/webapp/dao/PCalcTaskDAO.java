@@ -47,4 +47,8 @@ public class PCalcTaskDAO extends AbstractTransactionDAOSupport implements BaseD
         return getPersistanceManager().update(getNamespace() + ".update", pCalcTaskDomain);
     }
 
+    public int deleteList(List<PCalcTaskDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

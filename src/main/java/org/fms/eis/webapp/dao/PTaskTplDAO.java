@@ -48,4 +48,8 @@ public class PTaskTplDAO extends AbstractTransactionDAOSupport implements BaseDA
         return getPersistanceManager().update(getNamespace() + ".update", pTaskTplDomain);
     }
 
+    public int deleteList(List<PTaskTplDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

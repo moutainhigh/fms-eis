@@ -56,15 +56,9 @@ public class PWsdProtocolAction {
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody PWsdProtocolVO pWsdProtocolVO) {
-        int i = pWsdProtocolService.delete(pWsdProtocolVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
-        }
-
+    public HttpResult<?> delete(@RequestBody List<PWsdProtocolVO> deleteList) throws Exception {
+        HttpResult httpResult = pWsdProtocolService.deleteList(deleteList);
+        return httpResult;
     }
 
     @ResponseBody

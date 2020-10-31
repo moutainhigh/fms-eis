@@ -47,4 +47,8 @@ public class PTaskDAO extends AbstractTransactionDAOSupport implements BaseDAO<P
         return getPersistanceManager().update(getNamespace() + ".update", pTaskDomain);
     }
 
+    public int deleteList(List<PTaskDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

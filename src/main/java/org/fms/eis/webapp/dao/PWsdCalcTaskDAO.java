@@ -47,4 +47,8 @@ public class PWsdCalcTaskDAO extends AbstractTransactionDAOSupport implements Ba
         return getPersistanceManager().update(getNamespace() + ".update", pWsdCalcTaskDomain);
     }
 
+    public int deleteList(List<PWsdCalcTaskDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

@@ -47,4 +47,8 @@ public class PChannelDAO extends AbstractTransactionDAOSupport implements BaseDA
         return getPersistanceManager().update(getNamespace() + ".update", pChannelDomain);
     }
 
+    public int deleteList(List<PChannelDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

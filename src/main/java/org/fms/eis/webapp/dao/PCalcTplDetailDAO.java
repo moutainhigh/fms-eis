@@ -47,4 +47,8 @@ public class PCalcTplDetailDAO extends AbstractTransactionDAOSupport implements 
         return getPersistanceManager().update(getNamespace() + ".update", pCalcTplDetailDomain);
     }
 
+    public int deleteList(List<PCalcTplDetailDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

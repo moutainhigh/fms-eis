@@ -6,6 +6,7 @@
  **/
 package org.fms.eis.webapp.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.PCalcTaskDomain;
 
@@ -29,8 +30,12 @@ public class PCalcTaskVO extends ManagerParamVO {
     private Integer genespanvalue;    //任务间隔值(>=1)
     private String genespantype;    //任务间隔类型
     private String status;    //任务状态(0---停止 1---使用)
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date taskst;    //任务产生开始时间
     private Long creatorId;    //创建者
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间

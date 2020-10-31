@@ -56,15 +56,9 @@ public class TgInfoAction {
 
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult<?> delete(@RequestBody TgInfoVO tgInfoVO) {
-        int i = tgInfoService.delete(tgInfoVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "删除成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "删除失败", null);
-        }
-
+    public HttpResult<?> delete(@RequestBody List<TgInfoVO> deleteList) throws Exception {
+        HttpResult httpResult = tgInfoService.deleteList(deleteList);
+        return httpResult;
     }
 
     @ResponseBody

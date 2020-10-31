@@ -6,6 +6,7 @@
  **/
 package org.fms.eis.webapp.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.PChnlGpDasRelaDomain;
 
@@ -17,6 +18,8 @@ public class PChnlGpDasRelaVO extends ManagerParamVO {
     private Long chnlGroupId;    //通道组标识
     private Long dasId;    //采集主机标识
     private Long creatorId;    //创建者
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间

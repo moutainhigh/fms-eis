@@ -47,4 +47,8 @@ public class PWsdChnlTypeDAO extends AbstractTransactionDAOSupport implements Ba
         return getPersistanceManager().update(getNamespace() + ".update", pWsdChnlTypeDomain);
     }
 
+    public int deleteList(List<PWsdChnlTypeDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

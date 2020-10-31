@@ -47,4 +47,8 @@ public class PWsdTaskdataGroupDAO extends AbstractTransactionDAOSupport implemen
         return getPersistanceManager().update(getNamespace() + ".update", pWsdTaskdataGroupDomain);
     }
 
+    public int deleteList(List<PWsdTaskdataGroupDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

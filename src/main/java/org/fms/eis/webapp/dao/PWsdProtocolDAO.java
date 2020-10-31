@@ -47,4 +47,8 @@ public class PWsdProtocolDAO extends AbstractTransactionDAOSupport implements Ba
         return getPersistanceManager().update(getNamespace() + ".update", pWsdProtocolDomain);
     }
 
+    public int deleteList(List<PWsdProtocolDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

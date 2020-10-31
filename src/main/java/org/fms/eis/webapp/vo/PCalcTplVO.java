@@ -6,6 +6,7 @@
  **/
 package org.fms.eis.webapp.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.PCalcTplDomain;
 
@@ -18,6 +19,8 @@ public class PCalcTplVO extends ManagerParamVO {
     private String type;    //适应数据范围类型（1---厂站关口点 ２－厂站非关口点 暂时只支持测量点和考核对象两种类型）
     private String defaultFlag;    //是否默认方案（默认1---是 2-否）
     private Long creatorId;    //创建者
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间

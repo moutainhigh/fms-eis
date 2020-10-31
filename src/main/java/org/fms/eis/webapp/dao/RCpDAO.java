@@ -47,4 +47,8 @@ public class RCpDAO extends AbstractTransactionDAOSupport implements BaseDAO<RCp
         return getPersistanceManager().update(getNamespace() + ".update", rCpDomain);
     }
 
+    public int deleteList(List<RCpDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

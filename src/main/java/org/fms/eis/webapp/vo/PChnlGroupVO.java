@@ -22,7 +22,7 @@ public class PChnlGroupVO extends ManagerParamVO {
     private Integer weight;    //排序
     private Long creatorId;    //创建者
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间

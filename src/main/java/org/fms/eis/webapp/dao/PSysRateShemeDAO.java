@@ -47,4 +47,8 @@ public class PSysRateShemeDAO extends AbstractTransactionDAOSupport implements B
         return getPersistanceManager().update(getNamespace() + ".update", pSysRateShemeDomain);
     }
 
+    public int deleteList(List<PSysRateShemeDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

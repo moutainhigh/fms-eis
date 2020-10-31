@@ -47,4 +47,8 @@ public class PWsdProtocolTaskDAO extends AbstractTransactionDAOSupport implement
         return getPersistanceManager().update(getNamespace() + ".update", pWsdProtocolTaskDomain);
     }
 
+    public int deleteList(List<PWsdProtocolTaskDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

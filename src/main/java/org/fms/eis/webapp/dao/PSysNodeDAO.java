@@ -47,4 +47,8 @@ public class PSysNodeDAO extends AbstractTransactionDAOSupport implements BaseDA
         return getPersistanceManager().update(getNamespace() + ".update", pSysNodeDomain);
     }
 
+    public int deleteList(List<PSysNodeDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

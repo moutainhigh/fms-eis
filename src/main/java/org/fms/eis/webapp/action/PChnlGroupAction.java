@@ -9,7 +9,6 @@ package org.fms.eis.webapp.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPChnlGroupService;
-import org.fms.eis.webapp.vo.PChnlGroupStaticVO;
 import org.fms.eis.webapp.vo.PChnlGroupVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -55,10 +54,9 @@ public class PChnlGroupAction {
 
     }
 
-
     @ResponseBody
     @PostMapping(params = "method=delete")
-    public HttpResult delete(@RequestBody List<PChnlGroupVO> deleteList) throws Exception {
+    public HttpResult<?> delete(@RequestBody List<PChnlGroupVO> deleteList) throws Exception {
         HttpResult httpResult = pChnlGroupService.deleteList(deleteList);
         return httpResult;
     }
@@ -81,12 +79,5 @@ public class PChnlGroupAction {
     public HttpResultPagination<?> findByWhere(@RequestBody PChnlGroupVO pChnlGroupVO) {
 
         return new HttpResultPagination(pChnlGroupVO, pChnlGroupService.findByWhere(pChnlGroupVO));
-    }
-
-    @ResponseBody
-    @PostMapping(params = "method=findByWhereStatic")
-    public HttpResultPagination<?> findByWhereStatic(@RequestBody PChnlGroupStaticVO pChnlGroupVO) {
-
-        return new HttpResultPagination(pChnlGroupVO, pChnlGroupService.findByWhereStatic(pChnlGroupVO));
     }
 }

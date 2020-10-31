@@ -6,6 +6,7 @@
  **/
 package org.fms.eis.webapp.service.impl;
 
+import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
@@ -38,6 +39,16 @@ public class TgInfoServiceImpl implements ITgInfoService {
     @Override
     public int delete(TgInfoVO tgInfoVO) {
         return tgInfoWriteDAO.delete(tgInfoVO.vo2Domain());
+    }
+
+    @Override
+    public HttpResult deleteList(List<TgInfoVO> deleteList) throws Exception {
+        int num = tgInfoWriteDAO.deleteList(ReflectUtil.cast(deleteList, TgInfoDomain.class));
+        if (num == deleteList.size()) {
+            return new HttpResult(HttpResult.SUCCESS, "删除成功，删除条数：" + num);
+        } else {
+            throw new Exception();
+        }
     }
 
     @Override

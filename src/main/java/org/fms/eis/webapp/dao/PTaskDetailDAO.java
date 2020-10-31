@@ -47,4 +47,8 @@ public class PTaskDetailDAO extends AbstractTransactionDAOSupport implements Bas
         return getPersistanceManager().update(getNamespace() + ".update", pTaskDetailDomain);
     }
 
+    public int deleteList(List<PTaskDetailDomain> deleteList) {
+        return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
+    }
+
 }

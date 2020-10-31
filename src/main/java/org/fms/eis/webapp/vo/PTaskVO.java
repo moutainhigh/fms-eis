@@ -6,6 +6,7 @@
  **/
 package org.fms.eis.webapp.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.PTaskDomain;
 
@@ -21,6 +22,8 @@ public class PTaskVO extends ManagerParamVO {
     private Long taskNo;    //任务号
     private String pnType;    //信息点类型
     private String objProp;    //对象属性
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date taskBegintime;    //任务起始时间
     private Integer taskCycle;    //任务执行周期
     private String cycleUnit;    //周期单位
@@ -34,6 +37,8 @@ public class PTaskVO extends ManagerParamVO {
     private String status;    //可用标志
     private Integer weight;    //排序
     private Long creatorId;    //创建者
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间
