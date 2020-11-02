@@ -74,5 +74,4 @@ public class PSysNodeServiceImpl implements IPSysNodeService {
 
         return ReflectUtil.cast(lstDomain, PSysNodeVO.class);
     }
-
 }

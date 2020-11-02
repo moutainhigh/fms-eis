@@ -9,7 +9,9 @@ package org.fms.eis.webapp.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPChnlGroupService;
+import org.fms.eis.webapp.vo.PChnlGroupStaticVO;
 import org.fms.eis.webapp.vo.PChnlGroupVO;
+import org.fms.eis.webapp.vo.PDaserverGroupStaticVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -79,5 +81,12 @@ public class PChnlGroupAction {
     public HttpResultPagination<?> findByWhere(@RequestBody PChnlGroupVO pChnlGroupVO) {
 
         return new HttpResultPagination(pChnlGroupVO, pChnlGroupService.findByWhere(pChnlGroupVO));
+    }
+
+    @ResponseBody
+    @PostMapping(params = "method=findByWhereStatic")
+    public HttpResultPagination<?> findByWhereStatic(@RequestBody PChnlGroupStaticVO pChnlGroupStaticVO) {
+
+        return new HttpResultPagination(pChnlGroupStaticVO, pChnlGroupService.findByWhereStatic(pChnlGroupStaticVO));
     }
 }

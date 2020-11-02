@@ -8,7 +8,9 @@
 package org.fms.eis.webapp.service;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.eis.webapp.vo.PChnlGroupStaticVO;
 import org.fms.eis.webapp.vo.PChnlGroupVO;
+import org.fms.eis.webapp.vo.PDaserverGroupStaticVO;
 
 import java.util.List;
 
@@ -25,4 +27,6 @@ public interface IPChnlGroupService {
     public PChnlGroupVO findByKey(PChnlGroupVO pChnlGroupVO);
 
     public List<PChnlGroupVO> findByWhere(PChnlGroupVO pChnlGroupVO);
+
+    public List<PChnlGroupStaticVO> findByWhereStatic(PChnlGroupStaticVO pChnlGroupStaticVO);
 }

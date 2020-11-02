@@ -46,6 +46,7 @@ public class PSysNodeVO extends ManagerParamVO {
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间
+    private Integer isSelect;//是否选中 0-否 1-是
 
     public Long getId() {
         return id;
@@ -287,9 +288,18 @@ public class PSysNodeVO extends ManagerParamVO {
         this.lastModifyTime = lastModifyTime;
     }
 
+    public Integer getIsSelect() {
+        return isSelect;
+    }
+
+    public void setIsSelect(Integer isSelect) {
+        this.isSelect = isSelect;
+    }
 
     public PSysNodeDomain vo2Domain() {
         PSysNodeDomain pSysNodeDomain = ReflectUtil.cast(this, PSysNodeDomain.class);
         return pSysNodeDomain;
     }
+
+
 }

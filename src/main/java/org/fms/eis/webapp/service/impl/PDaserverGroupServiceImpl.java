@@ -12,7 +12,9 @@ import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PDaserverGroupDAO;
 import org.fms.eis.webapp.domain.PDaserverGroupDomain;
+import org.fms.eis.webapp.domain.PDaserverGroupStaticDomain;
 import org.fms.eis.webapp.service.IPDaserverGroupService;
+import org.fms.eis.webapp.vo.PDaserverGroupStaticVO;
 import org.fms.eis.webapp.vo.PDaserverGroupVO;
 
 import java.util.*;
@@ -73,6 +75,18 @@ public class PDaserverGroupServiceImpl implements IPDaserverGroupService {
         pDaserverGroupVO.setPageSize(pDaserverGroupDomain.getPageSize());
 
         return ReflectUtil.cast(lstDomain, PDaserverGroupVO.class);
+    }
+
+    @Override
+    public List<PDaserverGroupStaticVO> findByWhereStatic(PDaserverGroupStaticVO pDaserverGroupStaticVO) {
+        PDaserverGroupStaticDomain pDaserverGroupStaticDomain = pDaserverGroupStaticVO.vo2Domain();
+        List<PDaserverGroupStaticDomain> lstDomain = pDaserverGroupReadDAO.findByWhereStatic(pDaserverGroupStaticDomain);
+        pDaserverGroupStaticVO.setTotalRow(pDaserverGroupStaticDomain.getTotalRow());
+        pDaserverGroupStaticVO.setPageCurrent(pDaserverGroupStaticDomain.getPageCurrent());
+        pDaserverGroupStaticVO.setDbName(pDaserverGroupStaticDomain.getDbName());
+        pDaserverGroupStaticVO.setPageSize(pDaserverGroupStaticDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PDaserverGroupStaticVO.class);
     }
 
 }

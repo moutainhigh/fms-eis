@@ -6,9 +6,13 @@
  **/
 package org.fms.eis.webapp.action;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPSysNodeService;
+import org.fms.eis.webapp.vo.PDaserverGroupVO;
 import org.fms.eis.webapp.vo.PSysNodeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @ControllerAdvice
 @RequestMapping("PSysNode")
@@ -79,5 +85,38 @@ public class PSysNodeAction {
     public HttpResultPagination<?> findByWhere(@RequestBody PSysNodeVO pSysNodeVO) {
 
         return new HttpResultPagination(pSysNodeVO, pSysNodeService.findByWhere(pSysNodeVO));
+    }
+
+    /**
+     *通过采集机组获取分配主机
+     * @param daserverGroupID 采集机组ID
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=findByDaserverGroup")
+    public HttpResultPagination<?> findByDaserverGroup(@RequestBody Long daserverGroupID) {
+        PSysNodeVO pSysNodeVO=new PSysNodeVO();
+        List<PSysNodeVO> listVo=pSysNodeService.findByWhere(pSysNodeVO);
+        if (daserverGroupID!=null&&listVo!=null&&listVo.size()>0){
+            for (PSysNodeVO item : listVo) {
+                //比较采集主机分组 0-未选中 1-选中
+                int isSelect=item.getDaGroup()==daserverGroupID?1:0;
+                item.setIsSelect(isSelect);
+            }
+        }
+        return new HttpResultPagination(pSysNodeVO, listVo);
+    }
+
+    /**
+     *批量更新主机的采集机组
+     * @param body
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=updateListDaserverGroup")
+    public HttpResult<?> updateListDaserverGroup(@RequestBody String body)
+            throws JsonParseException, JsonMappingException, IOException {
+        PDaserverGroupVO pDaserverGroupVO= JSONUtil.readValue(body,PDaserverGroupVO.class);
+        return null;
     }
 }

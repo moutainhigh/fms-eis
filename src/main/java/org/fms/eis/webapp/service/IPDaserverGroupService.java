@@ -8,6 +8,7 @@
 package org.fms.eis.webapp.service;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.eis.webapp.vo.PDaserverGroupStaticVO;
 import org.fms.eis.webapp.vo.PDaserverGroupVO;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface IPDaserverGroupService {
     public PDaserverGroupVO findByKey(PDaserverGroupVO pDaserverGroupVO);
 
     public List<PDaserverGroupVO> findByWhere(PDaserverGroupVO pDaserverGroupVO);
+
+    public List<PDaserverGroupStaticVO> findByWhereStatic(PDaserverGroupStaticVO pDaserverGroupStaticVO);
 }

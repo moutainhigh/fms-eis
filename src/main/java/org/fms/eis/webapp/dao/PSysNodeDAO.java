@@ -11,8 +11,10 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 import org.fms.eis.webapp.domain.PSysNodeDomain;
+import org.fms.eis.webapp.vo.PSysNodeVO;
 
 import java.util.List;
+import java.util.Map;
 
 @TransactionDAO
 public class PSysNodeDAO extends AbstractTransactionDAOSupport implements BaseDAO<PSysNodeDomain> {
@@ -50,5 +52,4 @@ public class PSysNodeDAO extends AbstractTransactionDAOSupport implements BaseDA
     public int deleteList(List<PSysNodeDomain> deleteList) {
         return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
     }
-
 }

@@ -9,6 +9,7 @@ package org.fms.eis.webapp.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPDaserverGroupService;
+import org.fms.eis.webapp.vo.PDaserverGroupStaticVO;
 import org.fms.eis.webapp.vo.PDaserverGroupVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -79,5 +80,12 @@ public class PDaserverGroupAction {
     public HttpResultPagination<?> findByWhere(@RequestBody PDaserverGroupVO pDaserverGroupVO) {
 
         return new HttpResultPagination(pDaserverGroupVO, pDaserverGroupService.findByWhere(pDaserverGroupVO));
+    }
+
+    @ResponseBody
+    @PostMapping(params = "method=findByWhereStatic")
+    public HttpResultPagination<?> findByWhereStatic(@RequestBody PDaserverGroupStaticVO pDaserverGroupStaticVO) {
+
+        return new HttpResultPagination(pDaserverGroupStaticVO, pDaserverGroupService.findByWhereStatic(pDaserverGroupStaticVO));
     }
 }

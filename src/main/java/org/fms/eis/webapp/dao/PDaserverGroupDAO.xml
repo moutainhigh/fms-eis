@@ -87,4 +87,11 @@
             and ID = #{id}
         </where>
     </delete>
+    <select id="findByWhereStatic" parameterType="PDaserverGroupStaticDomain"
+            resultType="PDaserverGroupStaticDomain" useCache="true">
+        select pdg.*,ifnull(psn.sysNodeNum,0) sysNodeNum from P_DASERVER_GROUP pdg
+        left join
+        (select count(1) sysNodeNum,DA_GROUP from P_SYS_NODE  group by DA_GROUP) psn on psn.DA_GROUP =pdg.ID
+    </select>
+
 </mapper>

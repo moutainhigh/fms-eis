@@ -11,6 +11,7 @@ import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.PDaserverGroupDomain;
 
 import java.util.Date;
+import java.util.List;
 
 public class PDaserverGroupVO extends ManagerParamVO {
 
@@ -25,6 +26,7 @@ public class PDaserverGroupVO extends ManagerParamVO {
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间
+    private List<PSysNodeVO> listSysNodeVO; //采集机组对应的主机
 
     public Long getId() {
         return id;
@@ -102,5 +104,13 @@ public class PDaserverGroupVO extends ManagerParamVO {
     public PDaserverGroupDomain vo2Domain() {
         PDaserverGroupDomain pDaserverGroupDomain = ReflectUtil.cast(this, PDaserverGroupDomain.class);
         return pDaserverGroupDomain;
+    }
+
+    public List<PSysNodeVO> getListSysNodeVO() {
+        return listSysNodeVO;
+    }
+
+    public void setListSysNodeVO(List<PSysNodeVO> listSysNodeVO) {
+        this.listSysNodeVO = listSysNodeVO;
     }
 }
