@@ -10,7 +10,12 @@ package org.fms.eis.webapp.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPTaskTplService;
+import org.fms.eis.webapp.service.IPWsdProtocolService;
+import org.fms.eis.webapp.service.impl.PTaskTplServiceImpl;
+import org.fms.eis.webapp.service.impl.PWsdProtocolServiceImpl;
+import org.fms.eis.webapp.vo.PSysNodeVO;
 import org.fms.eis.webapp.vo.PTaskTplVO;
+import org.fms.eis.webapp.vo.PWsdProtocolVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 @RequestMapping("PTaskTpl")
@@ -28,6 +34,10 @@ public class PTaskTplAction {
     @Autowired
     @Qualifier("PTaskTplServiceImpl")
     private IPTaskTplService pTaskTplService;
+
+    @Autowired
+    @Qualifier("PWsdProtocolServiceImpl")
+    private IPWsdProtocolService pWsdProtocolService;
 
     @ResponseBody
     @PostMapping(params = "method=insert")
@@ -80,5 +90,31 @@ public class PTaskTplAction {
     public HttpResultPagination<?> findByWhere(@RequestBody PTaskTplVO pTaskTplVO) {
 
         return new HttpResultPagination(pTaskTplVO, pTaskTplService.findByWhere(pTaskTplVO));
+    }
+
+    /**
+     *获取采集任务模板树
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=findTaskTplTree")
+    public HttpResult<?> findTaskTplTree() {
+        //获取通讯规约
+        PWsdProtocolVO pWsdProtocolVO=new PWsdProtocolVO();//此处加条件 例如是否可用等
+        List<PWsdProtocolVO> pWsdProtocolVOList=pWsdProtocolService.findByWhere(pWsdProtocolVO);
+        //获取采集任务模板
+        PTaskTplVO pTaskTplVO=new PTaskTplVO();//此处加条件 例如是否可用等
+        List<PTaskTplVO> pTaskTplVOList=pTaskTplService.findByWhere(pTaskTplVO);
+        //拼接树
+        if (pWsdProtocolVOList!=null&&pWsdProtocolVOList.size()>0){
+            for (PWsdProtocolVO item : pWsdProtocolVOList) {
+                //筛选条件
+                List<PTaskTplVO> childList=pTaskTplVOList.stream()
+                        .filter((PTaskTplVO s) -> s.getProtocolId()==item.getId())
+                        .collect(Collectors.toList());
+                item.setpTaskTplVOList(childList);
+            }
+        }
+        return new HttpResult<List<PWsdProtocolVO>>(HttpResult.SUCCESS, "查询成功", pWsdProtocolVOList);
     }
 }

@@ -11,6 +11,7 @@ import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.PWsdProtocolDomain;
 
 import java.util.Date;
+import java.util.List;
 
 public class PWsdProtocolVO extends ManagerParamVO {
 
@@ -34,6 +35,7 @@ public class PWsdProtocolVO extends ManagerParamVO {
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间
+    private List<PTaskTplVO> pTaskTplVOList;//规约下的采集任务模板
 
     public Long getId() {
         return id;
@@ -183,5 +185,13 @@ public class PWsdProtocolVO extends ManagerParamVO {
     public PWsdProtocolDomain vo2Domain() {
         PWsdProtocolDomain pWsdProtocolDomain = ReflectUtil.cast(this, PWsdProtocolDomain.class);
         return pWsdProtocolDomain;
+    }
+
+    public List<PTaskTplVO> getpTaskTplVOList() {
+        return pTaskTplVOList;
+    }
+
+    public void setpTaskTplVOList(List<PTaskTplVO> pTaskTplVOList) {
+        this.pTaskTplVOList = pTaskTplVOList;
     }
 }

@@ -9,6 +9,8 @@ package org.fms.eis.webapp.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPTaskService;
+import org.fms.eis.webapp.service.IPTaskTplDetailService;
+import org.fms.eis.webapp.service.IPTaskTplService;
 import org.fms.eis.webapp.service.impl.PTaskDetailServiceImpl;
 import org.fms.eis.webapp.service.impl.PTaskTplDetailServiceImpl;
 import org.fms.eis.webapp.vo.*;
@@ -31,6 +33,10 @@ public class PTaskAction {
     @Autowired
     @Qualifier("PTaskServiceImpl")
     private IPTaskService pTaskService;
+
+    @Autowired
+    @Qualifier("PTaskTplDetailServiceImpl")
+    private IPTaskTplDetailService pTaskTplDetailService;
 
     @ResponseBody
     @PostMapping(params = "method=insert")
@@ -97,7 +103,7 @@ public class PTaskAction {
         if (pTaskTplVO != null) {
             PTaskTplDetailVO pTaskTplDetailVO = new PTaskTplDetailVO();
             pTaskTplDetailVO.setTplId(pTaskTplVO.getId());
-            List<PTaskTplDetailVO> pTaskTplDetailVOList = new PTaskTplDetailServiceImpl().findByWhere(pTaskTplDetailVO);
+            List<PTaskTplDetailVO> pTaskTplDetailVOList = pTaskTplDetailService.findByWhere(pTaskTplDetailVO);
             //获取选中点集合
             List<Long> taskIDList = pTaskTplDetailVOList.stream().map(PTaskTplDetailVO::getTaskId).collect(Collectors.toList());
             //判断设置选中状态
