@@ -288,13 +288,6 @@ public class PSysNodeVO extends ManagerParamVO {
         this.lastModifyTime = lastModifyTime;
     }
 
-    public Integer getIsSelect() {
-        return isSelect;
-    }
-
-    public void setIsSelect(Integer isSelect) {
-        this.isSelect = isSelect;
-    }
 
     public PSysNodeDomain vo2Domain() {
         PSysNodeDomain pSysNodeDomain = ReflectUtil.cast(this, PSysNodeDomain.class);
@@ -302,4 +295,11 @@ public class PSysNodeVO extends ManagerParamVO {
     }
 
 
+    public Integer getIsSelect() {
+        return isSelect;
+    }
+
+    public void setIsSelect(Integer isSelect) {
+        this.isSelect = isSelect;
+    }
 }

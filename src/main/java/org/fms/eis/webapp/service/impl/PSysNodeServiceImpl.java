@@ -13,6 +13,7 @@ import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PSysNodeDAO;
 import org.fms.eis.webapp.domain.PSysNodeDomain;
 import org.fms.eis.webapp.service.IPSysNodeService;
+import org.fms.eis.webapp.vo.PDaserverGroupVO;
 import org.fms.eis.webapp.vo.PSysNodeVO;
 
 import java.util.*;
@@ -73,5 +74,11 @@ public class PSysNodeServiceImpl implements IPSysNodeService {
         pSysNodeVO.setPageSize(pSysNodeDomain.getPageSize());
 
         return ReflectUtil.cast(lstDomain, PSysNodeVO.class);
+    }
+
+    @Override
+    public int updateListDaserverGroup(List<PSysNodeVO> sysNodeVOList){
+        int num = pSysNodeWriteDAO.updateListDaserverGroup(ReflectUtil.cast(sysNodeVOList, PSysNodeDomain.class));
+        return num;
     }
 }

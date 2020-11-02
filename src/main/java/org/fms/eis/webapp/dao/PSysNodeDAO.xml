@@ -194,7 +194,7 @@
             </if>
             <if test="creatorId !=null">
                 CREATOR_ID = #{creatorId},
-            </if>e
+            </if>
             <if test="createDate !=null">
                 CREATE_DATE = #{createDate},
             </if>

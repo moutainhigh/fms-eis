@@ -109,14 +109,29 @@ public class PSysNodeAction {
 
     /**
      *批量更新主机的采集机组
-     * @param body
+     * @param pDaserverGroupVO
      * @return
      */
     @ResponseBody
     @PostMapping(params = "method=updateListDaserverGroup")
-    public HttpResult<?> updateListDaserverGroup(@RequestBody String body)
-            throws JsonParseException, JsonMappingException, IOException {
-        PDaserverGroupVO pDaserverGroupVO= JSONUtil.readValue(body,PDaserverGroupVO.class);
-        return null;
+    public HttpResult<?> updateListDaserverGroup(@RequestBody PDaserverGroupVO pDaserverGroupVO){
+        if(pDaserverGroupVO!=null){
+            List<PSysNodeVO> sysNodeVOList=pDaserverGroupVO.getListSysNodeVO();
+            if(sysNodeVOList!=null&&sysNodeVOList.size()>0){
+                for (PSysNodeVO item : sysNodeVOList) {
+                    item.setDaGroup(pDaserverGroupVO.getId());
+                }
+                int num=pSysNodeService.updateListDaserverGroup(sysNodeVOList);
+                if (num==sysNodeVOList.size()){
+                    return new HttpResult<String>(HttpResult.SUCCESS, "保存成功，保存条数：" + num,null);
+                }else{
+                    return new HttpResult<String>(HttpResult.ERROR, "保存失败", null);
+                }
+            }else{
+                return new HttpResult<String>(HttpResult.ERROR, "暂无保存内容", null);
+            }
+        }else{
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误!", null);
+        }
     }
 }
