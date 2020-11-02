@@ -99,10 +99,13 @@ public class PTaskAction {
     @ResponseBody
     @PostMapping(params = "method=findByTaskTpl")
     public HttpResultPagination<?> findByTaskTpl(@RequestBody PTaskTplVO pTaskTplVO) {
+        PTaskTplDetailVO pTaskTplDetailVO = new PTaskTplDetailVO();
         List<PTaskVO> listVo = pTaskService.findByWhere(new PTaskVO());
         if (pTaskTplVO != null) {
-            PTaskTplDetailVO pTaskTplDetailVO = new PTaskTplDetailVO();
             pTaskTplDetailVO.setTplId(pTaskTplVO.getId());
+            pTaskTplDetailVO.setPageCurrent(pTaskTplVO.getPageCurrent());
+            pTaskTplDetailVO.setPageSize(pTaskTplVO.getPageSize());
+
             List<PTaskTplDetailVO> pTaskTplDetailVOList = pTaskTplDetailService.findByWhere(pTaskTplDetailVO);
             //获取选中点集合
             List<Long> taskIDList = pTaskTplDetailVOList.stream().map(PTaskTplDetailVO::getTaskId).collect(Collectors.toList());
@@ -114,6 +117,6 @@ public class PTaskAction {
                 }
             }
         }
-        return new HttpResultPagination(pTaskTplVO, listVo);
+        return new HttpResultPagination(pTaskTplDetailVO, listVo);
     }
 }

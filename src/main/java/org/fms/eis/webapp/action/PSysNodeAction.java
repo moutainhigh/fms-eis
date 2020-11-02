@@ -95,7 +95,11 @@ public class PSysNodeAction {
     @ResponseBody
     @PostMapping(params = "method=findByDaserverGroup")
     public HttpResultPagination<?> findByDaserverGroup(@RequestBody PDaserverGroupVO pDaserverGroupVO) {
-        List<PSysNodeVO> listVo=pSysNodeService.findByWhere(new PSysNodeVO());
+        PSysNodeVO pSysNodeVO=new PSysNodeVO();
+        pSysNodeVO.setPageCurrent(pDaserverGroupVO.getPageCurrent());
+        pSysNodeVO.setPageSize(pDaserverGroupVO.getPageSize());
+
+        List<PSysNodeVO> listVo=pSysNodeService.findByWhere(pSysNodeVO);
         if (pDaserverGroupVO!=null&&listVo!=null&&listVo.size()>0){
             for (PSysNodeVO item : listVo) {
                 //比较采集主机分组 0-未选中 1-选中
@@ -103,7 +107,7 @@ public class PSysNodeAction {
                 item.setIsSelect(isSelect);
             }
         }
-        return new HttpResultPagination(pDaserverGroupVO, listVo);
+        return new HttpResultPagination(pSysNodeVO, listVo);
     }
 
     /**
