@@ -89,22 +89,21 @@ public class PSysNodeAction {
 
     /**
      *通过采集机组获取分配主机
-     * @param daserverGroupID 采集机组ID
+     * @param pDaserverGroupVO 采集机组ID
      * @return
      */
     @ResponseBody
     @PostMapping(params = "method=findByDaserverGroup")
-    public HttpResultPagination<?> findByDaserverGroup(@RequestBody Long daserverGroupID) {
-        PSysNodeVO pSysNodeVO=new PSysNodeVO();
-        List<PSysNodeVO> listVo=pSysNodeService.findByWhere(pSysNodeVO);
-        if (daserverGroupID!=null&&listVo!=null&&listVo.size()>0){
+    public HttpResultPagination<?> findByDaserverGroup(@RequestBody PDaserverGroupVO pDaserverGroupVO) {
+        List<PSysNodeVO> listVo=pSysNodeService.findByWhere(new PSysNodeVO());
+        if (pDaserverGroupVO!=null&&listVo!=null&&listVo.size()>0){
             for (PSysNodeVO item : listVo) {
                 //比较采集主机分组 0-未选中 1-选中
-                int isSelect=item.getDaGroup()==daserverGroupID?1:0;
+                int isSelect=item.getDaGroup()==pDaserverGroupVO.getId()?1:0;
                 item.setIsSelect(isSelect);
             }
         }
-        return new HttpResultPagination(pSysNodeVO, listVo);
+        return new HttpResultPagination(pDaserverGroupVO, listVo);
     }
 
     /**

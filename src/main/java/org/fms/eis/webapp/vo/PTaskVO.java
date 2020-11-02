@@ -42,6 +42,7 @@ public class PTaskVO extends ManagerParamVO {
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间
+    private Integer isSelect;//是否选中 0-否 1-是
 
     public Long getId() {
         return id;
@@ -239,5 +240,13 @@ public class PTaskVO extends ManagerParamVO {
     public PTaskDomain vo2Domain() {
         PTaskDomain pTaskDomain = ReflectUtil.cast(this, PTaskDomain.class);
         return pTaskDomain;
+    }
+
+    public Integer getIsSelect() {
+        return isSelect;
+    }
+
+    public void setIsSelect(Integer isSelect) {
+        this.isSelect = isSelect;
     }
 }

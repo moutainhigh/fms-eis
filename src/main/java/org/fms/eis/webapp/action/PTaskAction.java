@@ -9,9 +9,12 @@ package org.fms.eis.webapp.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPTaskService;
-import org.fms.eis.webapp.vo.PTaskVO;
+import org.fms.eis.webapp.service.impl.PTaskDetailServiceImpl;
+import org.fms.eis.webapp.service.impl.PTaskTplDetailServiceImpl;
+import org.fms.eis.webapp.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 @RequestMapping("PTask")
@@ -79,5 +83,31 @@ public class PTaskAction {
     public HttpResultPagination<?> findByWhere(@RequestBody PTaskVO pTaskVO) {
 
         return new HttpResultPagination(pTaskVO, pTaskService.findByWhere(pTaskVO));
+    }
+
+    /**
+     * 通过任务模板获取任务列表
+     * @param pTaskTplVO 任务模板ID
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=findByTaskTpl")
+    public HttpResultPagination<?> findByTaskTpl(@RequestBody PTaskTplVO pTaskTplVO) {
+        List<PTaskVO> listVo = pTaskService.findByWhere(new PTaskVO());
+        if (pTaskTplVO != null) {
+            PTaskTplDetailVO pTaskTplDetailVO = new PTaskTplDetailVO();
+            pTaskTplDetailVO.setTplId(pTaskTplVO.getId());
+            List<PTaskTplDetailVO> pTaskTplDetailVOList = new PTaskTplDetailServiceImpl().findByWhere(pTaskTplDetailVO);
+            //获取选中点集合
+            List<Long> taskIDList = pTaskTplDetailVOList.stream().map(PTaskTplDetailVO::getTaskId).collect(Collectors.toList());
+            //判断设置选中状态
+            if (taskIDList != null && taskIDList.size() > 0 && listVo != null && listVo.size() > 0) {
+                for (PTaskVO item : listVo) {
+                    int isSelect = taskIDList.contains(item.getId()) ? 1 : 0;
+                    item.setIsSelect(isSelect);
+                }
+            }
+        }
+        return new HttpResultPagination(pTaskTplVO, listVo);
     }
 }
