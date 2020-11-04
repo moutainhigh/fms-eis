@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.EMpXlDay2020DAO">
+	<select id="findByKey" parameterType="EMpXlDay2020Domain"
+		resultType="EMpXlDay2020Domain" useCache="true">
+			select MPED_ID,DATA_TIME,COL_TIME,P1R0,P1R0_DT,P2R0,P2R0_DT,P1R1,P1R1_DT,P2R1,P2R1_DT,P1R2,P1R2_DT,P2R2,P2R2_DT,P1R3,P1R3_DT,P2R3,P2R3_DT,P1R4,P1R4_DT,P2R4,P2R4_DT,P1R5,P1R5_DT,P2R5,P2R5_DT,DEMAND_COEF,SAVEDATETIME,AREA_CODE
+				from E_MP_XL_DAY_2020
+		<where>
+			and ID = #{id}
+		</where>
+	</select>
+	<select id="findByWhere" parameterType="EMpXlDay2020Domain"
+		resultType="EMpXlDay2020Domain" useCache="true">
+			select MPED_ID,DATA_TIME,COL_TIME,P1R0,P1R0_DT,P2R0,P2R0_DT,P1R1,P1R1_DT,P2R1,P2R1_DT,P1R2,P1R2_DT,P2R2,P2R2_DT,P1R3,P1R3_DT,P2R3,P2R3_DT,P1R4,P1R4_DT,P2R4,P2R4_DT,P1R5,P1R5_DT,P2R5,P2R5_DT,DEMAND_COEF,SAVEDATETIME,AREA_CODE
+		from E_MP_XL_DAY_2020
+		<where>
+				<if test="mpedId !=null">
+				and MPED_ID = #{mpedId}
+		</if>
+				<if test="dataTime !=null">
+				and DATA_TIME = #{dataTime}
+		</if>
+				<if test="colTime !=null">
+				and COL_TIME = #{colTime}
+		</if>
+				<if test="p1r0 !=null">
+				and P1R0 = #{p1r0}
+		</if>
+				<if test="p1r0Dt !=null">
+				and P1R0_DT = #{p1r0Dt}
+		</if>
+				<if test="p2r0 !=null">
+				and P2R0 = #{p2r0}
+		</if>
+				<if test="p2r0Dt !=null">
+				and P2R0_DT = #{p2r0Dt}
+		</if>
+				<if test="p1r1 !=null">
+				and P1R1 = #{p1r1}
+		</if>
+				<if test="p1r1Dt !=null">
+				and P1R1_DT = #{p1r1Dt}
+		</if>
+				<if test="p2r1 !=null">
+				and P2R1 = #{p2r1}
+		</if>
+				<if test="p2r1Dt !=null">
+				and P2R1_DT = #{p2r1Dt}
+		</if>
+				<if test="p1r2 !=null">
+				and P1R2 = #{p1r2}
+		</if>
+				<if test="p1r2Dt !=null">
+				and P1R2_DT = #{p1r2Dt}
+		</if>
+				<if test="p2r2 !=null">
+				and P2R2 = #{p2r2}
+		</if>
+				<if test="p2r2Dt !=null">
+				and P2R2_DT = #{p2r2Dt}
+		</if>
+				<if test="p1r3 !=null">
+				and P1R3 = #{p1r3}
+		</if>
+				<if test="p1r3Dt !=null">
+				and P1R3_DT = #{p1r3Dt}
+		</if>
+				<if test="p2r3 !=null">
+				and P2R3 = #{p2r3}
+		</if>
+				<if test="p2r3Dt !=null">
+				and P2R3_DT = #{p2r3Dt}
+		</if>
+				<if test="p1r4 !=null">
+				and P1R4 = #{p1r4}
+		</if>
+				<if test="p1r4Dt !=null">
+				and P1R4_DT = #{p1r4Dt}
+		</if>
+				<if test="p2r4 !=null">
+				and P2R4 = #{p2r4}
+		</if>
+				<if test="p2r4Dt !=null">
+				and P2R4_DT = #{p2r4Dt}
+		</if>
+				<if test="p1r5 !=null">
+				and P1R5 = #{p1r5}
+		</if>
+				<if test="p1r5Dt !=null">
+				and P1R5_DT = #{p1r5Dt}
+		</if>
+				<if test="p2r5 !=null">
+				and P2R5 = #{p2r5}
+		</if>
+				<if test="p2r5Dt !=null">
+				and P2R5_DT = #{p2r5Dt}
+		</if>
+				<if test="demandCoef !=null">
+				and DEMAND_COEF = #{demandCoef}
+		</if>
+				<if test="savedatetime !=null">
+				and SAVEDATETIME = #{savedatetime}
+		</if>
+				<if test="areaCode !=null">
+				and AREA_CODE = #{areaCode}
+		</if>
+				</where>
+	</select>
+	<insert id="insert" parameterType="EMpXlDay2020Domain" flushCache="true" useGeneratedKeys="true">
+		insert into E_MP_XL_DAY_2020
+			(MPED_ID,DATA_TIME,COL_TIME,P1R0,P1R0_DT,P2R0,P2R0_DT,P1R1,P1R1_DT,P2R1,P2R1_DT,P1R2,P1R2_DT,P2R2,P2R2_DT,P1R3,P1R3_DT,P2R3,P2R3_DT,P1R4,P1R4_DT,P2R4,P2R4_DT,P1R5,P1R5_DT,P2R5,P2R5_DT,DEMAND_COEF,SAVEDATETIME,AREA_CODE)
+			VALUES(#{mpedId},#{dataTime},#{colTime},#{p1r0},#{p1r0Dt},#{p2r0},#{p2r0Dt},#{p1r1},#{p1r1Dt},#{p2r1},#{p2r1Dt},#{p1r2},#{p1r2Dt},#{p2r2},#{p2r2Dt},#{p1r3},#{p1r3Dt},#{p2r3},#{p2r3Dt},#{p1r4},#{p1r4Dt},#{p2r4},#{p2r4Dt},#{p1r5},#{p1r5Dt},#{p2r5},#{p2r5Dt},#{demandCoef},#{savedatetime},#{areaCode})
+
+	</insert>
+	<update id="update" parameterType="EMpXlDay2020Domain" flushCache="true">
+		update E_MP_XL_DAY_2020
+		<set>
+					<if test="mpedId !=null">
+				MPED_ID = #{mpedId},
+			</if>
+					<if test="dataTime !=null">
+				DATA_TIME = #{dataTime},
+			</if>
+					<if test="colTime !=null">
+				COL_TIME = #{colTime},
+			</if>
+					<if test="p1r0 !=null">
+				P1R0 = #{p1r0},
+			</if>
+					<if test="p1r0Dt !=null">
+				P1R0_DT = #{p1r0Dt},
+			</if>
+					<if test="p2r0 !=null">
+				P2R0 = #{p2r0},
+			</if>
+					<if test="p2r0Dt !=null">
+				P2R0_DT = #{p2r0Dt},
+			</if>
+					<if test="p1r1 !=null">
+				P1R1 = #{p1r1},
+			</if>
+					<if test="p1r1Dt !=null">
+				P1R1_DT = #{p1r1Dt},
+			</if>
+					<if test="p2r1 !=null">
+				P2R1 = #{p2r1},
+			</if>
+					<if test="p2r1Dt !=null">
+				P2R1_DT = #{p2r1Dt},
+			</if>
+					<if test="p1r2 !=null">
+				P1R2 = #{p1r2},
+			</if>
+					<if test="p1r2Dt !=null">
+				P1R2_DT = #{p1r2Dt},
+			</if>
+					<if test="p2r2 !=null">
+				P2R2 = #{p2r2},
+			</if>
+					<if test="p2r2Dt !=null">
+				P2R2_DT = #{p2r2Dt},
+			</if>
+					<if test="p1r3 !=null">
+				P1R3 = #{p1r3},
+			</if>
+					<if test="p1r3Dt !=null">
+				P1R3_DT = #{p1r3Dt},
+			</if>
+					<if test="p2r3 !=null">
+				P2R3 = #{p2r3},
+			</if>
+					<if test="p2r3Dt !=null">
+				P2R3_DT = #{p2r3Dt},
+			</if>
+					<if test="p1r4 !=null">
+				P1R4 = #{p1r4},
+			</if>
+					<if test="p1r4Dt !=null">
+				P1R4_DT = #{p1r4Dt},
+			</if>
+					<if test="p2r4 !=null">
+				P2R4 = #{p2r4},
+			</if>
+					<if test="p2r4Dt !=null">
+				P2R4_DT = #{p2r4Dt},
+			</if>
+					<if test="p1r5 !=null">
+				P1R5 = #{p1r5},
+			</if>
+					<if test="p1r5Dt !=null">
+				P1R5_DT = #{p1r5Dt},
+			</if>
+					<if test="p2r5 !=null">
+				P2R5 = #{p2r5},
+			</if>
+					<if test="p2r5Dt !=null">
+				P2R5_DT = #{p2r5Dt},
+			</if>
+					<if test="demandCoef !=null">
+				DEMAND_COEF = #{demandCoef},
+			</if>
+					<if test="savedatetime !=null">
+				SAVEDATETIME = #{savedatetime},
+			</if>
+					<if test="areaCode !=null">
+				AREA_CODE = #{areaCode},
+			</if>
+					</set>
+			<where>
+			and ID = #{id}
+			</where>
+			</update>
+			<delete id="delete" parameterType="EMpXlDay2020Domain" flushCache="true">
+		delete from E_MP_XL_DAY_2020
+		<where>
+			and ID = #{id}
+		</where>
+	</delete>
+</mapper>
