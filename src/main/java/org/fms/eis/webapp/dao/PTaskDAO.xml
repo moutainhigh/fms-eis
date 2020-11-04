@@ -187,64 +187,64 @@
         on p.ID=t.TASK_ID
         <where>
             <if test="id !=null">
-                and P.ID = #{id}
+                and p.ID = #{id}
             </if>
             <if test="code !=null">
-                and P.CODE = #{code}
+                and p.CODE = #{code}
             </if>
             <if test="name !=null">
-                and P.NAME = #{name}
+                and p.NAME = #{name}
             </if>
             <if test="protocolId !=null">
-                and P.PROTOCOL_ID = #{protocolId}
+                and p.PROTOCOL_ID = #{protocolId}
             </if>
             <if test="taskId !=null">
-                and P.TASK_ID = #{taskId}
+                and p.TASK_ID = #{taskId}
             </if>
             <if test="taskNo !=null">
-                and P.TASK_NO = #{taskNo}
+                and p.TASK_NO = #{taskNo}
             </if>
             <if test="pnType !=null">
-                and P.PN_TYPE = #{pnType}
+                and p.PN_TYPE = #{pnType}
             </if>
             <if test="objProp !=null">
-                and P.OBJ_PROP = #{objProp}
+                and p.OBJ_PROP = #{objProp}
             </if>
             <if test="taskBegintime !=null">
-                and P.TASK_BEGINTIME = #{taskBegintime}
+                and p.TASK_BEGINTIME = #{taskBegintime}
             </if>
             <if test="taskCycle !=null">
-                and P.TASK_CYCLE = #{taskCycle}
+                and p.TASK_CYCLE = #{taskCycle}
             </if>
             <if test="cycleUnit !=null">
-                and P.CYCLE_UNIT = #{cycleUnit}
+                and p.CYCLE_UNIT = #{cycleUnit}
             </if>
             <if test="dataDensity !=null">
-                and P.DATA_DENSITY = #{dataDensity}
+                and p.DATA_DENSITY = #{dataDensity}
             </if>
             <if test="freezeType !=null">
-                and P.FREEZE_TYPE = #{freezeType}
+                and p.FREEZE_TYPE = #{freezeType}
             </if>
             <if test="maxDatacycle !=null">
-                and P.MAX_DATACYCLE = #{maxDatacycle}
+                and p.MAX_DATACYCLE = #{maxDatacycle}
             </if>
             <if test="maxFailnum !=null">
-                and P.MAX_FAILNUM = #{maxFailnum}
+                and p.MAX_FAILNUM = #{maxFailnum}
             </if>
             <if test="repeatCycle !=null">
-                and P.REPEAT_CYCLE = #{repeatCycle}
+                and p.REPEAT_CYCLE = #{repeatCycle}
             </if>
             <if test="priority !=null">
-                and P.PRIORITY = #{priority}
+                and p.PRIORITY = #{priority}
             </if>
             <if test="taskSrc !=null">
-                and P.TASK_SRC = #{taskSrc}
+                and p.TASK_SRC = #{taskSrc}
             </if>
             <if test="status !=null">
-                and P.STATUS = #{status}
+                and p.STATUS = #{status}
             </if>
             <if test="weight !=null">
-                and P.WEIGHT = #{weight}
+                and p.WEIGHT = #{weight}
             </if>
             <if test="relID !=null">
                 and t.REL_ID = #{relID}
