@@ -8,6 +8,7 @@
 package org.fms.eis.webapp.service;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.eis.webapp.vo.PTaskDetailVO;
 import org.fms.eis.webapp.vo.PTaskTplDetailVO;
 
 import java.util.List;
@@ -20,9 +21,11 @@ public interface IPTaskTplDetailService {
 
     public int delete(PTaskTplDetailVO pTaskTplDetailVO);
 
-    public HttpResult deleteList(List<PTaskTplDetailVO> deleteList) throws Exception;
+    public int deleteList(List<PTaskTplDetailVO> deleteList);
 
     public PTaskTplDetailVO findByKey(PTaskTplDetailVO pTaskTplDetailVO);
 
     public List<PTaskTplDetailVO> findByWhere(PTaskTplDetailVO pTaskTplDetailVO);
+
+    public int insertList(List<PTaskTplDetailVO> insertList);
 }

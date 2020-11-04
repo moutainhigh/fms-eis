@@ -13,10 +13,12 @@ import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PTaskDetailDAO;
 import org.fms.eis.webapp.domain.PTaskDetailDomain;
 import org.fms.eis.webapp.domain.PTaskDetailRelDomain;
+import org.fms.eis.webapp.domain.PWsdTaskdataRelDomain;
 import org.fms.eis.webapp.service.IPTaskDetailService;
 import org.fms.eis.webapp.vo.PTaskDetailRelVO;
 import org.fms.eis.webapp.vo.PTaskDetailVO;
 import org.fms.eis.webapp.vo.PTaskTplDetailVO;
+import org.fms.eis.webapp.vo.PWsdTaskdataRelVO;
 
 import java.util.*;
 
@@ -45,13 +47,8 @@ public class PTaskDetailServiceImpl implements IPTaskDetailService {
     }
 
     @Override
-    public HttpResult deleteList(List<PTaskDetailVO> deleteList) throws Exception {
-        int num = pTaskDetailWriteDAO.deleteList(ReflectUtil.cast(deleteList, PTaskDetailDomain.class));
-        if (num == deleteList.size()) {
-            return new HttpResult(HttpResult.SUCCESS, "删除成功，删除条数：" + num);
-        } else {
-            throw new Exception();
-        }
+    public int deleteList(List<PTaskDetailVO> deleteList){
+        return pTaskDetailWriteDAO.deleteList(ReflectUtil.cast(deleteList, PTaskDetailDomain.class));
     }
 
     @Override
@@ -79,9 +76,26 @@ public class PTaskDetailServiceImpl implements IPTaskDetailService {
     }
 
     @Override
-    public List<PTaskDetailRelVO> findByRelWhere(PTaskDetailRelVO pTaskDetailRelVO) {
-        PTaskDetailRelDomain pTaskDetailRelDomain = pTaskDetailRelVO.vo2Domain();
-        List<PTaskDetailDomain> lstDomain = pTaskDetailReadDAO.findByRelWhere(pTaskDetailRelDomain);
-        return ReflectUtil.cast(lstDomain, PTaskDetailRelVO.class);
+    public List<PWsdTaskdataRelVO> findByTaskRel(PWsdTaskdataRelVO modelVO) {
+        PWsdTaskdataRelDomain modelDomain = modelVO.vo2Domain();
+        List<PWsdTaskdataRelDomain> lstDomain = pTaskDetailReadDAO.findByTaskRel(modelDomain);
+        modelVO.setTotalRow(modelDomain.getTotalRow());
+        modelVO.setPageCurrent(modelDomain.getPageCurrent());
+        modelVO.setDbName(modelDomain.getDbName());
+        modelVO.setPageSize(modelDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PWsdTaskdataRelVO.class);
+    }
+
+    @Override
+    public List<PWsdTaskdataRelVO> findByTaskNoRel(PWsdTaskdataRelVO modelVO) {
+        PWsdTaskdataRelDomain modelDomain = modelVO.vo2Domain();
+        List<PWsdTaskdataRelDomain> lstDomain = pTaskDetailReadDAO.findByTaskNoRel(modelDomain);
+        modelVO.setTotalRow(modelDomain.getTotalRow());
+        modelVO.setPageCurrent(modelDomain.getPageCurrent());
+        modelVO.setDbName(modelDomain.getDbName());
+        modelVO.setPageSize(modelDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PWsdTaskdataRelVO.class);
     }
 }

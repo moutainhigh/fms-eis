@@ -5,7 +5,8 @@ import com.riozenc.titanTool.mybatis.MybatisEntity;
 import org.fms.eis.webapp.vo.PTaskDetailRelVO;
 
 public class PTaskDetailRelDomain extends PTaskDetailDomain implements MybatisEntity {
-    private String dataName;
+
+    private String dataName;//数据任务项名称
 
     public String getDataName() {
         return dataName;

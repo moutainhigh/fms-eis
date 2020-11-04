@@ -9,6 +9,8 @@ package org.fms.eis.webapp.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPTaskTplDetailService;
+import org.fms.eis.webapp.vo.PCalcTplDetailVO;
+import org.fms.eis.webapp.vo.PTaskRelVO;
 import org.fms.eis.webapp.vo.PTaskTplDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ControllerAdvice
@@ -57,8 +60,12 @@ public class PTaskTplDetailAction {
     @ResponseBody
     @PostMapping(params = "method=delete")
     public HttpResult<?> delete(@RequestBody List<PTaskTplDetailVO> deleteList) throws Exception {
-        HttpResult httpResult = pTaskTplDetailService.deleteList(deleteList);
-        return httpResult;
+        int i = pTaskTplDetailService.deleteList(deleteList);
+        if (i > 0) {
+            return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+        } else {
+            return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+        }
     }
 
     @ResponseBody
@@ -79,5 +86,53 @@ public class PTaskTplDetailAction {
     public HttpResultPagination<?> findByWhere(@RequestBody PTaskTplDetailVO pTaskTplDetailVO) {
 
         return new HttpResultPagination(pTaskTplDetailVO, pTaskTplDetailService.findByWhere(pTaskTplDetailVO));
+    }
+
+    /**
+     * 保存采集任务模板明细
+     *
+     * @param pTaskRelVOList
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=saveTaskTplDetailList")
+    public HttpResult<?> saveTaskTplDetailList(@RequestBody List<PTaskRelVO> pTaskRelVOList) {
+        if (pTaskRelVOList != null && pTaskRelVOList.size() > 0) {
+            List<PTaskTplDetailVO> addList = new ArrayList<>();
+            List<PTaskTplDetailVO> delList = new ArrayList<>();
+            for (PTaskRelVO item : pTaskRelVOList) {
+                if (item.getIsSelect() == 1 && item.getRelID() == null) {
+                    //isSelect=1 tplID不为null relID为null 新增
+                    if (item.getTplID() != null) {
+                        PTaskTplDetailVO addModel = new PTaskTplDetailVO();
+                        addModel.setTplId(item.getTplID());
+                        addModel.setTaskId(item.getId());
+                        addList.add(addModel);
+                    } else {
+                        return new HttpResult<String>(HttpResult.ERROR, "参数传递错误!", null);
+                    }
+                } else if (item.getIsSelect() == 0 && item.getRelID() != null) {
+                    //isSelect=0 relID不为null 删除
+                    PTaskTplDetailVO delModel = new PTaskTplDetailVO();
+                    delModel.setId(item.getRelID());
+                    delList.add(delModel);
+                }
+            }
+            if (addList.size() > 0) {
+                int addNum = pTaskTplDetailService.insertList(addList);
+                if (addNum == 0) {
+                    return new HttpResult<String>(HttpResult.ERROR, "批量插入关系时失败", null);
+                }
+            }
+            if (delList.size() > 0) {
+                int delNum = pTaskTplDetailService.deleteList(delList);
+                if (delNum == 0) {
+                    return new HttpResult<String>(HttpResult.ERROR, "批量删除关系时失败", null);
+                }
+            }
+            return new HttpResult<String>(HttpResult.SUCCESS, "保存成功!", null);
+        } else {
+            return new HttpResult<String>(HttpResult.ERROR, "暂无要保存的数据!", null);
+        }
     }
 }

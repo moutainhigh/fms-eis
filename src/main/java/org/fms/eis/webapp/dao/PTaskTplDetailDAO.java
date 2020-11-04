@@ -10,6 +10,7 @@ import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
+import org.fms.eis.webapp.domain.PTaskDetailDomain;
 import org.fms.eis.webapp.domain.PTaskTplDetailDomain;
 
 import java.util.List;
@@ -51,4 +52,7 @@ public class PTaskTplDetailDAO extends AbstractTransactionDAOSupport implements 
         return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
     }
 
+    public int insertList(List<PTaskTplDetailDomain> insertList) {
+        return getPersistanceManager().insertList(getNamespace() + ".insert", insertList);
+    }
 }

@@ -7,7 +7,7 @@ import org.fms.eis.webapp.domain.PTaskDetailRelDomain;
 
 public class PTaskDetailRelVO extends PTaskDetailVO {
 
-    private String dataName;
+    private String dataName;//数据任务项名称
 
     public String getDataName() {
         return dataName;

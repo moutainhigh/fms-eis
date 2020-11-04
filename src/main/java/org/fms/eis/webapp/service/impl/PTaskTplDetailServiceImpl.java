@@ -11,8 +11,10 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PTaskTplDetailDAO;
+import org.fms.eis.webapp.domain.PTaskDetailDomain;
 import org.fms.eis.webapp.domain.PTaskTplDetailDomain;
 import org.fms.eis.webapp.service.IPTaskTplDetailService;
+import org.fms.eis.webapp.vo.PTaskDetailVO;
 import org.fms.eis.webapp.vo.PTaskTplDetailVO;
 
 import java.util.*;
@@ -42,13 +44,8 @@ public class PTaskTplDetailServiceImpl implements IPTaskTplDetailService {
     }
 
     @Override
-    public HttpResult deleteList(List<PTaskTplDetailVO> deleteList) throws Exception {
-        int num = pTaskTplDetailWriteDAO.deleteList(ReflectUtil.cast(deleteList, PTaskTplDetailDomain.class));
-        if (num == deleteList.size()) {
-            return new HttpResult(HttpResult.SUCCESS, "删除成功，删除条数：" + num);
-        } else {
-            throw new Exception();
-        }
+    public int deleteList(List<PTaskTplDetailVO> deleteList) {
+        return pTaskTplDetailWriteDAO.deleteList(ReflectUtil.cast(deleteList, PTaskTplDetailDomain.class));
     }
 
     @Override
@@ -75,4 +72,8 @@ public class PTaskTplDetailServiceImpl implements IPTaskTplDetailService {
         return ReflectUtil.cast(lstDomain, PTaskTplDetailVO.class);
     }
 
+    @Override
+    public int insertList(List<PTaskTplDetailVO> insertList){
+        return pTaskTplDetailReadDAO.insertList(ReflectUtil.cast(insertList, PTaskTplDetailDomain.class));
+    }
 }
