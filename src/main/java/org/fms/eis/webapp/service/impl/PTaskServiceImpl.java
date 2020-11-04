@@ -12,7 +12,9 @@ import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PTaskDAO;
 import org.fms.eis.webapp.domain.PTaskDomain;
+import org.fms.eis.webapp.domain.PTaskRelDomain;
 import org.fms.eis.webapp.service.IPTaskService;
+import org.fms.eis.webapp.vo.PTaskRelVO;
 import org.fms.eis.webapp.vo.PTaskVO;
 
 import java.util.*;
@@ -75,4 +77,15 @@ public class PTaskServiceImpl implements IPTaskService {
         return ReflectUtil.cast(lstDomain, PTaskVO.class);
     }
 
+    @Override
+    public List<PTaskRelVO> findByTaskTpl(PTaskRelVO modelVO) {
+        PTaskRelDomain modelDomain = modelVO.vo2Domain();
+        List<PTaskRelDomain> lstDomain = pTaskReadDAO.findByTaskTpl(modelDomain);
+        modelVO.setTotalRow(modelDomain.getTotalRow());
+        modelVO.setPageCurrent(modelDomain.getPageCurrent());
+        modelVO.setDbName(modelDomain.getDbName());
+        modelVO.setPageSize(modelDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PTaskRelVO.class);
+    }
 }

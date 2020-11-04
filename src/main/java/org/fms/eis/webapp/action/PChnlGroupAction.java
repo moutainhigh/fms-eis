@@ -40,7 +40,6 @@ public class PChnlGroupAction {
         } else {
             return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
         }
-
     }
 
     @ResponseBody

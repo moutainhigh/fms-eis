@@ -104,3 +104,4 @@ public class PTaskDetailVO extends ManagerParamVO {
         return pTaskDetailDomain;
     }
 }
+

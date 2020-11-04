@@ -34,10 +34,6 @@ public class PTaskAction {
     @Qualifier("PTaskServiceImpl")
     private IPTaskService pTaskService;
 
-    @Autowired
-    @Qualifier("PTaskTplDetailServiceImpl")
-    private IPTaskTplDetailService pTaskTplDetailService;
-
     @ResponseBody
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PTaskVO pTaskVO) {
@@ -92,31 +88,41 @@ public class PTaskAction {
     }
 
     /**
+     * 通过通讯规约ID获取任务列表
+     *
+     * @param pWsdProtocolID 通讯规约ID
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=findByProtocolID")
+    public HttpResult<?> findByProtocolID(@RequestBody Long pWsdProtocolID) {
+        PTaskVO pTaskVO = new PTaskVO();
+        pTaskVO.setProtocolId(pWsdProtocolID);
+        List<PTaskVO> listVo = pTaskService.findByWhere(pTaskVO);//获取此规约的任务
+        return new HttpResult<List<PTaskVO>>(HttpResult.SUCCESS, "获取成功", listVo);
+    }
+
+    /**
      * 通过任务模板获取任务列表
-     * @param pTaskTplVO 任务模板ID
+     *
+     * @param pTaskTplVO 任务模板
      * @return
      */
     @ResponseBody
     @PostMapping(params = "method=findByTaskTpl")
-    public HttpResultPagination<?> findByTaskTpl(@RequestBody PTaskTplVO pTaskTplVO) {
-        PTaskTplDetailVO pTaskTplDetailVO = new PTaskTplDetailVO();
-        List<PTaskVO> listVo = pTaskService.findByWhere(new PTaskVO());
+    public HttpResult<?> findByTaskTpl(@RequestBody PTaskTplVO pTaskTplVO) {
         if (pTaskTplVO != null) {
-            pTaskTplDetailVO.setTplId(pTaskTplVO.getId());
-            pTaskTplDetailVO.setPageCurrent(pTaskTplVO.getPageCurrent());
-            pTaskTplDetailVO.setPageSize(pTaskTplVO.getPageSize());
-
-            List<PTaskTplDetailVO> pTaskTplDetailVOList = pTaskTplDetailService.findByWhere(pTaskTplDetailVO);
-            //获取选中点集合
-            List<Long> taskIDList = pTaskTplDetailVOList.stream().map(PTaskTplDetailVO::getTaskId).collect(Collectors.toList());
-            //判断设置选中状态
-            if (taskIDList != null && taskIDList.size() > 0 && listVo != null && listVo.size() > 0) {
-                for (PTaskVO item : listVo) {
-                    int isSelect = taskIDList.contains(item.getId()) ? 1 : 0;
-                    item.setIsSelect(isSelect);
+            PTaskRelVO pTaskRelVO = new PTaskRelVO();
+            pTaskRelVO.setProtocolId(pTaskTplVO.getProtocolId());//赋值规约
+            List<PTaskRelVO> listVo = pTaskService.findByTaskTpl(pTaskRelVO);//获取此规约全部任务
+            if (listVo != null && listVo.size() > 0) {
+                for (PTaskRelVO item : listVo) {
+                    item.setIsSelect(item.getTplID() == pTaskTplVO.getId() ? 1 : 0);
                 }
             }
+            return new HttpResult<List<PTaskRelVO>>(HttpResult.SUCCESS, "获取成功", listVo);
+        } else {
+            return new HttpResult<List<PTaskRelVO>>(HttpResult.ERROR, "参数传递错误", null);
         }
-        return new HttpResultPagination(pTaskTplDetailVO, listVo);
     }
 }

@@ -8,8 +8,10 @@ package org.fms.eis.webapp.action;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import org.fms.eis.webapp.service.IPChannelService;
 import org.fms.eis.webapp.vo.PChannelVO;
+import org.fms.eis.webapp.vo.PTaskTplVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 @RequestMapping("PChannel")
@@ -31,27 +34,64 @@ public class PChannelAction {
     @ResponseBody
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PChannelVO pChannelVO) {
-        int i = pChannelService.insert(pChannelVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+        if(pChannelVO!=null){
+            List<PChannelVO> listVO;
+            PChannelVO model;
+            //判断地址1
+            model=new PChannelVO();
+            model.setDeviceAddr1(pChannelVO.getDeviceAddr1());
+            listVO=pChannelService.findByWhere(model);
+            if(listVO.size()>0){
+                return new HttpResult<String>(HttpResult.ERROR, "新增失败,设备地址1重复", null);
+            }
+            //判断地址2
+            model.setDeviceAddr1(null);
+            model.setDeviceAddr1(pChannelVO.getDeviceAddr2());
+            listVO=pChannelService.findByWhere(model);
+            if(listVO.size()>0){
+                return new HttpResult<String>(HttpResult.ERROR, "新增失败,设备地址2重复", null);
+            }
+            int i = pChannelService.insert(pChannelVO);
+            if (i > 0) {
+                return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+            }
+        }else{
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
-
     }
 
     @ResponseBody
     @PostMapping(params = "method=update")
     public HttpResult<?> update(@RequestBody PChannelVO pChannelVO) {
-        int i = pChannelService.update(pChannelVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
-        } else {
-            return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+        if(pChannelVO!=null){
+            Long repeatNum;
+            PChannelVO model=new PChannelVO();
+            //判断地址1
+            model.setDeviceAddr1(pChannelVO.getDeviceAddr1());
+            repeatNum=pChannelService.findByWhere(model).stream()
+                    .filter((PChannelVO s) -> s.getId()!=pChannelVO.getId()).count();
+            if(repeatNum>0){
+                return new HttpResult<String>(HttpResult.ERROR, "编辑失败,设备地址1重复", null);
+            }
+            //判断地址2
+            model.setDeviceAddr1(null);
+            model.setDeviceAddr1(pChannelVO.getDeviceAddr2());
+            repeatNum=pChannelService.findByWhere(model).stream()
+                    .filter((PChannelVO s) -> s.getId()!=pChannelVO.getId()).count();
+            if(repeatNum>0){
+                return new HttpResult<String>(HttpResult.ERROR, "编辑失败,设备地址2重复", null);
+            }
+            int i = pChannelService.update(pChannelVO);
+            if (i > 0) {
+                return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+            }
+        }else{
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
-
     }
 
     @ResponseBody

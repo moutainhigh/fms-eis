@@ -179,4 +179,79 @@
             and ID = #{id}
         </where>
     </delete>
+    <select id="findByTaskTpl" parameterType="PTaskRelDomain"
+            resultType="PTaskRelDomain" useCache="true">
+        select p.*,t.ID as REL_ID,t.TPL_ID from P_TASK p
+        left join
+        P_TASK_TPL_DETAIL t
+        on p.ID=t.TASK_ID
+        <where>
+            <if test="id !=null">
+                and P.ID = #{id}
+            </if>
+            <if test="code !=null">
+                and P.CODE = #{code}
+            </if>
+            <if test="name !=null">
+                and P.NAME = #{name}
+            </if>
+            <if test="protocolId !=null">
+                and P.PROTOCOL_ID = #{protocolId}
+            </if>
+            <if test="taskId !=null">
+                and P.TASK_ID = #{taskId}
+            </if>
+            <if test="taskNo !=null">
+                and P.TASK_NO = #{taskNo}
+            </if>
+            <if test="pnType !=null">
+                and P.PN_TYPE = #{pnType}
+            </if>
+            <if test="objProp !=null">
+                and P.OBJ_PROP = #{objProp}
+            </if>
+            <if test="taskBegintime !=null">
+                and P.TASK_BEGINTIME = #{taskBegintime}
+            </if>
+            <if test="taskCycle !=null">
+                and P.TASK_CYCLE = #{taskCycle}
+            </if>
+            <if test="cycleUnit !=null">
+                and P.CYCLE_UNIT = #{cycleUnit}
+            </if>
+            <if test="dataDensity !=null">
+                and P.DATA_DENSITY = #{dataDensity}
+            </if>
+            <if test="freezeType !=null">
+                and P.FREEZE_TYPE = #{freezeType}
+            </if>
+            <if test="maxDatacycle !=null">
+                and P.MAX_DATACYCLE = #{maxDatacycle}
+            </if>
+            <if test="maxFailnum !=null">
+                and P.MAX_FAILNUM = #{maxFailnum}
+            </if>
+            <if test="repeatCycle !=null">
+                and P.REPEAT_CYCLE = #{repeatCycle}
+            </if>
+            <if test="priority !=null">
+                and P.PRIORITY = #{priority}
+            </if>
+            <if test="taskSrc !=null">
+                and P.TASK_SRC = #{taskSrc}
+            </if>
+            <if test="status !=null">
+                and P.STATUS = #{status}
+            </if>
+            <if test="weight !=null">
+                and P.WEIGHT = #{weight}
+            </if>
+            <if test="relID !=null">
+                and t.REL_ID = #{relID}
+            </if>
+            <if test="tplID !=null">
+                and t.TPL_ID = #{tplID}
+            </if>
+        </where>
+    </select>
 </mapper>

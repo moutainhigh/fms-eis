@@ -87,4 +87,39 @@
             and ID = #{id}
         </where>
     </delete>
+    <select id="findByRelWhere" parameterType="PTaskDetailRelDomain"
+            resultType="PTaskDetailDomain" useCache="true">
+        select ptd.*,pwt.NAME as DATA_NAME
+        from P_TASK_DETAIL ptd,P_WSD_TASKDATA pwt
+        <where>
+                and ptd.DATA_ID =pwt.ID
+            <if test="id !=null">
+                and ID = #{id}
+            </if>
+            <if test="tplDetailId !=null">
+                and TPL_DETAIL_ID = #{tplDetailId}
+            </if>
+            <if test="infopointType !=null">
+                and INFOPOINT_TYPE = #{infopointType}
+            </if>
+            <if test="dataId !=null">
+                and DATA_ID = #{dataId}
+            </if>
+            <if test="weight !=null">
+                and WEIGHT = #{weight}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
 </mapper>

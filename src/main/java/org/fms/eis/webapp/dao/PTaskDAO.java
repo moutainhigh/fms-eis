@@ -11,6 +11,7 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 import org.fms.eis.webapp.domain.PTaskDomain;
+import org.fms.eis.webapp.domain.PTaskRelDomain;
 
 import java.util.List;
 
@@ -51,4 +52,8 @@ public class PTaskDAO extends AbstractTransactionDAOSupport implements BaseDAO<P
         return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
     }
 
+    @PaginationSupport
+    public List<PTaskRelDomain> findByTaskTpl(PTaskRelDomain modelDomain) {
+        return getPersistanceManager().find(getNamespace() + ".findByTaskTpl", modelDomain);
+    }
 }

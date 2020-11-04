@@ -12,8 +12,11 @@ import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PTaskDetailDAO;
 import org.fms.eis.webapp.domain.PTaskDetailDomain;
+import org.fms.eis.webapp.domain.PTaskDetailRelDomain;
 import org.fms.eis.webapp.service.IPTaskDetailService;
+import org.fms.eis.webapp.vo.PTaskDetailRelVO;
 import org.fms.eis.webapp.vo.PTaskDetailVO;
+import org.fms.eis.webapp.vo.PTaskTplDetailVO;
 
 import java.util.*;
 
@@ -75,4 +78,10 @@ public class PTaskDetailServiceImpl implements IPTaskDetailService {
         return ReflectUtil.cast(lstDomain, PTaskDetailVO.class);
     }
 
+    @Override
+    public List<PTaskDetailRelVO> findByRelWhere(PTaskDetailRelVO pTaskDetailRelVO) {
+        PTaskDetailRelDomain pTaskDetailRelDomain = pTaskDetailRelVO.vo2Domain();
+        List<PTaskDetailDomain> lstDomain = pTaskDetailReadDAO.findByRelWhere(pTaskDetailRelDomain);
+        return ReflectUtil.cast(lstDomain, PTaskDetailRelVO.class);
+    }
 }
