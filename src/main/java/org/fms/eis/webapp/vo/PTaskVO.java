@@ -19,7 +19,7 @@ public class PTaskVO extends ManagerParamVO {
     private String name;    //任务名称
     private Long protocolId;    //规约编码
     private Long taskId;    //任务类型
-    private Long taskNo;    //任务号
+    private Integer taskNo;    //任务号
     private String pnType;    //信息点类型
     private String objProp;    //对象属性
 
@@ -84,11 +84,11 @@ public class PTaskVO extends ManagerParamVO {
         this.taskId = taskId;
     }
 
-    public Long getTaskNo() {
+    public Integer getTaskNo() {
         return taskNo;
     }
 
-    public void setTaskNo(Long taskNo) {
+    public void setTaskNo(Integer taskNo) {
         this.taskNo = taskNo;
     }
 

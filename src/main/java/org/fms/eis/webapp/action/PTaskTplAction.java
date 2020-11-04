@@ -93,25 +93,26 @@ public class PTaskTplAction {
     }
 
     /**
-     *获取采集任务模板树
+     * 获取采集任务模板树
+     *
      * @return
      */
     @ResponseBody
     @PostMapping(params = "method=findTaskTplTree")
     public HttpResult<?> findTaskTplTree() {
         //获取通讯规约
-        PWsdProtocolVO pWsdProtocolVO=new PWsdProtocolVO();//此处加条件 例如是否可用等
+        PWsdProtocolVO pWsdProtocolVO = new PWsdProtocolVO();//此处加条件 例如是否可用等
         //pWsdProtocolVO.setStatus("可用");
-        List<PWsdProtocolVO> pWsdProtocolVOList=pWsdProtocolService.findByWhere(pWsdProtocolVO);
+        List<PWsdProtocolVO> pWsdProtocolVOList = pWsdProtocolService.findByWhere(pWsdProtocolVO);
         //获取采集任务模板
-        PTaskTplVO pTaskTplVO=new PTaskTplVO();//此处加条件 例如是否可用等
-        List<PTaskTplVO> pTaskTplVOList=pTaskTplService.findByWhere(pTaskTplVO);
+        PTaskTplVO pTaskTplVO = new PTaskTplVO();//此处加条件 例如是否可用等
+        List<PTaskTplVO> pTaskTplVOList = pTaskTplService.findByWhere(pTaskTplVO);
         //拼接树
-        if (pWsdProtocolVOList!=null&&pWsdProtocolVOList.size()>0){
+        if (pWsdProtocolVOList != null && pWsdProtocolVOList.size() > 0) {
             for (PWsdProtocolVO item : pWsdProtocolVOList) {
                 //筛选条件
-                List<PTaskTplVO> childList=pTaskTplVOList.stream()
-                        .filter((PTaskTplVO s) -> s.getProtocolId()==item.getId())
+                List<PTaskTplVO> childList = pTaskTplVOList.stream()
+                        .filter((PTaskTplVO s) -> s.getProtocolId() == item.getId())
                         .collect(Collectors.toList());
                 item.setpTaskTplVOList(childList);
             }

@@ -17,7 +17,7 @@ import java.util.Date;
 public class PTaskDetailDomain extends Page implements MybatisEntity {
     @TablePrimaryKey
     private Long id;    //编码
-    private Long tplDetailId;    //任务编码
+    private Long taskID;    //任务编码
     private String infopointType;    //信息点类型
     private Long dataId;    //数据单元编码
     private Integer weight;    //排序
@@ -34,12 +34,12 @@ public class PTaskDetailDomain extends Page implements MybatisEntity {
         this.id = id;
     }
 
-    public Long getTplDetailId() {
-        return tplDetailId;
+    public Long getTaskId() {
+        return taskID;
     }
 
-    public void setTplDetailId(Long tplDetailId) {
-        this.tplDetailId = tplDetailId;
+    public void setTaskId(Long taskID) {
+        this.taskID = taskID;
     }
 
     public String getInfopointType() {

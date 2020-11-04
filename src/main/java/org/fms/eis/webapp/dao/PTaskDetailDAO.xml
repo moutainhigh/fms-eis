@@ -3,7 +3,7 @@
 <mapper namespace="org.fms.eis.webapp.dao.PTaskDetailDAO">
     <select id="findByKey" parameterType="PTaskDetailDomain"
             resultType="PTaskDetailDomain" useCache="true">
-        select ID,TPL_DETAIL_ID,INFOPOINT_TYPE,DATA_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        select ID,TASK_ID,INFOPOINT_TYPE,DATA_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
         from P_TASK_DETAIL
         <where>
             and ID = #{id}
@@ -11,14 +11,14 @@
     </select>
     <select id="findByWhere" parameterType="PTaskDetailDomain"
             resultType="PTaskDetailDomain" useCache="true">
-        select ID,TPL_DETAIL_ID,INFOPOINT_TYPE,DATA_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        select ID,TASK_ID,INFOPOINT_TYPE,DATA_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
         from P_TASK_DETAIL
         <where>
             <if test="id !=null">
                 and ID = #{id}
             </if>
-            <if test="tplDetailId !=null">
-                and TPL_DETAIL_ID = #{tplDetailId}
+            <if test="taskId !=null">
+                and TASK_ID = #{taskId}
             </if>
             <if test="infopointType !=null">
                 and INFOPOINT_TYPE = #{infopointType}
@@ -45,15 +45,15 @@
     </select>
     <insert id="insert" parameterType="PTaskDetailDomain" flushCache="true" useGeneratedKeys="true">
 		insert into P_TASK_DETAIL
-			(ID,TPL_DETAIL_ID,INFOPOINT_TYPE,DATA_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
-			VALUES(#{id},#{tplDetailId},#{infopointType},#{dataId},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+			(ID,TASK_ID,INFOPOINT_TYPE,DATA_ID,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{id},#{taskId},#{infopointType},#{dataId},#{weight},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
 
 	</insert>
     <update id="update" parameterType="PTaskDetailDomain" flushCache="true">
         update P_TASK_DETAIL
         <set>
-            <if test="tplDetailId !=null">
-                TPL_DETAIL_ID = #{tplDetailId},
+            <if test="taskId !=null">
+                TASK_ID = #{taskId},
             </if>
             <if test="infopointType !=null">
                 INFOPOINT_TYPE = #{infopointType},
@@ -96,8 +96,8 @@
             <if test="id !=null">
                 and ID = #{id}
             </if>
-            <if test="tplDetailId !=null">
-                and TPL_DETAIL_ID = #{tplDetailId}
+            <if test="taskId !=null">
+                and TASK_ID = #{taskId}
             </if>
             <if test="infopointType !=null">
                 and INFOPOINT_TYPE = #{infopointType}
