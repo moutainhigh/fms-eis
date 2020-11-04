@@ -9,7 +9,7 @@ package org.fms.eis.webapp.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPCalcTaskService;
-import org.fms.eis.webapp.vo.PCalcTaskVO;
+import org.fms.eis.webapp.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 @RequestMapping("PCalcTask")
@@ -79,5 +80,29 @@ public class PCalcTaskAction {
     public HttpResultPagination<?> findByWhere(@RequestBody PCalcTaskVO pCalcTaskVO) {
 
         return new HttpResultPagination(pCalcTaskVO, pCalcTaskService.findByWhere(pCalcTaskVO));
+    }
+
+    /**
+     * 通过任务模板获取任务列表
+     *
+     * @param pCalcTplVO 任务模板对象
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=findByRelTpl")
+    public HttpResultPagination<?> findByRelTpl(@RequestBody PCalcTplVO pCalcTplVO) {
+        if (pCalcTplVO != null) {
+            PCalcTaskRelVO pCalcTaskRelVO = new PCalcTaskRelVO();
+            pCalcTaskRelVO.setObjtype(pCalcTplVO.getType());//获取适用范围下所有的点
+            List<PCalcTaskRelVO> pCalcTaskRelVOList = pCalcTaskService.findByRelTpl(pCalcTaskRelVO);
+            if (pCalcTaskRelVOList != null && pCalcTaskRelVOList.size() > 0) {
+                for (PCalcTaskRelVO item : pCalcTaskRelVOList) {
+                    item.setIsSelect(item.getTplID() == pCalcTplVO.getId() ? 1 : 0);
+                }
+            }
+            return new HttpResultPagination(pCalcTaskRelVO, pCalcTaskRelVOList);
+        } else {
+            return new HttpResultPagination(null, null);
+        }
     }
 }

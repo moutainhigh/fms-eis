@@ -12,7 +12,9 @@ import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.PCalcTaskDAO;
 import org.fms.eis.webapp.domain.PCalcTaskDomain;
+import org.fms.eis.webapp.domain.PCalcTaskRelDomain;
 import org.fms.eis.webapp.service.IPCalcTaskService;
+import org.fms.eis.webapp.vo.PCalcTaskRelVO;
 import org.fms.eis.webapp.vo.PCalcTaskVO;
 
 import java.util.*;
@@ -75,4 +77,15 @@ public class PCalcTaskServiceImpl implements IPCalcTaskService {
         return ReflectUtil.cast(lstDomain, PCalcTaskVO.class);
     }
 
+    @Override
+    public List<PCalcTaskRelVO> findByRelTpl(PCalcTaskRelVO modelVO) {
+        PCalcTaskRelDomain modelDomain = modelVO.vo2Domain();
+        List<PCalcTaskRelDomain> lstDomain = pCalcTaskReadDAO.findByRelTpl(modelDomain);
+        modelVO.setTotalRow(modelDomain.getTotalRow());
+        modelVO.setPageCurrent(modelDomain.getPageCurrent());
+        modelVO.setDbName(modelDomain.getDbName());
+        modelVO.setPageSize(modelDomain.getPageSize());
+
+        return ReflectUtil.cast(lstDomain, PCalcTaskRelVO.class);
+    }
 }

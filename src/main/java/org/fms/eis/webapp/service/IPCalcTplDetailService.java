@@ -20,9 +20,11 @@ public interface IPCalcTplDetailService {
 
     public int delete(PCalcTplDetailVO pCalcTplDetailVO);
 
-    public HttpResult deleteList(List<PCalcTplDetailVO> deleteList) throws Exception;
+    public int deleteList(List<PCalcTplDetailVO> deleteList);
 
     public PCalcTplDetailVO findByKey(PCalcTplDetailVO pCalcTplDetailVO);
 
     public List<PCalcTplDetailVO> findByWhere(PCalcTplDetailVO pCalcTplDetailVO);
+
+    public int insertList(List<PCalcTplDetailVO> insertList);
 }

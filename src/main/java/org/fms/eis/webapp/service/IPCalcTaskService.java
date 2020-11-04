@@ -8,6 +8,7 @@
 package org.fms.eis.webapp.service;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.eis.webapp.vo.PCalcTaskRelVO;
 import org.fms.eis.webapp.vo.PCalcTaskVO;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface IPCalcTaskService {
     public PCalcTaskVO findByKey(PCalcTaskVO pCalcTaskVO);
 
     public List<PCalcTaskVO> findByWhere(PCalcTaskVO pCalcTaskVO);
+
+    public List<PCalcTaskRelVO> findByRelTpl(PCalcTaskRelVO pCalcTaskRelVO);
 }

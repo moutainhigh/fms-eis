@@ -42,13 +42,8 @@ public class PCalcTplDetailServiceImpl implements IPCalcTplDetailService {
     }
 
     @Override
-    public HttpResult deleteList(List<PCalcTplDetailVO> deleteList) throws Exception {
-        int num = pCalcTplDetailWriteDAO.deleteList(ReflectUtil.cast(deleteList, PCalcTplDetailDomain.class));
-        if (num == deleteList.size()) {
-            return new HttpResult(HttpResult.SUCCESS, "删除成功，删除条数：" + num);
-        } else {
-            throw new Exception();
-        }
+    public int deleteList(List<PCalcTplDetailVO> deleteList) {
+        return pCalcTplDetailWriteDAO.deleteList(ReflectUtil.cast(deleteList, PCalcTplDetailDomain.class));
     }
 
     @Override
@@ -75,4 +70,8 @@ public class PCalcTplDetailServiceImpl implements IPCalcTplDetailService {
         return ReflectUtil.cast(lstDomain, PCalcTplDetailVO.class);
     }
 
+    @Override
+    public int insertList(List<PCalcTplDetailVO> insertList) {
+        return pCalcTplDetailWriteDAO.insertList(ReflectUtil.cast(insertList, PCalcTplDetailDomain.class));
+    }
 }

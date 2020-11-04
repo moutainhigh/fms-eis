@@ -8,8 +8,10 @@ package org.fms.eis.webapp.dao;
 
 import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
+import com.riozenc.titanTool.mybatis.persistence.PersistanceManager;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
+import org.fms.eis.webapp.domain.PCalcTaskRelDomain;
 import org.fms.eis.webapp.domain.PCalcTplDomain;
 
 import java.util.List;
@@ -50,5 +52,6 @@ public class PCalcTplDAO extends AbstractTransactionDAOSupport implements BaseDA
     public int deleteList(List<PCalcTplDomain> deleteList) {
         return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
     }
+
 
 }

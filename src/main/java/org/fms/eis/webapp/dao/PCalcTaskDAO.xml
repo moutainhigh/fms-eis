@@ -161,4 +161,70 @@
             and ID = #{id}
         </where>
     </delete>
+    <select id="findByRelTpl" parameterType="PCalcTaskRelDomain"
+            resultType="PCalcTaskRelDomain" useCache="true">
+        select p.*,t.ID as REL_ID,t.TPL_ID from P_CALC_TASK p
+        left join
+        P_CALC_TPL_DETAIL t
+        on p.ID=t.TASK_ID
+        <where>
+            <if test="id !=null">
+                and p.ID = #{id}
+            </if>
+            <if test="name !=null">
+                and p.NAME = #{name}
+            </if>
+            <if test="tasktypeid !=null">
+                and p.TASKTYPEID = #{tasktypeid}
+            </if>
+            <if test="objtype !=null">
+                and p.OBJTYPE = #{objtype}
+            </if>
+            <if test="schemeId !=null">
+                and p.SCHEME_ID = #{schemeId}
+            </if>
+            <if test="primaryFlag !=null">
+                and p.PRIMARY_FLAG = #{primaryFlag}
+            </if>
+            <if test="dataSrc !=null">
+                and p.DATA_SRC = #{dataSrc}
+            </if>
+            <if test="gltsFlag !=null">
+                and p.GLTS_FLAG = #{gltsFlag}
+            </if>
+            <if test="tsSchemeid !=null">
+                and p.TS_SCHEMEID = #{tsSchemeid}
+            </if>
+            <if test="triggerFlag !=null">
+                and p.TRIGGER_FLAG = #{triggerFlag}
+            </if>
+            <if test="qCalcFlag !=null">
+                and p.Q_CALC_FLAG = #{qCalcFlag}
+            </if>
+            <if test="priority !=null">
+                and p.PRIORITY = #{priority}
+            </if>
+            <if test="genedatetime !=null">
+                and p.GENEDATETIME = #{genedatetime}
+            </if>
+            <if test="genespanvalue !=null">
+                and p.GENESPANVALUE = #{genespanvalue}
+            </if>
+            <if test="genespantype !=null">
+                and p.GENESPANTYPE = #{genespantype}
+            </if>
+            <if test="status !=null">
+                and p.STATUS = #{status}
+            </if>
+            <if test="taskst !=null">
+                and p.TASKST = #{taskst}
+            </if>
+            <if test="relID !=null">
+                and t.REL_ID = #{relID}
+            </if>
+            <if test="tplID !=null">
+                and t.TPL_ID = #{tplID}
+            </if>
+        </where>
+    </select>
 </mapper>
