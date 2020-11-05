@@ -11,8 +11,10 @@ import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.dao.DropSqlDAO;
 import org.fms.eis.webapp.domain.DropSqlDomain;
+import org.fms.eis.webapp.domain.SystemCommonConfigDomain;
 import org.fms.eis.webapp.service.IDropSqlService;
 import org.fms.eis.webapp.vo.DropSqlVO;
+import org.fms.eis.webapp.vo.SystemCommonConfigVO;
 
 import java.util.*;
 
@@ -74,4 +76,8 @@ public class DropSqlServiceImpl implements IDropSqlService {
         return ReflectUtil.cast(lstDomain, DropSqlVO.class);
     }
 
+    public List<SystemCommonConfigVO> getBaseDropDict(String selectSql){
+        List<SystemCommonConfigDomain> listDomain=dropSqlReadDAO.getBaseDropDict(selectSql);
+        return ReflectUtil.cast(listDomain, SystemCommonConfigVO.class);
+    }
 }

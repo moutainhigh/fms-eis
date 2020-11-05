@@ -4,7 +4,7 @@
     <select id="findByKey" parameterType="SystemCommonConfigDomain"
             resultType="SystemCommonConfigDomain" useCache="true">
         select ID,TYPE,PARAM_NAME,PARAM_KEY,PARAM_VALUE,STATUS,PARAM_ORDER,REMARK1,REMARK2,REMARK3,REMARK4
-        from system_common_config
+        from SYSTEM_COMMON_CONFIG
         <where>
             and ID = #{id}
         </where>
@@ -12,7 +12,7 @@
     <select id="findByWhere" parameterType="SystemCommonConfigDomain"
             resultType="SystemCommonConfigDomain" useCache="true">
         select ID,TYPE,PARAM_NAME,PARAM_KEY,PARAM_VALUE,STATUS,PARAM_ORDER,REMARK1,REMARK2,REMARK3,REMARK4
-        from system_common_config
+        from SYSTEM_COMMON_CONFIG
         <where>
             <if test="id !=null">
                 and ID = #{id}
@@ -50,13 +50,13 @@
         </where>
     </select>
     <insert id="insert" parameterType="SystemCommonConfigDomain" flushCache="true" useGeneratedKeys="true">
-		insert into system_common_config
+		insert into SYSTEM_COMMON_CONFIG
 			(ID,TYPE,PARAM_NAME,PARAM_KEY,PARAM_VALUE,STATUS,PARAM_ORDER,REMARK1,REMARK2,REMARK3,REMARK4)
 			VALUES(#{id},#{type},#{paramName},#{paramKey},#{paramValue},#{status},#{paramOrder},#{remark1},#{remark2},#{remark3},#{remark4})
 
 	</insert>
     <update id="update" parameterType="SystemCommonConfigDomain" flushCache="true">
-        update system_common_config
+        update SYSTEM_COMMON_CONFIG
         <set>
             <if test="type !=null">
                 TYPE = #{type},
@@ -94,7 +94,7 @@
         </where>
     </update>
     <delete id="delete" parameterType="SystemCommonConfigDomain" flushCache="true">
-        delete from system_common_config
+        delete from SYSTEM_COMMON_CONFIG
         <where>
             and ID = #{id}
         </where>

@@ -9,6 +9,7 @@ import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IDropSqlService;
 import org.fms.eis.webapp.vo.DropSqlVO;
+import org.fms.eis.webapp.vo.SystemCommonConfigVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ControllerAdvice
@@ -78,5 +80,26 @@ public class DropSqlAction {
     public HttpResultPagination<?> findByWhere(@RequestBody DropSqlVO dropSqlVO) {
 
         return new HttpResultPagination(dropSqlVO, dropSqlService.findByWhere(dropSqlVO));
+    }
+
+    /**
+     * 获取sql查询的字典
+     *
+     * @param dropCode [DROP_SQL]表的DROP_CODE
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=getBaseDropDict")
+    public HttpResult<?> getBaseDropDict(@RequestBody String dropCode) {
+        List<SystemCommonConfigVO> dictList = new ArrayList<>();
+        if (dropCode != null) {
+            DropSqlVO modelVO = new DropSqlVO();
+            modelVO.setDropCode(dropCode);
+            List<DropSqlVO> listVO = dropSqlService.findByWhere(modelVO);
+            if (listVO != null && listVO.size() > 0) {
+                dictList = dropSqlService.getBaseDropDict(listVO.get(0).getDropSql());
+            }
+        }
+        return new HttpResult<>(HttpResult.SUCCESS, "获取成功!", dictList);
     }
 }

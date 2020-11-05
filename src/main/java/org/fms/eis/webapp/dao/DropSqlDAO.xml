@@ -4,7 +4,7 @@
     <select id="findByKey" parameterType="DropSqlDomain"
             resultType="DropSqlDomain" useCache="true">
         select id,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS
-        from drop_sql
+        from DROP_SQL
         <where>
             and ID = #{id}
         </where>
@@ -12,7 +12,7 @@
     <select id="findByWhere" parameterType="DropSqlDomain"
             resultType="DropSqlDomain" useCache="true">
         select id,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS
-        from drop_sql
+        from DROP_SQL
         <where>
             <if test="id !=null">
                 and id = #{id}
@@ -38,13 +38,13 @@
         </where>
     </select>
     <insert id="insert" parameterType="DropSqlDomain" flushCache="true" useGeneratedKeys="true">
-		insert into drop_sql
+		insert into DROP_SQL
 			(id,DROP_CODE,DROP_NAME,DROP_SQL,DROP_TYPE,REMARK,STATUS)
 			VALUES(#{id},#{dropCode},#{dropName},#{dropSql},#{dropType},#{remark},#{status})
 
 	</insert>
     <update id="update" parameterType="DropSqlDomain" flushCache="true">
-        update drop_sql
+        update DROP_SQL
         <set>
             <if test="id !=null">
                 id = #{id},
@@ -73,9 +73,13 @@
         </where>
     </update>
     <delete id="delete" parameterType="DropSqlDomain" flushCache="true">
-        delete from drop_sql
+        delete from DROP_SQL
         <where>
             and ID = #{id}
         </where>
     </delete>
+    <select id="getBaseDropDict" parameterType="String"
+            resultType="SystemCommonConfigDomain" useCache="true">
+        ${value}
+    </select>
 </mapper>
