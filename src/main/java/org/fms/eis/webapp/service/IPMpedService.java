@@ -25,4 +25,6 @@ public interface IPMpedService {
 	public PMpedVO findByKey(PMpedVO pMpedVO);
 
 	public List<PMpedVO> findByWhere(PMpedVO pMpedVO);
+
+	public int updateList(List<PMpedVO> updateList);
 }

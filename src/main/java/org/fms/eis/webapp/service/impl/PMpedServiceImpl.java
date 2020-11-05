@@ -79,4 +79,8 @@ public class PMpedServiceImpl implements IPMpedService {
         return ReflectUtil.cast(lstDomain, PMpedVO.class);
 	}
 
+	@Override
+	public int updateList(List<PMpedVO> listVO) {
+		return pMpedWriteDAO.updateList(ReflectUtil.cast(listVO, PMpedDomain.class));
+	}
 }
