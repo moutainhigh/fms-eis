@@ -24,11 +24,11 @@ public class RCpDomain extends Page implements MybatisEntity {
     private String cpAddr;    //采集点地址码
     private String gpsLongitude;    //GPS经度
     private String gpsLatitude;    //GPS纬度
-    private String businessPlaceCode;    //管理单位
-    private String tplId;    //采集任务模板标识
-    private String terminalId;    //运行终端标识
+    private Long businessPlaceCode;    //管理单位
+    private Long tplId;    //采集任务模板标识
+    private Long terminalId;    //运行终端标识
     private String relaObjType;    //所属对象类型
-    private String relaObjId;    //所属对象标示
+    private Long relaObjId;    //所属对象标示
     private String cFlag;    //是否采集
     private String terminalAddr;    //终端地址码
     private Long protocolId;    //规约类型
@@ -115,27 +115,27 @@ public class RCpDomain extends Page implements MybatisEntity {
         this.gpsLatitude = gpsLatitude;
     }
 
-    public String getBusinessPlaceCode() {
+    public Long getBusinessPlaceCode() {
         return businessPlaceCode;
     }
 
-    public void setBusinessPlaceCode(String businessPlaceCode) {
+    public void setBusinessPlaceCode(Long businessPlaceCode) {
         this.businessPlaceCode = businessPlaceCode;
     }
 
-    public String getTplId() {
+    public Long getTplId() {
         return tplId;
     }
 
-    public void setTplId(String tplId) {
+    public void setTplId(Long tplId) {
         this.tplId = tplId;
     }
 
-    public String getTerminalId() {
+    public Long getTerminalId() {
         return terminalId;
     }
 
-    public void setTerminalId(String terminalId) {
+    public void setTerminalId(Long terminalId) {
         this.terminalId = terminalId;
     }
 
@@ -147,11 +147,11 @@ public class RCpDomain extends Page implements MybatisEntity {
         this.relaObjType = relaObjType;
     }
 
-    public String getRelaObjId() {
+    public Long getRelaObjId() {
         return relaObjId;
     }
 
-    public void setRelaObjId(String relaObjId) {
+    public void setRelaObjId(Long relaObjId) {
         this.relaObjId = relaObjId;
     }
 

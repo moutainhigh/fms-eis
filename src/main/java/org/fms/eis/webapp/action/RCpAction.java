@@ -10,6 +10,7 @@ import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IRCpService;
 import org.fms.eis.webapp.vo.RCpVO;
+import org.fms.eis.webapp.vo.TgInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -79,5 +80,26 @@ public class RCpAction {
     public HttpResultPagination<?> findByWhere(@RequestBody RCpVO rCpVO) {
 
         return new HttpResultPagination(rCpVO, rCpService.findByWhere(rCpVO));
+    }
+
+    /**
+     * 通过台区ID获取采集点
+     *
+     * @param tgInfoVO 台区对象
+     * @return
+     */
+    @ResponseBody
+    @PostMapping(params = "method=findByTgID")
+    public HttpResultPagination<?> findByTgID(@RequestBody TgInfoVO tgInfoVO) {
+        if(tgInfoVO!=null){
+            RCpVO modelVO=new RCpVO();
+            modelVO.setRelaObjId(tgInfoVO.getId());
+            modelVO.setPageCurrent(tgInfoVO.getPageCurrent());
+            modelVO.setPageSize(tgInfoVO.getPageSize());
+            //通过台区ID获取采集点，此处分页参数未用
+            return new HttpResultPagination(modelVO, rCpService.findByWhere(modelVO));
+        }else{
+            return new HttpResultPagination(null, null);
+        }
     }
 }
