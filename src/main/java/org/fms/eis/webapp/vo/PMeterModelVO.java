@@ -10,21 +10,22 @@ import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.PMeterModelDomain;
 
 import java.util.Date;
+import java.math.BigDecimal;
 
 public class PMeterModelVO extends ManagerParamVO {
 
     private Long id;    //
     private String name;    //
     private String validFlag;    //
-    private String maxValue;    //
-    private String apCoef;    //有功电量
-    private String rpCoef;    //无功有功
-    private String pCoef;    //有功
-    private String qCoef;    //无功
-    private String vCoef;    //电压
-    private String cCoef;    //电流
-    private String demandCoef;    //需量
-    private String factorCoef;    //功率因数
+    private BigDecimal maxValue;    //
+    private BigDecimal apCoef;    //有功电量
+    private BigDecimal rpCoef;    //无功有功
+    private BigDecimal pCoef;    //有功
+    private BigDecimal qCoef;    //无功
+    private BigDecimal vCoef;    //电压
+    private BigDecimal cCoef;    //电流
+    private BigDecimal demandCoef;    //需量
+    private BigDecimal factorCoef;    //功率因数
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date savedatetime;    //
@@ -53,75 +54,75 @@ public class PMeterModelVO extends ManagerParamVO {
         this.validFlag = validFlag;
     }
 
-    public String getMaxValue() {
+    public BigDecimal getMaxValue() {
         return maxValue;
     }
 
-    public void setMaxValue(String maxValue) {
+    public void setMaxValue(BigDecimal maxValue) {
         this.maxValue = maxValue;
     }
 
-    public String getApCoef() {
+    public BigDecimal getApCoef() {
         return apCoef;
     }
 
-    public void setApCoef(String apCoef) {
+    public void setApCoef(BigDecimal apCoef) {
         this.apCoef = apCoef;
     }
 
-    public String getRpCoef() {
+    public BigDecimal getRpCoef() {
         return rpCoef;
     }
 
-    public void setRpCoef(String rpCoef) {
+    public void setRpCoef(BigDecimal rpCoef) {
         this.rpCoef = rpCoef;
     }
 
-    public String getPCoef() {
+    public BigDecimal getPCoef() {
         return pCoef;
     }
 
-    public void setPCoef(String pCoef) {
+    public void setPCoef(BigDecimal pCoef) {
         this.pCoef = pCoef;
     }
 
-    public String getQCoef() {
+    public BigDecimal getQCoef() {
         return qCoef;
     }
 
-    public void setQCoef(String qCoef) {
+    public void setQCoef(BigDecimal qCoef) {
         this.qCoef = qCoef;
     }
 
-    public String getVCoef() {
+    public BigDecimal getVCoef() {
         return vCoef;
     }
 
-    public void setVCoef(String vCoef) {
+    public void setVCoef(BigDecimal vCoef) {
         this.vCoef = vCoef;
     }
 
-    public String getCCoef() {
+    public BigDecimal getCCoef() {
         return cCoef;
     }
 
-    public void setCCoef(String cCoef) {
+    public void setCCoef(BigDecimal cCoef) {
         this.cCoef = cCoef;
     }
 
-    public String getDemandCoef() {
+    public BigDecimal getDemandCoef() {
         return demandCoef;
     }
 
-    public void setDemandCoef(String demandCoef) {
+    public void setDemandCoef(BigDecimal demandCoef) {
         this.demandCoef = demandCoef;
     }
 
-    public String getFactorCoef() {
+    public BigDecimal getFactorCoef() {
         return factorCoef;
     }
 
-    public void setFactorCoef(String factorCoef) {
+    public void setFactorCoef(BigDecimal factorCoef) {
         this.factorCoef = factorCoef;
     }
 
