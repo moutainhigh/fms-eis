@@ -83,14 +83,14 @@ public class RCpAction {
     }
 
     /**
-     * 通过台区ID获取采集点
+     * 通过台区获取采集点
      *
      * @param tgInfoVO 台区对象
      * @return
      */
     @ResponseBody
-    @PostMapping(params = "method=findByTgID")
-    public HttpResultPagination<?> findByTgID(@RequestBody TgInfoVO tgInfoVO) {
+    @PostMapping(params = "method=findByRelTg")
+    public HttpResultPagination<?> findByRelTg(@RequestBody TgInfoVO tgInfoVO) {
         if(tgInfoVO!=null){
             RCpVO modelVO=new RCpVO();
             modelVO.setRelaObjId(tgInfoVO.getId());

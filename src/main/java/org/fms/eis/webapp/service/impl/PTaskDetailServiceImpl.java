@@ -98,4 +98,8 @@ public class PTaskDetailServiceImpl implements IPTaskDetailService {
 
         return ReflectUtil.cast(lstDomain, PWsdTaskdataRelVO.class);
     }
+
+    public int insertList(List<PTaskDetailVO> insertList){
+        return pTaskDetailWriteDAO.insertList(ReflectUtil.cast(insertList, PTaskDetailDomain.class));
+    }
 }

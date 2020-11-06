@@ -11,40 +11,41 @@ import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.ESumEngyMin2020Domain;
 
 import java.util.Date;
+import java.math.BigDecimal;
 
 public class ESumEngyMin2020VO extends ManagerParamVO {
 
-    private String sumId;    //电量考核单元标识
+    private BigDecimal sumId;    //电量考核单元标识
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date dataTime;    //数据时间
-    private String schemeId;    //计算方案
+    private BigDecimal schemeId;    //计算方案
     private String property;    //数据属性
-    private String pr0;    //有功总
+    private BigDecimal pr0;    //有功总
     private String pr0P;    //质量码
-    private String qr0;    //无功总
+    private BigDecimal qr0;    //无功总
     private String qr0P;    //质量码
-    private String pr1;    //有功尖
-    private String qr1;    //无功尖
-    private String pr2;    //有功峰
-    private String qr2;    //无功峰
-    private String pr3;    //有功平
-    private String qr3;    //无功平
-    private String pr4;    //有功谷
-    private String qr4;    //无功谷
-    private String pr5;    //有功脊谷
-    private String qr5;    //无功脊谷
+    private BigDecimal pr1;    //有功尖
+    private BigDecimal qr1;    //无功尖
+    private BigDecimal pr2;    //有功峰
+    private BigDecimal qr2;    //无功峰
+    private BigDecimal pr3;    //有功平
+    private BigDecimal qr3;    //无功平
+    private BigDecimal pr4;    //有功谷
+    private BigDecimal qr4;    //无功谷
+    private BigDecimal pr5;    //有功脊谷
+    private BigDecimal qr5;    //无功脊谷
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date savedatetime;    //创建时间
     private String areaCode;    //
     private String status;    //数据状态
 
-    public String getSumId() {
+    public BigDecimal getSumId() {
         return sumId;
     }
 
-    public void setSumId(String sumId) {
+    public void setSumId(BigDecimal sumId) {
         this.sumId = sumId;
     }
 
@@ -56,11 +57,11 @@ public class ESumEngyMin2020VO extends ManagerParamVO {
         this.dataTime = dataTime;
     }
 
-    public String getSchemeId() {
+    public BigDecimal getSchemeId() {
         return schemeId;
     }
 
-    public void setSchemeId(String schemeId) {
+    public void setSchemeId(BigDecimal schemeId) {
         this.schemeId = schemeId;
     }
 
@@ -72,11 +73,11 @@ public class ESumEngyMin2020VO extends ManagerParamVO {
         this.property = property;
     }
 
-    public String getPr0() {
+    public BigDecimal getPr0() {
         return pr0;
     }
 
-    public void setPr0(String pr0) {
+    public void setPr0(BigDecimal pr0) {
         this.pr0 = pr0;
     }
 
@@ -88,11 +89,11 @@ public class ESumEngyMin2020VO extends ManagerParamVO {
         this.pr0P = pr0P;
     }
 
-    public String getQr0() {
+    public BigDecimal getQr0() {
         return qr0;
     }
 
-    public void setQr0(String qr0) {
+    public void setQr0(BigDecimal qr0) {
         this.qr0 = qr0;
     }
 
@@ -104,83 +105,83 @@ public class ESumEngyMin2020VO extends ManagerParamVO {
         this.qr0P = qr0P;
     }
 
-    public String getPr1() {
+    public BigDecimal getPr1() {
         return pr1;
     }
 
-    public void setPr1(String pr1) {
+    public void setPr1(BigDecimal pr1) {
         this.pr1 = pr1;
     }
 
-    public String getQr1() {
+    public BigDecimal getQr1() {
         return qr1;
     }
 
-    public void setQr1(String qr1) {
+    public void setQr1(BigDecimal qr1) {
         this.qr1 = qr1;
     }
 
-    public String getPr2() {
+    public BigDecimal getPr2() {
         return pr2;
     }
 
-    public void setPr2(String pr2) {
+    public void setPr2(BigDecimal pr2) {
         this.pr2 = pr2;
     }
 
-    public String getQr2() {
+    public BigDecimal getQr2() {
         return qr2;
     }
 
-    public void setQr2(String qr2) {
+    public void setQr2(BigDecimal qr2) {
         this.qr2 = qr2;
     }
 
-    public String getPr3() {
+    public BigDecimal getPr3() {
         return pr3;
     }
 
-    public void setPr3(String pr3) {
+    public void setPr3(BigDecimal pr3) {
         this.pr3 = pr3;
     }
 
-    public String getQr3() {
+    public BigDecimal getQr3() {
         return qr3;
     }
 
-    public void setQr3(String qr3) {
+    public void setQr3(BigDecimal qr3) {
         this.qr3 = qr3;
     }
 
-    public String getPr4() {
+    public BigDecimal getPr4() {
         return pr4;
     }
 
-    public void setPr4(String pr4) {
+    public void setPr4(BigDecimal pr4) {
         this.pr4 = pr4;
     }
 
-    public String getQr4() {
+    public BigDecimal getQr4() {
         return qr4;
     }
 
-    public void setQr4(String qr4) {
+    public void setQr4(BigDecimal qr4) {
         this.qr4 = qr4;
     }
 
-    public String getPr5() {
+    public BigDecimal getPr5() {
         return pr5;
     }
 
-    public void setPr5(String pr5) {
+    public void setPr5(BigDecimal pr5) {
         this.pr5 = pr5;
     }
 
-    public String getQr5() {
+    public BigDecimal getQr5() {
         return qr5;
     }
 
-    public void setQr5(String qr5) {
+    public void setQr5(BigDecimal qr5) {
         this.qr5 = qr5;
     }
 

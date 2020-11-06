@@ -61,4 +61,8 @@ public class PTaskDetailDAO extends AbstractTransactionDAOSupport implements Bas
     public List<PWsdTaskdataRelDomain> findByTaskNoRel(PWsdTaskdataRelDomain modelDomain) {
         return getPersistanceManager().find(getNamespace() + ".findByTaskNoRel", modelDomain);
     }
+
+    public int insertList(List<PTaskDetailDomain> insertList) {
+        return getPersistanceManager().insertList(getNamespace() + ".insert", insertList);
+    }
 }

@@ -11,51 +11,52 @@ import com.riozenc.titanTool.common.reflect.ReflectUtil;
 import org.fms.eis.webapp.domain.EMpXlDay2020Domain;
 
 import java.util.Date;
+import java.math.BigDecimal;
 
 public class EMpXlDay2020VO extends ManagerParamVO {
 
-    private String mpedId;    //测量点标识
+    private BigDecimal mpedId;    //测量点标识
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date dataTime;    //数据时间
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date colTime;    //抄表时间
-    private String p1r0;    //正向有功总
+    private BigDecimal p1r0;    //正向有功总
     private String p1r0Dt;    //发生时间
-    private String p2r0;    //反向有功总
+    private BigDecimal p2r0;    //反向有功总
     private String p2r0Dt;    //发生时间
-    private String p1r1;    //正向有功尖
+    private BigDecimal p1r1;    //正向有功尖
     private String p1r1Dt;    //发生时间
-    private String p2r1;    //反向有功尖
+    private BigDecimal p2r1;    //反向有功尖
     private String p2r1Dt;    //发生时间
-    private String p1r2;    //正向有功峰
+    private BigDecimal p1r2;    //正向有功峰
     private String p1r2Dt;    //发生时间
-    private String p2r2;    //发生时间
+    private BigDecimal p2r2;    //发生时间
     private String p2r2Dt;    //发生时间
-    private String p1r3;    //正向有功平
+    private BigDecimal p1r3;    //正向有功平
     private String p1r3Dt;    //发生时间
-    private String p2r3;    //反向有功平
+    private BigDecimal p2r3;    //反向有功平
     private String p2r3Dt;    //发生时间
-    private String p1r4;    //正向有功谷
+    private BigDecimal p1r4;    //正向有功谷
     private String p1r4Dt;    //发生时间
-    private String p2r4;    //反向有功谷
+    private BigDecimal p2r4;    //反向有功谷
     private String p2r4Dt;    //发生时间
-    private String p1r5;    //正向有功脊谷
+    private BigDecimal p1r5;    //正向有功脊谷
     private String p1r5Dt;    //发生时间
-    private String p2r5;    //反向有功脊谷
+    private BigDecimal p2r5;    //反向有功脊谷
     private String p2r5Dt;    //发生时间
-    private String demandCoef;    //需量系数
+    private BigDecimal demandCoef;    //需量系数
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date savedatetime;    //创建者
     private String areaCode;    //
 
-    public String getMpedId() {
+    public BigDecimal getMpedId() {
         return mpedId;
     }
 
-    public void setMpedId(String mpedId) {
+    public void setMpedId(BigDecimal mpedId) {
         this.mpedId = mpedId;
     }
 
@@ -75,11 +76,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.colTime = colTime;
     }
 
-    public String getP1r0() {
+    public BigDecimal getP1r0() {
         return p1r0;
     }
 
-    public void setP1r0(String p1r0) {
+    public void setP1r0(BigDecimal p1r0) {
         this.p1r0 = p1r0;
     }
 
@@ -91,11 +92,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p1r0Dt = p1r0Dt;
     }
 
-    public String getP2r0() {
+    public BigDecimal getP2r0() {
         return p2r0;
     }
 
-    public void setP2r0(String p2r0) {
+    public void setP2r0(BigDecimal p2r0) {
         this.p2r0 = p2r0;
     }
 
@@ -107,11 +108,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p2r0Dt = p2r0Dt;
     }
 
-    public String getP1r1() {
+    public BigDecimal getP1r1() {
         return p1r1;
     }
 
-    public void setP1r1(String p1r1) {
+    public void setP1r1(BigDecimal p1r1) {
         this.p1r1 = p1r1;
     }
 
@@ -123,11 +124,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p1r1Dt = p1r1Dt;
     }
 
-    public String getP2r1() {
+    public BigDecimal getP2r1() {
         return p2r1;
     }
 
-    public void setP2r1(String p2r1) {
+    public void setP2r1(BigDecimal p2r1) {
         this.p2r1 = p2r1;
     }
 
@@ -139,11 +140,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p2r1Dt = p2r1Dt;
     }
 
-    public String getP1r2() {
+    public BigDecimal getP1r2() {
         return p1r2;
     }
 
-    public void setP1r2(String p1r2) {
+    public void setP1r2(BigDecimal p1r2) {
         this.p1r2 = p1r2;
     }
 
@@ -155,11 +156,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p1r2Dt = p1r2Dt;
     }
 
-    public String getP2r2() {
+    public BigDecimal getP2r2() {
         return p2r2;
     }
 
-    public void setP2r2(String p2r2) {
+    public void setP2r2(BigDecimal p2r2) {
         this.p2r2 = p2r2;
     }
 
@@ -171,11 +172,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p2r2Dt = p2r2Dt;
     }
 
-    public String getP1r3() {
+    public BigDecimal getP1r3() {
         return p1r3;
     }
 
-    public void setP1r3(String p1r3) {
+    public void setP1r3(BigDecimal p1r3) {
         this.p1r3 = p1r3;
     }
 
@@ -187,11 +188,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p1r3Dt = p1r3Dt;
     }
 
-    public String getP2r3() {
+    public BigDecimal getP2r3() {
         return p2r3;
     }
 
-    public void setP2r3(String p2r3) {
+    public void setP2r3(BigDecimal p2r3) {
         this.p2r3 = p2r3;
     }
 
@@ -203,11 +204,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p2r3Dt = p2r3Dt;
     }
 
-    public String getP1r4() {
+    public BigDecimal getP1r4() {
         return p1r4;
     }
 
-    public void setP1r4(String p1r4) {
+    public void setP1r4(BigDecimal p1r4) {
         this.p1r4 = p1r4;
     }
 
@@ -219,11 +220,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p1r4Dt = p1r4Dt;
     }
 
-    public String getP2r4() {
+    public BigDecimal getP2r4() {
         return p2r4;
     }
 
-    public void setP2r4(String p2r4) {
+    public void setP2r4(BigDecimal p2r4) {
         this.p2r4 = p2r4;
     }
 
@@ -235,11 +236,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p2r4Dt = p2r4Dt;
     }
 
-    public String getP1r5() {
+    public BigDecimal getP1r5() {
         return p1r5;
     }
 
-    public void setP1r5(String p1r5) {
+    public void setP1r5(BigDecimal p1r5) {
         this.p1r5 = p1r5;
     }
 
@@ -251,11 +252,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p1r5Dt = p1r5Dt;
     }
 
-    public String getP2r5() {
+    public BigDecimal getP2r5() {
         return p2r5;
     }
 
-    public void setP2r5(String p2r5) {
+    public void setP2r5(BigDecimal p2r5) {
         this.p2r5 = p2r5;
     }
 
@@ -267,11 +268,11 @@ public class EMpXlDay2020VO extends ManagerParamVO {
         this.p2r5Dt = p2r5Dt;
     }
 
-    public String getDemandCoef() {
+    public BigDecimal getDemandCoef() {
         return demandCoef;
     }
 
-    public void setDemandCoef(String demandCoef) {
+    public void setDemandCoef(BigDecimal demandCoef) {
         this.demandCoef = demandCoef;
     }
 

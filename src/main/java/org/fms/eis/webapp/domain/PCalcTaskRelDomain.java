@@ -7,7 +7,7 @@ import org.fms.eis.webapp.vo.PCalcTaskVO;
 
 public class PCalcTaskRelDomain extends PCalcTaskDomain implements MybatisEntity {
     private Long relID;//P_CALC_TPL_DETAIL表ID
-    private Integer tplID;//P_CALC_TPL表的ID
+    private Long tplID;//P_CALC_TPL表的ID
 
     public Long getRelID() {
         return relID;
@@ -17,11 +17,11 @@ public class PCalcTaskRelDomain extends PCalcTaskDomain implements MybatisEntity
         this.relID = relID;
     }
 
-    public Integer getTplID() {
+    public Long getTplID() {
         return tplID;
     }
 
-    public void setTplID(Integer tplID) {
+    public void setTplID(Long tplID) {
         this.tplID = tplID;
     }
 

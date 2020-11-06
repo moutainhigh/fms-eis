@@ -32,4 +32,6 @@ public interface IPTaskDetailService {
     public List<PWsdTaskdataRelVO> findByTaskRel(PWsdTaskdataRelVO modelVO);
 
     public List<PWsdTaskdataRelVO> findByTaskNoRel(PWsdTaskdataRelVO modelVO);
+
+    public int insertList(List<PTaskDetailVO> insertList);
 }

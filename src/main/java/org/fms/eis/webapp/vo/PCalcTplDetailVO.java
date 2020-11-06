@@ -15,7 +15,7 @@ import java.util.Date;
 public class PCalcTplDetailVO extends ManagerParamVO {
 
     private Long id;    //标识
-    private Integer tplId;    //模板标识(P_CALC_TPL)
+    private Long tplId;    //模板标识(P_CALC_TPL)
     private Long taskId;    //任务标识(P_CALC_TASK)
     private Long creatorId;    //创建者
 
@@ -32,11 +32,11 @@ public class PCalcTplDetailVO extends ManagerParamVO {
         this.id = id;
     }
 
-    public Integer getTplId() {
+    public Long getTplId() {
         return tplId;
     }
 
-    public void setTplId(Integer tplId) {
+    public void setTplId(Long tplId) {
         this.tplId = tplId;
     }
 

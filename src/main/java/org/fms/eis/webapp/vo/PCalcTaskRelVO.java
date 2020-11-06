@@ -6,7 +6,7 @@ import org.fms.eis.webapp.domain.PCalcTplDomain;
 
 public class PCalcTaskRelVO extends PCalcTaskVO {
     private Long relID;//P_CALC_TPL_DETAIL表ID
-    private Integer tplID;//P_CALC_TPL表的ID
+    private Long tplID;//P_CALC_TPL表的ID
     private Integer isSelect;//是否选中 0-否 1-是
 
     public Long getRelID() {
@@ -17,11 +17,11 @@ public class PCalcTaskRelVO extends PCalcTaskVO {
         this.relID = relID;
     }
 
-    public Integer getTplID() {
+    public Long getTplID() {
         return tplID;
     }
 
-    public void setTplID(Integer tplID) {
+    public void setTplID(Long tplID) {
         this.tplID = tplID;
     }
 
