@@ -25,4 +25,6 @@ public interface IPChannelService {
     public PChannelVO findByKey(PChannelVO pChannelVO);
 
     public List<PChannelVO> findByWhere(PChannelVO pChannelVO);
+
+    public List<PChannelVO> findByRelGroup(String value);
 }

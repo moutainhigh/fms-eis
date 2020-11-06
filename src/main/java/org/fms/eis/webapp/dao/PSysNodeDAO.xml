@@ -215,4 +215,10 @@
             and ID = #{id}
         </where>
     </delete>
+    <select id="findByRelDasGroup" parameterType="String"
+            resultType="PSysNodeDomain" useCache="true">
+        select
+        ID,CODE,NAME,ALIAS,STATUS,TYPE,WHEREIN,NETA,NETB,NETD,NETE,DACTRL_FLAG,DA_FLAG,CALCCTRL_FLAG,CALC_FLAG,COMPORT1,COMPORT2,HB_PORT1,HB_PORT2,MQ_FLAG,WEB_FLAG,EVENT_FLAG,DB_FLAG,REMARK,DA_GROUP,WEIGHT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_SYS_NODE where DA_GROUP in '('||#{value}||')'
+    </select>
 </mapper>

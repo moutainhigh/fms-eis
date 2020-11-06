@@ -69,10 +69,20 @@
             and ID = #{id}
         </where>
     </update>
-    <delete id="delete" parameterType="PChnlGpDasRelaDomain" flushCache="true">
+    <delete id="delete" parameterType="Map" flushCache="true">
         delete from P_CHNL_GP_DAS_RELA
         <where>
             and ID = #{id}
         </where>
     </delete>
+    <select id="findByRelGroup" parameterType="String"
+            resultType="PChnlGpDasRelaDomain" useCache="true">
+        select ID,CHNL_GROUP_ID,DAS_ID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_CHNL_GP_DAS_RELA where CHNL_GROUP_ID in '('#{value}')'
+    </select>
+    <select id="findByRelSysNode" parameterType="String"
+            resultType="PChnlGpDasRelaDomain" useCache="true">
+        select ID,CHNL_GROUP_ID,DAS_ID,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from P_CHNL_GP_DAS_RELA where DAS_ID in '('||#{value}||')'
+    </select>
 </mapper>

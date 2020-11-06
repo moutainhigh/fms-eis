@@ -74,5 +74,16 @@ public class PChnlGpDasRelaServiceImpl implements IPChnlGpDasRelaService {
 
         return ReflectUtil.cast(lstDomain, PChnlGpDasRelaVO.class);
     }
+    @Override
+    public List<PChnlGpDasRelaVO> findByRelGroup(String value){
+        List<PChnlGpDasRelaDomain> lstDomain = pChnlGpDasRelaReadDAO.findByRelGroup(value);
+        return ReflectUtil.cast(lstDomain, PChnlGpDasRelaVO.class);
+    }
+
+    @Override
+    public List<PChnlGpDasRelaVO> findByRelSysNode(String value){
+        List<PChnlGpDasRelaDomain> lstDomain = pChnlGpDasRelaReadDAO.findByRelSysNode(value);
+        return ReflectUtil.cast(lstDomain, PChnlGpDasRelaVO.class);
+    }
 
 }

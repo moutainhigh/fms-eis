@@ -10,6 +10,7 @@ import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
+import org.fms.eis.webapp.domain.PChnlGpDasRelaDomain;
 import org.fms.eis.webapp.domain.PSysNodeDomain;
 import org.fms.eis.webapp.vo.PSysNodeVO;
 
@@ -55,5 +56,9 @@ public class PSysNodeDAO extends AbstractTransactionDAOSupport implements BaseDA
 
     public int updateListDaserverGroup(List<PSysNodeDomain> sysNodeDomainList) {
         return getPersistanceManager().updateList(getNamespace() + ".update", sysNodeDomainList);
+    }
+
+    public List<PSysNodeDomain> findByRelDasGroup(String value) {
+        return getPersistanceManager().find(getNamespace() + ".findByRelDasGroup", value);
     }
 }

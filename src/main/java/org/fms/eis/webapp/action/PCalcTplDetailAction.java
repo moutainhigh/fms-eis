@@ -9,6 +9,7 @@ package org.fms.eis.webapp.action;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPCalcTplDetailService;
+import org.fms.eis.webapp.service.IPChnlGpDasRelaService;
 import org.fms.eis.webapp.vo.PCalcTaskRelVO;
 import org.fms.eis.webapp.vo.PCalcTplDetailVO;
 import org.fms.eis.webapp.vo.PTaskTplVO;
@@ -104,12 +105,12 @@ public class PCalcTplDetailAction {
             for (PCalcTaskRelVO item : pCalcTaskRelVOList) {
                 if (item.getIsSelect() == 1 && item.getRelID() == null) {
                     //isSelect=1 tplID不为null relID为null 新增
-                    if(item.getTplID()!=null){
+                    if (item.getTplID() != null) {
                         PCalcTplDetailVO addModel = new PCalcTplDetailVO();
                         addModel.setTplId(item.getTplID());
                         addModel.setTaskId(item.getId());
                         addList.add(addModel);
-                    }else{
+                    } else {
                         return new HttpResult<String>(HttpResult.ERROR, "参数传递错误!", null);
                     }
                 } else if (item.getIsSelect() == 0 && item.getRelID() != null) {

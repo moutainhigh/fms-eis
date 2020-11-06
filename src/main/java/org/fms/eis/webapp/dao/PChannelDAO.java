@@ -11,6 +11,7 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 import org.fms.eis.webapp.domain.PChannelDomain;
+import org.fms.eis.webapp.domain.PChnlGpDasRelaDomain;
 
 import java.util.List;
 
@@ -51,4 +52,7 @@ public class PChannelDAO extends AbstractTransactionDAOSupport implements BaseDA
         return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
     }
 
+    public List<PChannelDomain> findByRelGroup(String value) {
+        return getPersistanceManager().find(getNamespace() + ".findByRelGroup", value);
+    }
 }

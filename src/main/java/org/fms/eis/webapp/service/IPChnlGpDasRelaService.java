@@ -25,4 +25,8 @@ public interface IPChnlGpDasRelaService {
     public PChnlGpDasRelaVO findByKey(PChnlGpDasRelaVO pChnlGpDasRelaVO);
 
     public List<PChnlGpDasRelaVO> findByWhere(PChnlGpDasRelaVO pChnlGpDasRelaVO);
+
+    public List<PChnlGpDasRelaVO> findByRelGroup(String value);
+
+    public List<PChnlGpDasRelaVO> findByRelSysNode(String value);
 }

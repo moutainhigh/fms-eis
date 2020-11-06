@@ -12,10 +12,9 @@ import com.riozenc.titanTool.common.json.utils.JSONUtil;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.apache.commons.collections.IterableMap;
+import org.fms.eis.webapp.service.IPChnlGpDasRelaService;
 import org.fms.eis.webapp.service.IPSysNodeService;
-import org.fms.eis.webapp.vo.PDaserverGroupVO;
-import org.fms.eis.webapp.vo.PSysNodeVO;
-import org.fms.eis.webapp.vo.PTaskTplDetailVO;
+import org.fms.eis.webapp.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -37,6 +36,15 @@ public class PSysNodeAction {
     @Qualifier("PSysNodeServiceImpl")
     private IPSysNodeService pSysNodeService;
 
+    @Autowired
+    @Qualifier("PChnlGpDasRelaServiceImpl")
+    private IPChnlGpDasRelaService pChnlGpDasRelaService;
+
+    /**
+     * 名称和A网地址不允许重复
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PSysNodeVO pSysNodeVO) {
@@ -56,6 +64,11 @@ public class PSysNodeAction {
         }
     }
 
+    /**
+     * 名称和A网地址不允许重复
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=update")
     public HttpResult<?> update(@RequestBody PSysNodeVO pSysNodeVO) {
@@ -75,12 +88,33 @@ public class PSysNodeAction {
         }
     }
 
+    /**
+     * 已关联通道组不允许删除
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=delete")
     public HttpResult<?> delete(@RequestBody List<PSysNodeVO> deleteList) throws Exception {
-        //已关联通道组不允许删除--此处在数据库处理
-        HttpResult httpResult = pSysNodeService.deleteList(deleteList);
-        return httpResult;
+        if (deleteList != null) {
+            if (deleteList.size() > 0) {
+                String value = "";
+                for (PSysNodeVO item : deleteList) {
+                    value += item.getId() + ",";
+                }
+                value = value.substring(0, value.length() - 1);
+                List<PChnlGpDasRelaVO> relList = pChnlGpDasRelaService.findByRelSysNode(value);
+                if (relList.size() > 0) {
+                    return new HttpResult<String>(HttpResult.ERROR, "已关联通道组不允许删除", null);
+                } else {
+                    return pSysNodeService.deleteList(deleteList);
+                }
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "暂无要删除的内容", null);
+            }
+        } else {
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
+        }
     }
 
     @ResponseBody
@@ -140,7 +174,8 @@ public class PSysNodeAction {
             PSysNodeVO pSysNodeVO = new PSysNodeVO();
             pSysNodeVO.setDaGroup(pDaserverGroupVO.getId());
             List<PSysNodeVO> sysNodeVOList = pSysNodeService.findByWhere(pSysNodeVO);//更新前
-            List<Long> childIDList = pDaserverGroupVO.getListSysNodeVO().stream().map(PSysNodeVO::getId).collect(Collectors.toList());//设置选中的
+            List<Long> childIDList = pDaserverGroupVO.getListSysNodeVO()
+                    .stream().map(PSysNodeVO::getId).collect(Collectors.toList());//设置选中的
             if (sysNodeVOList != null && sysNodeVOList.size() > 0) {
                 for (PSysNodeVO item : sysNodeVOList) {
                     Long daserverGroupID = childIDList.contains(item.getId()) ? item.getDaGroup() : null;

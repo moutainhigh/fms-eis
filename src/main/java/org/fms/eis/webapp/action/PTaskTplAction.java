@@ -11,11 +11,10 @@ import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IPTaskTplService;
 import org.fms.eis.webapp.service.IPWsdProtocolService;
+import org.fms.eis.webapp.service.ISystemCommonConfigService;
 import org.fms.eis.webapp.service.impl.PTaskTplServiceImpl;
 import org.fms.eis.webapp.service.impl.PWsdProtocolServiceImpl;
-import org.fms.eis.webapp.vo.PSysNodeVO;
-import org.fms.eis.webapp.vo.PTaskTplVO;
-import org.fms.eis.webapp.vo.PWsdProtocolVO;
+import org.fms.eis.webapp.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -39,30 +38,66 @@ public class PTaskTplAction {
     @Qualifier("PWsdProtocolServiceImpl")
     private IPWsdProtocolService pWsdProtocolService;
 
+    @Autowired
+    @Qualifier("systemCommonConfigServiceImpl")
+    private ISystemCommonConfigService systemCommonConfigService;
+
+    /**
+     * 同一个规约下只允许有一个默认的任务模板
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PTaskTplVO pTaskTplVO) {
-        int i = pTaskTplService.insert(pTaskTplVO);
-
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+        if (pTaskTplVO != null) {
+            if (pTaskTplVO.getDefaultFlag() == "1") {//是否通用下拉  1-是 0-否
+                PTaskTplVO selectModel = new PTaskTplVO();
+                selectModel.setProtocolId(pTaskTplVO.getProtocolId());
+                int num = pTaskTplService.findByWhere(selectModel).size();//该规约下任务模板
+                if (num > 0) {
+                    return new HttpResult<String>(HttpResult.ERROR, "同一个规约下只允许有一个默认的任务模板", null);
+                }
+            }
+            int i = pTaskTplService.insert(pTaskTplVO);
+            if (i > 0) {
+                return new HttpResult<String>(HttpResult.SUCCESS, "新增成功", null);
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+            }
         } else {
-            return new HttpResult<String>(HttpResult.ERROR, "新增失败", null);
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
-
     }
 
+    /**
+     * 同一个规约下只允许有一个默认的任务模板
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=update")
     public HttpResult<?> update(@RequestBody PTaskTplVO pTaskTplVO) {
-        int i = pTaskTplService.update(pTaskTplVO);
+        if (pTaskTplVO != null) {
+            if (pTaskTplVO.getDefaultFlag() == "1") {//是否通用下拉  1-是 0-否
+                PTaskTplVO selectModel = new PTaskTplVO();
+                selectModel.setProtocolId(pTaskTplVO.getProtocolId());
+                Long num = pTaskTplService.findByWhere(selectModel).stream()
+                        .filter(s -> s.getId() != pTaskTplVO.getId()).count();//该规约下任务模板
+                if (num > 0) {
+                    return new HttpResult<String>(HttpResult.ERROR, "同一个规约下只允许有一个默认的任务模板", null);
+                }
+            }
+            int i = pTaskTplService.update(pTaskTplVO);
 
-        if (i > 0) {
-            return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+            if (i > 0) {
+                return new HttpResult<String>(HttpResult.SUCCESS, "编辑成功", null);
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+            }
         } else {
-            return new HttpResult<String>(HttpResult.ERROR, "编辑失败", null);
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
         }
-
     }
 
     @ResponseBody

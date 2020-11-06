@@ -8,10 +8,10 @@ package org.fms.eis.webapp.action;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
+import org.fms.eis.webapp.service.IPChannelService;
+import org.fms.eis.webapp.service.IPChnlGpDasRelaService;
 import org.fms.eis.webapp.service.IPChnlGroupService;
-import org.fms.eis.webapp.vo.PChnlGroupStaticVO;
-import org.fms.eis.webapp.vo.PChnlGroupVO;
-import org.fms.eis.webapp.vo.PDaserverGroupStaticVO;
+import org.fms.eis.webapp.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -29,6 +29,14 @@ public class PChnlGroupAction {
     @Autowired
     @Qualifier("PChnlGroupServiceImpl")
     private IPChnlGroupService pChnlGroupService;
+
+    @Autowired
+    @Qualifier("PChnlGpDasRelaServiceImpl")
+    private IPChnlGpDasRelaService pChnlGpDasRelaService;
+
+    @Autowired
+    @Qualifier("PChannelServiceImpl")
+    private IPChannelService pChannelService;
 
     @ResponseBody
     @PostMapping(params = "method=insert")
@@ -55,11 +63,37 @@ public class PChnlGroupAction {
 
     }
 
+    /**
+     * 已维护通道不允许删除，已关联采集主机不允许删除
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=delete")
     public HttpResult<?> delete(@RequestBody List<PChnlGroupVO> deleteList) throws Exception {
-        HttpResult httpResult = pChnlGroupService.deleteList(deleteList);
-        return httpResult;
+        if (deleteList != null) {
+            if (deleteList.size() > 0) {
+                String value = "";
+                for (PChnlGroupVO item : deleteList) {
+                    value += item.getId() + ",";
+                }
+                value = value.substring(0, value.length() - 1);
+
+                if (pChnlGpDasRelaService.findByRelGroup(value).size() > 0) {
+                    return new HttpResult<String>(HttpResult.ERROR, "已关联采集主机不允许删除", null);
+                } else {
+                    if (pChannelService.findByRelGroup(value).size() > 0) {
+                        return new HttpResult<String>(HttpResult.ERROR, "已维护通道不允许删除", null);
+                    } else {
+                        return pChnlGroupService.deleteList(deleteList);
+                    }
+                }
+            } else {
+                return new HttpResult<String>(HttpResult.ERROR, "暂无要删除的内容", null);
+            }
+        } else {
+            return new HttpResult<String>(HttpResult.ERROR, "参数传递错误", null);
+        }
     }
 
     @ResponseBody

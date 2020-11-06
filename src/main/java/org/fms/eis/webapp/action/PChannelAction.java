@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,24 +32,25 @@ public class PChannelAction {
     @Qualifier("PChannelServiceImpl")
     private IPChannelService pChannelService;
 
+    /**
+     * 保存通道时，先根据设备地址查询是否已存在，存在提示，不存在再保存
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping(params = "method=insert")
     public HttpResult<?> insert(@RequestBody PChannelVO pChannelVO) {
         if(pChannelVO!=null){
-            List<PChannelVO> listVO;
             PChannelVO model;
-            //判断地址1
             model=new PChannelVO();
-            model.setDeviceAddr1(pChannelVO.getDeviceAddr1());
-            listVO=pChannelService.findByWhere(model);
-            if(listVO.size()>0){
+            model.setDeviceAddr1(pChannelVO.getDeviceAddr1());//判断地址1
+            model.setDeviceAddr2(null);
+            if(pChannelService.findByWhere(model).size()>0){
                 return new HttpResult<String>(HttpResult.ERROR, "新增失败,设备地址1重复", null);
             }
-            //判断地址2
             model.setDeviceAddr1(null);
-            model.setDeviceAddr1(pChannelVO.getDeviceAddr2());
-            listVO=pChannelService.findByWhere(model);
-            if(listVO.size()>0){
+            model.setDeviceAddr2(pChannelVO.getDeviceAddr2());//判断地址2
+            if(pChannelService.findByWhere(model).size()>0){
                 return new HttpResult<String>(HttpResult.ERROR, "新增失败,设备地址2重复", null);
             }
             int i = pChannelService.insert(pChannelVO);

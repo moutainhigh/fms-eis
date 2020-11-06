@@ -8,6 +8,7 @@
 package org.fms.eis.webapp.service;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.eis.webapp.vo.PChnlGpDasRelaVO;
 import org.fms.eis.webapp.vo.PDaserverGroupVO;
 import org.fms.eis.webapp.vo.PSysNodeVO;
 
@@ -29,4 +30,6 @@ public interface IPSysNodeService {
     public List<PSysNodeVO> findByWhere(PSysNodeVO pSysNodeVO);
 
     public int updateListDaserverGroup(List<PSysNodeVO> sysNodeVOList);
+
+    public List<PSysNodeVO> findByRelDasGroup(String value);
 }

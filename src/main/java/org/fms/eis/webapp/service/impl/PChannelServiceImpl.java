@@ -75,4 +75,8 @@ public class PChannelServiceImpl implements IPChannelService {
         return ReflectUtil.cast(lstDomain, PChannelVO.class);
     }
 
+    public List<PChannelVO> findByRelGroup(String value){
+        List<PChannelDomain> lstDomain = pChannelReadDAO.findByRelGroup(value);
+        return ReflectUtil.cast(lstDomain, PChannelVO.class);
+    }
 }

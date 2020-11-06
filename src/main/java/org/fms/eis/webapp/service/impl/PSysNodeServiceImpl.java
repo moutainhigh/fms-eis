@@ -81,4 +81,9 @@ public class PSysNodeServiceImpl implements IPSysNodeService {
         int num = pSysNodeWriteDAO.updateListDaserverGroup(ReflectUtil.cast(sysNodeVOList, PSysNodeDomain.class));
         return num;
     }
+    @Override
+    public List<PSysNodeVO> findByRelDasGroup(String value){
+        List<PSysNodeDomain> lstDomain = pSysNodeReadDAO.findByRelDasGroup(value);
+        return ReflectUtil.cast(lstDomain, PSysNodeVO.class);
+    }
 }
