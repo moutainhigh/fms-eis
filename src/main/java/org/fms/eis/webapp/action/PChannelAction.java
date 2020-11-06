@@ -11,6 +11,7 @@ import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import org.fms.eis.webapp.service.IPChannelService;
 import org.fms.eis.webapp.vo.PChannelVO;
+import org.fms.eis.webapp.vo.PChnlGroupVO;
 import org.fms.eis.webapp.vo.PTaskTplVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -120,6 +121,14 @@ public class PChannelAction {
     @PostMapping(params = "method=findByWhere")
     public HttpResultPagination<?> findByWhere(@RequestBody PChannelVO pChannelVO) {
 
+        return new HttpResultPagination(pChannelVO, pChannelService.findByWhere(pChannelVO));
+    }
+
+    @ResponseBody
+    @PostMapping(params = "method=findByChnlGroup")
+    public HttpResultPagination<?> findByChnlGroup(@RequestBody PChnlGroupVO pChnlGroupVO) {
+        PChannelVO pChannelVO=new PChannelVO();
+        pChannelVO.setChnlGroupId(pChnlGroupVO.getId());
         return new HttpResultPagination(pChannelVO, pChannelService.findByWhere(pChannelVO));
     }
 }
