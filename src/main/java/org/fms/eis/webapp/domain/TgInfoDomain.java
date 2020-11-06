@@ -38,6 +38,8 @@ public class TgInfoDomain extends Page implements MybatisEntity {
     private Long lineId;    //所属线路
     private String monitorFlag;    //是否监测
     private String areaType;    //地区属性
+    private String dataId;//接口ID
+
 
     public Long getId() {
         return id;
@@ -213,6 +215,14 @@ public class TgInfoDomain extends Page implements MybatisEntity {
 
     public void setAreaType(String areaType) {
         this.areaType = areaType;
+    }
+
+    public String getDataId() {
+        return dataId;
+    }
+
+    public void setDataId(String dataID) {
+        this.dataId = dataID;
     }
 
     public TgInfoVO domain2VO() {

@@ -16,20 +16,21 @@ import java.util.Date;
 
 public class PCalcTplDomain extends Page implements MybatisEntity {
     @TablePrimaryKey
-    private Integer id;    //标识
+    private Long id;    //标识
     private String name;    //模板名称
     private String type;    //适应数据范围类型（1---厂站关口点 ２－厂站非关口点 暂时只支持测量点和考核对象两种类型）
     private String defaultFlag;    //是否默认方案（默认1---是 2-否）
+    private Integer weight;//排序
     private Long creatorId;    //创建者
     private Date createDate;    //创建时间
     private Long lastModifierId;    //最后修改者
     private String lastModifyTime;    //最后修改时间
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -87,6 +88,14 @@ public class PCalcTplDomain extends Page implements MybatisEntity {
 
     public void setLastModifyTime(String lastModifyTime) {
         this.lastModifyTime = lastModifyTime;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public PCalcTplVO domain2VO() {
