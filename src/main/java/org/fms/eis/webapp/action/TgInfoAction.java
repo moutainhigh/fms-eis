@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @ControllerAdvice
-@RequestMapping("TgInfo")
+@RequestMapping("tgInfo")
 public class TgInfoAction {
 
     @Autowired
