@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.EEventCheckDAO">
+    <select id="findByKey" parameterType="EEventCheckDomain"
+            resultType="EEventCheckDomain" useCache="true">
+        select
+        EVENT_NO,OBJ_ID,OBJ_TYPE,EVENT_ALARM_LEVEL,OBJ_NAME,BUSINESS_PLACE_CODE,EVENT_TIME,DATA_TIME,C_FLAG,END_FLAG,CONTENT,CHK_CYCLE,DATA_FLAG,EVENT_DATA,SMS_FLAG,DEAL_FLAG,HANDLER,DEAL_TIME,REMARK,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_EVENT_CHECK
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="EEventCheckDomain"
+            resultType="EEventCheckDomain" useCache="true">
+        select
+        EVENT_NO,OBJ_ID,OBJ_TYPE,EVENT_ALARM_LEVEL,OBJ_NAME,BUSINESS_PLACE_CODE,EVENT_TIME,DATA_TIME,C_FLAG,END_FLAG,CONTENT,CHK_CYCLE,DATA_FLAG,EVENT_DATA,SMS_FLAG,DEAL_FLAG,HANDLER,DEAL_TIME,REMARK,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_EVENT_CHECK
+        <where>
+            <if test="eventNo !=null">
+                and EVENT_NO = #{eventNo}
+            </if>
+            <if test="objId !=null">
+                and OBJ_ID = #{objId}
+            </if>
+            <if test="objType !=null">
+                and OBJ_TYPE = #{objType}
+            </if>
+            <if test="eventAlarmLevel !=null">
+                and EVENT_ALARM_LEVEL = #{eventAlarmLevel}
+            </if>
+            <if test="objName !=null">
+                and OBJ_NAME = #{objName}
+            </if>
+            <if test="businessPlaceCode !=null">
+                and BUSINESS_PLACE_CODE = #{businessPlaceCode}
+            </if>
+            <if test="eventTime !=null">
+                and EVENT_TIME = #{eventTime}
+            </if>
+            <if test="dataTime !=null">
+                and DATA_TIME = #{dataTime}
+            </if>
+            <if test="cFlag !=null">
+                and C_FLAG = #{cFlag}
+            </if>
+            <if test="endFlag !=null">
+                and END_FLAG = #{endFlag}
+            </if>
+            <if test="content !=null">
+                and CONTENT = #{content}
+            </if>
+            <if test="chkCycle !=null">
+                and CHK_CYCLE = #{chkCycle}
+            </if>
+            <if test="dataFlag !=null">
+                and DATA_FLAG = #{dataFlag}
+            </if>
+            <if test="eventData !=null">
+                and EVENT_DATA = #{eventData}
+            </if>
+            <if test="smsFlag !=null">
+                and SMS_FLAG = #{smsFlag}
+            </if>
+            <if test="dealFlag !=null">
+                and DEAL_FLAG = #{dealFlag}
+            </if>
+            <if test="handler !=null">
+                and HANDLER = #{handler}
+            </if>
+            <if test="dealTime !=null">
+                and DEAL_TIME = #{dealTime}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="EEventCheckDomain" flushCache="true" useGeneratedKeys="true">
+		insert into E_EVENT_CHECK
+			(EVENT_NO,OBJ_ID,OBJ_TYPE,EVENT_ALARM_LEVEL,OBJ_NAME,BUSINESS_PLACE_CODE,EVENT_TIME,DATA_TIME,C_FLAG,END_FLAG,CONTENT,CHK_CYCLE,DATA_FLAG,EVENT_DATA,SMS_FLAG,DEAL_FLAG,HANDLER,DEAL_TIME,REMARK,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{eventNo},#{objId},#{objType},#{eventAlarmLevel},#{objName},#{businessPlaceCode},#{eventTime},#{dataTime},#{cFlag},#{endFlag},#{content},#{chkCycle},#{dataFlag},#{eventData},#{smsFlag},#{dealFlag},#{handler},#{dealTime},#{remark},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="EEventCheckDomain" flushCache="true">
+        update E_EVENT_CHECK
+        <set>
+            <if test="eventNo !=null">
+                EVENT_NO = #{eventNo},
+            </if>
+            <if test="objId !=null">
+                OBJ_ID = #{objId},
+            </if>
+            <if test="objType !=null">
+                OBJ_TYPE = #{objType},
+            </if>
+            <if test="eventAlarmLevel !=null">
+                EVENT_ALARM_LEVEL = #{eventAlarmLevel},
+            </if>
+            <if test="objName !=null">
+                OBJ_NAME = #{objName},
+            </if>
+            <if test="businessPlaceCode !=null">
+                BUSINESS_PLACE_CODE = #{businessPlaceCode},
+            </if>
+            <if test="eventTime !=null">
+                EVENT_TIME = #{eventTime},
+            </if>
+            <if test="dataTime !=null">
+                DATA_TIME = #{dataTime},
+            </if>
+            <if test="cFlag !=null">
+                C_FLAG = #{cFlag},
+            </if>
+            <if test="endFlag !=null">
+                END_FLAG = #{endFlag},
+            </if>
+            <if test="content !=null">
+                CONTENT = #{content},
+            </if>
+            <if test="chkCycle !=null">
+                CHK_CYCLE = #{chkCycle},
+            </if>
+            <if test="dataFlag !=null">
+                DATA_FLAG = #{dataFlag},
+            </if>
+            <if test="eventData !=null">
+                EVENT_DATA = #{eventData},
+            </if>
+            <if test="smsFlag !=null">
+                SMS_FLAG = #{smsFlag},
+            </if>
+            <if test="dealFlag !=null">
+                DEAL_FLAG = #{dealFlag},
+            </if>
+            <if test="handler !=null">
+                HANDLER = #{handler},
+            </if>
+            <if test="dealTime !=null">
+                DEAL_TIME = #{dealTime},
+            </if>
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="EEventCheckDomain" flushCache="true">
+        delete from E_EVENT_CHECK
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

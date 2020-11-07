@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.EMpAppendDAO">
+    <select id="findByKey" parameterType="EMpAppendDomain"
+            resultType="EMpAppendDomain" useCache="true">
+        select
+        MPED_ID,BEGIN_TIME,END_TIME,P1R0,P2R0,P3R0,P4R0,P5R0,P6R0,P7R0,P8R0,P1R1,P2R1,P3R1,P4R1,P5R1,P6R1,P7R1,P8R1,P1R2,P2R2,P3R2,P4R2,P5R2,P6R2,P7R2,P8R2,P1R3,P2R3,P3R3,P4R3,P5R3,P6R3,P7R3,P8R3,P1R4,P2R4,P3R4,P4R4,P5R4,P6R4,P7R4,P8R4,P1R5,P2R5,P3R5,P4R5,P5R5,P6R5,P7R5,P8R5,REASON,OPERATOR,CREATE_TIME,CREATE_MACHINE,VERIFY_FLAG,AUDITOR,VERIFY_TIME,VERIFY_MACHINE,REMARK,MODI_TYPE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_MP_APPEND
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="EMpAppendDomain"
+            resultType="EMpAppendDomain" useCache="true">
+        select
+        MPED_ID,BEGIN_TIME,END_TIME,P1R0,P2R0,P3R0,P4R0,P5R0,P6R0,P7R0,P8R0,P1R1,P2R1,P3R1,P4R1,P5R1,P6R1,P7R1,P8R1,P1R2,P2R2,P3R2,P4R2,P5R2,P6R2,P7R2,P8R2,P1R3,P2R3,P3R3,P4R3,P5R3,P6R3,P7R3,P8R3,P1R4,P2R4,P3R4,P4R4,P5R4,P6R4,P7R4,P8R4,P1R5,P2R5,P3R5,P4R5,P5R5,P6R5,P7R5,P8R5,REASON,OPERATOR,CREATE_TIME,CREATE_MACHINE,VERIFY_FLAG,AUDITOR,VERIFY_TIME,VERIFY_MACHINE,REMARK,MODI_TYPE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_MP_APPEND
+        <where>
+            <if test="mpedId !=null">
+                and MPED_ID = #{mpedId}
+            </if>
+            <if test="beginTime !=null">
+                and BEGIN_TIME = #{beginTime}
+            </if>
+            <if test="endTime !=null">
+                and END_TIME = #{endTime}
+            </if>
+            <if test="p1r0 !=null">
+                and P1R0 = #{p1r0}
+            </if>
+            <if test="p2r0 !=null">
+                and P2R0 = #{p2r0}
+            </if>
+            <if test="p3r0 !=null">
+                and P3R0 = #{p3r0}
+            </if>
+            <if test="p4r0 !=null">
+                and P4R0 = #{p4r0}
+            </if>
+            <if test="p5r0 !=null">
+                and P5R0 = #{p5r0}
+            </if>
+            <if test="p6r0 !=null">
+                and P6R0 = #{p6r0}
+            </if>
+            <if test="p7r0 !=null">
+                and P7R0 = #{p7r0}
+            </if>
+            <if test="p8r0 !=null">
+                and P8R0 = #{p8r0}
+            </if>
+            <if test="p1r1 !=null">
+                and P1R1 = #{p1r1}
+            </if>
+            <if test="p2r1 !=null">
+                and P2R1 = #{p2r1}
+            </if>
+            <if test="p3r1 !=null">
+                and P3R1 = #{p3r1}
+            </if>
+            <if test="p4r1 !=null">
+                and P4R1 = #{p4r1}
+            </if>
+            <if test="p5r1 !=null">
+                and P5R1 = #{p5r1}
+            </if>
+            <if test="p6r1 !=null">
+                and P6R1 = #{p6r1}
+            </if>
+            <if test="p7r1 !=null">
+                and P7R1 = #{p7r1}
+            </if>
+            <if test="p8r1 !=null">
+                and P8R1 = #{p8r1}
+            </if>
+            <if test="p1r2 !=null">
+                and P1R2 = #{p1r2}
+            </if>
+            <if test="p2r2 !=null">
+                and P2R2 = #{p2r2}
+            </if>
+            <if test="p3r2 !=null">
+                and P3R2 = #{p3r2}
+            </if>
+            <if test="p4r2 !=null">
+                and P4R2 = #{p4r2}
+            </if>
+            <if test="p5r2 !=null">
+                and P5R2 = #{p5r2}
+            </if>
+            <if test="p6r2 !=null">
+                and P6R2 = #{p6r2}
+            </if>
+            <if test="p7r2 !=null">
+                and P7R2 = #{p7r2}
+            </if>
+            <if test="p8r2 !=null">
+                and P8R2 = #{p8r2}
+            </if>
+            <if test="p1r3 !=null">
+                and P1R3 = #{p1r3}
+            </if>
+            <if test="p2r3 !=null">
+                and P2R3 = #{p2r3}
+            </if>
+            <if test="p3r3 !=null">
+                and P3R3 = #{p3r3}
+            </if>
+            <if test="p4r3 !=null">
+                and P4R3 = #{p4r3}
+            </if>
+            <if test="p5r3 !=null">
+                and P5R3 = #{p5r3}
+            </if>
+            <if test="p6r3 !=null">
+                and P6R3 = #{p6r3}
+            </if>
+            <if test="p7r3 !=null">
+                and P7R3 = #{p7r3}
+            </if>
+            <if test="p8r3 !=null">
+                and P8R3 = #{p8r3}
+            </if>
+            <if test="p1r4 !=null">
+                and P1R4 = #{p1r4}
+            </if>
+            <if test="p2r4 !=null">
+                and P2R4 = #{p2r4}
+            </if>
+            <if test="p3r4 !=null">
+                and P3R4 = #{p3r4}
+            </if>
+            <if test="p4r4 !=null">
+                and P4R4 = #{p4r4}
+            </if>
+            <if test="p5r4 !=null">
+                and P5R4 = #{p5r4}
+            </if>
+            <if test="p6r4 !=null">
+                and P6R4 = #{p6r4}
+            </if>
+            <if test="p7r4 !=null">
+                and P7R4 = #{p7r4}
+            </if>
+            <if test="p8r4 !=null">
+                and P8R4 = #{p8r4}
+            </if>
+            <if test="p1r5 !=null">
+                and P1R5 = #{p1r5}
+            </if>
+            <if test="p2r5 !=null">
+                and P2R5 = #{p2r5}
+            </if>
+            <if test="p3r5 !=null">
+                and P3R5 = #{p3r5}
+            </if>
+            <if test="p4r5 !=null">
+                and P4R5 = #{p4r5}
+            </if>
+            <if test="p5r5 !=null">
+                and P5R5 = #{p5r5}
+            </if>
+            <if test="p6r5 !=null">
+                and P6R5 = #{p6r5}
+            </if>
+            <if test="p7r5 !=null">
+                and P7R5 = #{p7r5}
+            </if>
+            <if test="p8r5 !=null">
+                and P8R5 = #{p8r5}
+            </if>
+            <if test="reason !=null">
+                and REASON = #{reason}
+            </if>
+            <if test="operator !=null">
+                and OPERATOR = #{operator}
+            </if>
+            <if test="createTime !=null">
+                and CREATE_TIME = #{createTime}
+            </if>
+            <if test="createMachine !=null">
+                and CREATE_MACHINE = #{createMachine}
+            </if>
+            <if test="verifyFlag !=null">
+                and VERIFY_FLAG = #{verifyFlag}
+            </if>
+            <if test="auditor !=null">
+                and AUDITOR = #{auditor}
+            </if>
+            <if test="verifyTime !=null">
+                and VERIFY_TIME = #{verifyTime}
+            </if>
+            <if test="verifyMachine !=null">
+                and VERIFY_MACHINE = #{verifyMachine}
+            </if>
+            <if test="remark !=null">
+                and REMARK = #{remark}
+            </if>
+            <if test="modiType !=null">
+                and MODI_TYPE = #{modiType}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="EMpAppendDomain" flushCache="true" useGeneratedKeys="true">
+		insert into E_MP_APPEND
+			(MPED_ID,BEGIN_TIME,END_TIME,P1R0,P2R0,P3R0,P4R0,P5R0,P6R0,P7R0,P8R0,P1R1,P2R1,P3R1,P4R1,P5R1,P6R1,P7R1,P8R1,P1R2,P2R2,P3R2,P4R2,P5R2,P6R2,P7R2,P8R2,P1R3,P2R3,P3R3,P4R3,P5R3,P6R3,P7R3,P8R3,P1R4,P2R4,P3R4,P4R4,P5R4,P6R4,P7R4,P8R4,P1R5,P2R5,P3R5,P4R5,P5R5,P6R5,P7R5,P8R5,REASON,OPERATOR,CREATE_TIME,CREATE_MACHINE,VERIFY_FLAG,AUDITOR,VERIFY_TIME,VERIFY_MACHINE,REMARK,MODI_TYPE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{mpedId},#{beginTime},#{endTime},#{p1r0},#{p2r0},#{p3r0},#{p4r0},#{p5r0},#{p6r0},#{p7r0},#{p8r0},#{p1r1},#{p2r1},#{p3r1},#{p4r1},#{p5r1},#{p6r1},#{p7r1},#{p8r1},#{p1r2},#{p2r2},#{p3r2},#{p4r2},#{p5r2},#{p6r2},#{p7r2},#{p8r2},#{p1r3},#{p2r3},#{p3r3},#{p4r3},#{p5r3},#{p6r3},#{p7r3},#{p8r3},#{p1r4},#{p2r4},#{p3r4},#{p4r4},#{p5r4},#{p6r4},#{p7r4},#{p8r4},#{p1r5},#{p2r5},#{p3r5},#{p4r5},#{p5r5},#{p6r5},#{p7r5},#{p8r5},#{reason},#{operator},#{createTime},#{createMachine},#{verifyFlag},#{auditor},#{verifyTime},#{verifyMachine},#{remark},#{modiType},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="EMpAppendDomain" flushCache="true">
+        update E_MP_APPEND
+        <set>
+            <if test="mpedId !=null">
+                MPED_ID = #{mpedId},
+            </if>
+            <if test="beginTime !=null">
+                BEGIN_TIME = #{beginTime},
+            </if>
+            <if test="endTime !=null">
+                END_TIME = #{endTime},
+            </if>
+            <if test="p1r0 !=null">
+                P1R0 = #{p1r0},
+            </if>
+            <if test="p2r0 !=null">
+                P2R0 = #{p2r0},
+            </if>
+            <if test="p3r0 !=null">
+                P3R0 = #{p3r0},
+            </if>
+            <if test="p4r0 !=null">
+                P4R0 = #{p4r0},
+            </if>
+            <if test="p5r0 !=null">
+                P5R0 = #{p5r0},
+            </if>
+            <if test="p6r0 !=null">
+                P6R0 = #{p6r0},
+            </if>
+            <if test="p7r0 !=null">
+                P7R0 = #{p7r0},
+            </if>
+            <if test="p8r0 !=null">
+                P8R0 = #{p8r0},
+            </if>
+            <if test="p1r1 !=null">
+                P1R1 = #{p1r1},
+            </if>
+            <if test="p2r1 !=null">
+                P2R1 = #{p2r1},
+            </if>
+            <if test="p3r1 !=null">
+                P3R1 = #{p3r1},
+            </if>
+            <if test="p4r1 !=null">
+                P4R1 = #{p4r1},
+            </if>
+            <if test="p5r1 !=null">
+                P5R1 = #{p5r1},
+            </if>
+            <if test="p6r1 !=null">
+                P6R1 = #{p6r1},
+            </if>
+            <if test="p7r1 !=null">
+                P7R1 = #{p7r1},
+            </if>
+            <if test="p8r1 !=null">
+                P8R1 = #{p8r1},
+            </if>
+            <if test="p1r2 !=null">
+                P1R2 = #{p1r2},
+            </if>
+            <if test="p2r2 !=null">
+                P2R2 = #{p2r2},
+            </if>
+            <if test="p3r2 !=null">
+                P3R2 = #{p3r2},
+            </if>
+            <if test="p4r2 !=null">
+                P4R2 = #{p4r2},
+            </if>
+            <if test="p5r2 !=null">
+                P5R2 = #{p5r2},
+            </if>
+            <if test="p6r2 !=null">
+                P6R2 = #{p6r2},
+            </if>
+            <if test="p7r2 !=null">
+                P7R2 = #{p7r2},
+            </if>
+            <if test="p8r2 !=null">
+                P8R2 = #{p8r2},
+            </if>
+            <if test="p1r3 !=null">
+                P1R3 = #{p1r3},
+            </if>
+            <if test="p2r3 !=null">
+                P2R3 = #{p2r3},
+            </if>
+            <if test="p3r3 !=null">
+                P3R3 = #{p3r3},
+            </if>
+            <if test="p4r3 !=null">
+                P4R3 = #{p4r3},
+            </if>
+            <if test="p5r3 !=null">
+                P5R3 = #{p5r3},
+            </if>
+            <if test="p6r3 !=null">
+                P6R3 = #{p6r3},
+            </if>
+            <if test="p7r3 !=null">
+                P7R3 = #{p7r3},
+            </if>
+            <if test="p8r3 !=null">
+                P8R3 = #{p8r3},
+            </if>
+            <if test="p1r4 !=null">
+                P1R4 = #{p1r4},
+            </if>
+            <if test="p2r4 !=null">
+                P2R4 = #{p2r4},
+            </if>
+            <if test="p3r4 !=null">
+                P3R4 = #{p3r4},
+            </if>
+            <if test="p4r4 !=null">
+                P4R4 = #{p4r4},
+            </if>
+            <if test="p5r4 !=null">
+                P5R4 = #{p5r4},
+            </if>
+            <if test="p6r4 !=null">
+                P6R4 = #{p6r4},
+            </if>
+            <if test="p7r4 !=null">
+                P7R4 = #{p7r4},
+            </if>
+            <if test="p8r4 !=null">
+                P8R4 = #{p8r4},
+            </if>
+            <if test="p1r5 !=null">
+                P1R5 = #{p1r5},
+            </if>
+            <if test="p2r5 !=null">
+                P2R5 = #{p2r5},
+            </if>
+            <if test="p3r5 !=null">
+                P3R5 = #{p3r5},
+            </if>
+            <if test="p4r5 !=null">
+                P4R5 = #{p4r5},
+            </if>
+            <if test="p5r5 !=null">
+                P5R5 = #{p5r5},
+            </if>
+            <if test="p6r5 !=null">
+                P6R5 = #{p6r5},
+            </if>
+            <if test="p7r5 !=null">
+                P7R5 = #{p7r5},
+            </if>
+            <if test="p8r5 !=null">
+                P8R5 = #{p8r5},
+            </if>
+            <if test="reason !=null">
+                REASON = #{reason},
+            </if>
+            <if test="operator !=null">
+                OPERATOR = #{operator},
+            </if>
+            <if test="createTime !=null">
+                CREATE_TIME = #{createTime},
+            </if>
+            <if test="createMachine !=null">
+                CREATE_MACHINE = #{createMachine},
+            </if>
+            <if test="verifyFlag !=null">
+                VERIFY_FLAG = #{verifyFlag},
+            </if>
+            <if test="auditor !=null">
+                AUDITOR = #{auditor},
+            </if>
+            <if test="verifyTime !=null">
+                VERIFY_TIME = #{verifyTime},
+            </if>
+            <if test="verifyMachine !=null">
+                VERIFY_MACHINE = #{verifyMachine},
+            </if>
+            <if test="remark !=null">
+                REMARK = #{remark},
+            </if>
+            <if test="modiType !=null">
+                MODI_TYPE = #{modiType},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="EMpAppendDomain" flushCache="true">
+        delete from E_MP_APPEND
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

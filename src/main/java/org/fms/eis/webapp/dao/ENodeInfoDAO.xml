@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.ENodeInfoDAO">
+    <select id="findByKey" parameterType="ENodeInfoDomain"
+            resultType="ENodeInfoDomain" useCache="true">
+        select
+        NODE_ID,NAME,DATA_TIME,TYPE,TOTAL,USED,PERCENT,STATUS,IP,MAC,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_NODE_INFO
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="ENodeInfoDomain"
+            resultType="ENodeInfoDomain" useCache="true">
+        select
+        NODE_ID,NAME,DATA_TIME,TYPE,TOTAL,USED,PERCENT,STATUS,IP,MAC,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_NODE_INFO
+        <where>
+            <if test="nodeId !=null">
+                and NODE_ID = #{nodeId}
+            </if>
+            <if test="name !=null">
+                and NAME = #{name}
+            </if>
+            <if test="dataTime !=null">
+                and DATA_TIME = #{dataTime}
+            </if>
+            <if test="type !=null">
+                and TYPE = #{type}
+            </if>
+            <if test="total !=null">
+                and TOTAL = #{total}
+            </if>
+            <if test="used !=null">
+                and USED = #{used}
+            </if>
+            <if test="percent !=null">
+                and PERCENT = #{percent}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="ip !=null">
+                and IP = #{ip}
+            </if>
+            <if test="mac !=null">
+                and MAC = #{mac}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="ENodeInfoDomain" flushCache="true" useGeneratedKeys="true">
+		insert into E_NODE_INFO
+			(NODE_ID,NAME,DATA_TIME,TYPE,TOTAL,USED,PERCENT,STATUS,IP,MAC,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{nodeId},#{name},#{dataTime},#{type},#{total},#{used},#{percent},#{status},#{ip},#{mac},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="ENodeInfoDomain" flushCache="true">
+        update E_NODE_INFO
+        <set>
+            <if test="nodeId !=null">
+                NODE_ID = #{nodeId},
+            </if>
+            <if test="name !=null">
+                NAME = #{name},
+            </if>
+            <if test="dataTime !=null">
+                DATA_TIME = #{dataTime},
+            </if>
+            <if test="type !=null">
+                TYPE = #{type},
+            </if>
+            <if test="total !=null">
+                TOTAL = #{total},
+            </if>
+            <if test="used !=null">
+                USED = #{used},
+            </if>
+            <if test="percent !=null">
+                PERCENT = #{percent},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="ip !=null">
+                IP = #{ip},
+            </if>
+            <if test="mac !=null">
+                MAC = #{mac},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="ENodeInfoDomain" flushCache="true">
+        delete from E_NODE_INFO
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

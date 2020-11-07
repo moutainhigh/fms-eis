@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.EEventOperYyyyDAO">
+    <select id="findByKey" parameterType="EEventOperYyyyDomain"
+            resultType="EEventOperYyyyDomain" useCache="true">
+        select
+        LOG_ID,SYS_USER_NAME,USER_NAME,LOGIN_IP,LOG_TIME,OBJ_ID,OBJ_TYPE,OBJ_NAME,OPER_TYPE,OPER_PROP,MENU_ID,UNDO_FLAG,CONTENT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_EVENT_OPER_YYYY
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="EEventOperYyyyDomain"
+            resultType="EEventOperYyyyDomain" useCache="true">
+        select
+        LOG_ID,SYS_USER_NAME,USER_NAME,LOGIN_IP,LOG_TIME,OBJ_ID,OBJ_TYPE,OBJ_NAME,OPER_TYPE,OPER_PROP,MENU_ID,UNDO_FLAG,CONTENT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_EVENT_OPER_YYYY
+        <where>
+            <if test="logId !=null">
+                and LOG_ID = #{logId}
+            </if>
+            <if test="sysUserName !=null">
+                and SYS_USER_NAME = #{sysUserName}
+            </if>
+            <if test="userName !=null">
+                and USER_NAME = #{userName}
+            </if>
+            <if test="loginIp !=null">
+                and LOGIN_IP = #{loginIp}
+            </if>
+            <if test="logTime !=null">
+                and LOG_TIME = #{logTime}
+            </if>
+            <if test="objId !=null">
+                and OBJ_ID = #{objId}
+            </if>
+            <if test="objType !=null">
+                and OBJ_TYPE = #{objType}
+            </if>
+            <if test="objName !=null">
+                and OBJ_NAME = #{objName}
+            </if>
+            <if test="operType !=null">
+                and OPER_TYPE = #{operType}
+            </if>
+            <if test="operProp !=null">
+                and OPER_PROP = #{operProp}
+            </if>
+            <if test="menuId !=null">
+                and MENU_ID = #{menuId}
+            </if>
+            <if test="undoFlag !=null">
+                and UNDO_FLAG = #{undoFlag}
+            </if>
+            <if test="content !=null">
+                and CONTENT = #{content}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="EEventOperYyyyDomain" flushCache="true" useGeneratedKeys="true">
+		insert into E_EVENT_OPER_YYYY
+			(LOG_ID,SYS_USER_NAME,USER_NAME,LOGIN_IP,LOG_TIME,OBJ_ID,OBJ_TYPE,OBJ_NAME,OPER_TYPE,OPER_PROP,MENU_ID,UNDO_FLAG,CONTENT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{logId},#{sysUserName},#{userName},#{loginIp},#{logTime},#{objId},#{objType},#{objName},#{operType},#{operProp},#{menuId},#{undoFlag},#{content},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="EEventOperYyyyDomain" flushCache="true">
+        update E_EVENT_OPER_YYYY
+        <set>
+            <if test="logId !=null">
+                LOG_ID = #{logId},
+            </if>
+            <if test="sysUserName !=null">
+                SYS_USER_NAME = #{sysUserName},
+            </if>
+            <if test="userName !=null">
+                USER_NAME = #{userName},
+            </if>
+            <if test="loginIp !=null">
+                LOGIN_IP = #{loginIp},
+            </if>
+            <if test="logTime !=null">
+                LOG_TIME = #{logTime},
+            </if>
+            <if test="objId !=null">
+                OBJ_ID = #{objId},
+            </if>
+            <if test="objType !=null">
+                OBJ_TYPE = #{objType},
+            </if>
+            <if test="objName !=null">
+                OBJ_NAME = #{objName},
+            </if>
+            <if test="operType !=null">
+                OPER_TYPE = #{operType},
+            </if>
+            <if test="operProp !=null">
+                OPER_PROP = #{operProp},
+            </if>
+            <if test="menuId !=null">
+                MENU_ID = #{menuId},
+            </if>
+            <if test="undoFlag !=null">
+                UNDO_FLAG = #{undoFlag},
+            </if>
+            <if test="content !=null">
+                CONTENT = #{content},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="EEventOperYyyyDomain" flushCache="true">
+        delete from E_EVENT_OPER_YYYY
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

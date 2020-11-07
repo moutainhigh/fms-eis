@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.EEventDevDAO">
+    <select id="findByKey" parameterType="EEventDevDomain"
+            resultType="EEventDevDomain" useCache="true">
+        select LOG_ID,DEV_ID,DEV_NAME,DEV_IP,LOG_TIME,CONTENT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_EVENT_DEV
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="EEventDevDomain"
+            resultType="EEventDevDomain" useCache="true">
+        select LOG_ID,DEV_ID,DEV_NAME,DEV_IP,LOG_TIME,CONTENT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_EVENT_DEV
+        <where>
+            <if test="logId !=null">
+                and LOG_ID = #{logId}
+            </if>
+            <if test="devId !=null">
+                and DEV_ID = #{devId}
+            </if>
+            <if test="devName !=null">
+                and DEV_NAME = #{devName}
+            </if>
+            <if test="devIp !=null">
+                and DEV_IP = #{devIp}
+            </if>
+            <if test="logTime !=null">
+                and LOG_TIME = #{logTime}
+            </if>
+            <if test="content !=null">
+                and CONTENT = #{content}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="EEventDevDomain" flushCache="true" useGeneratedKeys="true">
+		insert into E_EVENT_DEV
+			(LOG_ID,DEV_ID,DEV_NAME,DEV_IP,LOG_TIME,CONTENT,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{logId},#{devId},#{devName},#{devIp},#{logTime},#{content},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="EEventDevDomain" flushCache="true">
+        update E_EVENT_DEV
+        <set>
+            <if test="logId !=null">
+                LOG_ID = #{logId},
+            </if>
+            <if test="devId !=null">
+                DEV_ID = #{devId},
+            </if>
+            <if test="devName !=null">
+                DEV_NAME = #{devName},
+            </if>
+            <if test="devIp !=null">
+                DEV_IP = #{devIp},
+            </if>
+            <if test="logTime !=null">
+                LOG_TIME = #{logTime},
+            </if>
+            <if test="content !=null">
+                CONTENT = #{content},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="EEventDevDomain" flushCache="true">
+        delete from E_EVENT_DEV
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

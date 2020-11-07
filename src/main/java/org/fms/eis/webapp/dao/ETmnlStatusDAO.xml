@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.ETmnlStatusDAO">
+    <select id="findByKey" parameterType="ETmnlStatusDomain"
+            resultType="ETmnlStatusDomain" useCache="true">
+        select
+        CP_ID,CTRL_HOSTID,STATUS,M_CHNL1,M_CHNL2,S_CHNL1,S_CHNL2,M_POWER,S_POWER,TIME_STATUS,CHECK_TIME,METER_STATUS,PS_ENSURE_FLAG,ELIMINATE_FLAG,REMOTE_CTRL_FLAG,ALARM_SET_FLAG,ALARM_EXE_FLAG,UP_SEND_FLAG,UP_LINK_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_TMNL_STATUS
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="ETmnlStatusDomain"
+            resultType="ETmnlStatusDomain" useCache="true">
+        select
+        CP_ID,CTRL_HOSTID,STATUS,M_CHNL1,M_CHNL2,S_CHNL1,S_CHNL2,M_POWER,S_POWER,TIME_STATUS,CHECK_TIME,METER_STATUS,PS_ENSURE_FLAG,ELIMINATE_FLAG,REMOTE_CTRL_FLAG,ALARM_SET_FLAG,ALARM_EXE_FLAG,UP_SEND_FLAG,UP_LINK_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_TMNL_STATUS
+        <where>
+            <if test="cpId !=null">
+                and CP_ID = #{cpId}
+            </if>
+            <if test="ctrlHostid !=null">
+                and CTRL_HOSTID = #{ctrlHostid}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="mChnl1 !=null">
+                and M_CHNL1 = #{mChnl1}
+            </if>
+            <if test="mChnl2 !=null">
+                and M_CHNL2 = #{mChnl2}
+            </if>
+            <if test="sChnl1 !=null">
+                and S_CHNL1 = #{sChnl1}
+            </if>
+            <if test="sChnl2 !=null">
+                and S_CHNL2 = #{sChnl2}
+            </if>
+            <if test="mPower !=null">
+                and M_POWER = #{mPower}
+            </if>
+            <if test="sPower !=null">
+                and S_POWER = #{sPower}
+            </if>
+            <if test="timeStatus !=null">
+                and TIME_STATUS = #{timeStatus}
+            </if>
+            <if test="checkTime !=null">
+                and CHECK_TIME = #{checkTime}
+            </if>
+            <if test="meterStatus !=null">
+                and METER_STATUS = #{meterStatus}
+            </if>
+            <if test="psEnsureFlag !=null">
+                and PS_ENSURE_FLAG = #{psEnsureFlag}
+            </if>
+            <if test="eliminateFlag !=null">
+                and ELIMINATE_FLAG = #{eliminateFlag}
+            </if>
+            <if test="remoteCtrlFlag !=null">
+                and REMOTE_CTRL_FLAG = #{remoteCtrlFlag}
+            </if>
+            <if test="alarmSetFlag !=null">
+                and ALARM_SET_FLAG = #{alarmSetFlag}
+            </if>
+            <if test="alarmExeFlag !=null">
+                and ALARM_EXE_FLAG = #{alarmExeFlag}
+            </if>
+            <if test="upSendFlag !=null">
+                and UP_SEND_FLAG = #{upSendFlag}
+            </if>
+            <if test="upLinkFlag !=null">
+                and UP_LINK_FLAG = #{upLinkFlag}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="ETmnlStatusDomain" flushCache="true" useGeneratedKeys="true">
+		insert into E_TMNL_STATUS
+			(CP_ID,CTRL_HOSTID,STATUS,M_CHNL1,M_CHNL2,S_CHNL1,S_CHNL2,M_POWER,S_POWER,TIME_STATUS,CHECK_TIME,METER_STATUS,PS_ENSURE_FLAG,ELIMINATE_FLAG,REMOTE_CTRL_FLAG,ALARM_SET_FLAG,ALARM_EXE_FLAG,UP_SEND_FLAG,UP_LINK_FLAG,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{cpId},#{ctrlHostid},#{status},#{mChnl1},#{mChnl2},#{sChnl1},#{sChnl2},#{mPower},#{sPower},#{timeStatus},#{checkTime},#{meterStatus},#{psEnsureFlag},#{eliminateFlag},#{remoteCtrlFlag},#{alarmSetFlag},#{alarmExeFlag},#{upSendFlag},#{upLinkFlag},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="ETmnlStatusDomain" flushCache="true">
+        update E_TMNL_STATUS
+        <set>
+            <if test="cpId !=null">
+                CP_ID = #{cpId},
+            </if>
+            <if test="ctrlHostid !=null">
+                CTRL_HOSTID = #{ctrlHostid},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="mChnl1 !=null">
+                M_CHNL1 = #{mChnl1},
+            </if>
+            <if test="mChnl2 !=null">
+                M_CHNL2 = #{mChnl2},
+            </if>
+            <if test="sChnl1 !=null">
+                S_CHNL1 = #{sChnl1},
+            </if>
+            <if test="sChnl2 !=null">
+                S_CHNL2 = #{sChnl2},
+            </if>
+            <if test="mPower !=null">
+                M_POWER = #{mPower},
+            </if>
+            <if test="sPower !=null">
+                S_POWER = #{sPower},
+            </if>
+            <if test="timeStatus !=null">
+                TIME_STATUS = #{timeStatus},
+            </if>
+            <if test="checkTime !=null">
+                CHECK_TIME = #{checkTime},
+            </if>
+            <if test="meterStatus !=null">
+                METER_STATUS = #{meterStatus},
+            </if>
+            <if test="psEnsureFlag !=null">
+                PS_ENSURE_FLAG = #{psEnsureFlag},
+            </if>
+            <if test="eliminateFlag !=null">
+                ELIMINATE_FLAG = #{eliminateFlag},
+            </if>
+            <if test="remoteCtrlFlag !=null">
+                REMOTE_CTRL_FLAG = #{remoteCtrlFlag},
+            </if>
+            <if test="alarmSetFlag !=null">
+                ALARM_SET_FLAG = #{alarmSetFlag},
+            </if>
+            <if test="alarmExeFlag !=null">
+                ALARM_EXE_FLAG = #{alarmExeFlag},
+            </if>
+            <if test="upSendFlag !=null">
+                UP_SEND_FLAG = #{upSendFlag},
+            </if>
+            <if test="upLinkFlag !=null">
+                UP_LINK_FLAG = #{upLinkFlag},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="ETmnlStatusDomain" flushCache="true">
+        delete from E_TMNL_STATUS
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

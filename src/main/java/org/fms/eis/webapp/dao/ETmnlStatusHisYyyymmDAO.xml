@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.ETmnlStatusHisYyyymmDAO">
+    <select id="findByKey" parameterType="ETmnlStatusHisYyyymmDomain"
+            resultType="ETmnlStatusHisYyyymmDomain" useCache="true">
+        select CP_ID,DATA_TIME,STATUS,NODE_ID,AREA_CODE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_TMNL_STATUS_HIS_YYYYMM
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="ETmnlStatusHisYyyymmDomain"
+            resultType="ETmnlStatusHisYyyymmDomain" useCache="true">
+        select CP_ID,DATA_TIME,STATUS,NODE_ID,AREA_CODE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME
+        from E_TMNL_STATUS_HIS_YYYYMM
+        <where>
+            <if test="cpId !=null">
+                and CP_ID = #{cpId}
+            </if>
+            <if test="dataTime !=null">
+                and DATA_TIME = #{dataTime}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+            <if test="nodeId !=null">
+                and NODE_ID = #{nodeId}
+            </if>
+            <if test="areaCode !=null">
+                and AREA_CODE = #{areaCode}
+            </if>
+            <if test="creatorId !=null">
+                and CREATOR_ID = #{creatorId}
+            </if>
+            <if test="createDate !=null">
+                and CREATE_DATE = #{createDate}
+            </if>
+            <if test="lastModifierId !=null">
+                and LAST_MODIFIER_ID = #{lastModifierId}
+            </if>
+            <if test="lastModifyTime !=null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="ETmnlStatusHisYyyymmDomain" flushCache="true" useGeneratedKeys="true">
+		insert into E_TMNL_STATUS_HIS_YYYYMM
+			(CP_ID,DATA_TIME,STATUS,NODE_ID,AREA_CODE,CREATOR_ID,CREATE_DATE,LAST_MODIFIER_ID,LAST_MODIFY_TIME)
+			VALUES(#{cpId},#{dataTime},#{status},#{nodeId},#{areaCode},#{creatorId},#{createDate},#{lastModifierId},#{lastModifyTime})
+
+	</insert>
+    <update id="update" parameterType="ETmnlStatusHisYyyymmDomain" flushCache="true">
+        update E_TMNL_STATUS_HIS_YYYYMM
+        <set>
+            <if test="cpId !=null">
+                CP_ID = #{cpId},
+            </if>
+            <if test="dataTime !=null">
+                DATA_TIME = #{dataTime},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+            <if test="nodeId !=null">
+                NODE_ID = #{nodeId},
+            </if>
+            <if test="areaCode !=null">
+                AREA_CODE = #{areaCode},
+            </if>
+            <if test="creatorId !=null">
+                CREATOR_ID = #{creatorId},
+            </if>
+            <if test="createDate !=null">
+                CREATE_DATE = #{createDate},
+            </if>
+            <if test="lastModifierId !=null">
+                LAST_MODIFIER_ID = #{lastModifierId},
+            </if>
+            <if test="lastModifyTime !=null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="ETmnlStatusHisYyyymmDomain" flushCache="true">
+        delete from E_TMNL_STATUS_HIS_YYYYMM
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>
