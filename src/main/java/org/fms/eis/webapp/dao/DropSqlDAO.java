@@ -9,6 +9,7 @@ import com.riozenc.titanTool.annotation.PaginationSupport;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
+import org.fms.eis.webapp.domain.DropSqlDetDomain;
 import org.fms.eis.webapp.domain.DropSqlDomain;
 import org.fms.eis.webapp.domain.SystemCommonConfigDomain;
 
@@ -51,7 +52,7 @@ public class DropSqlDAO extends AbstractTransactionDAOSupport implements BaseDAO
         return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
     }
 
-    public List<SystemCommonConfigDomain> getBaseDropDict(String selectSql){
+    public List<DropSqlDetDomain> getBaseDropDict(String selectSql){
         return getPersistanceManager().find(getNamespace() + ".getBaseDropDict", selectSql);
     }
 }

@@ -133,7 +133,7 @@ public class PSysNodeAction {
     @ResponseBody
     @PostMapping(params = "method=findByWhere")
     public HttpResultPagination<?> findByWhere(@RequestBody PSysNodeVO pSysNodeVO) {
-
+        List<PSysNodeVO> list = pSysNodeService.findByWhere(pSysNodeVO);
         return new HttpResultPagination(pSysNodeVO, pSysNodeService.findByWhere(pSysNodeVO));
     }
 

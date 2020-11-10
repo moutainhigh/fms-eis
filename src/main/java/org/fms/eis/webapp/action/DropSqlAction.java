@@ -5,9 +5,11 @@
  **/
 package org.fms.eis.webapp.action;
 
+import com.alibaba.fastjson.JSONObject;
 import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.service.IDropSqlService;
+import org.fms.eis.webapp.vo.DropSqlDetVO;
 import org.fms.eis.webapp.vo.DropSqlVO;
 import org.fms.eis.webapp.vo.SystemCommonConfigVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,17 +87,21 @@ public class DropSqlAction {
     /**
      * 获取sql查询的字典
      *
-     * @param dropCode [DROP_SQL]表的DROP_CODE
+     * @param body [DROP_SQL]表的DROP_CODE {"dropCode":"CALC_TASK"}
      * @return
      */
     @ResponseBody
     @PostMapping(params = "method=getBaseDropDict")
-    public HttpResult<?> getBaseDropDict(@RequestBody String dropCode) {
-        List<SystemCommonConfigVO> dictList = new ArrayList<>();
-        if (dropCode != null) {
+    public HttpResult<?> getBaseDropDict(@RequestBody String body) {
+        List<DropSqlDetVO> dictList = new ArrayList<>();
+        if (body != null) {
+            JSONObject obj = JSONObject.parseObject(body);
+            String dropCode = obj.getString("dropCode");
+
             DropSqlVO modelVO = new DropSqlVO();
             modelVO.setDropCode(dropCode);
             List<DropSqlVO> listVO = dropSqlService.findByWhere(modelVO);
+
             if (listVO != null && listVO.size() > 0) {
                 dictList = dropSqlService.getBaseDropDict(listVO.get(0).getDropSql());
             }
