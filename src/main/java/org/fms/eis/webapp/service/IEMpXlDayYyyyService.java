@@ -8,6 +8,7 @@
 package org.fms.eis.webapp.service;
 
 import com.riozenc.titanTool.spring.web.http.HttpResult;
+import org.fms.eis.webapp.helper.EMpXlDayYyyyPara;
 import org.fms.eis.webapp.vo.EMpXlDayYyyyVO;
 
 import java.util.List;
@@ -25,4 +26,8 @@ public interface IEMpXlDayYyyyService {
     public EMpXlDayYyyyVO findByKey(EMpXlDayYyyyVO eMpXlDayYyyyVO);
 
     public List<EMpXlDayYyyyVO> findByWhere(EMpXlDayYyyyVO eMpXlDayYyyyVO);
+
+    public int getCountByWhere(EMpXlDayYyyyPara para);
+
+    public List<EMpXlDayYyyyVO> getListByWhere(EMpXlDayYyyyPara para);
 }

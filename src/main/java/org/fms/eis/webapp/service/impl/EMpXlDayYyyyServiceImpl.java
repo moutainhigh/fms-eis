@@ -10,8 +10,10 @@ import com.riozenc.titanTool.spring.web.http.HttpResult;
 import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.annotation.TransactionService;
 import com.riozenc.titanTool.common.reflect.ReflectUtil;
+import jdk.nashorn.internal.ir.ReturnNode;
 import org.fms.eis.webapp.dao.EMpXlDayYyyyDAO;
 import org.fms.eis.webapp.domain.EMpXlDayYyyyDomain;
+import org.fms.eis.webapp.helper.EMpXlDayYyyyPara;
 import org.fms.eis.webapp.service.IEMpXlDayYyyyService;
 import org.fms.eis.webapp.vo.EMpXlDayYyyyVO;
 
@@ -75,4 +77,13 @@ public class EMpXlDayYyyyServiceImpl implements IEMpXlDayYyyyService {
         return ReflectUtil.cast(lstDomain, EMpXlDayYyyyVO.class);
     }
 
+    @Override
+    public int getCountByWhere(EMpXlDayYyyyPara para) {
+        return 0;
+    }
+
+    @Override
+    public List<EMpXlDayYyyyVO> getListByWhere(EMpXlDayYyyyPara para) {
+        return null;
+    }
 }

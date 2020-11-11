@@ -12,6 +12,7 @@ import com.riozenc.titanTool.spring.web.http.HttpResultPagination;
 import org.fms.eis.webapp.helper.EMpXlDayYyyyPara;
 import org.fms.eis.webapp.service.IEMpXlDayYyyyService;
 import org.fms.eis.webapp.vo.EMpXlDayYyyyVO;
+import org.fms.eis.webapp.vo.PTaskRelVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -30,6 +31,9 @@ public class EMpXlDayYyyyAction {
     @Autowired
     @Qualifier("EMpXlDayYyyyServiceImpl")
     private IEMpXlDayYyyyService eMpXlDayYyyyService;
+
+    //测量点日冻结需量表
+    private final String tableName = "E_MP_XL_DAY_YYYY";
 
     @ResponseBody
     @PostMapping(params = "method=insert")
@@ -93,27 +97,45 @@ public class EMpXlDayYyyyAction {
     @ResponseBody
     @PostMapping(params = "method=findByEMpXlDayYyyy")
     public HttpResultPagination<?> findByEMpXlDayYyyy(@RequestBody EMpXlDayYyyyPara paraBody) {
-        //JSONObject obj = JSONObject.parseObject(body);
-        //Date startDate = obj.getDate("startDate");//获取开始时间
-        //Date endDate = obj.getDate("endDate");//获取结束时间
-        //Integer pageCurrent = obj.getInteger("pageCurrent");//当前页
-        //Integer pageSize = obj.getInteger("pageSize");//每页条数
 
-        String sqlDbTable = "E_MP_XL_DAY_YYYY";//测量点日冻结需量表
         SimpleDateFormat format = new SimpleDateFormat("yyyy");
         Integer sYear = Integer.parseInt(format.format(paraBody.getStartDate()));
         Integer eYear = Integer.parseInt(format.format(paraBody.getEndDate()));
 
-        EMpXlDayYyyyVO conditionVO=new EMpXlDayYyyyVO();
+        Map<Integer, Integer> rowNumList = new HashMap<>();
         List<EMpXlDayYyyyVO> listVO = new ArrayList<>();
         for (int year = sYear; year <= eYear; year++) {
-
-            conditionVO.setPageCurrent(sYear);
-            // conditionVO.setPageSize();
+            int currRowNum = eMpXlDayYyyyService.getCountByWhere(paraBody);
+            rowNumList.put(year, currRowNum);
         }
+        int startNum = (paraBody.getPageCurrent() - 1) * paraBody.getPageSize();
+        int endNum = paraBody.getPageCurrent() * paraBody.getPageSize();
+        int currNum = 0;
+        paraBody.setPageCurrent(0);
+        for (int year = sYear; year <= eYear; year++) {
 
-
-        return new HttpResultPagination(null, eMpXlDayYyyyService.findByWhere(null));
+            int keyRowNum = rowNumList.get(year);
+            if (currNum > endNum) {
+                if (currNum <= startNum) {
+                    continue;
+                } else {
+                    List<EMpXlDayYyyyVO> currListVO;
+                    if (currNum + keyRowNum > endNum) {
+                        paraBody.setPageSize(endNum - currNum);
+                    } else {
+                        paraBody.setPageSize(keyRowNum);
+                    }
+                    String currTableName = tableName.replace("YYYY", Integer.toString(year));//当前表名
+                    paraBody.setTableName(currTableName);
+                    currListVO = eMpXlDayYyyyService.getListByWhere(paraBody);
+                    listVO.addAll(currListVO);
+                }
+            } else {
+                break;
+            }
+            currNum += keyRowNum;
+        }
+        paraBody.setTotalRow(currNum);
+        return new HttpResultPagination(paraBody, listVO);
     }
-
 }

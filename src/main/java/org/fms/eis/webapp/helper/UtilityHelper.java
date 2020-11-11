@@ -37,4 +37,7 @@ public class UtilityHelper {
         String regex = "^1[3|4|5|8][0-9]\\d{8}$";
         return phoneNumber.matches(regex);
     }
+
+    //限制获取条目数量
+    public static final Integer LimitCount=10000;
 }

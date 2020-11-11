@@ -11,6 +11,7 @@ import com.riozenc.titanTool.annotation.TransactionDAO;
 import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 import org.fms.eis.webapp.domain.EMpXlDayYyyyDomain;
+import org.fms.eis.webapp.helper.EMpXlDayYyyyPara;
 
 import java.util.List;
 
@@ -51,4 +52,24 @@ public class EMpXlDayYyyyDAO extends AbstractTransactionDAOSupport implements Ba
         return getPersistanceManager().deleteList(getNamespace() + ".delete", deleteList);
     }
 
+    /**
+     * 通过条件获取数目
+     *
+     * @param para
+     * @return
+     */
+    public int getCountByWhere(EMpXlDayYyyyPara para) {
+        return getPersistanceManager().load(getNamespace() + ".getCountByWhere", para);
+    }
+
+    /**
+     * 通过条件获取集合
+     *
+     * @param para
+     * @return
+     */
+    @PaginationSupport
+    public List<EMpXlDayYyyyDomain> getListByWhere(EMpXlDayYyyyPara para) {
+        return getPersistanceManager().find(getNamespace() + ".getListByWhere", para);
+    }
 }

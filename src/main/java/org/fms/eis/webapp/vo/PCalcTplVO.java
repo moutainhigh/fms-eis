@@ -89,11 +89,11 @@ public class PCalcTplVO extends ManagerParamVO {
         this.lastModifyTime = lastModifyTime;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 

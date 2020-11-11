@@ -8,6 +8,7 @@ public class EMpXlDayYyyyPara extends ManagerParamVO {
 
     private Data startDate;
     private Data endDate;
+    private String tableName;//数据表名
 
     public Data getStartDate() {
         return startDate;
@@ -23,5 +24,13 @@ public class EMpXlDayYyyyPara extends ManagerParamVO {
 
     public void setEndDate(Data endDate) {
         this.endDate = endDate;
+    }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
     }
 }
