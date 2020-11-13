@@ -12,6 +12,7 @@ import com.riozenc.titanTool.spring.webapp.dao.AbstractTransactionDAOSupport;
 import com.riozenc.titanTool.spring.webapp.dao.BaseDAO;
 import org.fms.eis.webapp.domain.EMpXlDayYyyyDomain;
 import org.fms.eis.webapp.helper.EMpXlDayYyyyPara;
+import org.fms.eis.webapp.vo.EMpXlDayYyyyVO;
 
 import java.util.List;
 
@@ -68,8 +69,11 @@ public class EMpXlDayYyyyDAO extends AbstractTransactionDAOSupport implements Ba
      * @param para
      * @return
      */
-    @PaginationSupport
     public List<EMpXlDayYyyyDomain> getListByWhere(EMpXlDayYyyyPara para) {
         return getPersistanceManager().find(getNamespace() + ".getListByWhere", para);
+    }
+
+    public int insertList(List<EMpXlDayYyyyVO> list){
+        return getPersistanceManager().insertList(getNamespace() + ".insert", list);
     }
 }

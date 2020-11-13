@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.ESumEngyDayDAO">
+    <select id="findByKey" parameterType="ESumEngyDayDomain"
+            resultType="ESumEngyDayDomain" useCache="true">
+        select
+        SUM_ID,DATA_TIME,SCHEME_ID,PROPERTY,PR0,PR0_P,QR0,QR0_P,PR1,QR1,PR2,QR2,PR3,QR3,PR4,QR4,PR5,QR5,SAVEDATETIME,AREA_CODE,STATUS
+        from E_SUM_ENGY_DAY
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="ESumEngyDayDomain"
+            resultType="ESumEngyDayDomain" useCache="true">
+        select
+        SUM_ID,DATA_TIME,SCHEME_ID,PROPERTY,PR0,PR0_P,QR0,QR0_P,PR1,QR1,PR2,QR2,PR3,QR3,PR4,QR4,PR5,QR5,SAVEDATETIME,AREA_CODE,STATUS
+        from E_SUM_ENGY_DAY
+        <where>
+            <if test="sumId !=null">
+                and SUM_ID = #{sumId}
+            </if>
+            <if test="dataTime !=null">
+                and DATA_TIME = #{dataTime}
+            </if>
+            <if test="schemeId !=null">
+                and SCHEME_ID = #{schemeId}
+            </if>
+            <if test="property !=null">
+                and PROPERTY = #{property}
+            </if>
+            <if test="pr0 !=null">
+                and PR0 = #{pr0}
+            </if>
+            <if test="pr0P !=null">
+                and PR0_P = #{pr0P}
+            </if>
+            <if test="qr0 !=null">
+                and QR0 = #{qr0}
+            </if>
+            <if test="qr0P !=null">
+                and QR0_P = #{qr0P}
+            </if>
+            <if test="pr1 !=null">
+                and PR1 = #{pr1}
+            </if>
+            <if test="qr1 !=null">
+                and QR1 = #{qr1}
+            </if>
+            <if test="pr2 !=null">
+                and PR2 = #{pr2}
+            </if>
+            <if test="qr2 !=null">
+                and QR2 = #{qr2}
+            </if>
+            <if test="pr3 !=null">
+                and PR3 = #{pr3}
+            </if>
+            <if test="qr3 !=null">
+                and QR3 = #{qr3}
+            </if>
+            <if test="pr4 !=null">
+                and PR4 = #{pr4}
+            </if>
+            <if test="qr4 !=null">
+                and QR4 = #{qr4}
+            </if>
+            <if test="pr5 !=null">
+                and PR5 = #{pr5}
+            </if>
+            <if test="qr5 !=null">
+                and QR5 = #{qr5}
+            </if>
+            <if test="savedatetime !=null">
+                and SAVEDATETIME = #{savedatetime}
+            </if>
+            <if test="areaCode !=null">
+                and AREA_CODE = #{areaCode}
+            </if>
+            <if test="status !=null">
+                and STATUS = #{status}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="ESumEngyDayDomain" flushCache="true" useGeneratedKeys="true">
+		insert into E_SUM_ENGY_DAY
+			(SUM_ID,DATA_TIME,SCHEME_ID,PROPERTY,PR0,PR0_P,QR0,QR0_P,PR1,QR1,PR2,QR2,PR3,QR3,PR4,QR4,PR5,QR5,SAVEDATETIME,AREA_CODE,STATUS)
+			VALUES(#{sumId},#{dataTime},#{schemeId},#{property},#{pr0},#{pr0P},#{qr0},#{qr0P},#{pr1},#{qr1},#{pr2},#{qr2},#{pr3},#{qr3},#{pr4},#{qr4},#{pr5},#{qr5},#{savedatetime},#{areaCode},#{status})
+
+	</insert>
+    <update id="update" parameterType="ESumEngyDayDomain" flushCache="true">
+        update E_SUM_ENGY_DAY
+        <set>
+            <if test="sumId !=null">
+                SUM_ID = #{sumId},
+            </if>
+            <if test="dataTime !=null">
+                DATA_TIME = #{dataTime},
+            </if>
+            <if test="schemeId !=null">
+                SCHEME_ID = #{schemeId},
+            </if>
+            <if test="property !=null">
+                PROPERTY = #{property},
+            </if>
+            <if test="pr0 !=null">
+                PR0 = #{pr0},
+            </if>
+            <if test="pr0P !=null">
+                PR0_P = #{pr0P},
+            </if>
+            <if test="qr0 !=null">
+                QR0 = #{qr0},
+            </if>
+            <if test="qr0P !=null">
+                QR0_P = #{qr0P},
+            </if>
+            <if test="pr1 !=null">
+                PR1 = #{pr1},
+            </if>
+            <if test="qr1 !=null">
+                QR1 = #{qr1},
+            </if>
+            <if test="pr2 !=null">
+                PR2 = #{pr2},
+            </if>
+            <if test="qr2 !=null">
+                QR2 = #{qr2},
+            </if>
+            <if test="pr3 !=null">
+                PR3 = #{pr3},
+            </if>
+            <if test="qr3 !=null">
+                QR3 = #{qr3},
+            </if>
+            <if test="pr4 !=null">
+                PR4 = #{pr4},
+            </if>
+            <if test="qr4 !=null">
+                QR4 = #{qr4},
+            </if>
+            <if test="pr5 !=null">
+                PR5 = #{pr5},
+            </if>
+            <if test="qr5 !=null">
+                QR5 = #{qr5},
+            </if>
+            <if test="savedatetime !=null">
+                SAVEDATETIME = #{savedatetime},
+            </if>
+            <if test="areaCode !=null">
+                AREA_CODE = #{areaCode},
+            </if>
+            <if test="status !=null">
+                STATUS = #{status},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="ESumEngyDayDomain" flushCache="true">
+        delete from E_SUM_ENGY_DAY
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>

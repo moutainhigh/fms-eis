@@ -1,6 +1,12 @@
 package org.fms.eis.webapp.helper;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class UtilityHelper {
+
+    //限制获取条目数量
+    public static final Integer LimitCount=10000;
 
     /**
      * 用正则表达式进行判断ip地址
@@ -38,6 +44,26 @@ public class UtilityHelper {
         return phoneNumber.matches(regex);
     }
 
-    //限制获取条目数量
-    public static final Integer LimitCount=10000;
+    /**
+     * 获取某个月份天数
+     *
+     * @param date
+     * @return
+     */
+    public static int getDaysOfMonth(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+    }
+
+    /**
+     * 年月日获取Date时间
+     * @return
+     */
+    public static Date getDate(Integer year,Integer month,Integer day){
+        Calendar calendar=Calendar.getInstance();
+        calendar.set(year, month, day);  //年月日  也可以具体到时分秒如calendar.set(2015, 10, 12,11,32,52);
+        Date date=calendar.getTime();//date就是你需要的时间
+        return date;
+    }
 }

@@ -79,11 +79,17 @@ public class EMpXlDayYyyyServiceImpl implements IEMpXlDayYyyyService {
 
     @Override
     public int getCountByWhere(EMpXlDayYyyyPara para) {
-        return 0;
+        return eMpXlDayYyyyReadDAO.getCountByWhere(para);
     }
 
     @Override
     public List<EMpXlDayYyyyVO> getListByWhere(EMpXlDayYyyyPara para) {
-        return null;
+        List<EMpXlDayYyyyDomain> lstDomain = eMpXlDayYyyyReadDAO.getListByWhere(para);
+        return ReflectUtil.cast(lstDomain, EMpXlDayYyyyVO.class);
+    }
+
+    @Override
+    public int insertList(List<EMpXlDayYyyyVO> list) {
+        return eMpXlDayYyyyWriteDAO.insertList(ReflectUtil.cast(list, EMpXlDayYyyyVO.class));
     }
 }

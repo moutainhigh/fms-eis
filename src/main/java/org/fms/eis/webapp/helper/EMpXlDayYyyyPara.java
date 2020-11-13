@@ -1,28 +1,34 @@
 package org.fms.eis.webapp.helper;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.fms.eis.webapp.vo.ManagerParamVO;
+import java.util.Date;
 
-import javax.xml.crypto.Data;
+public class EMpXlDayYyyyPara extends  ManagerParamVO{
 
-public class EMpXlDayYyyyPara extends ManagerParamVO {
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date startDate;
 
-    private Data startDate;
-    private Data endDate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date endDate;
     private String tableName;//数据表名
 
-    public Data getStartDate() {
+    private int skipNum;//跳过多少条
+    private int takeNum;//获取多少条
+
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Data startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public Data getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Data endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -33,4 +39,21 @@ public class EMpXlDayYyyyPara extends ManagerParamVO {
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
+
+    public int getSkipNum() {
+        return skipNum;
+    }
+
+    public void setSkipNum(int skipNum) {
+        this.skipNum = skipNum;
+    }
+
+    public int getTakeNum() {
+        return takeNum;
+    }
+
+    public void setTakeNum(int takeNum) {
+        this.takeNum = takeNum;
+    }
+
 }

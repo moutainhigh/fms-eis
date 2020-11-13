@@ -30,4 +30,6 @@ public interface IEMpXlDayYyyyService {
     public int getCountByWhere(EMpXlDayYyyyPara para);
 
     public List<EMpXlDayYyyyVO> getListByWhere(EMpXlDayYyyyPara para);
+
+    public int insertList(List<EMpXlDayYyyyVO> list);
 }

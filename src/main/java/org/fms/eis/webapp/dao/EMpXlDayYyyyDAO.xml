@@ -109,7 +109,7 @@
         </where>
     </select>
     <insert id="insert" parameterType="EMpXlDayYyyyDomain" flushCache="true" useGeneratedKeys="true">
-		insert into E_MP_XL_DAY_YYYY
+		insert into ${p1r0Dt}
 			(MPED_ID,DATA_TIME,COL_TIME,P1R0,P1R0_DT,P2R0,P2R0_DT,P1R1,P1R1_DT,P2R1,P2R1_DT,P1R2,P1R2_DT,P2R2,P2R2_DT,P1R3,P1R3_DT,P2R3,P2R3_DT,P1R4,P1R4_DT,P2R4,P2R4_DT,P1R5,P1R5_DT,P2R5,P2R5_DT,DEMAND_COEF,SAVEDATETIME,AREA_CODE)
 			VALUES(#{mpedId},#{dataTime},#{colTime},#{p1r0},#{p1r0Dt},#{p2r0},#{p2r0Dt},#{p1r1},#{p1r1Dt},#{p2r1},#{p2r1Dt},#{p1r2},#{p1r2Dt},#{p2r2},#{p2r2Dt},#{p1r3},#{p1r3Dt},#{p2r3},#{p2r3Dt},#{p1r4},#{p1r4Dt},#{p2r4},#{p2r4Dt},#{p1r5},#{p1r5Dt},#{p2r5},#{p2r5Dt},#{demandCoef},#{savedatetime},#{areaCode})
 
@@ -218,4 +218,33 @@
             and ID = #{id}
         </where>
     </delete>
+    <select id="getCountByWhere" parameterType="org.fms.eis.webapp.helper.EMpXlDayYyyyPara"
+            resultType="Integer" useCache="true">
+        select COUNT(1) from  ${tableName}
+        <where>
+            <if test="startDate !=null">
+                and COL_TIME &gt;= #{startDate}
+            </if>
+            <if test="endDate !=null">
+                and COL_TIME &lt;= #{endDate}
+            </if>
+        </where>
+        order by DATA_TIME
+    </select>
+    <select id="getListByWhere" parameterType="org.fms.eis.webapp.helper.EMpXlDayYyyyPara"
+            resultType="EMpXlDayYyyyDomain" useCache="true">
+        select
+        MPED_ID,DATA_TIME,COL_TIME,P1R0,P1R0_DT,P2R0,P2R0_DT,P1R1,P1R1_DT,P2R1,P2R1_DT,P1R2,P1R2_DT,P2R2,P2R2_DT,P1R3,P1R3_DT,P2R3,P2R3_DT,P1R4,P1R4_DT,P2R4,P2R4_DT,P1R5,P1R5_DT,P2R5,P2R5_DT,DEMAND_COEF,SAVEDATETIME,AREA_CODE
+        from ${tableName}
+        <where>
+            <if test="startDate !=null">
+                and COL_TIME &gt;= #{startDate}
+            </if>
+            <if test="endDate !=null">
+                and COL_TIME &lt;= #{endDate}
+            </if>
+        </where>
+        order by DATA_TIME
+        limit #{skipNum},#{takeNum};
+    </select>
 </mapper>

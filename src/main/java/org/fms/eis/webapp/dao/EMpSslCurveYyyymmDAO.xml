@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fms.eis.webapp.dao.EMpSslCurveYyyymmDAO">
+    <select id="findByKey" parameterType="EMpSslCurveYyyymmDomain"
+            resultType="EMpSslCurveYyyymmDomain" useCache="true">
+        select
+        MPED_ID,DATA_TIME,PS_FLAG,UA,UB,UC,IA,IB,IC,I0,P,PA,PB,PC,Q,QA,QB,QC,COS,COSA,COSB,COSC,SP,SPA,SPB,SPC,FN,PAIA,PAIB,PAIC,PAUA,PAUB,PAUC,TEMPLE,AVGP,AVGQ,P_COEF,Q_COEF,V_COEF,C_COEF,FACTOR_COEF,SAVEDATETIME,AREA_CODE
+        from E_MP_SSL_CURVE_YYYYMM
+        <where>
+            and ID = #{id}
+        </where>
+    </select>
+    <select id="findByWhere" parameterType="EMpSslCurveYyyymmDomain"
+            resultType="EMpSslCurveYyyymmDomain" useCache="true">
+        select
+        MPED_ID,DATA_TIME,PS_FLAG,UA,UB,UC,IA,IB,IC,I0,P,PA,PB,PC,Q,QA,QB,QC,COS,COSA,COSB,COSC,SP,SPA,SPB,SPC,FN,PAIA,PAIB,PAIC,PAUA,PAUB,PAUC,TEMPLE,AVGP,AVGQ,P_COEF,Q_COEF,V_COEF,C_COEF,FACTOR_COEF,SAVEDATETIME,AREA_CODE
+        from E_MP_SSL_CURVE_YYYYMM
+        <where>
+            <if test="mpedId !=null">
+                and MPED_ID = #{mpedId}
+            </if>
+            <if test="dataTime !=null">
+                and DATA_TIME = #{dataTime}
+            </if>
+            <if test="psFlag !=null">
+                and PS_FLAG = #{psFlag}
+            </if>
+            <if test="ua !=null">
+                and UA = #{ua}
+            </if>
+            <if test="ub !=null">
+                and UB = #{ub}
+            </if>
+            <if test="uc !=null">
+                and UC = #{uc}
+            </if>
+            <if test="ia !=null">
+                and IA = #{ia}
+            </if>
+            <if test="ib !=null">
+                and IB = #{ib}
+            </if>
+            <if test="ic !=null">
+                and IC = #{ic}
+            </if>
+            <if test="i0 !=null">
+                and I0 = #{i0}
+            </if>
+            <if test="p !=null">
+                and P = #{p}
+            </if>
+            <if test="pa !=null">
+                and PA = #{pa}
+            </if>
+            <if test="pb !=null">
+                and PB = #{pb}
+            </if>
+            <if test="pc !=null">
+                and PC = #{pc}
+            </if>
+            <if test="q !=null">
+                and Q = #{q}
+            </if>
+            <if test="qa !=null">
+                and QA = #{qa}
+            </if>
+            <if test="qb !=null">
+                and QB = #{qb}
+            </if>
+            <if test="qc !=null">
+                and QC = #{qc}
+            </if>
+            <if test="cos !=null">
+                and COS = #{cos}
+            </if>
+            <if test="cosa !=null">
+                and COSA = #{cosa}
+            </if>
+            <if test="cosb !=null">
+                and COSB = #{cosb}
+            </if>
+            <if test="cosc !=null">
+                and COSC = #{cosc}
+            </if>
+            <if test="sp !=null">
+                and SP = #{sp}
+            </if>
+            <if test="spa !=null">
+                and SPA = #{spa}
+            </if>
+            <if test="spb !=null">
+                and SPB = #{spb}
+            </if>
+            <if test="spc !=null">
+                and SPC = #{spc}
+            </if>
+            <if test="fn !=null">
+                and FN = #{fn}
+            </if>
+            <if test="paia !=null">
+                and PAIA = #{paia}
+            </if>
+            <if test="paib !=null">
+                and PAIB = #{paib}
+            </if>
+            <if test="paic !=null">
+                and PAIC = #{paic}
+            </if>
+            <if test="paua !=null">
+                and PAUA = #{paua}
+            </if>
+            <if test="paub !=null">
+                and PAUB = #{paub}
+            </if>
+            <if test="pauc !=null">
+                and PAUC = #{pauc}
+            </if>
+            <if test="temple !=null">
+                and TEMPLE = #{temple}
+            </if>
+            <if test="avgp !=null">
+                and AVGP = #{avgp}
+            </if>
+            <if test="avgq !=null">
+                and AVGQ = #{avgq}
+            </if>
+            <if test="pCoef !=null">
+                and P_COEF = #{pCoef}
+            </if>
+            <if test="qCoef !=null">
+                and Q_COEF = #{qCoef}
+            </if>
+            <if test="vCoef !=null">
+                and V_COEF = #{vCoef}
+            </if>
+            <if test="cCoef !=null">
+                and C_COEF = #{cCoef}
+            </if>
+            <if test="factorCoef !=null">
+                and FACTOR_COEF = #{factorCoef}
+            </if>
+            <if test="savedatetime !=null">
+                and SAVEDATETIME = #{savedatetime}
+            </if>
+            <if test="areaCode !=null">
+                and AREA_CODE = #{areaCode}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="EMpSslCurveYyyymmDomain" flushCache="true" useGeneratedKeys="true">
+		insert into E_MP_SSL_CURVE_YYYYMM
+			(MPED_ID,DATA_TIME,PS_FLAG,UA,UB,UC,IA,IB,IC,I0,P,PA,PB,PC,Q,QA,QB,QC,COS,COSA,COSB,COSC,SP,SPA,SPB,SPC,FN,PAIA,PAIB,PAIC,PAUA,PAUB,PAUC,TEMPLE,AVGP,AVGQ,P_COEF,Q_COEF,V_COEF,C_COEF,FACTOR_COEF,SAVEDATETIME,AREA_CODE)
+			VALUES(#{mpedId},#{dataTime},#{psFlag},#{ua},#{ub},#{uc},#{ia},#{ib},#{ic},#{i0},#{p},#{pa},#{pb},#{pc},#{q},#{qa},#{qb},#{qc},#{cos},#{cosa},#{cosb},#{cosc},#{sp},#{spa},#{spb},#{spc},#{fn},#{paia},#{paib},#{paic},#{paua},#{paub},#{pauc},#{temple},#{avgp},#{avgq},#{pCoef},#{qCoef},#{vCoef},#{cCoef},#{factorCoef},#{savedatetime},#{areaCode})
+
+	</insert>
+    <update id="update" parameterType="EMpSslCurveYyyymmDomain" flushCache="true">
+        update E_MP_SSL_CURVE_YYYYMM
+        <set>
+            <if test="mpedId !=null">
+                MPED_ID = #{mpedId},
+            </if>
+            <if test="dataTime !=null">
+                DATA_TIME = #{dataTime},
+            </if>
+            <if test="psFlag !=null">
+                PS_FLAG = #{psFlag},
+            </if>
+            <if test="ua !=null">
+                UA = #{ua},
+            </if>
+            <if test="ub !=null">
+                UB = #{ub},
+            </if>
+            <if test="uc !=null">
+                UC = #{uc},
+            </if>
+            <if test="ia !=null">
+                IA = #{ia},
+            </if>
+            <if test="ib !=null">
+                IB = #{ib},
+            </if>
+            <if test="ic !=null">
+                IC = #{ic},
+            </if>
+            <if test="i0 !=null">
+                I0 = #{i0},
+            </if>
+            <if test="p !=null">
+                P = #{p},
+            </if>
+            <if test="pa !=null">
+                PA = #{pa},
+            </if>
+            <if test="pb !=null">
+                PB = #{pb},
+            </if>
+            <if test="pc !=null">
+                PC = #{pc},
+            </if>
+            <if test="q !=null">
+                Q = #{q},
+            </if>
+            <if test="qa !=null">
+                QA = #{qa},
+            </if>
+            <if test="qb !=null">
+                QB = #{qb},
+            </if>
+            <if test="qc !=null">
+                QC = #{qc},
+            </if>
+            <if test="cos !=null">
+                COS = #{cos},
+            </if>
+            <if test="cosa !=null">
+                COSA = #{cosa},
+            </if>
+            <if test="cosb !=null">
+                COSB = #{cosb},
+            </if>
+            <if test="cosc !=null">
+                COSC = #{cosc},
+            </if>
+            <if test="sp !=null">
+                SP = #{sp},
+            </if>
+            <if test="spa !=null">
+                SPA = #{spa},
+            </if>
+            <if test="spb !=null">
+                SPB = #{spb},
+            </if>
+            <if test="spc !=null">
+                SPC = #{spc},
+            </if>
+            <if test="fn !=null">
+                FN = #{fn},
+            </if>
+            <if test="paia !=null">
+                PAIA = #{paia},
+            </if>
+            <if test="paib !=null">
+                PAIB = #{paib},
+            </if>
+            <if test="paic !=null">
+                PAIC = #{paic},
+            </if>
+            <if test="paua !=null">
+                PAUA = #{paua},
+            </if>
+            <if test="paub !=null">
+                PAUB = #{paub},
+            </if>
+            <if test="pauc !=null">
+                PAUC = #{pauc},
+            </if>
+            <if test="temple !=null">
+                TEMPLE = #{temple},
+            </if>
+            <if test="avgp !=null">
+                AVGP = #{avgp},
+            </if>
+            <if test="avgq !=null">
+                AVGQ = #{avgq},
+            </if>
+            <if test="pCoef !=null">
+                P_COEF = #{pCoef},
+            </if>
+            <if test="qCoef !=null">
+                Q_COEF = #{qCoef},
+            </if>
+            <if test="vCoef !=null">
+                V_COEF = #{vCoef},
+            </if>
+            <if test="cCoef !=null">
+                C_COEF = #{cCoef},
+            </if>
+            <if test="factorCoef !=null">
+                FACTOR_COEF = #{factorCoef},
+            </if>
+            <if test="savedatetime !=null">
+                SAVEDATETIME = #{savedatetime},
+            </if>
+            <if test="areaCode !=null">
+                AREA_CODE = #{areaCode},
+            </if>
+        </set>
+        <where>
+            and ID = #{id}
+        </where>
+    </update>
+    <delete id="delete" parameterType="EMpSslCurveYyyymmDomain" flushCache="true">
+        delete from E_MP_SSL_CURVE_YYYYMM
+        <where>
+            and ID = #{id}
+        </where>
+    </delete>
+</mapper>
